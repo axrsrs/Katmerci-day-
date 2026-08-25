@@ -1,90 +1,43 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#1E6F4C">
-<title>Kafe Menü</title>
-<style>
-:root{--bg:#F6F1E2;--surface:#fff;--surface-raised:#ECE2C7;--accent:#1E6F4C;--accent-text:#134A32;--ink:#20261D;--ink-muted:#6E6A52;--ink-faint:#A39F84;--danger:#A9433A;--border-soft:rgba(46,38,33,.14)}
-*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:var(--bg);color:var(--ink);font-family:Arial,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.wrap{max-width:640px;margin:auto;padding-bottom:100px}
-header.hero{padding:48px 24px 28px;text-align:center;border-bottom:1px solid var(--border-soft)}
-.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px}
-h1.cafe-name{font-family:Georgia,serif;font-weight:600;font-size:clamp(34px,9vw,52px);margin:0 0 10px;line-height:1.05}
-.subtitle{color:var(--ink-muted);font-size:15px;max-width:420px;margin:auto;line-height:1.5}
-nav.tabs{display:flex;gap:8px;overflow-x:auto;padding:18px 20px;scrollbar-width:none;position:sticky;top:0;background:linear-gradient(var(--bg) 78%,transparent);z-index:5}
-nav.tabs::-webkit-scrollbar{display:none}.tab-btn{flex:0 0 auto;font-size:12.5px;padding:9px 16px;border-radius:999px;border:1px solid var(--border-soft);background:var(--surface);color:var(--ink-muted);white-space:nowrap}
-.tab-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-.category-block{padding:6px 22px 8px}.category-title{font-family:Georgia,serif;font-size:22px;font-weight:500;color:var(--accent-text);margin:22px 0 10px}
-.item-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px dashed var(--border-soft)}
-.item-thumb{width:54px;height:54px;flex:0 0 auto;border-radius:10px;object-fit:cover;border:1px solid var(--border-soft);background:var(--surface-raised)}
-.item-text-row{display:flex;align-items:baseline;gap:8px;flex:1;min-width:0}.item-name-wrap{min-width:0}.item-name{font-size:16px;font-weight:600}.item-name.unavailable{color:var(--ink-faint);text-decoration:line-through}.item-desc{font-size:12.5px;color:var(--ink-muted);margin-top:2px;line-height:1.4}.leader{flex:1;border-bottom:1px dotted var(--border-soft);height:0;margin:0 2px 5px;min-width:12px}.item-price{font-size:15px;color:var(--accent-text);white-space:nowrap}.item-price.unavailable{color:var(--ink-faint)}.sold-out-tag{font-size:10px;color:#A94444;letter-spacing:.08em;margin-left:6px}
-footer.note{text-align:center;padding:36px 24px 10px;color:var(--ink-faint);font-size:11.5px}
-.admin-dot{position:fixed;bottom:18px;right:18px;width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--border-soft);color:var(--ink-faint);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:20;box-shadow:0 2px 10px rgba(46,38,33,.12)}
-.overlay{position:fixed;inset:0;background:rgba(46,38,33,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center}@media(min-width:640px){.overlay{align-items:center}}
-.panel{background:var(--surface);width:100%;max-width:560px;max-height:90vh;overflow-y:auto;border-radius:18px 18px 0 0;padding:26px 20px 30px;border:1px solid var(--border-soft)}@media(min-width:640px){.panel{border-radius:18px}}
-.panel h2{font-family:Georgia,serif;font-size:24px;margin:0 0 18px;color:var(--accent-text)}.panel label{display:block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);margin:14px 0 5px}.panel input,.panel textarea{width:100%;background:var(--surface-raised);border:1px solid var(--border-soft);border-radius:8px;padding:10px 12px;color:var(--ink);font-size:14.5px}.row-2{display:flex;gap:10px}.row-2>div{flex:1}.btn{font-size:12.5px;padding:10px 16px;border-radius:8px;border:1px solid transparent;cursor:pointer}.btn-gold{background:var(--accent);color:#fff;font-weight:600}.btn-ghost{background:var(--surface);border-color:var(--border-soft);color:var(--ink)}.btn-danger{background:var(--surface);border-color:var(--danger);color:var(--danger)}.btn-block{width:100%;display:block;text-align:center;margin-top:8px}.item-edit-card{background:var(--surface-raised);border:1px solid var(--border-soft);border-radius:10px;padding:14px;margin-top:12px}.cat-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:26px;padding-bottom:8px;border-bottom:1px solid var(--border-soft)}.cat-header input{font-family:Georgia,serif;font-size:18px;color:var(--accent-text);border:none;background:transparent;padding:2px 0}.avail-toggle{display:flex!important;align-items:center;gap:6px;font-size:12px!important;color:var(--ink-muted)!important;margin-top:10px!important}.avail-toggle input{width:auto}.actions-row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.status-msg{font-size:11.5px;color:var(--accent-text);margin-top:10px;min-height:16px}.pin-box{text-align:center}.pin-box input{text-align:center;font-size:20px;letter-spacing:.3em}.close-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--ink-muted);font-size:20px;cursor:pointer}.panel-rel{position:relative}.loading{text-align:center;padding:60px 20px;color:var(--ink-muted);font-size:13px}.color-field{display:flex;align-items:center;gap:10px;background:var(--surface-raised);border:1px solid var(--border-soft);border-radius:8px;padding:10px 12px;margin-top:6px}.color-field input[type=color]{width:36px;height:36px;padding:0;border:none;background:none}.img-row{display:flex;gap:12px;align-items:flex-start;margin-top:6px}.admin-thumb{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto;border:1px solid var(--border-soft);background:#fff}.img-controls{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}.img-controls input[type=file]{padding:6px;font-size:12.5px}
-.toast{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);background:#20261D;color:#fff;padding:11px 15px;border-radius:10px;font-size:13px;z-index:100;display:none}
-</style>
-</head>
-<body>
-<div class="wrap" id="app"><div class="loading">menü yükleniyor…</div></div>
-<div class="admin-dot" id="adminDot" title="Yönetim" role="button" tabindex="0" aria-label="Yönetim panelini aç">⚙</div>
-<div class="toast" id="toast"></div>
-<script>
-const SUPABASE_URL="https://cwofalezjvuxppmwipmc.supabase.co";
-const SUPABASE_KEY="sb_publishable_n9xGFNXF-wl4C-BFLBGmeg_hsKy9GtU";
-const MENU_ID="00000000-0000-0000-0000-000000000001";
-const DEFAULT_PIN="1234";
-const BLANK_PIXEL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-
-function uid(){return"i"+Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
-function defaultData(){return{cafeName:"Kahve Durağı",subtitle:"Taze demlenmiş kahve ve ev yapımı tatlılar.",theme:{baseColor:"#1E6F4C"},categories:[
-{id:uid(),name:"Sıcak İçecekler",items:[{id:uid(),name:"Türk Kahvesi",desc:"Az / orta / şekerli",price:90,available:true,image:""},{id:uid(),name:"Filtre Kahve",desc:"Günün çekirdeği",price:110,available:true,image:""},{id:uid(),name:"Latte",desc:"Espresso, buharda süt",price:140,available:true,image:""},{id:uid(),name:"Cappuccino",desc:"Bol köpüklü",price:130,available:true,image:""},{id:uid(),name:"Sıcak Çikolata",desc:"Bitter, ev yapımı",price:120,available:true,image:""},{id:uid(),name:"Çay",desc:"Bardak",price:40,available:true,image:""}]},
-{id:uid(),name:"Soğuk İçecekler",items:[{id:uid(),name:"Ice Latte",desc:"",price:150,available:true,image:""},{id:uid(),name:"Frappe",desc:"Buzlu, köpüklü",price:160,available:true,image:""},{id:uid(),name:"Limonata",desc:"Ev yapımı, nane",price:90,available:true,image:""},{id:uid(),name:"Soğuk Çay",desc:"Şeftali / limon",price:80,available:true,image:""}]},
-{id:uid(),name:"Tatlılar",items:[{id:uid(),name:"Cheesecake",desc:"Meyve soslu",price:180,available:true,image:""},{id:uid(),name:"Brownie",desc:"Sıcak servis",price:150,available:true,image:""},{id:uid(),name:"Kazandibi",desc:"",price:140,available:true,image:""},{id:uid(),name:"Sufle",desc:"Sıcak çikolatalı",price:170,available:true,image:""}]},
-{id:uid(),name:"Atıştırmalıklar",items:[{id:uid(),name:"Tost",desc:"Kaşarlı",price:130,available:true,image:""},{id:uid(),name:"Sandviç",desc:"Günün seçenekleri",price:160,available:true,image:""},{id:uid(),name:"Kruvasan",desc:"",price:110,available:true,image:""},{id:uid(),name:"Kurabiye",desc:"İki adet",price:70,available:true,image:""}]}]}}
-let menuData=null,activeCatId=null,unlocked=false,adminOpen=false,currentPin="";
-const app=document.getElementById("app");
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function escAttr(s){return esc(s)}
-function hexRgb(h){h=h.replace("#","");if(h.length===3)h=h.split("").map(x=>x+x).join("");let n=parseInt(h,16);return{r:n>>16&255,g:n>>8&255,b:n&255}}
-function hex(r,g,b){return"#"+[r,g,b].map(x=>Math.max(0,Math.min(255,Math.round(x))).toString(16).padStart(2,"0")).join("")}
-function light(h,a){try{let{r,g,b}=hexRgb(h);return hex(r+(255-r)*a,g+(255-g)*a,b+(255-b)*a)}catch{return h}}
-function dark(h,a){try{let{r,g,b}=hexRgb(h);return hex(r*(1-a),g*(1-a),b*(1-a))}catch{return h}}
-function applyTheme(t){let b=t?.baseColor||"#1E6F4C",r=document.documentElement.style;let ink=dark(b,.72);r.setProperty("--bg",light(b,.93));r.setProperty("--surface-raised",light(b,.83));r.setProperty("--accent",b);r.setProperty("--accent-text",dark(b,.32));r.setProperty("--ink",ink);r.setProperty("--ink-muted",`rgba(${hexRgb(ink).r},${hexRgb(ink).g},${hexRgb(ink).b},.68)`);r.setProperty("--ink-faint",`rgba(${hexRgb(ink).r},${hexRgb(ink).g},${hexRgb(ink).b},.42)`);r.setProperty("--border-soft",`rgba(${hexRgb(ink).r},${hexRgb(ink).g},${hexRgb(ink).b},.16)`)}
-function money(n){return(Number(n)||0).toLocaleString("tr-TR")+" ₺"}
-async function api(path,opts={}){let h={"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=representation",...(opts.headers||{})};let res=await fetch(SUPABASE_URL+path,{...opts,cache:"no-store",headers:h});let txt=await res.text();let data;try{data=txt?JSON.parse(txt):null}catch{data=txt}if(!res.ok)throw new Error(data?.message||data?.error_description||data?.hint||txt||("HTTP "+res.status));return data}
-async function rpc(name,args){return api("/rest/v1/rpc/"+name,{method:"POST",body:JSON.stringify(args)})}
-async function loadMenu(){try{let rows=await api("/rest/v1/menus?id=eq."+MENU_ID+"&select=id,data");if(!rows.length){showError("Menü kaydı bulunamadı. Aşağıdaki kurulum SQL'ini bir kez çalıştırman gerekiyor.");return}let x=rows[0],d=x.data||{};menuData={cafeName:d.cafeName||"Kahve Durağı",subtitle:d.subtitle||"",theme:d.theme||{baseColor:"#1E6F4C"},categories:Array.isArray(d.categories)?d.categories:[]};menuData.categories.forEach(c=>c.items?.forEach(i=>{if(i.image===undefined)i.image=""}));activeCatId=menuData.categories[0]?.id||null;applyTheme(menuData.theme);renderCustomer()}catch(e){showError("Menü yüklenemedi: "+e.message)}}
-function showError(m){app.innerHTML=`<div class="loading"><b>Menü yüklenemedi</b><br><br>${esc(m)}</div>`}
-function renderCustomer(){if(!menuData)return;let cats=menuData.categories,active=cats.find(c=>c.id===activeCatId)||cats[0];if(active)activeCatId=active.id;let tabs=cats.map(c=>`<button class="tab-btn ${c.id===active?.id?"active":""}" data-cat="${escAttr(c.id)}">${esc(c.name)}</button>`).join("");let items=active?active.items.map(it=>`<div class="item-row">${it.image?`<img class="item-thumb" src="${escAttr(it.image)}" alt="">`:""}<div class="item-text-row"><div class="item-name-wrap"><div class="item-name ${it.available?"":"unavailable"}">${esc(it.name)}${it.available?"":'<span class="sold-out-tag">TÜKENDİ</span>'}</div>${it.desc?`<div class="item-desc">${esc(it.desc)}</div>`:""}</div><div class="leader"></div><div class="item-price ${it.available?"":"unavailable"}">${money(it.price)}</div></div></div>`).join(""):"<div class='item-desc'>Bu kategoride henüz ürün yok.</div>";app.innerHTML=`<header class="hero"><div class="eyebrow">Menü</div><h1 class="cafe-name">${esc(menuData.cafeName)}</h1><p class="subtitle">${esc(menuData.subtitle)}</p></header><nav class="tabs">${tabs}</nav><div class="category-block"><div class="category-title">${esc(active?.name||"")}</div>${items}</div><footer class="note">QR ile açıldı · fiyatlara KDV dahildir</footer>`;app.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{activeCatId=b.dataset.cat;renderCustomer()})}
-function toast(m){let t=document.getElementById("toast");t.textContent=m;t.style.display="block";setTimeout(()=>t.style.display="none",2200)}
-function openGate(){if(unlocked){openAdmin();return}let o=document.createElement("div");o.className="overlay";o.innerHTML=`<div class="panel panel-rel pin-box"><button class="close-x" aria-label="Kapat">✕</button><h2>Yönetim Girişi</h2><label>PIN kodu</label><input id="gatePin" type="password" inputmode="numeric" maxlength="20" placeholder="••••"><div class="status-msg" id="gateMsg"></div><button class="btn btn-gold btn-block" id="gateGo">Giriş yap</button></div>`;document.body.appendChild(o);o.querySelector(".close-x").onclick=()=>o.remove();let go=async()=>{let p=o.querySelector("#gatePin").value.trim();let msg=o.querySelector("#gateMsg");try{let ok=await rpc("check_menu_pin",{p_menu_id:MENU_ID,p_pin:p});if(ok===true||ok?.[0]===true||ok?.result===true){unlocked=true;currentPin=p;o.remove();openAdmin()}else msg.textContent="Hatalı PIN."}catch(e){msg.textContent="Giriş hatası: "+e.message}};o.querySelector("#gateGo").onclick=go;o.querySelector("#gatePin").onkeydown=e=>{if(e.key==="Enter")go()}}
-function resizeImage(file,max=600,q=.72){return new Promise((res,rej)=>{let r=new FileReader();r.onload=e=>{let im=new Image();im.onload=()=>{let w=im.width,h=im.height;if(w>h&&w>max){h*=max/w;w=max}else if(h>=w&&h>max){w*=max/h;h=max}let c=document.createElement("canvas");c.width=Math.round(w);c.height=Math.round(h);c.getContext("2d").drawImage(im,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",q))};im.onerror=rej;im.src=e.target.result};r.onerror=rej;r.readAsDataURL(file)})}
-function findItem(id){for(let c of menuData.categories){let i=c.items.find(x=>x.id===id);if(i)return i}return null}
-function renderAdmin(){let o=document.getElementById("adminOverlay");let cats=menuData.categories.map(c=>`<div class="cat-header"><input data-cat-name="${escAttr(c.id)}" value="${escAttr(c.name)}"><button class="btn btn-danger" data-del-cat="${escAttr(c.id)}">Kategoriyi sil</button></div>${c.items.map(i=>`<div class="item-edit-card"><label>Ürün adı</label><input data-item-name="${i.id}" value="${escAttr(i.name)}"><label>Açıklama</label><input data-item-desc="${i.id}" value="${escAttr(i.desc||"")}"><label>Fiyat (₺)</label><input type="number" min="0" step="1" data-item-price="${i.id}" value="${Number(i.price)||0}"><label>Görsel</label><div class="img-row"><img class="admin-thumb" data-preview="${i.id}" src="${i.image?escAttr(i.image):BLANK_PIXEL}"><div class="img-controls"><input type="file" accept="image/*" data-file="${i.id}"><input data-url="${i.id}" placeholder="veya görsel linki (https://...)" value="${i.image?.startsWith("http")?escAttr(i.image):""}"><button class="btn btn-ghost" data-remove-img="${i.id}">Görseli kaldır</button></div></div><label class="avail-toggle"><input type="checkbox" data-avail="${i.id}" ${i.available?"checked":""}> Stokta / satışta</label><div class="actions-row"><button class="btn btn-danger" data-del-item="${i.id}" data-cat="${c.id}">Ürünü sil</button></div></div>`).join("")}<button class="btn btn-ghost btn-block" data-add-item="${c.id}">+ Ürün ekle</button>`).join("");o.innerHTML=`<div class="panel panel-rel"><button class="close-x" id="adminClose">✕</button><h2>Yönetim Paneli</h2><label>Kafe adı</label><input id="cafeName" value="${escAttr(menuData.cafeName)}"><label>Alt başlık</label><input id="subtitle" value="${escAttr(menuData.subtitle)}">${cats}<button class="btn btn-ghost btn-block" id="addCat">+ Yeni kategori</button><hr style="border:none;border-top:1px solid var(--border-soft);margin:24px 0"><label>Tema rengi</label><div class="color-field"><input type="color" id="themeColor" value="${menuData.theme?.baseColor||"#1E6F4C"}"><span>Menünün ana rengini değiştirir.</span></div><label>Yeni PIN</label><div class="row-2"><input id="newPin" type="password" inputmode="numeric" placeholder="En az 4 hane"><button class="btn btn-ghost" id="changePin">Değiştir</button></div><div class="status-msg" id="adminMsg"></div><button class="btn btn-gold btn-block" id="saveMenu">Kaydet ve menüye dön</button></div>`;
-o.querySelector("#adminClose").onclick=()=>{o.remove();adminOpen=false;renderCustomer()};
-o.querySelector("#cafeName").oninput=e=>menuData.cafeName=e.target.value;o.querySelector("#subtitle").oninput=e=>menuData.subtitle=e.target.value;
-o.querySelectorAll("[data-cat-name]").forEach(x=>x.oninput=e=>{let c=menuData.categories.find(c=>c.id===x.dataset.catName);if(c)c.name=e.target.value});
-o.querySelectorAll("[data-item-name]").forEach(x=>x.oninput=e=>{let i=findItem(x.dataset.itemName);if(i)i.name=e.target.value});
-o.querySelectorAll("[data-item-desc]").forEach(x=>x.oninput=e=>{let i=findItem(x.dataset.itemDesc);if(i)i.desc=e.target.value});
-o.querySelectorAll("[data-item-price]").forEach(x=>x.oninput=e=>{let i=findItem(x.dataset.itemPrice);if(i)i.price=Number(e.target.value)||0});
-o.querySelectorAll("[data-avail]").forEach(x=>x.onchange=e=>{let i=findItem(x.dataset.avail);if(i)i.available=e.target.checked});
-o.querySelectorAll("[data-del-item]").forEach(b=>b.onclick=()=>{let c=menuData.categories.find(c=>c.id===b.dataset.cat);if(c)c.items=c.items.filter(i=>i.id!==b.dataset.delItem);renderAdmin()});
-o.querySelectorAll("[data-add-item]").forEach(b=>b.onclick=()=>{let c=menuData.categories.find(c=>c.id===b.dataset.addItem);if(c){c.items.push({id:uid(),name:"Yeni ürün",desc:"",price:0,available:true,image:""});renderAdmin()}});
-o.querySelectorAll("[data-del-cat]").forEach(b=>b.onclick=()=>{if(confirm("Kategori ve ürünleri silinsin mi?")){menuData.categories=menuData.categories.filter(c=>c.id!==b.dataset.delCat);renderAdmin()}});
-o.querySelectorAll("[data-file]").forEach(x=>x.onchange=async()=>{let f=x.files?.[0];if(!f)return;try{let i=findItem(x.dataset.file);i.image=await resizeImage(f);renderAdmin()}catch{toast("Görsel yüklenemedi")}});
-o.querySelectorAll("[data-url]").forEach(x=>x.oninput=e=>{let i=findItem(x.dataset.url);i.image=e.target.value.trim();let p=o.querySelector(`[data-preview="${i.id}"]`);if(p)p.src=i.image||BLANK_PIXEL});
-o.querySelectorAll("[data-remove-img]").forEach(b=>b.onclick=()=>{let i=findItem(b.dataset.removeImg);i.image="";renderAdmin()});
-o.querySelector("#addCat").onclick=()=>{menuData.categories.push({id:uid(),name:"Yeni kategori",items:[]});renderAdmin()};
-o.querySelector("#themeColor").oninput=e=>{menuData.theme.baseColor=e.target.value;applyTheme(menuData.theme)};
-o.querySelector("#changePin").onclick=async()=>{let n=o.querySelector("#newPin").value.trim(),m=o.querySelector("#adminMsg");if(n.length<4){m.textContent="PIN en az 4 hane olmalı.";return}try{let ok=await rpc("change_menu_pin",{p_menu_id:MENU_ID,p_old_pin:currentPin,p_new_pin:n});if(ok===true||ok?.[0]===true){currentPin=n;m.textContent="PIN değiştirildi."}else m.textContent="PIN değiştirilemedi."}catch(e){m.textContent="Hata: "+e.message}};
-o.querySelector("#saveMenu").onclick=async()=>{let m=o.querySelector("#adminMsg");m.textContent="Kaydediliyor…";try{let payload={cafeName:menuData.cafeName,subtitle:menuData.subtitle,theme:menuData.theme,categories:menuData.categories};let ok=await rpc("save_menu",{p_menu_id:MENU_ID,p_pin:currentPin,p_data:payload});if(ok===true||ok?.[0]===true){m.textContent="Kaydedildi.";setTimeout(()=>{o.remove();adminOpen=false;renderCustomer();toast("Menü güncellendi ✓")},350)}else m.textContent="Kaydedilemedi."}catch(e){m.textContent="Hata: "+e.message}}}
-function openAdmin(){adminOpen=true;let o=document.createElement("div");o.className="overlay";o.id="adminOverlay";document.body.appendChild(o);renderAdmin()}
-document.getElementById("adminDot").onclick=openGate;document.getElementById("adminDot").onkeydown=e=>{if(e.key==="Enter")openGate()};
-loadMenu();
-</script>
-</body>
-</html>
+update public.menus
+set data = jsonb_build_object(
+  'cafeName', 'Katmerci Dayı',
+  'subtitle', 'Geleneksel lezzetler, sıcak sunum.',
+  'logo', '',
+  'theme', jsonb_build_object(
+    'baseColor', '#1E6F4C'
+  ),
+  'categories', jsonb_build_array(
+    jsonb_build_object(
+      'id', 'katmerler',
+      'name', 'Katmerler',
+      'items', '[]'::jsonb
+    ),
+    jsonb_build_object(
+      'id', 'kahvalti',
+      'name', 'Kahvaltı',
+      'items', '[]'::jsonb
+    ),
+    jsonb_build_object(
+      'id', 'tatlilar',
+      'name', 'Tatlılar',
+      'items', '[]'::jsonb
+    ),
+    jsonb_build_object(
+      'id', 'sicak-icecekler',
+      'name', 'Sıcak İçecekler',
+      'items', '[]'::jsonb
+    ),
+    jsonb_build_object(
+      'id', 'soguk-icecekler',
+      'name', 'Soğuk İçecekler',
+      'items', '[]'::jsonb
+    ),
+    jsonb_build_object(
+      'id', 'kahveler',
+      'name', 'Kahveler',
+      'items', '[]'::jsonb
+    )
+  )
+),
+updated_at = now()
+where id = '00000000-0000-0000-0000-000000000001';
