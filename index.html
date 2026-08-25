@@ -44,15 +44,10 @@ body{
 body{
   background:var(--bg);
   color:var(--ink);
-
   font-family:'Work Sans',sans-serif;
-
   min-height:100vh;
-
   -webkit-font-smoothing:antialiased;
-
   position:relative;
-
   overflow-x:hidden;
 
   transition:
@@ -118,11 +113,8 @@ body{
 .wrap{
   position:relative;
   z-index:1;
-
   max-width:640px;
-
   margin:0 auto;
-
   padding:0 0 100px;
 }
 
@@ -132,68 +124,45 @@ body{
 
 header.hero{
   padding:48px 24px 28px;
-
   text-align:center;
-
   border-bottom:1px solid var(--border-soft);
 }
 
 .cafe-logo{
   width:110px;
   height:110px;
-
   object-fit:contain;
-
   border-radius:50%;
-
   margin:0 auto 18px;
-
   display:block;
-
   background:var(--surface);
-
   border:1px solid var(--border-soft);
-
   box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
 
 .eyebrow{
   font-family:'IBM Plex Mono',monospace;
-
   font-size:11px;
-
   letter-spacing:.28em;
-
   text-transform:uppercase;
-
   color:var(--accent-text);
-
   margin-bottom:14px;
 }
 
 h1.cafe-name{
   font-family:'Fraunces',serif;
-
   font-weight:600;
-
   font-size:clamp(34px,9vw,52px);
-
   margin:0 0 10px;
-
   line-height:1.05;
-
   color:var(--ink);
 }
 
 .subtitle{
   color:var(--ink-muted);
-
   font-size:15px;
-
   max-width:420px;
-
   margin:0 auto;
-
   line-height:1.5;
 }
 
@@ -203,17 +172,11 @@ h1.cafe-name{
 
 nav.tabs{
   display:flex;
-
   gap:8px;
-
   overflow-x:auto;
-
   padding:18px 20px;
-
   scrollbar-width:none;
-
   position:sticky;
-
   top:0;
 
   background:
@@ -233,9 +196,7 @@ nav.tabs::-webkit-scrollbar{
   flex:0 0 auto;
 
   font-family:'IBM Plex Mono',monospace;
-
   font-size:12.5px;
-
   letter-spacing:.03em;
 
   padding:9px 16px;
@@ -257,17 +218,12 @@ nav.tabs::-webkit-scrollbar{
 
 .tab-btn:hover{
   border-color:var(--accent);
-
-  color:var(--ink);
 }
 
 .tab-btn.active{
-  background:var(--accent);
-
-  border-color:var(--accent);
-
+  border-color:var(--tab-color,var(--accent));
+  background:var(--tab-color,var(--accent));
   color:#FBF7EA;
-
   font-weight:500;
 }
 
@@ -281,23 +237,15 @@ nav.tabs::-webkit-scrollbar{
 
 .category-title{
   font-family:'Fraunces',serif;
-
   font-size:22px;
-
   font-weight:500;
-
-  color:var(--accent-text);
-
   margin:22px 0 4px;
 }
 
 .steam-divider{
   width:100%;
-
   height:14px;
-
   margin:6px 0 14px;
-
   opacity:.5;
 }
 
@@ -307,13 +255,9 @@ nav.tabs::-webkit-scrollbar{
 
 .item-row{
   display:flex;
-
   align-items:center;
-
   gap:12px;
-
   padding:13px 0;
-
   border-bottom:1px dashed var(--border-soft);
 }
 
@@ -324,81 +268,57 @@ nav.tabs::-webkit-scrollbar{
 .item-thumb{
   width:54px;
   height:54px;
-
   flex:0 0 auto;
-
   border-radius:10px;
-
   object-fit:cover;
-
   border:1px solid var(--border-soft);
-
   background:var(--surface-raised);
 }
 
 .item-text-row{
   display:flex;
-
   align-items:baseline;
-
   gap:8px;
-
   flex:1;
-
   min-width:0;
 }
 
 .item-name-wrap{
   flex:0 1 auto;
-
   min-width:0;
 }
 
 .item-name{
   font-size:16px;
-
   font-weight:600;
-
   color:var(--ink);
 }
 
 .item-name.unavailable{
   color:var(--ink-faint);
-
   text-decoration:line-through;
 }
 
 .item-desc{
   font-size:12.5px;
-
   color:var(--ink-muted);
-
   margin-top:2px;
-
   line-height:1.4;
 }
 
 .leader{
   flex:1 1 auto;
-
   border-bottom:1px dotted var(--border-soft);
-
   height:0;
-
   margin:0 2px 5px;
-
   min-width:12px;
 }
 
 .item-price{
   font-family:'IBM Plex Mono',monospace;
-
   font-size:15px;
-
   color:var(--accent-text);
-
   white-space:nowrap;
-
   flex:0 0 auto;
 }
 
@@ -408,13 +328,9 @@ nav.tabs::-webkit-scrollbar{
 
 .sold-out-tag{
   font-family:'IBM Plex Mono',monospace;
-
   font-size:10px;
-
   color:var(--burgundy-bright);
-
   letter-spacing:.08em;
-
   margin-left:6px;
 }
 
@@ -424,33 +340,21 @@ nav.tabs::-webkit-scrollbar{
 
 footer.note{
   text-align:center;
-
   padding:36px 24px 10px;
-
   color:var(--ink-faint);
-
   font-size:11.5px;
-
   font-family:'IBM Plex Mono',monospace;
-
   letter-spacing:.04em;
 }
 
 .ig-link{
   display:inline-flex;
-
   align-items:center;
-
   gap:6px;
-
   color:var(--accent-text);
-
   text-decoration:none;
-
   font-size:13px;
-
   font-weight:500;
-
   margin-bottom:10px;
 }
 
@@ -464,13 +368,10 @@ footer.note{
 
 .admin-dot{
   position:fixed;
-
   bottom:18px;
-
   right:18px;
 
   width:34px;
-
   height:34px;
 
   border-radius:50%;
@@ -482,9 +383,7 @@ footer.note{
   color:var(--ink-faint);
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   cursor:pointer;
@@ -499,7 +398,6 @@ footer.note{
 
 .admin-dot:hover{
   color:var(--accent-text);
-
   border-color:var(--accent);
 }
 
@@ -509,17 +407,12 @@ footer.note{
 
 .overlay{
   position:fixed;
-
   inset:0;
-
   background:rgba(46,38,33,.45);
-
   z-index:50;
 
   display:flex;
-
   align-items:flex-end;
-
   justify-content:center;
 }
 
@@ -535,7 +428,6 @@ footer.note{
   background:var(--surface);
 
   width:100%;
-
   max-width:560px;
 
   max-height:88vh;
@@ -559,11 +451,8 @@ footer.note{
 
 .panel h2{
   font-family:'Fraunces',serif;
-
   font-size:24px;
-
   margin:0 0 18px;
-
   color:var(--accent-text);
 }
 
@@ -605,13 +494,11 @@ footer.note{
 .panel input:focus,
 .panel textarea:focus{
   outline:2px solid var(--accent);
-
   outline-offset:1px;
 }
 
 .row-2{
   display:flex;
-
   gap:10px;
 }
 
@@ -637,35 +524,26 @@ footer.note{
 
 .btn-gold{
   background:var(--accent);
-
   color:#FBF7EA;
-
   font-weight:600;
 }
 
 .btn-ghost{
   background:var(--surface);
-
   border-color:var(--border-soft);
-
   color:var(--ink);
 }
 
 .btn-danger{
   background:var(--surface);
-
   border-color:var(--danger);
-
   color:var(--danger);
 }
 
 .btn-block{
   width:100%;
-
   display:block;
-
   text-align:center;
-
   margin-top:6px;
 }
 
@@ -699,16 +577,36 @@ footer.note{
 
 .cat-header input{
   font-family:'Fraunces',serif;
-
   font-size:18px;
-
   color:var(--accent-text);
-
   border:none;
-
   background:transparent;
-
   padding:2px 0;
+}
+
+.category-color-box{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+  padding:9px;
+  border:1px solid var(--border-soft);
+  border-radius:8px;
+  background:var(--surface);
+}
+
+.category-color-box input[type="color"]{
+  width:48px;
+  height:34px;
+  padding:0;
+  border:none;
+  background:none;
+  cursor:pointer;
+}
+
+.category-color-box span{
+  font-size:11.5px;
+  color:var(--ink-muted);
 }
 
 .avail-toggle{
@@ -733,34 +631,17 @@ footer.note{
 
 .actions-row{
   display:flex;
-
   gap:8px;
-
   margin-top:10px;
-
   flex-wrap:wrap;
 }
 
 .status-msg{
   font-family:'IBM Plex Mono',monospace;
-
   font-size:11.5px;
-
   color:var(--accent-text);
-
   margin-top:10px;
-
   min-height:16px;
-}
-
-.hint-text{
-  font-size:11.5px;
-
-  color:var(--ink-muted);
-
-  line-height:1.5;
-
-  margin:8px 0 0;
 }
 
 .pin-box{
@@ -817,9 +698,7 @@ footer.note{
 
 .color-field{
   display:flex;
-
   align-items:center;
-
   gap:10px;
 
   background:var(--surface-raised);
@@ -835,7 +714,6 @@ footer.note{
 
 .color-field input[type="color"]{
   width:48px;
-
   height:36px;
 
   padding:0;
@@ -903,7 +781,6 @@ footer.note{
 
 .img-controls input[type="file"]{
   padding:6px;
-
   font-size:12.5px;
 }
 
@@ -936,12 +813,10 @@ footer.note{
 <script id="bakedData" type="application/json">null</script>
 
 <div class="stains">
-
   <div class="stain s1"></div>
   <div class="stain s2"></div>
   <div class="stain s3"></div>
   <div class="stain s4"></div>
-
 </div>
 
 <div class="wrap" id="app">
@@ -966,9 +841,7 @@ footer.note{
 <script>
 
 const STORAGE_KEY = 'cafe-menu-data';
-
 const PIN_KEY = 'cafe-admin-pin';
-
 const DEFAULT_PIN = '1234';
 
 const DEFAULT_LOGO =
@@ -1034,8 +907,8 @@ function defaultData(){
 
       {
         id:uid(),
-
         name:'Katmerler',
+        color:'#1E6F4C',
 
         items:[
 
@@ -1072,8 +945,8 @@ function defaultData(){
 
       {
         id:uid(),
-
         name:'Kahvaltı',
+        color:'#8B5E3C',
 
         items:[
 
@@ -1101,8 +974,8 @@ function defaultData(){
 
       {
         id:uid(),
-
         name:'Tatlılar',
+        color:'#8B3A3A',
 
         items:[
 
@@ -1139,8 +1012,8 @@ function defaultData(){
 
       {
         id:uid(),
-
         name:'Sıcak İçecekler',
+        color:'#6B4F2A',
 
         items:[
 
@@ -1168,8 +1041,8 @@ function defaultData(){
 
       {
         id:uid(),
-
         name:'Soğuk İçecekler',
+        color:'#356B73',
 
         items:[
 
@@ -1206,8 +1079,8 @@ function defaultData(){
 
       {
         id:uid(),
-
         name:'Kahveler',
+        color:'#4A3428',
 
         items:[
 
@@ -1245,13 +1118,8 @@ function defaultData(){
 ========================= */
 
 let menuData = null;
-
 let pin = DEFAULT_PIN;
-
 let activeCatId = null;
-
-let adminOpen = false;
-
 let unlocked = false;
 
 const app = document.getElementById('app');
@@ -1273,13 +1141,9 @@ function hexToRgb(hex){
   const num = parseInt(full,16);
 
   return {
-
     r:(num>>16)&255,
-
     g:(num>>8)&255,
-
     b:num&255
-
   };
 
 }
@@ -1315,13 +1179,9 @@ function lightenColor(hex,amount){
     const {r,g,b}=hexToRgb(hex);
 
     return rgbToHex(
-
       r+(255-r)*amount,
-
       g+(255-g)*amount,
-
       b+(255-b)*amount
-
     );
 
   }catch(e){
@@ -1340,13 +1200,9 @@ function darkenColor(hex,amount){
     const {r,g,b}=hexToRgb(hex);
 
     return rgbToHex(
-
       r*(1-amount),
-
       g*(1-amount),
-
       b*(1-amount)
-
     );
 
   }catch(e){
@@ -1382,9 +1238,7 @@ function hexToRgba(hex,alpha){
 function applyTheme(theme){
 
   if(!theme){
-
     theme=defaultTheme();
-
   }
 
   const background =
@@ -1409,51 +1263,15 @@ function applyTheme(theme){
   const root =
     document.documentElement.style;
 
-  root.setProperty(
-    '--bg',
-    background
-  );
-
-  root.setProperty(
-    '--surface',
-    '#FFFFFF'
-  );
-
-  root.setProperty(
-    '--surface-raised',
-    surfaceRaised
-  );
-
-  root.setProperty(
-    '--accent',
-    category
-  );
-
-  root.setProperty(
-    '--accent-text',
-    accentText
-  );
-
-  root.setProperty(
-    '--ink',
-    text
-  );
-
-  root.setProperty(
-    '--ink-muted',
-    hexToRgba(text,.68)
-  );
-
-  root.setProperty(
-    '--ink-faint',
-    hexToRgba(text,.42)
-  );
-
-  root.setProperty(
-    '--border-soft',
-    hexToRgba(text,.16)
-  );
-
+  root.setProperty('--bg',background);
+  root.setProperty('--surface','#FFFFFF');
+  root.setProperty('--surface-raised',surfaceRaised);
+  root.setProperty('--accent',category);
+  root.setProperty('--accent-text',accentText);
+  root.setProperty('--ink',text);
+  root.setProperty('--ink-muted',hexToRgba(text,.68));
+  root.setProperty('--ink-faint',hexToRgba(text,.42));
+  root.setProperty('--border-soft',hexToRgba(text,.16));
   root.setProperty(
     '--burgundy-bright',
     darkenColor(category,.12)
@@ -1529,32 +1347,30 @@ async function loadAll(){
 
 
   if(!menuData.categories){
-
     menuData.categories=[];
-
   }
 
 
   menuData.categories.forEach(cat=>{
 
     if(!cat.items){
-
       cat.items=[];
+    }
 
+    if(!cat.color){
+      cat.color =
+        menuData.theme?.categoryColor ||
+        '#1E6F4C';
     }
 
     cat.items.forEach(it=>{
 
       if(it.image===undefined){
-
         it.image='';
-
       }
 
       if(it.available===undefined){
-
         it.available=true;
-
       }
 
     });
@@ -1563,58 +1379,40 @@ async function loadAll(){
 
 
   if(menuData.logo===undefined){
-
     menuData.logo=DEFAULT_LOGO;
-
   }
 
 
   if(menuData.instagram===undefined){
-
     menuData.instagram='';
-
   }
 
 
-  /* Theme migration */
-
   if(!menuData.theme){
-
     menuData.theme=defaultTheme();
-
   }
 
 
   if(!menuData.theme.backgroundColor){
-
-    menuData.theme.backgroundColor=
-      '#F6F1E2';
-
+    menuData.theme.backgroundColor='#F6F1E2';
   }
 
 
   if(!menuData.theme.categoryColor){
-
     menuData.theme.categoryColor=
       menuData.theme.baseColor ||
       '#1E6F4C';
-
   }
 
 
   if(!menuData.theme.textColor){
-
-    menuData.theme.textColor=
-      '#20261D';
-
+    menuData.theme.textColor='#20261D';
   }
 
 
   if(!menuData.theme.baseColor){
-
     menuData.theme.baseColor=
       menuData.theme.categoryColor;
-
   }
 
 
@@ -1641,13 +1439,9 @@ async function loadAll(){
   }
 
 
-  if(
-    menuData.categories.length
-  ){
-
+  if(menuData.categories.length){
     activeCatId=
       menuData.categories[0].id;
-
   }
 
 
@@ -1665,13 +1459,9 @@ async function persistMenu(){
   try{
 
     await window.storage.set(
-
       STORAGE_KEY,
-
       JSON.stringify(menuData),
-
       true
-
     );
 
     return true;
@@ -1690,13 +1480,9 @@ async function persistPin(newPin){
   try{
 
     await window.storage.set(
-
       PIN_KEY,
-
       newPin,
-
       true
-
     );
 
     pin=newPin;
@@ -1713,142 +1499,14 @@ async function persistPin(newPin){
 
 
 /* =========================
-   DOWNLOAD
-========================= */
-
-async function downloadUpdatedFile(){
-
-  const msg=
-    document.getElementById(
-      'adminMsg'
-    );
-
-  try{
-
-    const res=
-      await fetch(
-        location.href,
-        {
-          cache:'no-store'
-        }
-      );
-
-    if(!res.ok){
-
-      throw new Error(
-        'fetch failed'
-      );
-
-    }
-
-
-    let html=
-      await res.text();
-
-
-    const jsonStr=
-      JSON.stringify(
-        menuData
-      )
-      .replace(
-        /</g,
-        '\\u003c'
-      );
-
-
-    const replaced=
-      html.replace(
-
-        /<script id="bakedData" type="application\/json">[\s\S]*?<\/script>/,
-
-        `<script id="bakedData" type="application/json">${jsonStr}<\/script>`
-
-      );
-
-
-    if(replaced===html){
-
-      throw new Error(
-        'placeholder not found'
-      );
-
-    }
-
-
-    const blob=
-      new Blob(
-        [replaced],
-        {
-          type:'text/html'
-        }
-      );
-
-
-    const url=
-      URL.createObjectURL(blob);
-
-
-    const a=
-      document.createElement('a');
-
-    a.href=url;
-
-    a.download=
-      'katmerci-dayi-menu.html';
-
-    document.body.appendChild(a);
-
-    a.click();
-
-    a.remove();
-
-
-    setTimeout(
-      ()=>{
-        URL.revokeObjectURL(url);
-      },
-      2000
-    );
-
-
-    if(msg){
-
-      msg.textContent=
-        'Dosya indirildi. GitHub Pages üzerine tekrar yükleyebilirsin.';
-
-    }
-
-
-    return true;
-
-  }catch(e){
-
-    if(msg){
-
-      msg.textContent=
-        'Dosya indirilemedi. Sayfa http/https üzerinden açılmalı.';
-
-    }
-
-    return false;
-
-  }
-
-}
-
-
-/* =========================
    MONEY
 ========================= */
 
 function money(n){
 
-  const num=
-    Number(n)||0;
+  const num=Number(n)||0;
 
-  return num.toLocaleString(
-    'tr-TR'
-  )+' ₺';
+  return num.toLocaleString('tr-TR')+' ₺';
 
 }
 
@@ -1857,7 +1515,7 @@ function money(n){
    STEAM
 ========================= */
 
-function steamSvg(){
+function steamSvg(color){
 
   return `
 
@@ -1882,7 +1540,7 @@ function steamSvg(){
       T300 7
       "
       fill="none"
-      stroke="var(--accent)"
+      stroke="${escapeAttr(color)}"
       stroke-width="1.4"
     />
 
@@ -1955,9 +1613,7 @@ function renderCustomer(){
   }
 
 
-  const cats=
-    menuData.categories;
-
+  const cats=menuData.categories;
 
   const active=
     cats.find(
@@ -1965,31 +1621,50 @@ function renderCustomer(){
     ) || cats[0];
 
 
+  if(active){
+    activeCatId=active.id;
+  }
+
+
+  const activeColor=
+    active?.color ||
+    menuData.theme.categoryColor ||
+    '#1E6F4C';
+
+
   const tabsHtml=
     cats
-      .map(
-        c=>`
+      .map(c=>{
+
+        const color=
+          c.color ||
+          menuData.theme.categoryColor ||
+          '#1E6F4C';
+
+        return `
 
         <button
           class="tab-btn ${c.id===active?.id?'active':''}"
-          data-cat="${c.id}"
+          data-cat="${escapeAttr(c.id)}"
+          style="--tab-color:${escapeAttr(color)}"
         >
 
           ${escapeHtml(c.name)}
 
         </button>
 
-        `
-      )
+        `;
+
+      })
       .join('');
 
 
   const itemsHtml=
+
     active
 
       ? active.items
-        .map(
-          it=>`
+        .map(it=>`
 
           <div class="item-row">
 
@@ -2039,9 +1714,7 @@ function renderCustomer(){
                   ? `
 
                   <div class="item-desc">
-
                     ${escapeHtml(it.desc)}
-
                   </div>
 
                   `
@@ -2071,16 +1744,13 @@ function renderCustomer(){
 
           </div>
 
-          `
-        )
+          `)
         .join('')
 
       : `
 
         <div class="item-desc">
-
           Bu kategoride henüz ürün yok.
-
         </div>
 
         `;
@@ -2107,37 +1777,37 @@ function renderCustomer(){
       }
 
 
-      <div class="eyebrow">
+      <div
+        class="eyebrow"
+        style="color:${escapeAttr(activeColor)}"
+      >
         Menü
       </div>
 
 
       <h1 class="cafe-name">
-
         ${escapeHtml(menuData.cafeName)}
-
       </h1>
 
 
       <p class="subtitle">
-
         ${escapeHtml(menuData.subtitle)}
-
       </p>
 
     </header>
 
 
     <nav class="tabs">
-
       ${tabsHtml}
-
     </nav>
 
 
     <div class="category-block">
 
-      <div class="category-title">
+      <div
+        class="category-title"
+        style="color:${escapeAttr(activeColor)}"
+      >
 
         ${
           active
@@ -2148,7 +1818,7 @@ function renderCustomer(){
       </div>
 
 
-      ${steamSvg()}
+      ${steamSvg(activeColor)}
 
 
       ${itemsHtml}
@@ -2269,9 +1939,7 @@ document
     e=>{
 
       if(e.key==='Enter'){
-
         openAdminGate();
-
       }
 
     }
@@ -2296,9 +1964,7 @@ function openAdminGate(){
   const overlay=
     document.createElement('div');
 
-
   overlay.className='overlay';
-
   overlay.id='gateOverlay';
 
 
@@ -2354,26 +2020,21 @@ function openAdminGate(){
   `;
 
 
-  document.body.appendChild(
-    overlay
-  );
+  document.body.appendChild(overlay);
 
 
   document
     .getElementById('gateClose')
-    .onclick=
-      ()=>{
-        overlay.remove();
-      };
+    .onclick=()=>{
+      overlay.remove();
+    };
 
 
   const submit=()=>{
 
     const val=
       document
-        .getElementById(
-          'pinInput'
-        )
+        .getElementById('pinInput')
         .value;
 
 
@@ -2388,9 +2049,7 @@ function openAdminGate(){
     }else{
 
       document
-        .getElementById(
-          'gateMsg'
-        )
+        .getElementById('gateMsg')
         .textContent=
           'Hatalı PIN, tekrar deneyin.';
 
@@ -2400,24 +2059,18 @@ function openAdminGate(){
 
 
   document
-    .getElementById(
-      'gateSubmit'
-    )
+    .getElementById('gateSubmit')
     .onclick=submit;
 
 
   document
-    .getElementById(
-      'pinInput'
-    )
+    .getElementById('pinInput')
     .addEventListener(
       'keydown',
       e=>{
 
         if(e.key==='Enter'){
-
           submit();
-
         }
 
       }
@@ -2432,24 +2085,13 @@ function openAdminGate(){
 
 function openAdminPanel(){
 
-  adminOpen=true;
-
-
   const overlay=
-    document.createElement(
-      'div'
-    );
-
+    document.createElement('div');
 
   overlay.className='overlay';
-
   overlay.id='adminOverlay';
 
-
-  document.body.appendChild(
-    overlay
-  );
-
+  document.body.appendChild(overlay);
 
   renderAdmin(overlay);
 
@@ -2467,8 +2109,7 @@ function resizeImageFile(
   format
 ){
 
-  format=
-    format || 'jpeg';
+  format=format || 'jpeg';
 
 
   return new Promise(
@@ -2487,54 +2128,34 @@ function resizeImageFile(
         img.onload=()=>{
 
           let w=img.width;
-
           let h=img.height;
 
 
-          if(
-            w>h &&
-            w>maxDim
-          ){
+          if(w>h && w>maxDim){
 
-            h=
-              Math.round(
-                h*maxDim/w
-              );
-
+            h=Math.round(h*maxDim/w);
             w=maxDim;
 
           }
 
-          else if(
-            h>=w &&
-            h>maxDim
-          ){
+          else if(h>=w && h>maxDim){
 
-            w=
-              Math.round(
-                w*maxDim/h
-              );
-
+            w=Math.round(w*maxDim/h);
             h=maxDim;
 
           }
 
 
           const canvas=
-            document.createElement(
-              'canvas'
-            );
+            document.createElement('canvas');
 
 
           canvas.width=w;
-
           canvas.height=h;
 
 
           const ctx=
-            canvas.getContext(
-              '2d'
-            );
+            canvas.getContext('2d');
 
 
           ctx.drawImage(
@@ -2550,9 +2171,7 @@ function resizeImageFile(
 
             format==='png'
 
-              ? canvas.toDataURL(
-                  'image/png'
-                )
+              ? canvas.toDataURL('image/png')
 
               : canvas.toDataURL(
                   'image/jpeg',
@@ -2597,17 +2216,43 @@ function renderAdmin(overlay){
 
           <input
             type="text"
-            data-cat-name="${cat.id}"
+            data-cat-name="${escapeAttr(cat.id)}"
             value="${escapeAttr(cat.name)}"
           >
 
 
           <button
             class="btn btn-danger"
-            data-del-cat="${cat.id}"
+            data-del-cat="${escapeAttr(cat.id)}"
           >
             Kategoriyi sil
           </button>
+
+        </div>
+
+
+        <!-- KATEGORİ RENGİ -->
+
+        <label>
+          Bu kategorinin rengi
+        </label>
+
+        <div class="category-color-box">
+
+          <input
+            type="color"
+            data-cat-color="${escapeAttr(cat.id)}"
+            value="${
+              cat.color ||
+              menuData.theme.categoryColor ||
+              '#1E6F4C'
+            }"
+          >
+
+          <span>
+            Bu renk sadece bu kategorinin
+            butonunda, başlığında ve çizgisinde kullanılır.
+          </span>
 
         </div>
 
@@ -2620,7 +2265,7 @@ function renderAdmin(overlay){
 
               <div
                 class="item-edit-card"
-                data-item-card="${it.id}"
+                data-item-card="${escapeAttr(it.id)}"
               >
 
                 <label>
@@ -2629,7 +2274,7 @@ function renderAdmin(overlay){
 
                 <input
                   type="text"
-                  data-item-name="${it.id}"
+                  data-item-name="${escapeAttr(it.id)}"
                   value="${escapeAttr(it.name)}"
                 >
 
@@ -2640,7 +2285,7 @@ function renderAdmin(overlay){
 
                 <input
                   type="text"
-                  data-item-desc="${it.id}"
+                  data-item-desc="${escapeAttr(it.id)}"
                   value="${escapeAttr(it.desc||'')}"
                 >
 
@@ -2657,7 +2302,7 @@ function renderAdmin(overlay){
                       type="number"
                       min="0"
                       step="1"
-                      data-item-price="${it.id}"
+                      data-item-price="${escapeAttr(it.id)}"
                       value="${it.price}"
                     >
 
@@ -2675,7 +2320,7 @@ function renderAdmin(overlay){
 
                   <img
                     class="admin-thumb"
-                    data-img-preview="${it.id}"
+                    data-img-preview="${escapeAttr(it.id)}"
                     src="${
                       it.image
                         ? escapeAttr(it.image)
@@ -2690,14 +2335,14 @@ function renderAdmin(overlay){
                     <input
                       type="file"
                       accept="image/*"
-                      data-img-file="${it.id}"
+                      data-img-file="${escapeAttr(it.id)}"
                     >
 
 
                     <input
                       type="text"
                       placeholder="veya görsel linki yapıştır (https://...)"
-                      data-img-url="${it.id}"
+                      data-img-url="${escapeAttr(it.id)}"
                       value="${
                         it.image &&
                         it.image.startsWith('http')
@@ -2709,7 +2354,7 @@ function renderAdmin(overlay){
 
                     <button
                       class="btn btn-ghost"
-                      data-img-remove="${it.id}"
+                      data-img-remove="${escapeAttr(it.id)}"
                       style="align-self:flex-start;"
                     >
                       Görseli kaldır
@@ -2724,7 +2369,7 @@ function renderAdmin(overlay){
 
                   <input
                     type="checkbox"
-                    data-item-avail="${it.id}"
+                    data-item-avail="${escapeAttr(it.id)}"
                     ${
                       it.available
                         ? 'checked'
@@ -2741,8 +2386,8 @@ function renderAdmin(overlay){
 
                   <button
                     class="btn btn-danger"
-                    data-del-item="${it.id}"
-                    data-cat-of="${cat.id}"
+                    data-del-item="${escapeAttr(it.id)}"
+                    data-cat-of="${escapeAttr(cat.id)}"
                   >
                     Ürünü sil
                   </button>
@@ -2759,7 +2404,7 @@ function renderAdmin(overlay){
 
         <button
           class="btn btn-ghost btn-block"
-          data-add-item="${cat.id}"
+          data-add-item="${escapeAttr(cat.id)}"
         >
           + Ürün ekle
         </button>
@@ -2767,9 +2412,7 @@ function renderAdmin(overlay){
       `)
 
       .join(
-
         '<hr style="border:none;border-top:1px solid var(--border-soft);margin:22px 0;">'
-
       );
 
 
@@ -2917,14 +2560,14 @@ function renderAdmin(overlay){
         >
 
         <span>
-          Menünün genel arka plan rengini değiştirir.
+          Tüm menünün arka plan rengini değiştirir.
         </span>
 
       </div>
 
 
       <label>
-        Kategori rengi
+        Genel kategori rengi
       </label>
 
       <div class="color-field">
@@ -2939,7 +2582,7 @@ function renderAdmin(overlay){
         >
 
         <span>
-          Kategori butonları, çizgiler ve vurgu rengi.
+          Kategoriye özel renk verilmemişse kullanılır.
         </span>
 
       </div>
@@ -3045,28 +2688,14 @@ function renderAdmin(overlay){
       ></div>
 
 
+      <!-- SADECE KAYDET -->
+
       <button
         class="btn btn-gold btn-block"
-        id="downloadFileBtn"
+        id="saveMenuBtn"
         style="margin-top:18px;"
       >
-        ⬇ Güncellenmiş dosyayı indir
-      </button>
-
-
-      <p class="hint-text">
-
-        Müşterilerin gördüğü canlı menüyü güncellemek için
-        güncellenmiş dosyayı indirip GitHub'a tekrar yükleyebilirsin.
-
-      </p>
-
-
-      <button
-        class="btn btn-ghost btn-block"
-        id="saveMenuBtn"
-      >
-        Bu önizlemede hızlı kaydet
+        💾 Kaydet
       </button>
 
 
@@ -3084,8 +2713,6 @@ function renderAdmin(overlay){
     .onclick=()=>{
 
       overlay.remove();
-
-      adminOpen=false;
 
       renderCustomer();
 
@@ -3107,15 +2734,49 @@ function renderAdmin(overlay){
           const cat=
             menuData.categories.find(
               c=>
-                c.id===
+                c.id ===
                 inp.dataset.catName
             );
 
 
           if(cat){
+            cat.name=inp.value;
+          }
 
-            cat.name=
+        }
+      );
+
+    });
+
+
+  /* =========================
+     CATEGORY COLOR
+  ========================= */
+
+  overlay
+    .querySelectorAll('[data-cat-color]')
+    .forEach(inp=>{
+
+      inp.addEventListener(
+        'input',
+        ()=>{
+
+          const cat=
+            menuData.categories.find(
+              c=>
+                c.id ===
+                inp.dataset.catColor
+            );
+
+
+          if(cat){
+
+            cat.color=
               inp.value;
+
+            applyTheme(
+              menuData.theme
+            );
 
           }
 
@@ -3146,14 +2807,12 @@ function renderAdmin(overlay){
             menuData.categories=
               menuData.categories.filter(
                 c=>
-                  c.id!==
+                  c.id !==
                   btn.dataset.delCat
               );
 
 
-            if(
-              menuData.categories.length
-            ){
+            if(menuData.categories.length){
 
               activeCatId=
                 menuData.categories[0].id;
@@ -3286,7 +2945,7 @@ function renderAdmin(overlay){
           const cat=
             menuData.categories.find(
               c=>
-                c.id===
+                c.id ===
                 btn.dataset.catOf
             );
 
@@ -3296,7 +2955,7 @@ function renderAdmin(overlay){
             cat.items=
               cat.items.filter(
                 i=>
-                  i.id!==
+                  i.id !==
                   btn.dataset.delItem
               );
 
@@ -3326,7 +2985,7 @@ function renderAdmin(overlay){
           const cat=
             menuData.categories.find(
               c=>
-                c.id===
+                c.id ===
                 btn.dataset.addItem
             );
 
@@ -3361,7 +3020,7 @@ function renderAdmin(overlay){
 
 
   /* =========================
-     PRODUCT IMAGE
+     PRODUCT IMAGE FILE
   ========================= */
 
   overlay
@@ -3376,14 +3035,7 @@ function renderAdmin(overlay){
             inp.files &&
             inp.files[0];
 
-
           if(!file)return;
-
-
-          const msg=
-            document.getElementById(
-              'adminMsg'
-            );
 
 
           try{
@@ -3407,11 +3059,14 @@ function renderAdmin(overlay){
 
           }catch(e){
 
-            if(msg){
+            const msg=
+              document.getElementById(
+                'adminMsg'
+              );
 
+            if(msg){
               msg.textContent=
                 'Görsel yüklenemedi.';
-
             }
 
           }
@@ -3483,7 +3138,6 @@ function renderAdmin(overlay){
             ''
           );
 
-
           renderAdmin(overlay);
 
         }
@@ -3507,6 +3161,10 @@ function renderAdmin(overlay){
           id:uid(),
 
           name:'Yeni kategori',
+
+          color:
+            menuData.theme.categoryColor ||
+            '#1E6F4C',
 
           items:[]
 
@@ -3586,14 +3244,7 @@ function renderAdmin(overlay){
           e.target.files &&
           e.target.files[0];
 
-
         if(!file)return;
-
-
-        const msg=
-          document.getElementById(
-            'adminMsg'
-          );
 
 
         try{
@@ -3607,19 +3258,20 @@ function renderAdmin(overlay){
             );
 
 
-          menuData.logo=
-            dataUrl;
-
+          menuData.logo=dataUrl;
 
           renderAdmin(overlay);
 
         }catch(err){
 
-          if(msg){
+          const msg=
+            document.getElementById(
+              'adminMsg'
+            );
 
+          if(msg){
             msg.textContent=
               'Logo yüklenemedi.';
-
           }
 
         }
@@ -3641,9 +3293,7 @@ function renderAdmin(overlay){
         const val=
           e.target.value.trim();
 
-
-        menuData.logo=
-          val;
+        menuData.logo=val;
 
 
         const preview=
@@ -3695,7 +3345,6 @@ function renderAdmin(overlay){
         menuData.theme.backgroundColor=
           e.target.value;
 
-
         applyTheme(
           menuData.theme
         );
@@ -3705,7 +3354,7 @@ function renderAdmin(overlay){
 
 
   /* =========================
-     CATEGORY COLOR
+     GENERAL CATEGORY COLOR
   ========================= */
 
   document
@@ -3717,10 +3366,8 @@ function renderAdmin(overlay){
         menuData.theme.categoryColor=
           e.target.value;
 
-
         menuData.theme.baseColor=
           e.target.value;
-
 
         applyTheme(
           menuData.theme
@@ -3743,7 +3390,6 @@ function renderAdmin(overlay){
         menuData.theme.textColor=
           e.target.value;
 
-
         applyTheme(
           menuData.theme
         );
@@ -3764,6 +3410,18 @@ function renderAdmin(overlay){
 
         menuData.theme=
           defaultTheme();
+
+
+        menuData.categories.forEach(
+          cat=>{
+
+            if(!cat.color){
+              cat.color=
+                menuData.theme.categoryColor;
+            }
+
+          }
+        );
 
 
         applyTheme(
@@ -3789,9 +3447,7 @@ function renderAdmin(overlay){
 
         const val=
           document
-            .getElementById(
-              'newPinInput'
-            )
+            .getElementById('newPinInput')
             .value
             .trim();
 
@@ -3820,32 +3476,6 @@ function renderAdmin(overlay){
           ok
             ? 'PIN güncellendi.'
             : 'PIN kaydedilemedi.';
-
-      }
-    );
-
-
-  /* =========================
-     DOWNLOAD
-  ========================= */
-
-  document
-    .getElementById('downloadFileBtn')
-    .addEventListener(
-      'click',
-      async ()=>{
-
-        const msg=
-          document.getElementById(
-            'adminMsg'
-          );
-
-
-        msg.textContent=
-          'hazırlanıyor…';
-
-
-        await downloadUpdatedFile();
 
       }
     );
@@ -3886,8 +3516,6 @@ function renderAdmin(overlay){
 
               overlay.remove();
 
-              adminOpen=false;
-
 
               if(
                 menuData.categories.length &&
@@ -3912,7 +3540,7 @@ function renderAdmin(overlay){
         }else{
 
           msg.textContent=
-            'Kaydedilemedi. Güncellenmiş dosyayı indirerek devam edebilirsin.';
+            'Kaydedilemedi.';
 
         }
 
