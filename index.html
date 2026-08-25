@@ -1,43 +1,1679 @@
-update public.menus
-set data = jsonb_build_object(
-  'cafeName', 'Katmerci Dayı',
-  'subtitle', 'Geleneksel lezzetler, sıcak sunum.',
-  'logo', '',
-  'theme', jsonb_build_object(
-    'baseColor', '#1E6F4C'
-  ),
-  'categories', jsonb_build_array(
-    jsonb_build_object(
-      'id', 'katmerler',
-      'name', 'Katmerler',
-      'items', '[]'::jsonb
-    ),
-    jsonb_build_object(
-      'id', 'kahvalti',
-      'name', 'Kahvaltı',
-      'items', '[]'::jsonb
-    ),
-    jsonb_build_object(
-      'id', 'tatlilar',
-      'name', 'Tatlılar',
-      'items', '[]'::jsonb
-    ),
-    jsonb_build_object(
-      'id', 'sicak-icecekler',
-      'name', 'Sıcak İçecekler',
-      'items', '[]'::jsonb
-    ),
-    jsonb_build_object(
-      'id', 'soguk-icecekler',
-      'name', 'Soğuk İçecekler',
-      'items', '[]'::jsonb
-    ),
-    jsonb_build_object(
-      'id', 'kahveler',
-      'name', 'Kahveler',
-      'items', '[]'::jsonb
-    )
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#7A2E2E">
+<title>Katmerci Dayı | Menü</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F6F1E2;
+  --surface:#fffdf8;
+  --raised:#eadfc8;
+  --accent:#7A2E2E;
+  --accent-dark:#542020;
+  --text:#29231f;
+  --muted:#766d63;
+  --border:rgba(80,45,30,.16);
+  --danger:#a83232;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Work Sans',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.wrap{
+  width:100%;
+  max-width:680px;
+  margin:auto;
+  padding-bottom:100px;
+}
+
+/* LOGO + HEADER */
+
+.hero{
+  text-align:center;
+  padding:38px 20px 25px;
+  border-bottom:1px solid var(--border);
+}
+
+.logo{
+  width:100px;
+  height:100px;
+  object-fit:contain;
+  border-radius:22px;
+  display:block;
+  margin:0 auto 17px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.logo.empty{
+  display:none;
+}
+
+.eyebrow{
+  font-size:11px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+
+.cafe-name{
+  font-family:'Fraunces',serif;
+  font-size:clamp(38px,10vw,58px);
+  line-height:1;
+  margin:0 0 12px;
+  color:var(--accent-dark);
+}
+
+.subtitle{
+  margin:auto;
+  max-width:480px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* KATEGORİLER */
+
+.tabs{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:15px 15px;
+  scrollbar-width:none;
+  background:linear-gradient(var(--bg) 80%,transparent);
+}
+
+.tabs::-webkit-scrollbar{
+  display:none;
+}
+
+.tab{
+  flex:0 0 auto;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--muted);
+  border-radius:30px;
+  padding:10px 16px;
+  font-size:12px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+}
+
+/* ÜRÜNLER */
+
+.category{
+  padding:5px 22px;
+}
+
+.category-title{
+  font-family:'Fraunces',serif;
+  font-size:28px;
+  color:var(--accent-dark);
+  margin:24px 0 5px;
+}
+
+.category-line{
+  height:1px;
+  background:var(--border);
+  margin-bottom:8px;
+}
+
+.item{
+  display:flex;
+  gap:13px;
+  align-items:center;
+  padding:14px 0;
+  border-bottom:1px dashed var(--border);
+}
+
+.item-img{
+  width:64px;
+  height:64px;
+  border-radius:12px;
+  object-fit:cover;
+  background:var(--raised);
+  border:1px solid var(--border);
+  flex:none;
+}
+
+.item-info{
+  flex:1;
+  min-width:0;
+}
+
+.item-top{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+}
+
+.item-name{
+  font-weight:600;
+  font-size:16px;
+}
+
+.item-desc{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+  line-height:1.4;
+}
+
+.dots{
+  flex:1;
+  border-bottom:1px dotted var(--border);
+  min-width:12px;
+}
+
+.price{
+  color:var(--accent-dark);
+  font-weight:600;
+  white-space:nowrap;
+  font-size:15px;
+}
+
+.unavailable{
+  opacity:.45;
+  text-decoration:line-through;
+}
+
+.sold{
+  color:#a83232;
+  text-decoration:none;
+  font-size:9px;
+  margin-left:5px;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  padding:40px 20px 10px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* ADMIN */
+
+.admin-button{
+  position:fixed;
+  right:16px;
+  bottom:18px;
+  z-index:40;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:0 4px 18px rgba(0,0,0,.12);
+  cursor:pointer;
+  font-size:18px;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(20,15,12,.58);
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+.panel{
+  width:100%;
+  max-width:620px;
+  max-height:92vh;
+  overflow:auto;
+  background:var(--surface);
+  border-radius:20px 20px 0 0;
+  padding:25px 20px 35px;
+}
+
+@media(min-width:700px){
+  .overlay{
+    align-items:center;
+  }
+
+  .panel{
+    border-radius:20px;
+  }
+}
+
+.panel h2{
+  font-family:'Fraunces',serif;
+  color:var(--accent-dark);
+  font-size:28px;
+  margin:0 0 20px;
+}
+
+.close{
+  float:right;
+  border:0;
+  background:none;
+  font-size:24px;
+  cursor:pointer;
+}
+
+label{
+  display:block;
+  font-size:11px;
+  color:var(--muted);
+  margin:15px 0 5px;
+  font-weight:600;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:11px 12px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--raised);
+  color:var(--text);
+  font-size:14px;
+}
+
+button{
+  font-family:'Work Sans',sans-serif;
+}
+
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:11px 15px;
+  cursor:pointer;
+  font-weight:500;
+}
+
+.btn-main{
+  background:var(--accent);
+  color:white;
+}
+
+.btn-light{
+  background:var(--surface);
+  border:1px solid var(--border);
+}
+
+.btn-danger{
+  background:white;
+  border:1px solid var(--danger);
+  color:var(--danger);
+}
+
+.full{
+  width:100%;
+  margin-top:10px;
+}
+
+.category-admin{
+  margin-top:25px;
+  padding:14px;
+  background:var(--raised);
+  border-radius:12px;
+}
+
+.category-head{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.category-head input{
+  font-family:'Fraunces',serif;
+  font-size:18px;
+  background:transparent;
+  border:0;
+}
+
+.product-admin{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+  margin-top:10px;
+}
+
+.product-buttons{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+.image-preview{
+  width:70px;
+  height:70px;
+  border-radius:10px;
+  object-fit:cover;
+  background:var(--raised);
+  border:1px solid var(--border);
+}
+
+.image-row{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.status{
+  color:var(--accent);
+  font-size:12px;
+  margin-top:10px;
+  min-height:18px;
+}
+
+.loading{
+  text-align:center;
+  padding:80px 20px;
+  color:var(--muted);
+}
+
+.pin{
+  text-align:center;
+}
+
+.pin input{
+  text-align:center;
+  font-size:22px;
+  letter-spacing:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap" id="app">
+  <div class="loading">Menü yükleniyor...</div>
+</div>
+
+<button class="admin-button" id="adminButton">⚙️</button>
+
+<script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+"https://cwofalezjvuxppmwipmc.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_n9xGFNXF-wl4C-BFLBGmeg_hsKy9GtU";
+
+const MENU_ID =
+"00000000-0000-0000-0000-000000000001";
+
+/* =====================================================
+   YARDIMCI FONKSİYONLAR
+===================================================== */
+
+let menuData=null;
+let activeCategory=null;
+let unlocked=false;
+let currentPin="";
+
+const app=document.getElementById("app");
+
+function esc(value){
+  return String(value ?? "")
+  .replace(/[&<>"']/g,m=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[m]));
+}
+
+function money(value){
+  return Number(value||0).toLocaleString("tr-TR")+" ₺";
+}
+
+function uid(){
+  return "id"+Date.now().toString(36)+Math.random().toString(36).slice(2);
+}
+
+async function api(path,options={}){
+  const headers={
+    "apikey":SUPABASE_KEY,
+    "Authorization":"Bearer "+SUPABASE_KEY,
+    "Content-Type":"application/json",
+    "Prefer":"return=representation",
+    ...(options.headers||{})
+  };
+
+  const response=await fetch(
+    SUPABASE_URL+path,
+    {
+      ...options,
+      headers,
+      cache:"no-store"
+    }
+  );
+
+  const text=await response.text();
+
+  let data;
+
+  try{
+    data=text?JSON.parse(text):null;
+  }catch{
+    data=text;
+  }
+
+  if(!response.ok){
+    throw new Error(
+      data?.message ||
+      data?.error_description ||
+      data?.hint ||
+      text ||
+      "Supabase hatası"
+    );
+  }
+
+  return data;
+}
+
+async function rpc(name,args){
+  return api(
+    "/rest/v1/rpc/"+name,
+    {
+      method:"POST",
+      body:JSON.stringify(args)
+    }
+  );
+}
+
+/* =====================================================
+   MENÜYÜ SUPABASE'DEN AL
+===================================================== */
+
+async function loadMenu(){
+
+  try{
+
+    const rows=await api(
+      "/rest/v1/menus?id=eq."+MENU_ID+
+      "&select=id,data"
+    );
+
+    if(!rows || !rows.length){
+      app.innerHTML=
+      `<div class="loading">
+        <h2>Menü bulunamadı</h2>
+        <p>Supabase menü kaydı bulunamadı.</p>
+      </div>`;
+      return;
+    }
+
+    const data=rows[0].data || {};
+
+    menuData={
+      cafeName:data.cafeName || "Katmerci Dayı",
+      subtitle:data.subtitle || "Geleneksel lezzetler, sıcak sunum.",
+      logo:data.logo || "",
+      instagram:data.instagram || "",
+      theme:data.theme || {
+        baseColor:"#7A2E2E"
+      },
+      categories:Array.isArray(data.categories)
+        ? data.categories
+        : []
+    };
+
+    activeCategory=
+      menuData.categories[0]?.id || null;
+
+    applyTheme();
+
+    render();
+
+  }catch(error){
+
+    app.innerHTML=
+    `<div class="loading">
+      <h2>Menü yüklenemedi</h2>
+      <p>${esc(error.message)}</p>
+    </div>`;
+
+  }
+}
+
+/* =====================================================
+   TEMA
+===================================================== */
+
+function applyTheme(){
+
+  const color=
+    menuData?.theme?.baseColor ||
+    "#7A2E2E";
+
+  document.documentElement.style
+    .setProperty("--accent",color);
+
+  document.documentElement.style
+    .setProperty(
+      "--accent-dark",
+      darken(color,.35)
+    );
+
+  document.documentElement.style
+    .setProperty(
+      "--bg",
+      lighten(color,.93)
+    );
+
+  document.documentElement.style
+    .setProperty(
+      "--raised",
+      lighten(color,.82)
+    );
+}
+
+function hexRgb(hex){
+
+  hex=hex.replace("#","");
+
+  if(hex.length===3){
+    hex=hex.split("").map(x=>x+x).join("");
+  }
+
+  const n=parseInt(hex,16);
+
+  return {
+    r:(n>>16)&255,
+    g:(n>>8)&255,
+    b:n&255
+  };
+}
+
+function rgbHex(r,g,b){
+
+  return "#"+
+  [r,g,b]
+  .map(x=>
+    Math.max(0,Math.min(255,Math.round(x)))
+    .toString(16)
+    .padStart(2,"0")
   )
-),
-updated_at = now()
-where id = '00000000-0000-0000-0000-000000000001';
+  .join("");
+}
+
+function lighten(hex,a){
+
+  try{
+
+    const c=hexRgb(hex);
+
+    return rgbHex(
+      c.r+(255-c.r)*a,
+      c.g+(255-c.g)*a,
+      c.b+(255-c.b)*a
+    );
+
+  }catch{
+    return hex;
+  }
+}
+
+function darken(hex,a){
+
+  try{
+
+    const c=hexRgb(hex);
+
+    return rgbHex(
+      c.r*(1-a),
+      c.g*(1-a),
+      c.b*(1-a)
+    );
+
+  }catch{
+    return hex;
+  }
+}
+
+/* =====================================================
+   MÜŞTERİ MENÜSÜ
+===================================================== */
+
+function render(){
+
+  if(!menuData)return;
+
+  const categories=
+    menuData.categories || [];
+
+  let active=
+    categories.find(
+      c=>c.id===activeCategory
+    ) || categories[0];
+
+  if(active){
+    activeCategory=active.id;
+  }
+
+  const tabs=
+    categories.map(category=>`
+
+      <button
+        class="tab ${category.id===active?.id?"active":""}"
+        data-category="${esc(category.id)}">
+
+        ${esc(category.name)}
+
+      </button>
+
+    `).join("");
+
+  const products=
+    active
+    ?
+    (active.items||[]).map(item=>`
+
+      <div class="item">
+
+        ${
+          item.image
+          ?
+          `<img
+            class="item-img"
+            src="${esc(item.image)}"
+            alt="${esc(item.name)}">`
+          :
+          ""
+        }
+
+        <div class="item-info">
+
+          <div class="item-top">
+
+            <div class="item-name ${
+              item.available===false
+              ?"unavailable":""
+            }">
+
+              ${esc(item.name)}
+
+              ${
+                item.available===false
+                ?
+                `<span class="sold">TÜKENDİ</span>`
+                :
+                ""
+              }
+
+            </div>
+
+            <div class="dots"></div>
+
+            <div class="price ${
+              item.available===false
+              ?"unavailable":""
+            }">
+
+              ${money(item.price)}
+
+            </div>
+
+          </div>
+
+          ${
+            item.desc
+            ?
+            `<div class="item-desc">
+              ${esc(item.desc)}
+            </div>`
+            :
+            ""
+          }
+
+        </div>
+
+      </div>
+
+    `).join("")
+    :
+    `<p>Bu kategoride ürün yok.</p>`;
+
+  app.innerHTML=`
+
+    <header class="hero">
+
+      ${
+        menuData.logo
+        ?
+        `<img
+          class="logo"
+          src="${esc(menuData.logo)}"
+          alt="Katmerci Dayı Logo">`
+        :
+        ""
+      }
+
+      <div class="eyebrow">
+        KATMER & GELENEKSEL LEZZETLER
+      </div>
+
+      <h1 class="cafe-name">
+        ${esc(menuData.cafeName)}
+      </h1>
+
+      <div class="subtitle">
+        ${esc(menuData.subtitle)}
+      </div>
+
+    </header>
+
+    <nav class="tabs">
+      ${tabs}
+    </nav>
+
+    <main class="category">
+
+      ${
+        active
+        ?
+        `<h2 class="category-title">
+          ${esc(active.name)}
+        </h2>
+        <div class="category-line"></div>`
+        :
+        ""
+      }
+
+      ${products}
+
+    </main>
+
+    <footer class="footer">
+
+      ${
+        menuData.instagram
+        ?
+        `<div style="margin-bottom:8px">
+          Instagram:
+          @${esc(menuData.instagram)}
+        </div>`
+        :
+        ""
+      }
+
+      Katmerci Dayı · QR Menü
+
+    </footer>
+
+  `;
+
+  app.querySelectorAll("[data-category]")
+  .forEach(button=>{
+
+    button.onclick=()=>{
+
+      activeCategory=
+        button.dataset.category;
+
+      render();
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    };
+
+  });
+
+}
+
+/* =====================================================
+   PIN GİRİŞİ
+===================================================== */
+
+document.getElementById("adminButton")
+.addEventListener("click",openGate);
+
+function openGate(){
+
+  if(unlocked){
+    openAdmin();
+    return;
+  }
+
+  const overlay=
+    document.createElement("div");
+
+  overlay.className="overlay";
+
+  overlay.innerHTML=`
+
+    <div class="panel pin">
+
+      <button
+        class="close"
+        id="closeGate">
+        ×
+      </button>
+
+      <h2>Yönetim Girişi</h2>
+
+      <label>PIN Kodu</label>
+
+      <input
+        id="pin"
+        type="password"
+        inputmode="numeric"
+        placeholder="••••"
+        maxlength="20">
+
+      <div
+        class="status"
+        id="pinStatus">
+      </div>
+
+      <button
+        class="btn btn-main full"
+        id="login">
+        Giriş Yap
+      </button>
+
+    </div>
+
+  `;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector("#closeGate")
+    .onclick=()=>overlay.remove();
+
+  async function login(){
+
+    const value=
+      overlay.querySelector("#pin").value.trim();
+
+    const status=
+      overlay.querySelector("#pinStatus");
+
+    try{
+
+      const result=
+        await rpc(
+          "check_menu_pin",
+          {
+            p_menu_id:MENU_ID,
+            p_pin:value
+          }
+        );
+
+      const ok=
+        result===true ||
+        result?.[0]===true ||
+        result?.result===true;
+
+      if(ok){
+
+        unlocked=true;
+        currentPin=value;
+
+        overlay.remove();
+
+        openAdmin();
+
+      }else{
+
+        status.textContent=
+          "Hatalı PIN.";
+
+      }
+
+    }catch(error){
+
+      status.textContent=
+        "Giriş hatası: "+error.message;
+
+    }
+
+  }
+
+  overlay.querySelector("#login")
+    .onclick=login;
+
+  overlay.querySelector("#pin")
+    .onkeydown=e=>{
+      if(e.key==="Enter")login();
+    };
+}
+
+/* =====================================================
+   ADMIN PANEL
+===================================================== */
+
+function openAdmin(){
+
+  const overlay=
+    document.createElement("div");
+
+  overlay.className="overlay";
+  overlay.id="adminOverlay";
+
+  document.body.appendChild(overlay);
+
+  renderAdmin(overlay);
+}
+
+function renderAdmin(overlay){
+
+  const categories=
+    menuData.categories.map(category=>`
+
+      <div class="category-admin">
+
+        <div class="category-head">
+
+          <input
+            data-cat-name="${esc(category.id)}"
+            value="${esc(category.name)}">
+
+          <button
+            class="btn btn-danger"
+            data-delete-cat="${esc(category.id)}">
+            Sil
+          </button>
+
+        </div>
+
+        ${
+          (category.items||[])
+          .map(item=>`
+
+            <div class="product-admin">
+
+              <label>Ürün adı</label>
+
+              <input
+                data-item-name="${esc(item.id)}"
+                value="${esc(item.name)}">
+
+              <label>Açıklama</label>
+
+              <input
+                data-item-desc="${esc(item.id)}"
+                value="${esc(item.desc||"")}">
+
+              <label>Fiyat</label>
+
+              <input
+                type="number"
+                min="0"
+                data-item-price="${esc(item.id)}"
+                value="${Number(item.price)||0}">
+
+              <label>Ürün fotoğrafı</label>
+
+              <div class="image-row">
+
+                ${
+                  item.image
+                  ?
+                  `<img
+                    class="image-preview"
+                    src="${esc(item.image)}">`
+                  :
+                  `<div
+                    class="image-preview">
+                  </div>`
+                }
+
+                <div style="flex:1">
+
+                  <input
+                    data-item-image="${esc(item.id)}"
+                    placeholder="https://... görsel linki"
+                    value="${
+                      item.image &&
+                      item.image.startsWith("http")
+                      ?
+                      esc(item.image)
+                      :
+                      ""
+                    }">
+
+                  <input
+                    type="file"
+                    accept="image/*"
+                    data-file="${esc(item.id)}"
+                    style="margin-top:7px">
+
+                </div>
+
+              </div>
+
+              <label style="display:flex;gap:7px;align-items:center">
+
+                <input
+                  type="checkbox"
+                  style="width:auto"
+                  data-available="${esc(item.id)}"
+                  ${item.available!==false?"checked":""}>
+
+                Stokta / Satışta
+
+              </label>
+
+              <div class="product-buttons">
+
+                <button
+                  class="btn btn-danger"
+                  data-delete-item="${esc(item.id)}"
+                  data-cat="${esc(category.id)}">
+
+                  Ürünü Sil
+
+                </button>
+
+              </div>
+
+            </div>
+
+          `).join("")
+        }
+
+        <button
+          class="btn btn-light full"
+          data-add-item="${esc(category.id)}">
+
+          + Ürün Ekle
+
+        </button>
+
+      </div>
+
+    `).join("");
+
+  overlay.innerHTML=`
+
+    <div class="panel">
+
+      <button
+        class="close"
+        id="adminClose">
+        ×
+      </button>
+
+      <h2>Katmerci Dayı Yönetim</h2>
+
+      <label>İşletme adı</label>
+
+      <input
+        id="cafeName"
+        value="${esc(menuData.cafeName)}">
+
+      <label>Alt başlık</label>
+
+      <input
+        id="subtitle"
+        value="${esc(menuData.subtitle)}">
+
+      <label>Logo</label>
+
+      <input
+        id="logo"
+        placeholder="https://... logo linki"
+        value="${
+          menuData.logo &&
+          menuData.logo.startsWith("http")
+          ?
+          esc(menuData.logo)
+          :
+          ""
+        }">
+
+      <label>Instagram</label>
+
+      <input
+        id="instagram"
+        placeholder="katmercidayi"
+        value="${esc(menuData.instagram||"")}">
+
+      <label>Ana renk</label>
+
+      <input
+        type="color"
+        id="color"
+        value="${menuData.theme?.baseColor||"#7A2E2E"}"
+        style="height:50px;padding:5px">
+
+      <hr style="
+        border:0;
+        border-top:1px solid var(--border);
+        margin:25px 0;
+      ">
+
+      <h3>Kategoriler</h3>
+
+      ${categories}
+
+      <button
+        class="btn btn-light full"
+        id="addCategory">
+
+        + Yeni Kategori
+
+      </button>
+
+      <hr style="
+        border:0;
+        border-top:1px solid var(--border);
+        margin:25px 0;
+      ">
+
+      <label>Yeni PIN</label>
+
+      <input
+        id="newPin"
+        type="password"
+        inputmode="numeric"
+        placeholder="Yeni PIN">
+
+      <button
+        class="btn btn-light full"
+        id="changePin">
+
+        PIN'i Değiştir
+
+      </button>
+
+      <div
+        class="status"
+        id="adminStatus">
+      </div>
+
+      <button
+        class="btn btn-main full"
+        id="save">
+
+        KAYDET
+
+      </button>
+
+    </div>
+
+  `;
+
+  /* KAPAT */
+
+  overlay.querySelector("#adminClose")
+  .onclick=()=>overlay.remove();
+
+  /* GENEL */
+
+  overlay.querySelector("#cafeName")
+  .oninput=e=>{
+    menuData.cafeName=e.target.value;
+  };
+
+  overlay.querySelector("#subtitle")
+  .oninput=e=>{
+    menuData.subtitle=e.target.value;
+  };
+
+  overlay.querySelector("#logo")
+  .oninput=e=>{
+    menuData.logo=e.target.value.trim();
+  };
+
+  overlay.querySelector("#instagram")
+  .oninput=e=>{
+    menuData.instagram=
+      e.target.value
+      .trim()
+      .replace(/^@/,"");
+  };
+
+  overlay.querySelector("#color")
+  .oninput=e=>{
+
+    menuData.theme={
+      baseColor:e.target.value
+    };
+
+    applyTheme();
+
+  };
+
+  /* KATEGORİ İSİMLERİ */
+
+  overlay.querySelectorAll("[data-cat-name]")
+  .forEach(input=>{
+
+    input.oninput=()=>{
+
+      const category=
+        menuData.categories.find(
+          c=>c.id===input.dataset.catName
+        );
+
+      if(category){
+        category.name=input.value;
+      }
+
+    };
+
+  });
+
+  /* KATEGORİ SİL */
+
+  overlay.querySelectorAll("[data-delete-cat]")
+  .forEach(button=>{
+
+    button.onclick=()=>{
+
+      if(
+        confirm(
+          "Bu kategori ve ürünleri silinsin mi?"
+        )
+      ){
+
+        menuData.categories=
+          menuData.categories.filter(
+            c=>c.id!==button.dataset.deleteCat
+          );
+
+        renderAdmin(overlay);
+
+      }
+
+    };
+
+  });
+
+  /* ÜRÜN ADI */
+
+  overlay.querySelectorAll("[data-item-name]")
+  .forEach(input=>{
+
+    input.oninput=()=>{
+
+      const item=findItem(
+        input.dataset.itemName
+      );
+
+      if(item)item.name=input.value;
+
+    };
+
+  });
+
+  /* AÇIKLAMA */
+
+  overlay.querySelectorAll("[data-item-desc]")
+  .forEach(input=>{
+
+    input.oninput=()=>{
+
+      const item=findItem(
+        input.dataset.itemDesc
+      );
+
+      if(item)item.desc=input.value;
+
+    };
+
+  });
+
+  /* FİYAT */
+
+  overlay.querySelectorAll("[data-item-price]")
+  .forEach(input=>{
+
+    input.oninput=()=>{
+
+      const item=findItem(
+        input.dataset.itemPrice
+      );
+
+      if(item){
+        item.price=
+          Number(input.value)||0;
+      }
+
+    };
+
+  });
+
+  /* STOK */
+
+  overlay.querySelectorAll("[data-available]")
+  .forEach(input=>{
+
+    input.onchange=()=>{
+
+      const item=findItem(
+        input.dataset.available
+      );
+
+      if(item){
+        item.available=
+          input.checked;
+      }
+
+    };
+
+  });
+
+  /* GÖRSEL URL */
+
+  overlay.querySelectorAll("[data-item-image]")
+  .forEach(input=>{
+
+    input.oninput=()=>{
+
+      const item=findItem(
+        input.dataset.itemImage
+      );
+
+      if(item){
+        item.image=input.value.trim();
+      }
+
+    };
+
+  });
+
+  /* GÖRSEL DOSYASI */
+
+  overlay.querySelectorAll("[data-file]")
+  .forEach(input=>{
+
+    input.onchange=async()=>{
+
+      const file=input.files?.[0];
+
+      if(!file)return;
+
+      const item=findItem(
+        input.dataset.file
+      );
+
+      if(!item)return;
+
+      const reader=
+        new FileReader();
+
+      reader.onload=e=>{
+
+        item.image=e.target.result;
+
+        renderAdmin(overlay);
+
+      };
+
+      reader.readAsDataURL(file);
+
+    };
+
+  });
+
+  /* ÜRÜN SİL */
+
+  overlay.querySelectorAll("[data-delete-item]")
+  .forEach(button=>{
+
+    button.onclick=()=>{
+
+      const category=
+        menuData.categories.find(
+          c=>c.id===button.dataset.cat
+        );
+
+      if(category){
+
+        category.items=
+          category.items.filter(
+            i=>i.id!==button.dataset.deleteItem
+          );
+
+        renderAdmin(overlay);
+
+      }
+
+    };
+
+  });
+
+  /* ÜRÜN EKLE */
+
+  overlay.querySelectorAll("[data-add-item]")
+  .forEach(button=>{
+
+    button.onclick=()=>{
+
+      const category=
+        menuData.categories.find(
+          c=>c.id===button.dataset.addItem
+        );
+
+      if(category){
+
+        category.items.push({
+
+          id:uid(),
+
+          name:"Yeni Ürün",
+
+          desc:"",
+
+          price:0,
+
+          available:true,
+
+          image:""
+
+        });
+
+        renderAdmin(overlay);
+
+      }
+
+    };
+
+  });
+
+  /* KATEGORİ EKLE */
+
+  overlay.querySelector("#addCategory")
+  .onclick=()=>{
+
+    menuData.categories.push({
+
+      id:uid(),
+
+      name:"Yeni Kategori",
+
+      items:[]
+
+    });
+
+    renderAdmin(overlay);
+
+  };
+
+  /* PIN DEĞİŞTİR */
+
+  overlay.querySelector("#changePin")
+  .onclick=async()=>{
+
+    const newPin=
+      overlay.querySelector("#newPin")
+      .value.trim();
+
+    const status=
+      overlay.querySelector("#adminStatus");
+
+    if(newPin.length<4){
+
+      status.textContent=
+        "PIN en az 4 hane olmalı.";
+
+      return;
+
+    }
+
+    try{
+
+      const result=
+        await rpc(
+          "change_menu_pin",
+          {
+            p_menu_id:MENU_ID,
+            p_old_pin:currentPin,
+            p_new_pin:newPin
+          }
+        );
+
+      const ok=
+        result===true ||
+        result?.[0]===true ||
+        result?.result===true;
+
+      if(ok){
+
+        currentPin=newPin;
+
+        status.textContent=
+          "PIN başarıyla değiştirildi.";
+
+      }else{
+
+        status.textContent=
+          "PIN değiştirilemedi.";
+
+      }
+
+    }catch(error){
+
+      status.textContent=
+        error.message;
+
+    }
+
+  };
+
+  /* KAYDET */
+
+  overlay.querySelector("#save")
+  .onclick=async()=>{
+
+    const status=
+      overlay.querySelector("#adminStatus");
+
+    status.textContent=
+      "Kaydediliyor...";
+
+    try{
+
+      const result=
+        await rpc(
+          "save_menu",
+          {
+            p_menu_id:MENU_ID,
+            p_pin:currentPin,
+            p_data:menuData
+          }
+        );
+
+      const ok=
+        result===true ||
+        result?.[0]===true ||
+        result?.result===true;
+
+      if(ok){
+
+        status.textContent=
+          "Kaydedildi ✓";
+
+        setTimeout(()=>{
+
+          overlay.remove();
+
+          render();
+
+        },600);
+
+      }else{
+
+        status.textContent=
+          "Kaydedilemedi.";
+
+      }
+
+    }catch(error){
+
+      status.textContent=
+        "Hata: "+error.message;
+
+    }
+
+  };
+
+}
+
+/* =====================================================
+   ÜRÜN BUL
+===================================================== */
+
+function findItem(id){
+
+  for(const category of menuData.categories){
+
+    const item=
+      (category.items||[])
+      .find(i=>i.id===id);
+
+    if(item)return item;
+
+  }
+
+  return null;
+}
+
+/* =====================================================
+   BAŞLAT
+===================================================== */
+
+loadMenu();
+
+</script>
+
+</body>
+</html>
