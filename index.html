@@ -29,9 +29,7 @@
   --sold:#A9433A;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
   margin:0;
@@ -57,8 +55,6 @@ button,input{
   padding-bottom:100px;
 }
 
-/* HEADER */
-
 header.hero{
   background:var(--header);
   padding:38px 24px 30px;
@@ -77,10 +73,6 @@ header.hero{
   height:110px;
   object-fit:contain;
   border-radius:18px;
-}
-
-.logo.empty{
-  display:none;
 }
 
 .eyebrow{
@@ -106,8 +98,6 @@ h1.cafe-name{
   margin:auto;
   line-height:1.5;
 }
-
-/* TABS */
 
 nav.tabs{
   display:flex;
@@ -144,8 +134,6 @@ nav.tabs::-webkit-scrollbar{
   font-weight:600;
 }
 
-/* CATEGORY */
-
 .category-block{
   padding:6px 22px 8px;
 }
@@ -161,8 +149,6 @@ nav.tabs::-webkit-scrollbar{
   border-radius:12px;
   margin:22px 0 12px;
 }
-
-/* PRODUCTS */
 
 .item-row{
   display:flex;
@@ -237,16 +223,12 @@ nav.tabs::-webkit-scrollbar{
   margin-left:6px;
 }
 
-/* FOOTER */
-
 footer.note{
   text-align:center;
   padding:36px 24px 10px;
   color:var(--ink-muted);
   font-size:11.5px;
 }
-
-/* ADMIN BUTTON */
 
 .admin-dot{
   position:fixed;
@@ -266,8 +248,6 @@ footer.note{
   box-shadow:0 3px 15px rgba(0,0,0,.12);
   font-size:21px;
 }
-
-/* OVERLAY */
 
 .overlay{
   position:fixed;
@@ -563,6 +543,17 @@ hr.sep{
   display:none;
   white-space:nowrap;
 }
+
+.connection-error{
+  margin-top:20px;
+  padding:12px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid var(--border);
+  text-align:left;
+  font-size:12px;
+  word-break:break-word;
+}
 </style>
 </head>
 
@@ -586,7 +577,7 @@ hr.sep{
 <script>
 
 /* =========================================================
-   SUPABASE
+   SUPABASE AYARLARI
 ========================================================= */
 
 const SUPABASE_URL =
@@ -649,26 +640,29 @@ function money(n){
 
 function toast(message){
   const t = document.getElementById("toast");
+
   t.textContent = message;
   t.style.display = "block";
 
-  setTimeout(()=>{
+  clearTimeout(window.__toastTimer);
+
+  window.__toastTimer = setTimeout(()=>{
     t.style.display = "none";
   },2200);
 }
 
 
 /* =========================================================
-   SUPABASE API
-   ÖNEMLİ:
-   Publishable key ile sadece apikey kullanıyoruz.
+   SUPABASE REST
+   Publishable key sadece apikey olarak kullanılıyor.
 ========================================================= */
 
 async function api(path, options = {}){
 
   const headers = {
     "apikey": SUPABASE_KEY,
-    "Content-Type": "application/json",
+    "Accept":"application/json",
+    "Content-Type":"application/json",
     ...(options.headers || {})
   };
 
@@ -676,7 +670,7 @@ async function api(path, options = {}){
 
   const timeout = setTimeout(()=>{
     controller.abort();
-  },12000);
+  },15000);
 
   try{
 
@@ -694,22 +688,35 @@ async function api(path, options = {}){
 
     let data = null;
 
-    try{
-      data = text ? JSON.parse(text) : null;
-    }catch{
-      data = text;
+    if(text){
+
+      try{
+        data = JSON.parse(text);
+      }catch{
+        data = text;
+      }
+
     }
 
     if(!response.ok){
 
-      throw new Error(
+      let detail =
         data?.message ||
         data?.error_description ||
         data?.hint ||
         data?.error ||
-        text ||
-        ("HTTP " + response.status)
+        (
+          typeof data === "string"
+          ? data
+          : ""
+        );
+
+      throw new Error(
+        "HTTP " +
+        response.status +
+        (detail ? " - " + detail : "")
       );
+
     }
 
     return data;
@@ -729,6 +736,7 @@ async function api(path, options = {}){
     clearTimeout(timeout);
 
   }
+
 }
 
 
@@ -739,113 +747,12 @@ async function api(path, options = {}){
 async function rpc(functionName,args){
 
   return await api(
-    "/rest/v1/rpc/" + functionName,
+    "/rest/v1/rpc/" +
+    encodeURIComponent(functionName),
     {
       method:"POST",
       body:JSON.stringify(args)
     }
-  );
-}
-
-
-/* =========================================================
-   TEMA
-========================================================= */
-
-function applyTheme(theme){
-
-  const t = theme || {};
-
-  const root = document.documentElement;
-
-  root.style.setProperty(
-    "--bg",
-    t.background || "#F6F1E2"
-  );
-
-  root.style.setProperty(
-    "--header",
-    t.header || t.background || "#F6F1E2"
-  );
-
-  root.style.setProperty(
-    "--surface",
-    t.surface || "#FFFFFF"
-  );
-
-  root.style.setProperty(
-    "--surface-raised",
-    t.surfaceRaised || "#ECE2C7"
-  );
-
-  root.style.setProperty(
-    "--category-bg",
-    t.categoryBg || t.baseColor || "#1E6F4C"
-  );
-
-  root.style.setProperty(
-    "--category-text",
-    t.categoryText || "#FFFFFF"
-  );
-
-  root.style.setProperty(
-    "--accent",
-    t.baseColor || "#1E6F4C"
-  );
-
-  root.style.setProperty(
-    "--accent-text",
-    t.accentText || "#134A32"
-  );
-
-  root.style.setProperty(
-    "--ink",
-    t.text || "#20261D"
-  );
-
-  root.style.setProperty(
-    "--ink-muted",
-    t.mutedText || "#6E6A52"
-  );
-
-  root.style.setProperty(
-    "--price",
-    t.price || t.baseColor || "#1E6F4C"
-  );
-
-  root.style.setProperty(
-    "--button",
-    t.button || t.baseColor || "#1E6F4C"
-  );
-
-  root.style.setProperty(
-    "--button-text",
-    t.buttonText || "#FFFFFF"
-  );
-
-  root.style.setProperty(
-    "--border",
-    t.border || "#D8D0B9"
-  );
-
-  root.style.setProperty(
-    "--tab-bg",
-    t.tabBg || "#FFFFFF"
-  );
-
-  root.style.setProperty(
-    "--tab-text",
-    t.tabText || "#6E6A52"
-  );
-
-  root.style.setProperty(
-    "--tab-active",
-    t.tabActive || t.baseColor || "#1E6F4C"
-  );
-
-  root.style.setProperty(
-    "--sold",
-    t.sold || "#A9433A"
   );
 
 }
@@ -860,37 +767,28 @@ function defaultTheme(){
   return {
 
     background:"#F6F1E2",
-
     header:"#F6F1E2",
-
     surface:"#FFFFFF",
-
     surfaceRaised:"#ECE2C7",
 
     baseColor:"#1E6F4C",
-
     accentText:"#134A32",
 
     categoryBg:"#1E6F4C",
-
     categoryText:"#FFFFFF",
 
     text:"#20261D",
-
     mutedText:"#6E6A52",
 
     price:"#1E6F4C",
 
     button:"#1E6F4C",
-
     buttonText:"#FFFFFF",
 
     border:"#D8D0B9",
 
     tabBg:"#FFFFFF",
-
     tabText:"#6E6A52",
-
     tabActive:"#1E6F4C",
 
     sold:"#A9433A"
@@ -901,29 +799,153 @@ function defaultTheme(){
 
 
 /* =========================================================
-   MENÜYÜ SUPABASE'DEN AL
+   TEMA UYGULA
+========================================================= */
+
+function applyTheme(theme){
+
+  const t =
+    {
+      ...defaultTheme(),
+      ...(theme || {})
+    };
+
+  const root =
+    document.documentElement;
+
+  root.style.setProperty(
+    "--bg",
+    t.background
+  );
+
+  root.style.setProperty(
+    "--header",
+    t.header
+  );
+
+  root.style.setProperty(
+    "--surface",
+    t.surface
+  );
+
+  root.style.setProperty(
+    "--surface-raised",
+    t.surfaceRaised
+  );
+
+  root.style.setProperty(
+    "--category-bg",
+    t.categoryBg
+  );
+
+  root.style.setProperty(
+    "--category-text",
+    t.categoryText
+  );
+
+  root.style.setProperty(
+    "--accent",
+    t.baseColor
+  );
+
+  root.style.setProperty(
+    "--accent-text",
+    t.accentText
+  );
+
+  root.style.setProperty(
+    "--ink",
+    t.text
+  );
+
+  root.style.setProperty(
+    "--ink-muted",
+    t.mutedText
+  );
+
+  root.style.setProperty(
+    "--price",
+    t.price
+  );
+
+  root.style.setProperty(
+    "--button",
+    t.button
+  );
+
+  root.style.setProperty(
+    "--button-text",
+    t.buttonText
+  );
+
+  root.style.setProperty(
+    "--border",
+    t.border
+  );
+
+  root.style.setProperty(
+    "--tab-bg",
+    t.tabBg
+  );
+
+  root.style.setProperty(
+    "--tab-text",
+    t.tabText
+  );
+
+  root.style.setProperty(
+    "--tab-active",
+    t.tabActive
+  );
+
+  root.style.setProperty(
+    "--sold",
+    t.sold
+  );
+
+}
+
+
+/* =========================================================
+   MENÜYÜ YÜKLE
 ========================================================= */
 
 async function loadMenu(){
 
+  app.innerHTML =
+    `<div class="loading">Menü yükleniyor...</div>`;
+
   try{
 
-    const rows = await api(
-      "/rest/v1/menus?id=eq." +
-      MENU_ID +
-      "&select=id,data"
-    );
+    const path =
+      "/rest/v1/menus" +
+      "?id=eq." +
+      encodeURIComponent(MENU_ID) +
+      "&select=id,data";
 
-    if(!rows || !rows.length){
+    const rows =
+      await api(path,{
+        method:"GET"
+      });
 
-      showError(
+    if(!Array.isArray(rows)){
+
+      throw new Error(
+        "Supabase geçersiz veri döndürdü."
+      );
+
+    }
+
+    if(rows.length === 0){
+
+      throw new Error(
         "Menü kaydı bulunamadı."
       );
 
-      return;
     }
 
-    const data = rows[0].data || {};
+    const data =
+      rows[0]?.data || {};
 
     menuData = {
 
@@ -951,38 +973,68 @@ async function loadMenu(){
 
     };
 
-    menuData.categories.forEach(category=>{
 
-      if(!Array.isArray(category.items)){
-        category.items = [];
+    menuData.categories.forEach(
+      category=>{
+
+        if(!category.id){
+          category.id = uid();
+        }
+
+        if(!Array.isArray(category.items)){
+          category.items = [];
+        }
+
+        category.items.forEach(
+          item=>{
+
+            if(!item.id){
+              item.id = uid();
+            }
+
+            if(item.image === undefined){
+              item.image = "";
+            }
+
+            if(item.desc === undefined){
+              item.desc = "";
+            }
+
+            if(item.price === undefined){
+              item.price = 0;
+            }
+
+            if(item.available === undefined){
+              item.available = true;
+            }
+
+          }
+        );
+
       }
+    );
 
-      category.items.forEach(item=>{
-
-        if(item.image === undefined){
-          item.image = "";
-        }
-
-        if(item.available === undefined){
-          item.available = true;
-        }
-
-      });
-
-    });
 
     activeCatId =
-      menuData.categories[0]?.id || null;
+      menuData.categories[0]?.id ||
+      null;
 
-    applyTheme(menuData.theme);
+    applyTheme(
+      menuData.theme
+    );
 
     renderCustomer();
 
   }catch(error){
 
+    console.error(
+      "MENU LOAD ERROR:",
+      error
+    );
+
     showError(
-      "Menü yüklenemedi: " +
-      error.message
+      error.message ||
+      "Menü yüklenemedi."
     );
 
   }
@@ -991,7 +1043,7 @@ async function loadMenu(){
 
 
 /* =========================================================
-   HATA
+   HATA EKRANI
 ========================================================= */
 
 function showError(message){
@@ -1002,10 +1054,28 @@ function showError(message){
 
       <h2>Menü yüklenemedi</h2>
 
-      <p>${esc(message)}</p>
+      <p>
+        ${esc(message)}
+      </p>
+
+      <div class="connection-error">
+
+        <strong>Kontrol:</strong><br><br>
+
+        Supabase bağlantısı cevap vermiyor
+        veya RLS / Data API yetkisi engelliyor.
+
+        <br><br>
+
+        Menü ID:
+        <br>
+        ${esc(MENU_ID)}
+
+      </div>
 
       <button
         class="btn btn-main"
+        style="margin-top:18px"
         onclick="location.reload()"
       >
         Tekrar dene
@@ -1035,27 +1105,34 @@ function renderCustomer(){
     ) || categories[0];
 
   if(active){
-    activeCatId = active.id;
+    activeCatId =
+      active.id;
   }
 
-  const tabs = categories.map(category=>`
 
-    <button
-      class="tab-btn ${
-        category.id === active?.id
-        ? "active"
-        : ""
-      }"
-      data-cat="${escAttr(category.id)}"
-    >
-      ${esc(category.name)}
-    </button>
+  const tabs =
+    categories.map(
+      category=>`
 
-  `).join("");
+      <button
+        class="tab-btn ${
+          category.id === active?.id
+          ? "active"
+          : ""
+        }"
+        data-cat="${escAttr(category.id)}"
+      >
+        ${esc(category.name)}
+      </button>
+
+    `
+    ).join("");
 
 
-  const items = active
-    ? active.items.map(item=>`
+  const items =
+    active
+    ? active.items.map(
+      item=>`
 
       <div class="item-row">
 
@@ -1125,7 +1202,8 @@ function renderCustomer(){
 
       </div>
 
-    `).join("")
+      `
+    ).join("")
 
     : `
       <div class="item-desc">
@@ -1134,14 +1212,17 @@ function renderCustomer(){
     `;
 
 
-  const logoHTML = menuData.logo
+  const logoHTML =
+    menuData.logo
     ? `
       <div class="logo-wrap">
+
         <img
           class="logo"
           src="${escAttr(menuData.logo)}"
           alt="${escAttr(menuData.cafeName)}"
         >
+
       </div>
     `
     : "";
@@ -1167,19 +1248,33 @@ function renderCustomer(){
 
     </header>
 
-    <nav class="tabs">
-
-      ${tabs}
-
-    </nav>
+    ${
+      categories.length
+      ? `
+        <nav class="tabs">
+          ${tabs}
+        </nav>
+      `
+      : ""
+    }
 
     <div class="category-block">
 
-      <div class="category-title">
-        ${esc(active?.name || "")}
-      </div>
+      ${
+        active
+        ? `
+          <div class="category-title">
+            ${esc(active.name)}
+          </div>
 
-      ${items}
+          ${items}
+        `
+        : `
+          <div class="item-desc">
+            Henüz kategori eklenmemiş.
+          </div>
+        `
+      }
 
     </div>
 
@@ -1214,7 +1309,7 @@ function renderCustomer(){
 
 
 /* =========================================================
-   PIN GİRİŞİ
+   PIN
 ========================================================= */
 
 function openGate(){
@@ -1224,13 +1319,15 @@ function openGate(){
     openAdmin();
 
     return;
+
   }
 
 
   const overlay =
     document.createElement("div");
 
-  overlay.className = "overlay";
+  overlay.className =
+    "overlay";
 
   overlay.innerHTML = `
 
@@ -1276,7 +1373,9 @@ function openGate(){
   `;
 
 
-  document.body.appendChild(overlay);
+  document.body.appendChild(
+    overlay
+  );
 
 
   overlay
@@ -1295,7 +1394,10 @@ function openGate(){
         .trim();
 
     const message =
-      overlay.querySelector("#gateMsg");
+      overlay.querySelector(
+        "#gateMsg"
+      );
+
 
     if(!pin){
 
@@ -1303,6 +1405,7 @@ function openGate(){
         "PIN kodunu gir.";
 
       return;
+
     }
 
 
@@ -1331,6 +1434,7 @@ function openGate(){
       if(ok){
 
         unlocked = true;
+
         currentPin = pin;
 
         overlay.remove();
@@ -1346,9 +1450,14 @@ function openGate(){
 
     }catch(error){
 
+      console.error(
+        "PIN ERROR:",
+        error
+      );
+
       message.textContent =
-        "Giriş hatası: " +
-        error.message;
+        error.message ||
+        "Giriş hatası.";
 
     }
 
@@ -1383,13 +1492,13 @@ function openGate(){
 
 
 /* =========================================================
-   GÖRSEL SIKIŞTIRMA
+   RESİM
 ========================================================= */
 
 function resizeImage(
   file,
-  max = 700,
-  quality = .75
+  max=700,
+  quality=.75
 ){
 
   return new Promise(
@@ -1417,7 +1526,8 @@ function resizeImage(
             height =
               height * max / width;
 
-            width = max;
+            width =
+              max;
 
           }else if(
             height >= width &&
@@ -1427,13 +1537,16 @@ function resizeImage(
             width =
               width * max / height;
 
-            height = max;
+            height =
+              max;
 
           }
 
 
           const canvas =
-            document.createElement("canvas");
+            document.createElement(
+              "canvas"
+            );
 
           canvas.width =
             Math.round(width);
@@ -1463,16 +1576,16 @@ function resizeImage(
 
         };
 
-
-        image.onerror = reject;
+        image.onerror =
+          reject;
 
         image.src =
           event.target.result;
 
       };
 
-
-      reader.onerror = reject;
+      reader.onerror =
+        reject;
 
       reader.readAsDataURL(file);
 
@@ -1501,7 +1614,7 @@ function resizeLogo(file){
 
         image.onload = ()=>{
 
-          const max = 800;
+          const max=800;
 
           let width =
             image.width;
@@ -1515,7 +1628,7 @@ function resizeLogo(file){
             height =
               height * max / width;
 
-            width = max;
+            width=max;
 
           }else if(
             height >= width &&
@@ -1525,13 +1638,15 @@ function resizeLogo(file){
             width =
               width * max / height;
 
-            height = max;
+            height=max;
 
           }
 
 
           const canvas =
-            document.createElement("canvas");
+            document.createElement(
+              "canvas"
+            );
 
           canvas.width =
             Math.round(width);
@@ -1567,16 +1682,16 @@ function resizeLogo(file){
 
         };
 
-
-        image.onerror = reject;
+        image.onerror =
+          reject;
 
         image.src =
           event.target.result;
 
       };
 
-
-      reader.onerror = reject;
+      reader.onerror =
+        reject;
 
       reader.readAsDataURL(file);
 
@@ -1602,11 +1717,14 @@ function findItem(id){
         x => x.id === id
       );
 
-    if(item) return item;
+    if(item){
+      return item;
+    }
 
   }
 
   return null;
+
 }
 
 
@@ -1642,7 +1760,7 @@ function colorField(
 
 
 /* =========================================================
-   ADMIN PANELİ
+   ADMIN
 ========================================================= */
 
 function renderAdmin(){
@@ -1656,8 +1774,10 @@ function renderAdmin(){
 
 
   const theme =
-    menuData.theme ||
-    defaultTheme();
+    {
+      ...defaultTheme(),
+      ...(menuData.theme || {})
+    };
 
 
   const categories =
@@ -1824,8 +1944,6 @@ function renderAdmin(){
       </h2>
 
 
-      <!-- KAFE -->
-
       <label>
         Kafe adı
       </label>
@@ -1846,31 +1964,22 @@ function renderAdmin(){
       >
 
 
-      <!-- LOGO -->
-
       <hr class="sep">
+
 
       <label>
         Logo
       </label>
 
-      ${
-        menuData.logo
-        ? `
-          <img
-            id="logoPreview"
-            class="logo-preview"
-            src="${escAttr(menuData.logo)}"
-          >
-        `
-        : `
-          <img
-            id="logoPreview"
-            class="logo-preview"
-            src="${BLANK_PIXEL}"
-          >
-        `
-      }
+
+      <img
+        id="logoPreview"
+        class="logo-preview"
+        src="${
+          menuData.logo ||
+          BLANK_PIXEL
+        }"
+      >
 
 
       <input
@@ -1903,9 +2012,8 @@ function renderAdmin(){
       </button>
 
 
-      <!-- RENKLER -->
-
       <hr class="sep">
+
 
       <h2 style="font-size:21px;margin-bottom:10px;">
         Tema Renkleri
@@ -2019,13 +2127,13 @@ function renderAdmin(){
       </div>
 
 
-      <!-- KATEGORİLER -->
-
       <hr class="sep">
+
 
       <h2 style="font-size:21px;margin-bottom:5px;">
         Kategoriler ve Ürünler
       </h2>
+
 
       ${categories}
 
@@ -2045,8 +2153,6 @@ function renderAdmin(){
       ></div>
 
 
-      <!-- EN ALTTA SADECE KAYDET -->
-
       <button
         class="btn btn-main btn-block save-button"
         id="saveMenu"
@@ -2058,10 +2164,6 @@ function renderAdmin(){
 
   `;
 
-
-  /* =====================================================
-     GENEL
-  ===================================================== */
 
   overlay
     .querySelector("#adminClose")
@@ -2094,10 +2196,6 @@ function renderAdmin(){
     };
 
 
-  /* =====================================================
-     LOGO
-  ===================================================== */
-
   overlay
     .querySelector("#logoUrl")
     .oninput = event=>{
@@ -2105,18 +2203,11 @@ function renderAdmin(){
       menuData.logo =
         event.target.value.trim();
 
-      const preview =
-        overlay.querySelector(
-          "#logoPreview"
-        );
-
-      if(preview){
-
-        preview.src =
-          menuData.logo ||
-          BLANK_PIXEL;
-
-      }
+      overlay.querySelector(
+        "#logoPreview"
+      ).src =
+        menuData.logo ||
+        BLANK_PIXEL;
 
     };
 
@@ -2135,15 +2226,10 @@ function renderAdmin(){
         menuData.logo =
           await resizeLogo(file);
 
-        const preview =
-          overlay.querySelector(
-            "#logoPreview"
-          );
-
-        if(preview){
-          preview.src =
-            menuData.logo;
-        }
+        overlay.querySelector(
+          "#logoPreview"
+        ).src =
+          menuData.logo;
 
       }catch{
 
@@ -2162,15 +2248,10 @@ function renderAdmin(){
 
       menuData.logo = "";
 
-      const preview =
-        overlay.querySelector(
-          "#logoPreview"
-        );
-
-      if(preview){
-        preview.src =
-          BLANK_PIXEL;
-      }
+      overlay.querySelector(
+        "#logoPreview"
+      ).src =
+        BLANK_PIXEL;
 
       overlay.querySelector(
         "#logoFile"
@@ -2182,10 +2263,6 @@ function renderAdmin(){
 
     };
 
-
-  /* =====================================================
-     KAFE KATEGORİLERİ
-  ===================================================== */
 
   overlay
     .querySelectorAll("[data-cat-name]")
@@ -2212,10 +2289,6 @@ function renderAdmin(){
     });
 
 
-  /* =====================================================
-     ÜRÜN ADI
-  ===================================================== */
-
   overlay
     .querySelectorAll("[data-item-name]")
     .forEach(input=>{
@@ -2238,10 +2311,6 @@ function renderAdmin(){
 
     });
 
-
-  /* =====================================================
-     ÜRÜN AÇIKLAMA
-  ===================================================== */
 
   overlay
     .querySelectorAll("[data-item-desc]")
@@ -2266,10 +2335,6 @@ function renderAdmin(){
     });
 
 
-  /* =====================================================
-     FİYAT
-  ===================================================== */
-
   overlay
     .querySelectorAll("[data-item-price]")
     .forEach(input=>{
@@ -2284,7 +2349,9 @@ function renderAdmin(){
         if(item){
 
           item.price =
-            Number(event.target.value) || 0;
+            Number(
+              event.target.value
+            ) || 0;
 
         }
 
@@ -2292,10 +2359,6 @@ function renderAdmin(){
 
     });
 
-
-  /* =====================================================
-     STOK
-  ===================================================== */
 
   overlay
     .querySelectorAll("[data-avail]")
@@ -2319,10 +2382,6 @@ function renderAdmin(){
 
     });
 
-
-  /* =====================================================
-     ÜRÜN SİL
-  ===================================================== */
 
   overlay
     .querySelectorAll("[data-del-item]")
@@ -2353,10 +2412,6 @@ function renderAdmin(){
     });
 
 
-  /* =====================================================
-     ÜRÜN EKLE
-  ===================================================== */
-
   overlay
     .querySelectorAll("[data-add-item]")
     .forEach(button=>{
@@ -2375,15 +2430,10 @@ function renderAdmin(){
         category.items.push({
 
           id:uid(),
-
           name:"Yeni ürün",
-
           desc:"",
-
           price:0,
-
           available:true,
-
           image:""
 
         });
@@ -2394,10 +2444,6 @@ function renderAdmin(){
 
     });
 
-
-  /* =====================================================
-     KATEGORİ SİL
-  ===================================================== */
 
   overlay
     .querySelectorAll("[data-del-cat]")
@@ -2430,10 +2476,6 @@ function renderAdmin(){
 
     });
 
-
-  /* =====================================================
-     ÜRÜN GÖRSELİ
-  ===================================================== */
 
   overlay
     .querySelectorAll("[data-file]")
@@ -2473,10 +2515,6 @@ function renderAdmin(){
     });
 
 
-  /* =====================================================
-     GÖRSEL URL
-  ===================================================== */
-
   overlay
     .querySelectorAll("[data-url]")
     .forEach(input=>{
@@ -2511,10 +2549,6 @@ function renderAdmin(){
     });
 
 
-  /* =====================================================
-     GÖRSEL SİL
-  ===================================================== */
-
   overlay
     .querySelectorAll("[data-remove-img]")
     .forEach(button=>{
@@ -2537,10 +2571,6 @@ function renderAdmin(){
     });
 
 
-  /* =====================================================
-     YENİ KATEGORİ
-  ===================================================== */
-
   overlay
     .querySelector("#addCat")
     .onclick = ()=>{
@@ -2560,44 +2590,24 @@ function renderAdmin(){
     };
 
 
-  /* =====================================================
-     RENKLER
-  ===================================================== */
-
   const colorMap = {
 
     colorBackground:"background",
-
     colorHeader:"header",
-
     colorSurface:"surface",
-
     colorRaised:"surfaceRaised",
-
     colorCategory:"categoryBg",
-
     colorCategoryText:"categoryText",
-
     colorText:"text",
-
     colorMuted:"mutedText",
-
     colorPrice:"price",
-
     colorButton:"button",
-
     colorButtonText:"buttonText",
-
     colorBorder:"border",
-
     colorTabBg:"tabBg",
-
     colorTabText:"tabText",
-
     colorTabActive:"tabActive",
-
     colorSold:"sold",
-
     colorAccentText:"accentText"
 
   };
@@ -2629,10 +2639,6 @@ function renderAdmin(){
     });
 
 
-  /* =====================================================
-     KAYDET
-  ===================================================== */
-
   overlay
     .querySelector("#saveMenu")
     .onclick = async ()=>{
@@ -2651,7 +2657,8 @@ function renderAdmin(){
       message.textContent =
         "Kaydediliyor...";
 
-      saveButton.disabled = true;
+      saveButton.disabled =
+        true;
 
       saveButton.textContent =
         "Kaydediliyor...";
@@ -2716,6 +2723,10 @@ function renderAdmin(){
 
           overlay.remove();
 
+          applyTheme(
+            menuData.theme
+          );
+
           renderCustomer();
 
           toast(
@@ -2726,6 +2737,11 @@ function renderAdmin(){
 
 
       }catch(error){
+
+        console.error(
+          "SAVE ERROR:",
+          error
+        );
 
         message.textContent =
           "Hata: " +
@@ -2749,6 +2765,16 @@ function renderAdmin(){
 ========================================================= */
 
 function openAdmin(){
+
+  const old =
+    document.getElementById(
+      "adminOverlay"
+    );
+
+  if(old){
+    old.remove();
+  }
+
 
   const overlay =
     document.createElement("div");
@@ -2774,14 +2800,23 @@ function openAdmin(){
 
 document
   .getElementById("adminDot")
-  .onclick = openGate;
+  .onclick =
+  openGate;
 
 document
   .getElementById("adminDot")
-  .onkeydown = event=>{
+  .onkeydown =
+  event=>{
 
-    if(event.key === "Enter"){
+    if(
+      event.key === "Enter" ||
+      event.key === " "
+    ){
+
+      event.preventDefault();
+
       openGate();
+
     }
 
   };
