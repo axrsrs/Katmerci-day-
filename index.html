@@ -292,6 +292,7 @@ position:relative;
 .overlay{
 align-items:center;
 }
+
 .panel{
 border-radius:20px;
 }
@@ -594,7 +595,7 @@ aria-label="Yönetim panelini aç"
 <script>
 
 /* =========================================================
-   SUPABASE AYARLARI
+   SUPABASE
 ========================================================= */
 
 const SUPABASE_URL =
@@ -607,7 +608,7 @@ const MENU_ID =
 "00000000-0000-0000-0000-000000000001";
 
 const LOCAL_BACKUP_KEY =
-"kafe_menu_backup_v3";
+"kafe_menu_backup_v4";
 
 const BLANK_PIXEL =
 "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
@@ -632,12 +633,16 @@ document.getElementById("app");
 ========================================================= */
 
 function uid(){
+
 return "i"+
 Date.now().toString(36)+
-Math.random().toString(36).slice(2,7);
+Math.random().toString(36).slice(2,8);
+
 }
 
+
 function esc(s){
+
 return String(s??"").replace(
 /[&<>"']/g,
 m=>({
@@ -648,28 +653,42 @@ m=>({
 "'":"&#39;"
 }[m])
 );
+
 }
+
 
 function escAttr(s){
+
 return esc(s);
+
 }
 
+
 function money(n){
+
 return (
 Number(n)||0
 ).toLocaleString("tr-TR")+" ₺";
+
 }
 
+
 function toast(message){
-const t=document.getElementById("toast");
+
+const t=
+document.getElementById("toast");
+
 t.textContent=message;
+
 t.style.display="block";
 
 clearTimeout(window.__toastTimer);
 
-window.__toastTimer=setTimeout(()=>{
+window.__toastTimer=
+setTimeout(()=>{
 t.style.display="none";
 },2500);
+
 }
 
 
@@ -688,14 +707,12 @@ JSON.stringify(menuData)
 
 }catch(e){
 
-console.warn(
-"Yerel yedek oluşturulamadı",
-e
-);
+console.warn(e);
 
 }
 
 }
+
 
 function loadLocalBackup(){
 
@@ -706,7 +723,7 @@ localStorage.getItem(
 LOCAL_BACKUP_KEY
 );
 
-if(!raw) return null;
+if(!raw)return null;
 
 return JSON.parse(raw);
 
@@ -727,7 +744,10 @@ async function api(path,options={}){
 
 const headers={
 "apikey":SUPABASE_KEY,
+"Authorization":
+"Bearer "+SUPABASE_KEY,
 "Content-Type":"application/json",
+"Accept":"application/json",
 ...(options.headers||{})
 };
 
@@ -737,7 +757,7 @@ new AbortController();
 const timeout=
 setTimeout(
 ()=>controller.abort(),
-15000
+20000
 );
 
 try{
@@ -759,9 +779,15 @@ await response.text();
 let data=null;
 
 try{
-data=text?JSON.parse(text):null;
+
+data=text
+?JSON.parse(text)
+:null;
+
 }catch{
+
 data=text;
+
 }
 
 if(!response.ok){
@@ -950,7 +976,7 @@ t.sold||"#A9433A"
 
 
 /* =========================================================
-   VERİYİ NORMALLEŞTİR
+   NORMALIZE
 ========================================================= */
 
 function normalizeMenu(data){
@@ -1023,12 +1049,10 @@ return result;
 
 
 /* =========================================================
-   MENÜYÜ YÜKLE
+   MENÜ YÜKLE
 ========================================================= */
 
 async function loadMenu(){
-
-let remoteError=null;
 
 try{
 
@@ -1063,14 +1087,10 @@ return;
 
 }catch(error){
 
-remoteError=error;
-
-}
-
-
-/* =====================================================
-   SUPABASE YOKSA YEDEKTEN AÇ
-===================================================== */
+console.error(
+"Menü yükleme hatası:",
+error
+);
 
 const backup=
 loadLocalBackup();
@@ -1095,16 +1115,12 @@ return;
 
 }
 
-
-/* =====================================================
-   HATA
-===================================================== */
-
 showError(
 "Menü yüklenemedi.",
-remoteError?.message||
-"Supabase bağlantısı kurulamadı."
+error.message
 );
+
+}
 
 }
 
@@ -1142,7 +1158,7 @@ document
 
 
 /* =========================================================
-   MÜŞTERİ MENÜSÜ
+   MÜŞTERİ
 ========================================================= */
 
 function renderCustomer(){
@@ -1406,8 +1422,7 @@ const go=async()=>{
 const pin=
 overlay
 .querySelector("#gatePin")
-.value
-.trim();
+.value.trim();
 
 const msg=
 overlay.querySelector("#gateMsg");
@@ -1438,7 +1453,9 @@ p_pin:pin
 
 const ok=
 result===true||
+result==="true"||
 result?.[0]===true||
+result?.[0]?.check_menu_pin===true||
 result?.result===true;
 
 if(!ok){
@@ -1451,6 +1468,7 @@ return;
 }
 
 unlocked=true;
+
 currentPin=pin;
 
 overlay.remove();
@@ -1458,6 +1476,8 @@ overlay.remove();
 openAdmin();
 
 }catch(error){
+
+console.error(error);
 
 msg.textContent=
 "Giriş hatası: "+
@@ -1609,7 +1629,7 @@ return`
 <input
 type="color"
 id="${id}"
-value="${escAttr(value)}"
+value="${escAttr(value||"#ffffff")}"
 >
 
 </div>
@@ -1620,7 +1640,7 @@ value="${escAttr(value)}"
 
 
 /* =========================================================
-   PAROLA DEĞİŞTİRME
+   PAROLA DEĞİŞTİR
 ========================================================= */
 
 function openChangePin(){
@@ -1695,7 +1715,6 @@ Parolayı değiştir
 
 <p class="small-note">
 Parola Supabase veritabanında değiştirilir.
-Sayfayı yenilediğinde yeni parola geçerli olur.
 </p>
 
 </div>
@@ -1763,6 +1782,7 @@ return;
 
 
 btn.disabled=true;
+
 btn.textContent=
 "Değiştiriliyor...";
 
@@ -1771,16 +1791,6 @@ msg.textContent=
 
 
 try{
-
-/*
- Mevcut fonksiyon:
- change_menu_pin(uuid,text,text)
-
- Parametreler:
- p_menu_id
- p_old_pin
- p_new_pin
-*/
 
 const result=
 await rpc(
@@ -1794,7 +1804,9 @@ p_new_pin:newPin
 
 const ok=
 result===true||
+result==="true"||
 result?.[0]===true||
+result?.[0]?.change_menu_pin===true||
 result?.result===true;
 
 if(!ok){
@@ -1814,13 +1826,18 @@ btn.textContent=
 "Değiştirildi ✓";
 
 setTimeout(()=>{
+
 overlay.remove();
+
 toast(
 "Parola değiştirildi ✓"
 );
+
 },900);
 
 }catch(error){
+
+console.error(error);
 
 msg.textContent=
 "Hata: "+
@@ -1839,7 +1856,7 @@ btn.textContent=
 
 
 /* =========================================================
-   ADMIN
+   ADMIN RENDER
 ========================================================= */
 
 function renderAdmin(){
@@ -2042,8 +2059,7 @@ Yönetici Parolası
 </div>
 
 <div class="security-text">
-Mevcut yönetici PIN'inizi değiştirebilirsiniz.
-Yeni parola Supabase'e kaydedilir.
+Yönetici parolanızı buradan değiştirebilirsiniz.
 </div>
 
 <button
@@ -2252,9 +2268,9 @@ Kaydet
 `;
 
 
-/* =====================================================
+/* =========================================================
    KAPAT
-===================================================== */
+========================================================= */
 
 overlay
 .querySelector("#adminClose")
@@ -2267,9 +2283,9 @@ renderCustomer();
 };
 
 
-/* =====================================================
+/* =========================================================
    KAFE
-===================================================== */
+========================================================= */
 
 overlay
 .querySelector("#cafeName")
@@ -2279,6 +2295,7 @@ menuData.cafeName=
 e.target.value;
 
 };
+
 
 overlay
 .querySelector("#subtitle")
@@ -2290,18 +2307,18 @@ e.target.value;
 };
 
 
-/* =====================================================
+/* =========================================================
    PAROLA
-===================================================== */
+========================================================= */
 
 overlay
 .querySelector("#changePinOpen")
 .onclick=openChangePin;
 
 
-/* =====================================================
+/* =========================================================
    LOGO
-===================================================== */
+========================================================= */
 
 overlay
 .querySelector("#logoUrl")
@@ -2370,9 +2387,9 @@ overlay
 };
 
 
-/* =====================================================
-   KATEGORİ ADI
-===================================================== */
+/* =========================================================
+   KATEGORİ
+========================================================= */
 
 overlay
 .querySelectorAll("[data-cat-name]")
@@ -2394,9 +2411,9 @@ cat.name=e.target.value;
 });
 
 
-/* =====================================================
+/* =========================================================
    ÜRÜN
-===================================================== */
+========================================================= */
 
 overlay
 .querySelectorAll("[data-item-name]")
@@ -2405,9 +2422,7 @@ overlay
 input.oninput=e=>{
 
 const item=
-findItem(
-input.dataset.itemName
-);
+findItem(input.dataset.itemName);
 
 if(item)
 item.name=e.target.value;
@@ -2424,9 +2439,7 @@ overlay
 input.oninput=e=>{
 
 const item=
-findItem(
-input.dataset.itemDesc
-);
+findItem(input.dataset.itemDesc);
 
 if(item)
 item.desc=e.target.value;
@@ -2443,9 +2456,7 @@ overlay
 input.oninput=e=>{
 
 const item=
-findItem(
-input.dataset.itemPrice
-);
+findItem(input.dataset.itemPrice);
 
 if(item)
 item.price=
@@ -2463,9 +2474,7 @@ overlay
 input.onchange=e=>{
 
 const item=
-findItem(
-input.dataset.avail
-);
+findItem(input.dataset.avail);
 
 if(item)
 item.available=
@@ -2476,9 +2485,9 @@ e.target.checked;
 });
 
 
-/* =====================================================
+/* =========================================================
    ÜRÜN SİL
-===================================================== */
+========================================================= */
 
 overlay
 .querySelectorAll("[data-del-item]")
@@ -2508,9 +2517,9 @@ renderAdmin();
 });
 
 
-/* =====================================================
+/* =========================================================
    ÜRÜN EKLE
-===================================================== */
+========================================================= */
 
 overlay
 .querySelectorAll("[data-add-item]")
@@ -2544,9 +2553,9 @@ renderAdmin();
 });
 
 
-/* =====================================================
+/* =========================================================
    KATEGORİ SİL
-===================================================== */
+========================================================= */
 
 overlay
 .querySelectorAll("[data-del-cat]")
@@ -2576,9 +2585,9 @@ renderAdmin();
 });
 
 
-/* =====================================================
+/* =========================================================
    GÖRSEL DOSYA
-===================================================== */
+========================================================= */
 
 overlay
 .querySelectorAll("[data-file]")
@@ -2594,9 +2603,7 @@ if(!file)return;
 try{
 
 const item=
-findItem(
-input.dataset.file
-);
+findItem(input.dataset.file);
 
 if(!item)return;
 
@@ -2618,9 +2625,9 @@ toast(
 });
 
 
-/* =====================================================
+/* =========================================================
    GÖRSEL URL
-===================================================== */
+========================================================= */
 
 overlay
 .querySelectorAll("[data-url]")
@@ -2629,9 +2636,7 @@ overlay
 input.oninput=e=>{
 
 const item=
-findItem(
-input.dataset.url
-);
+findItem(input.dataset.url);
 
 if(!item)return;
 
@@ -2656,9 +2661,9 @@ BLANK_PIXEL;
 });
 
 
-/* =====================================================
+/* =========================================================
    GÖRSEL SİL
-===================================================== */
+========================================================= */
 
 overlay
 .querySelectorAll("[data-remove-img]")
@@ -2667,9 +2672,7 @@ overlay
 button.onclick=()=>{
 
 const item=
-findItem(
-button.dataset.removeImg
-);
+findItem(button.dataset.removeImg);
 
 if(!item)return;
 
@@ -2682,9 +2685,9 @@ renderAdmin();
 });
 
 
-/* =====================================================
+/* =========================================================
    YENİ KATEGORİ
-===================================================== */
+========================================================= */
 
 overlay
 .querySelector("#addCat")
@@ -2705,9 +2708,9 @@ renderAdmin();
 };
 
 
-/* =====================================================
+/* =========================================================
    RENKLER
-===================================================== */
+========================================================= */
 
 const colorMap={
 
@@ -2730,6 +2733,7 @@ colorSold:"sold",
 colorAccentText:"accentText"
 
 };
+
 
 Object.keys(colorMap)
 .forEach(id=>{
@@ -2754,9 +2758,11 @@ menuData.theme
 });
 
 
-/* =====================================================
+/* =========================================================
    KAYDET
-===================================================== */
+   ÖNEMLİ: RPC TRUE DÖNDÜRMEK ZORUNDA DEĞİL.
+   HTTP BAŞARILIYSA DEVAM EDİYORUZ.
+========================================================= */
 
 overlay
 .querySelector("#saveMenu")
@@ -2768,16 +2774,6 @@ overlay.querySelector("#adminMsg");
 const btn=
 overlay.querySelector("#saveMenu");
 
-msg.textContent=
-"Kaydediliyor...";
-
-btn.disabled=true;
-
-btn.textContent=
-"Kaydediliyor...";
-
-
-try{
 
 const payload={
 
@@ -2799,6 +2795,23 @@ menuData.categories
 };
 
 
+msg.textContent=
+"Kaydediliyor...";
+
+btn.disabled=true;
+
+btn.textContent=
+"Kaydediliyor...";
+
+
+try{
+
+/*
+  Önce güvenli RPC.
+  Burada save_menu fonksiyonunun
+  true dönmesini şart koşmuyoruz.
+*/
+
 const result=
 await rpc(
 "save_menu",
@@ -2810,24 +2823,75 @@ p_data:payload
 );
 
 
-const ok=
-result===true||
-result?.[0]===true||
-result?.result===true;
+/*
+  RPC false döndürüyorsa gerçekten
+  kaydetme başarısız olmuş olabilir.
+*/
+const explicitlyFalse=
+result===false||
+result==="false"||
+result?.[0]===false||
+result?.[0]?.save_menu===false||
+result?.result===false;
 
 
-if(!ok){
+if(explicitlyFalse){
 
 throw new Error(
-"Menü kaydedilemedi."
+"Supabase menüyü kaydetmeyi reddetti. PIN veya save_menu yetkisini kontrol et."
 );
 
 }
 
 
-/* Başarılıysa tarayıcı yedeği de güncelle */
+/*
+  Şimdi Supabase'den tekrar oku.
+  Böylece ekranda Kaydedildi deyip
+  aslında kaydedilmemiş olma ihtimali kalmaz.
+*/
+
+const checkRows=
+await api(
+"/rest/v1/menus?id=eq."+
+encodeURIComponent(MENU_ID)+
+"&select=id,data"
+);
+
+
+if(!checkRows||
+!checkRows.length){
+
+throw new Error(
+"Kaydetme sonrası menü tekrar okunamadı."
+);
+
+}
+
+
+const savedMenu=
+normalizeMenu(
+checkRows[0].data
+);
+
+
+/*
+  Veritabanındaki gerçek veriyi
+  uygulamaya aktar.
+*/
+
+menuData=
+savedMenu;
 
 saveLocalBackup();
+
+activeCatId=
+menuData.categories[0]?.id||
+null;
+
+applyTheme(
+menuData.theme
+);
+
 
 msg.textContent=
 "Kaydedildi ✓";
@@ -2843,17 +2907,25 @@ overlay.remove();
 renderCustomer();
 
 toast(
-"Menü güncellendi ✓"
+"Menü başarıyla kaydedildi ✓"
 );
 
-},700);
+},800);
 
 
 }catch(error){
 
+console.error(
+"KAYDETME HATASI:",
+error
+);
+
 msg.textContent=
 "Hata: "+
-error.message;
+(
+error?.message||
+"Menü kaydedilemedi."
+);
 
 btn.disabled=false;
 
@@ -2905,6 +2977,7 @@ renderAdmin();
 document
 .getElementById("adminDot")
 .onclick=openGate;
+
 
 document
 .getElementById("adminDot")
