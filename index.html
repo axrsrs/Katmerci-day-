@@ -8,527 +8,545 @@
 
 <style>
 :root{
-  --bg:#F6F1E2;
-  --surface:#FFFFFF;
-  --surface-raised:#ECE2C7;
-  --accent:#1E6F4C;
-  --accent-text:#134A32;
-  --ink:#20261D;
-  --ink-muted:#6E6A52;
-  --ink-faint:#A39F84;
-  --danger:#A9433A;
-  --border-soft:rgba(46,38,33,.14);
+--bg:#F6F1E2;
+--surface:#FFFFFF;
+--surface-raised:#ECE2C7;
+
+--title:#20261D;
+--subtitle:#6E6A52;
+--text:#20261D;
+--description:#6E6A52;
+--price:#134A32;
+
+--category-title:#134A32;
+--category-bg:#FFFFFF;
+--category-text:#6E6A52;
+--category-active:#1E6F4C;
+--category-active-text:#FFFFFF;
+
+--button:#1E6F4C;
+--button-text:#FFFFFF;
+
+--border:rgba(46,38,33,.16);
+--sold:#A9433A;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
-  margin:0;
-  padding:0;
+margin:0;
+padding:0;
 }
 
 body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:Arial,sans-serif;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+background:var(--bg);
+color:var(--text);
+font-family:Arial,sans-serif;
+min-height:100vh;
+-webkit-font-smoothing:antialiased;
+overflow-x:hidden;
 }
 
 button,input{
-  font-family:inherit;
+font-family:inherit;
 }
 
 .wrap{
-  max-width:680px;
-  margin:auto;
-  padding-bottom:90px;
+max-width:680px;
+margin:auto;
+padding-bottom:100px;
 }
 
-/* ANA ÜST ALAN */
+/* =========================
+   HEADER
+========================= */
 
-header.hero{
-  padding:32px 22px 25px;
-  text-align:center;
-  border-bottom:1px solid var(--border-soft);
+.hero{
+padding:32px 22px 27px;
+text-align:center;
+border-bottom:1px solid var(--border);
 }
 
 .logo{
-  width:92px;
-  height:92px;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  margin:0 auto 18px;
-  border:1px solid var(--border-soft);
-  background:var(--surface);
-  box-shadow:0 4px 18px rgba(0,0,0,.08);
-}
-
-.logo.hidden{
-  display:none;
+width:100px;
+height:100px;
+border-radius:50%;
+object-fit:cover;
+display:block;
+margin:0 auto 17px;
+background:var(--surface);
+border:1px solid var(--border);
+box-shadow:0 4px 18px rgba(0,0,0,.08);
 }
 
 .eyebrow{
-  font-size:10px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:var(--accent-text);
-  margin-bottom:10px;
+font-size:10px;
+letter-spacing:.28em;
+text-transform:uppercase;
+color:var(--category-title);
+margin-bottom:10px;
 }
 
-h1.cafe-name{
-  font-family:Georgia,serif;
-  font-weight:600;
-  font-size:clamp(34px,9vw,52px);
-  margin:0 0 9px;
-  line-height:1.05;
+.cafe-name{
+font-family:Georgia,serif;
+font-weight:600;
+font-size:clamp(34px,9vw,52px);
+margin:0 0 9px;
+line-height:1.05;
+color:var(--title);
 }
 
 .subtitle{
-  color:var(--ink-muted);
-  font-size:14px;
-  max-width:440px;
-  margin:auto;
-  line-height:1.55;
+color:var(--subtitle);
+font-size:14px;
+max-width:440px;
+margin:auto;
+line-height:1.55;
 }
 
-/* KATEGORİLER */
+/* =========================
+   KATEGORİLER
+========================= */
 
-nav.tabs{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:15px 18px;
-  scrollbar-width:none;
-  position:sticky;
-  top:0;
-  background:linear-gradient(var(--bg) 78%,transparent);
-  z-index:5;
+.tabs{
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding:15px 18px;
+scrollbar-width:none;
+position:sticky;
+top:0;
+background:linear-gradient(var(--bg) 78%,transparent);
+z-index:5;
 }
 
-nav.tabs::-webkit-scrollbar{
-  display:none;
+.tabs::-webkit-scrollbar{
+display:none;
 }
 
 .tab-btn{
-  flex:0 0 auto;
-  font-size:12.5px;
-  padding:9px 16px;
-  border-radius:999px;
-  border:1px solid var(--border-soft);
-  background:var(--surface);
-  color:var(--ink-muted);
-  white-space:nowrap;
-  cursor:pointer;
+flex:0 0 auto;
+font-size:12.5px;
+padding:9px 16px;
+border-radius:999px;
+border:1px solid var(--border);
+background:var(--category-bg);
+color:var(--category-text);
+white-space:nowrap;
+cursor:pointer;
 }
 
 .tab-btn.active{
-  background:var(--accent);
-  border-color:var(--accent);
-  color:#fff;
-  font-weight:600;
+background:var(--category-active);
+border-color:var(--category-active);
+color:var(--category-active-text);
+font-weight:600;
 }
 
 .category-block{
-  padding:5px 22px 8px;
+padding:5px 22px 8px;
 }
 
 .category-title{
-  font-family:Georgia,serif;
-  font-size:23px;
-  font-weight:500;
-  color:var(--accent-text);
-  margin:20px 0 10px;
+font-family:Georgia,serif;
+font-size:23px;
+font-weight:500;
+color:var(--category-title);
+margin:20px 0 10px;
 }
 
-/* ÜRÜNLER */
+/* =========================
+   ÜRÜNLER
+========================= */
 
 .item-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:13px 0;
-  border-bottom:1px dashed var(--border-soft);
+display:flex;
+align-items:center;
+gap:12px;
+padding:13px 0;
+border-bottom:1px dashed var(--border);
 }
 
 .item-thumb{
-  width:60px;
-  height:60px;
-  flex:0 0 auto;
-  border-radius:11px;
-  object-fit:cover;
-  border:1px solid var(--border-soft);
-  background:var(--surface-raised);
+width:60px;
+height:60px;
+flex:0 0 auto;
+border-radius:11px;
+object-fit:cover;
+border:1px solid var(--border);
+background:var(--surface-raised);
 }
 
 .item-text-row{
-  display:flex;
-  align-items:baseline;
-  gap:8px;
-  flex:1;
-  min-width:0;
+display:flex;
+align-items:baseline;
+gap:8px;
+flex:1;
+min-width:0;
 }
 
 .item-name-wrap{
-  min-width:0;
+min-width:0;
 }
 
 .item-name{
-  font-size:16px;
-  font-weight:600;
+font-size:16px;
+font-weight:600;
+color:var(--text);
 }
 
 .item-name.unavailable{
-  color:var(--ink-faint);
-  text-decoration:line-through;
+color:var(--sold);
+text-decoration:line-through;
 }
 
 .item-desc{
-  font-size:12.5px;
-  color:var(--ink-muted);
-  margin-top:3px;
-  line-height:1.4;
+font-size:12.5px;
+color:var(--description);
+margin-top:3px;
+line-height:1.4;
 }
 
 .leader{
-  flex:1;
-  border-bottom:1px dotted var(--border-soft);
-  height:0;
-  margin:0 2px 5px;
-  min-width:12px;
+flex:1;
+border-bottom:1px dotted var(--border);
+height:0;
+margin:0 2px 5px;
+min-width:12px;
 }
 
 .item-price{
-  font-size:15px;
-  color:var(--accent-text);
-  white-space:nowrap;
-  font-weight:600;
+font-size:15px;
+color:var(--price);
+white-space:nowrap;
+font-weight:600;
 }
 
 .item-price.unavailable{
-  color:var(--ink-faint);
+color:var(--sold);
 }
 
 .sold-out-tag{
-  font-size:9px;
-  color:#A94444;
-  letter-spacing:.08em;
-  margin-left:6px;
+font-size:9px;
+color:var(--sold);
+letter-spacing:.08em;
+margin-left:6px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
-footer.note{
-  text-align:center;
-  padding:35px 24px 10px;
-  color:var(--ink-faint);
-  font-size:11px;
+.note{
+text-align:center;
+padding:35px 24px 10px;
+color:var(--description);
+font-size:11px;
 }
 
-/* YÖNETİM BUTONU */
+/* =========================
+   ADMIN BUTTON
+========================= */
 
 .admin-dot{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:var(--surface);
-  border:1px solid var(--border-soft);
-  color:var(--ink-faint);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  z-index:20;
-  box-shadow:0 3px 14px rgba(46,38,33,.13);
-  font-size:18px;
+position:fixed;
+bottom:18px;
+right:18px;
+width:42px;
+height:42px;
+border-radius:50%;
+background:var(--surface);
+border:1px solid var(--border);
+color:var(--description);
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:20;
+box-shadow:0 3px 14px rgba(46,38,33,.13);
+font-size:18px;
 }
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
 .overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(20,20,20,.48);
-  z-index:50;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
+position:fixed;
+inset:0;
+background:rgba(20,20,20,.48);
+z-index:50;
+display:flex;
+align-items:flex-end;
+justify-content:center;
 }
 
 @media(min-width:640px){
-  .overlay{
-    align-items:center;
-  }
+.overlay{
+align-items:center;
+}
 }
 
 .panel{
-  background:var(--surface);
-  width:100%;
-  max-width:570px;
-  max-height:92vh;
-  overflow-y:auto;
-  border-radius:20px 20px 0 0;
-  padding:25px 20px 28px;
-  border:1px solid var(--border-soft);
+background:var(--surface);
+width:100%;
+max-width:580px;
+max-height:92vh;
+overflow-y:auto;
+border-radius:20px 20px 0 0;
+padding:25px 20px 28px;
+border:1px solid var(--border);
 }
 
 @media(min-width:640px){
-  .panel{
-    border-radius:20px;
-  }
+.panel{
+border-radius:20px;
+}
 }
 
 .panel h2{
-  font-family:Georgia,serif;
-  font-size:25px;
-  margin:0 0 20px;
-  color:var(--accent-text);
+font-family:Georgia,serif;
+font-size:25px;
+margin:0 0 20px;
+color:var(--title);
 }
 
 .panel label{
-  display:block;
-  font-size:10px;
-  letter-spacing:.07em;
-  text-transform:uppercase;
-  color:var(--ink-muted);
-  margin:14px 0 6px;
+display:block;
+font-size:10px;
+letter-spacing:.07em;
+text-transform:uppercase;
+color:var(--description);
+margin:15px 0 6px;
 }
 
-.panel input,
-.panel textarea{
-  width:100%;
-  background:var(--surface-raised);
-  border:1px solid var(--border-soft);
-  border-radius:9px;
-  padding:11px 12px;
-  color:var(--ink);
-  font-size:14px;
-  outline:none;
+.panel input{
+width:100%;
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:9px;
+padding:11px 12px;
+color:var(--text);
+font-size:14px;
+outline:none;
 }
 
-.panel input:focus,
-.panel textarea:focus{
-  border-color:var(--accent);
-}
-
-.row-2{
-  display:flex;
-  gap:10px;
-}
-
-.row-2>div{
-  flex:1;
-}
-
-.btn{
-  font-size:12.5px;
-  padding:10px 15px;
-  border-radius:9px;
-  border:1px solid transparent;
-  cursor:pointer;
-}
-
-.btn-primary{
-  background:var(--accent);
-  color:#fff;
-  font-weight:600;
-}
-
-.btn-ghost{
-  background:var(--surface);
-  border-color:var(--border-soft);
-  color:var(--ink);
-}
-
-.btn-danger{
-  background:var(--surface);
-  border-color:var(--danger);
-  color:var(--danger);
-}
-
-.btn-block{
-  width:100%;
-  display:block;
-  text-align:center;
-  margin-top:9px;
-}
-
-.item-edit-card{
-  background:var(--surface-raised);
-  border:1px solid var(--border-soft);
-  border-radius:11px;
-  padding:14px;
-  margin-top:12px;
-}
-
-.cat-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:25px;
-  padding-bottom:8px;
-  border-bottom:1px solid var(--border-soft);
-}
-
-.cat-header input{
-  font-family:Georgia,serif;
-  font-size:18px;
-  color:var(--accent-text);
-  border:none;
-  background:transparent;
-  padding:3px 0;
-}
-
-.avail-toggle{
-  display:flex!important;
-  align-items:center;
-  gap:6px;
-  font-size:12px!important;
-  color:var(--ink-muted)!important;
-  margin-top:11px!important;
-}
-
-.avail-toggle input{
-  width:auto;
-}
-
-.actions-row{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-  flex-wrap:wrap;
-}
-
-.status-msg{
-  font-size:11.5px;
-  color:var(--accent-text);
-  margin-top:10px;
-  min-height:17px;
-}
-
-.pin-box{
-  text-align:center;
-}
-
-.pin-box input{
-  text-align:center;
-  font-size:21px;
-  letter-spacing:.3em;
+.panel input:focus{
+border-color:var(--button);
 }
 
 .close-x{
-  position:absolute;
-  top:14px;
-  right:16px;
-  background:none;
-  border:none;
-  color:var(--ink-muted);
-  font-size:20px;
-  cursor:pointer;
+position:absolute;
+top:14px;
+right:16px;
+background:none;
+border:none;
+color:var(--description);
+font-size:20px;
+cursor:pointer;
 }
 
 .panel-rel{
-  position:relative;
+position:relative;
 }
 
-.loading{
-  text-align:center;
-  padding:70px 20px;
-  color:var(--ink-muted);
-  font-size:13px;
+.btn{
+font-size:12.5px;
+padding:10px 15px;
+border-radius:9px;
+border:1px solid transparent;
+cursor:pointer;
+}
+
+.btn-primary{
+background:var(--button);
+color:var(--button-text);
+font-weight:600;
+}
+
+.btn-ghost{
+background:var(--surface);
+border-color:var(--border);
+color:var(--text);
+}
+
+.btn-danger{
+background:var(--surface);
+border-color:var(--sold);
+color:var(--sold);
+}
+
+.btn-block{
+width:100%;
+display:block;
+text-align:center;
+margin-top:9px;
+}
+
+.status-msg{
+font-size:11.5px;
+color:var(--price);
+margin-top:10px;
+min-height:17px;
+}
+
+/* =========================
+   LOGO ADMIN
+========================= */
+
+.logo-admin{
+width:100px;
+height:100px;
+border-radius:50%;
+object-fit:cover;
+display:block;
+margin:4px 0 10px;
+background:var(--surface);
+border:1px solid var(--border);
+}
+
+/* =========================
+   RENK PANELİ
+========================= */
+
+.color-section{
+margin-top:22px;
+padding:15px;
+border:1px solid var(--border);
+border-radius:13px;
+background:var(--surface);
+}
+
+.color-section-title{
+font-family:Georgia,serif;
+font-size:18px;
+color:var(--title);
+margin-bottom:12px;
 }
 
 .color-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:8px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
 }
 
 .color-box{
-  background:var(--surface-raised);
-  border:1px solid var(--border-soft);
-  border-radius:10px;
-  padding:9px;
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:10px;
+padding:9px;
 }
 
 .color-box span{
-  display:block;
-  font-size:10px;
-  color:var(--ink-muted);
-  margin-bottom:6px;
+display:block;
+font-size:10px;
+color:var(--description);
+margin-bottom:6px;
 }
 
 .color-box input[type=color]{
-  width:100%;
-  height:38px;
-  padding:2px;
-  border:none;
-  background:transparent;
+width:100%;
+height:40px;
+padding:2px;
+border:none;
+background:transparent;
+cursor:pointer;
+}
+
+/* =========================
+   ITEM ADMIN
+========================= */
+
+.cat-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-top:25px;
+padding-bottom:8px;
+border-bottom:1px solid var(--border);
+}
+
+.cat-header input{
+font-family:Georgia,serif;
+font-size:18px;
+color:var(--category-title);
+border:none;
+background:transparent;
+padding:3px 0;
+}
+
+.item-edit-card{
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:11px;
+padding:14px;
+margin-top:12px;
+}
+
+.avail-toggle{
+display:flex!important;
+align-items:center;
+gap:6px;
+font-size:12px!important;
+color:var(--description)!important;
+margin-top:11px!important;
+}
+
+.avail-toggle input{
+width:auto;
+}
+
+.actions-row{
+display:flex;
+gap:8px;
+margin-top:10px;
+flex-wrap:wrap;
 }
 
 .img-row{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  margin-top:6px;
+display:flex;
+gap:12px;
+align-items:flex-start;
+margin-top:6px;
 }
 
 .admin-thumb{
-  width:64px;
-  height:64px;
-  border-radius:10px;
-  object-fit:cover;
-  flex:0 0 auto;
-  border:1px solid var(--border-soft);
-  background:#fff;
+width:64px;
+height:64px;
+border-radius:10px;
+object-fit:cover;
+flex:0 0 auto;
+border:1px solid var(--border);
+background:#fff;
 }
 
 .img-controls{
-  flex:1;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
+flex:1;
+min-width:0;
+display:flex;
+flex-direction:column;
+gap:6px;
 }
 
 .img-controls input[type=file]{
-  padding:6px;
-  font-size:12px;
-}
-
-.logo-admin{
-  width:85px;
-  height:85px;
-  border-radius:50%;
-  object-fit:cover;
-  border:1px solid var(--border-soft);
-  background:#fff;
-  display:block;
-  margin-bottom:8px;
+padding:6px;
+font-size:12px;
 }
 
 .toast{
-  position:fixed;
-  left:50%;
-  bottom:70px;
-  transform:translateX(-50%);
-  background:#20261D;
-  color:#fff;
-  padding:11px 16px;
-  border-radius:10px;
-  font-size:13px;
-  z-index:100;
-  display:none;
-  white-space:nowrap;
+position:fixed;
+left:50%;
+bottom:70px;
+transform:translateX(-50%);
+background:#20261D;
+color:#fff;
+padding:11px 16px;
+border-radius:10px;
+font-size:13px;
+z-index:100;
+display:none;
+white-space:nowrap;
 }
 </style>
 </head>
@@ -536,1717 +554,1758 @@ footer.note{
 <body>
 
 <div class="wrap" id="app">
-  <div class="loading">Menü yükleniyor…</div>
+<div class="loading">Menü yükleniyor…</div>
 </div>
 
 <div
-  class="admin-dot"
-  id="adminDot"
-  title="Yönetim"
-  role="button"
-  tabindex="0"
-  aria-label="Yönetim panelini aç"
+class="admin-dot"
+id="adminDot"
+title="Yönetim"
+role="button"
+tabindex="0"
+aria-label="Yönetim panelini aç"
 >⚙</div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 
-/* =========================
+/* =========================================================
    SUPABASE
-========================= */
+========================================================= */
 
-const SUPABASE_URL =
+const SUPABASE_URL=
 "https://cwofalezjvuxppmwipmc.supabase.co";
 
-const SUPABASE_KEY =
-"sb_publishable_n9xGFNXF-wl4C-BFLBGmeg_hsKy9GtU";
+const SUPABASE_KEY=
+"sb_publishable_n9xGFNX-wl4C-BFLBGmeg_hsKy9GtU";
 
-const MENU_ID =
+const MENU_ID=
 "00000000-0000-0000-0000-000000000001";
 
-const DEFAULT_PIN="1234";
-
-const BLANK_PIXEL =
+const BLANK_PIXEL=
 "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
 
-/* =========================
+/* =========================================================
    DEĞİŞKENLER
-========================= */
+========================================================= */
 
 let menuData=null;
 let activeCatId=null;
 let unlocked=false;
-let adminOpen=false;
 let currentPin="";
 
 const app=document.getElementById("app");
 
 
-/* =========================
+/* =========================================================
    GÜVENLİ METİN
-========================= */
+========================================================= */
 
 function esc(s){
-  return String(s??"").replace(
-    /[&<>"']/g,
-    m=>({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    }[m])
-  );
+return String(s??"").replace(
+/[&<>"']/g,
+m=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+}[m])
+);
 }
 
 function escAttr(s){
-  return esc(s);
+return esc(s);
 }
 
 
-/* =========================
-   RENK FONKSİYONLARI
-========================= */
+/* =========================================================
+   RENK
+========================================================= */
 
-function hexRgb(h){
-  h=String(h||"").replace("#","");
+function defaultTheme(){
+return{
+bg:"#F6F1E2",
+surface:"#FFFFFF",
+surfaceRaised:"#ECE2C7",
 
-  if(h.length===3){
-    h=h.split("").map(x=>x+x).join("");
-  }
+title:"#20261D",
+subtitle:"#6E6A52",
+text:"#20261D",
+description:"#6E6A52",
+price:"#134A32",
 
-  let n=parseInt(h,16);
+categoryTitle:"#134A32",
+categoryBg:"#FFFFFF",
+categoryText:"#6E6A52",
+categoryActive:"#1E6F4C",
+categoryActiveText:"#FFFFFF",
 
-  return {
-    r:n>>16&255,
-    g:n>>8&255,
-    b:n&255
-  };
+button:"#1E6F4C",
+buttonText:"#FFFFFF",
+
+border:"#D8D2BF",
+sold:"#A9433A"
+};
 }
 
-function hex(r,g,b){
-  return "#"+[
-    r,g,b
-  ].map(x=>
-    Math.max(0,Math.min(255,Math.round(x)))
-      .toString(16)
-      .padStart(2,"0")
-  ).join("");
-}
+function applyTheme(t){
 
-function light(h,a){
-  try{
-    let {r,g,b}=hexRgb(h);
+let d={
+...defaultTheme(),
+...(t||{})
+};
 
-    return hex(
-      r+(255-r)*a,
-      g+(255-g)*a,
-      b+(255-b)*a
-    );
-  }catch{
-    return h;
-  }
-}
+let r=document.documentElement.style;
 
-function dark(h,a){
-  try{
-    let {r,g,b}=hexRgb(h);
+r.setProperty("--bg",d.bg);
+r.setProperty("--surface",d.surface);
+r.setProperty("--surface-raised",d.surfaceRaised);
 
-    return hex(
-      r*(1-a),
-      g*(1-a),
-      b*(1-a)
-    );
-  }catch{
-    return h;
-  }
-}
+r.setProperty("--title",d.title);
+r.setProperty("--subtitle",d.subtitle);
+r.setProperty("--text",d.text);
+r.setProperty("--description",d.description);
+r.setProperty("--price",d.price);
 
+r.setProperty("--category-title",d.categoryTitle);
+r.setProperty("--category-bg",d.categoryBg);
+r.setProperty("--category-text",d.categoryText);
+r.setProperty("--category-active",d.categoryActive);
+r.setProperty("--category-active-text",d.categoryActiveText);
 
-/* =========================
-   TEMA
-========================= */
+r.setProperty("--button",d.button);
+r.setProperty("--button-text",d.buttonText);
 
-function applyTheme(theme){
+r.setProperty("--border",d.border);
+r.setProperty("--sold",d.sold);
 
-  theme=theme||{};
-
-  let base=theme.baseColor||"#1E6F4C";
-
-  let bg=theme.bg||light(base,.93);
-  let surface=theme.surface||"#FFFFFF";
-  let raised=theme.surfaceRaised||light(base,.83);
-  let accent=theme.accent||base;
-  let accentText=theme.accentText||dark(base,.32);
-  let ink=theme.ink||dark(base,.72);
-
-  let muted=theme.inkMuted||
-    `rgba(${hexRgb(ink).r},${hexRgb(ink).g},${hexRgb(ink).b},.68)`;
-
-  let faint=theme.inkFaint||
-    `rgba(${hexRgb(ink).r},${hexRgb(ink).g},${hexRgb(ink).b},.42)`;
-
-  let border=theme.border||
-    `rgba(${hexRgb(ink).r},${hexRgb(ink).g},${hexRgb(ink).b},.16)`;
-
-  let r=document.documentElement.style;
-
-  r.setProperty("--bg",bg);
-  r.setProperty("--surface",surface);
-  r.setProperty("--surface-raised",raised);
-  r.setProperty("--accent",accent);
-  r.setProperty("--accent-text",accentText);
-  r.setProperty("--ink",ink);
-  r.setProperty("--ink-muted",muted);
-  r.setProperty("--ink-faint",faint);
-  r.setProperty("--border-soft",border);
-
-  document
-    .querySelector('meta[name="theme-color"]')
-    ?.setAttribute("content",accent);
+document
+.querySelector('meta[name="theme-color"]')
+?.setAttribute("content",d.button);
 }
 
 
-/* =========================
+/* =========================================================
    PARA
-========================= */
+========================================================= */
 
 function money(n){
-  return (Number(n)||0)
-    .toLocaleString("tr-TR")+" ₺";
+return(Number(n)||0)
+.toLocaleString("tr-TR")+" ₺";
 }
 
 
-/* =========================
+/* =========================================================
    SUPABASE API
-========================= */
+========================================================= */
 
 async function api(path,opts={}){
 
-  let headers={
-    "apikey":SUPABASE_KEY,
-    "Authorization":"Bearer "+SUPABASE_KEY,
-    "Content-Type":"application/json",
-    "Prefer":"return=representation",
-    ...(opts.headers||{})
-  };
+let headers={
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+SUPABASE_KEY,
+"Content-Type":"application/json",
+"Prefer":"return=representation",
+...(opts.headers||{})
+};
 
-  let res=await fetch(
-    SUPABASE_URL+path,
-    {
-      ...opts,
-      headers
-    }
-  );
+let res=await fetch(
+SUPABASE_URL+path,
+{
+...opts,
+headers
+}
+);
 
-  let txt=await res.text();
+let txt=await res.text();
 
-  let data;
+let data;
 
-  try{
-    data=txt?JSON.parse(txt):null;
-  }catch{
-    data=txt;
-  }
+try{
+data=txt?JSON.parse(txt):null;
+}catch{
+data=txt;
+}
 
-  if(!res.ok){
-    throw new Error(
-      data?.message||
-      data?.error_description||
-      data?.hint||
-      txt||
-      ("HTTP "+res.status)
-    );
-  }
+if(!res.ok){
 
-  return data;
+throw new Error(
+data?.message||
+data?.error_description||
+data?.hint||
+txt||
+("HTTP "+res.status)
+);
+}
+
+return data;
 }
 
 async function rpc(name,args){
-  return api(
-    "/rest/v1/rpc/"+name,
-    {
-      method:"POST",
-      body:JSON.stringify(args)
-    }
-  );
+
+return api(
+"/rest/v1/rpc/"+name,
+{
+method:"POST",
+body:JSON.stringify(args)
+}
+);
+
 }
 
 
-/* =========================
+/* =========================================================
    MENÜ YÜKLE
-========================= */
+========================================================= */
 
 async function loadMenu(){
 
-  try{
+try{
 
-    let rows=await api(
-      "/rest/v1/menus?id=eq."
-      +MENU_ID+
-      "&select=id,data"
-    );
+let rows=await api(
+"/rest/v1/menus?id=eq."
++MENU_ID+
+"&select=id,data"
+);
 
-    if(!rows.length){
-      showError("Menü kaydı bulunamadı.");
-      return;
-    }
+if(!rows.length){
 
-    let d=rows[0].data||{};
+showError("Menü kaydı bulunamadı.");
+return;
+}
 
-    menuData={
-      cafeName:d.cafeName||"Katmerci Dayı",
-      subtitle:d.subtitle||"",
-      logo:d.logo||"",
-      theme:d.theme||{
-        baseColor:"#1E6F4C"
-      },
-      categories:
-        Array.isArray(d.categories)
-        ?d.categories
-        :[]
-    };
+let d=rows[0].data||{};
 
-    menuData.categories.forEach(c=>{
-      if(!Array.isArray(c.items)){
-        c.items=[];
-      }
+menuData={
+cafeName:d.cafeName||"Katmerci Dayı",
+subtitle:d.subtitle||"",
+logo:d.logo||"",
+theme:{
+...defaultTheme(),
+...(d.theme||{})
+},
+categories:
+Array.isArray(d.categories)
+?d.categories
+:[]
+};
 
-      c.items.forEach(i=>{
-        if(i.image===undefined){
-          i.image="";
-        }
+menuData.categories.forEach(c=>{
 
-        if(i.available===undefined){
-          i.available=true;
-        }
-      });
-    });
+if(!Array.isArray(c.items)){
+c.items=[];
+}
 
-    activeCatId=
-      menuData.categories[0]?.id||null;
+c.items.forEach(i=>{
 
-    applyTheme(menuData.theme);
+if(i.image===undefined){
+i.image="";
+}
 
-    renderCustomer();
+if(i.available===undefined){
+i.available=true;
+}
 
-  }catch(e){
+});
 
-    showError(
-      "Menü yüklenemedi: "+e.message
-    );
-  }
+});
+
+activeCatId=
+menuData.categories[0]?.id||null;
+
+applyTheme(menuData.theme);
+
+renderCustomer();
+
+}catch(e){
+
+showError(
+"Menü yüklenemedi: "+e.message
+);
+
+}
+
 }
 
 
-/* =========================
+/* =========================================================
    HATA
-========================= */
+========================================================= */
 
 function showError(m){
 
-  app.innerHTML=
-  `<div class="loading">
-    <b>Menü yüklenemedi</b>
-    <br><br>
-    ${esc(m)}
-  </div>`;
+app.innerHTML=
+`<div class="loading">
+<b>Menü yüklenemedi</b>
+<br><br>
+${esc(m)}
+</div>`;
+
 }
 
 
-/* =========================
+/* =========================================================
    MÜŞTERİ MENÜSÜ
-========================= */
+========================================================= */
 
 function renderCustomer(){
 
-  if(!menuData)return;
+if(!menuData)return;
 
-  let cats=menuData.categories;
+let cats=menuData.categories;
 
-  let active=
-    cats.find(c=>c.id===activeCatId)
-    ||cats[0];
+let active=
+cats.find(c=>c.id===activeCatId)
+||cats[0];
 
-  if(active){
-    activeCatId=active.id;
-  }
+if(active){
+activeCatId=active.id;
+}
 
-  let logoHtml="";
+let logo="";
 
-  if(menuData.logo){
+if(menuData.logo){
 
-    logoHtml=
-    `<img
-      class="logo"
-      src="${escAttr(menuData.logo)}"
-      alt="Katmerci Dayı"
-      onerror="this.style.display='none'"
-    >`;
-  }
+logo=
+`<img
+class="logo"
+src="${escAttr(menuData.logo)}"
+alt="Logo"
+onerror="this.style.display='none'"
+>`;
 
-  let tabs=cats.map(c=>
-    `<button
-      class="tab-btn ${c.id===active?.id?"active":""}"
-      data-cat="${escAttr(c.id)}"
-    >
-      ${esc(c.name)}
-    </button>`
-  ).join("");
+}
 
-  let items=active
-    ?active.items.map(it=>
+let tabs=cats.map(c=>
 
-      `<div class="item-row">
+`<button
+class="tab-btn ${
+c.id===active?.id?"active":""
+}"
+data-cat="${escAttr(c.id)}"
+>
+${esc(c.name)}
+</button>`
 
-        ${
-          it.image
-          ?
-          `<img
-            class="item-thumb"
-            src="${escAttr(it.image)}"
-            alt=""
-            loading="lazy"
-          >`
-          :""
-        }
+).join("");
 
-        <div class="item-text-row">
+let items=active
+?active.items.map(it=>
 
-          <div class="item-name-wrap">
+`<div class="item-row">
 
-            <div class="item-name ${
-              it.available?"":"unavailable"
-            }">
+${
+it.image
+?
+`<img
+class="item-thumb"
+src="${escAttr(it.image)}"
+alt=""
+loading="lazy"
+>`
+:""
+}
 
-              ${esc(it.name)}
+<div class="item-text-row">
 
-              ${
-                it.available
-                ?""
-                :
-                '<span class="sold-out-tag">TÜKENDİ</span>'
-              }
+<div class="item-name-wrap">
 
-            </div>
+<div class="item-name ${
+it.available?"":"unavailable"
+}">
 
-            ${
-              it.desc
-              ?
-              `<div class="item-desc">
-                ${esc(it.desc)}
-              </div>`
-              :""
-            }
+${esc(it.name)}
 
-          </div>
+${
+it.available
+?""
+:'<span class="sold-out-tag">TÜKENDİ</span>'
+}
 
-          <div class="leader"></div>
+</div>
 
-          <div class="item-price ${
-            it.available?"":"unavailable"
-          }">
-            ${money(it.price)}
-          </div>
+${
+it.desc
+?
+`<div class="item-desc">
+${esc(it.desc)}
+</div>`
+:""
+}
 
-        </div>
+</div>
 
-      </div>`
+<div class="leader"></div>
 
-    ).join("")
+<div class="item-price ${
+it.available?"":"unavailable"
+}">
+${money(it.price)}
+</div>
 
-    :
-    `<div class="item-desc">
-      Bu kategoride henüz ürün yok.
-    </div>`;
+</div>
 
-  app.innerHTML=
+</div>`
 
-  `<header class="hero">
+).join("")
+:
+`<div class="item-desc">
+Bu kategoride henüz ürün yok.
+</div>`;
 
-    ${logoHtml}
 
-    <div class="eyebrow">
-      Menü
-    </div>
+app.innerHTML=
 
-    <h1 class="cafe-name">
-      ${esc(menuData.cafeName)}
-    </h1>
+`<header class="hero">
 
-    <p class="subtitle">
-      ${esc(menuData.subtitle)}
-    </p>
+${logo}
 
-  </header>
+<div class="eyebrow">
+MENÜ
+</div>
 
-  <nav class="tabs">
-    ${tabs}
-  </nav>
+<h1 class="cafe-name">
+${esc(menuData.cafeName)}
+</h1>
 
-  <div class="category-block">
+<p class="subtitle">
+${esc(menuData.subtitle)}
+</p>
 
-    <div class="category-title">
-      ${esc(active?.name||"")}
-    </div>
+</header>
 
-    ${items}
+<nav class="tabs">
+${tabs}
+</nav>
 
-  </div>
+<div class="category-block">
 
-  <footer class="note">
-    QR ile açıldı · fiyatlara KDV dahildir
-  </footer>`;
+<div class="category-title">
+${esc(active?.name||"")}
+</div>
 
-  app
-    .querySelectorAll("[data-cat]")
-    .forEach(b=>{
+${items}
 
-      b.onclick=()=>{
-        activeCatId=b.dataset.cat;
-        renderCustomer();
-        window.scrollTo({
-          top:0,
-          behavior:"smooth"
-        });
-      };
+</div>
 
-    });
+<footer class="note">
+QR ile açıldı · fiyatlara KDV dahildir
+</footer>`;
+
+
+app.querySelectorAll("[data-cat]")
+.forEach(b=>{
+
+b.onclick=()=>{
+
+activeCatId=b.dataset.cat;
+
+renderCustomer();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+});
+
 }
 
 
-/* =========================
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
 function toast(m){
 
-  let t=document.getElementById("toast");
+let t=document.getElementById("toast");
 
-  t.textContent=m;
-  t.style.display="block";
+t.textContent=m;
+t.style.display="block";
 
-  setTimeout(()=>{
-    t.style.display="none";
-  },2200);
+setTimeout(()=>{
+t.style.display="none";
+},2200);
+
 }
 
 
-/* =========================
-   PIN
-========================= */
+/* =========================================================
+   PIN GİRİŞ
+========================================================= */
 
 function openGate(){
 
-  if(unlocked){
-    openAdmin();
-    return;
-  }
+if(unlocked){
 
-  let o=document.createElement("div");
+openAdmin();
+return;
 
-  o.className="overlay";
-
-  o.innerHTML=
-
-  `<div class="panel panel-rel pin-box">
-
-    <button
-      class="close-x"
-      aria-label="Kapat"
-    >✕</button>
-
-    <h2>
-      Yönetim Girişi
-    </h2>
-
-    <label>
-      PIN kodu
-    </label>
-
-    <input
-      id="gatePin"
-      type="password"
-      inputmode="numeric"
-      maxlength="20"
-      placeholder="••••"
-    >
-
-    <div
-      class="status-msg"
-      id="gateMsg"
-    ></div>
-
-    <button
-      class="btn btn-primary btn-block"
-      id="gateGo"
-    >
-      Giriş yap
-    </button>
-
-  </div>`;
-
-  document.body.appendChild(o);
-
-  o.querySelector(".close-x").onclick=
-    ()=>o.remove();
-
-  let go=async()=>{
-
-    let p=
-      o.querySelector("#gatePin")
-        .value
-        .trim();
-
-    let msg=
-      o.querySelector("#gateMsg");
-
-    if(!p){
-      msg.textContent="PIN gir.";
-      return;
-    }
-
-    try{
-
-      let ok=await rpc(
-        "check_menu_pin",
-        {
-          p_menu_id:MENU_ID,
-          p_pin:p
-        }
-      );
-
-      if(
-        ok===true||
-        ok?.[0]===true||
-        ok?.result===true
-      ){
-
-        unlocked=true;
-        currentPin=p;
-
-        o.remove();
-
-        openAdmin();
-
-      }else{
-
-        msg.textContent="Hatalı PIN.";
-
-      }
-
-    }catch(e){
-
-      msg.textContent=
-        "Giriş hatası: "+e.message;
-
-    }
-  };
-
-  o.querySelector("#gateGo").onclick=go;
-
-  o.querySelector("#gatePin").onkeydown=e=>{
-    if(e.key==="Enter"){
-      go();
-    }
-  };
-
-  setTimeout(()=>{
-    o.querySelector("#gatePin")?.focus();
-  },100);
 }
 
+let o=document.createElement("div");
 
-/* =========================
-   GÖRSEL SIKIŞTIR
-========================= */
+o.className="overlay";
 
-function resizeImage(
-  file,
-  max=800,
-  q=.78
+o.innerHTML=
+
+`<div class="panel panel-rel" style="text-align:center">
+
+<button
+class="close-x"
+id="gateClose"
+>
+✕
+</button>
+
+<h2>
+Yönetim Girişi
+</h2>
+
+<label>
+PIN kodu
+</label>
+
+<input
+id="gatePin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="••••"
+>
+
+<div
+class="status-msg"
+id="gateMsg"
+></div>
+
+<button
+class="btn btn-primary btn-block"
+id="gateGo"
+>
+Giriş yap
+</button>
+
+</div>`;
+
+document.body.appendChild(o);
+
+o.querySelector("#gateClose")
+.onclick=()=>o.remove();
+
+let go=async()=>{
+
+let p=
+o.querySelector("#gatePin")
+.value
+.trim();
+
+let msg=
+o.querySelector("#gateMsg");
+
+try{
+
+let ok=await rpc(
+"check_menu_pin",
+{
+p_menu_id:MENU_ID,
+p_pin:p
+}
+);
+
+if(
+ok===true||
+ok?.[0]===true||
+ok?.result===true
 ){
 
-  return new Promise((res,rej)=>{
+unlocked=true;
+currentPin=p;
 
-    let r=new FileReader();
+o.remove();
 
-    r.onload=e=>{
+openAdmin();
 
-      let im=new Image();
+}else{
 
-      im.onload=()=>{
+msg.textContent="Hatalı PIN.";
 
-        let w=im.width;
-        let h=im.height;
+}
 
-        if(w>h&&w>max){
+}catch(e){
 
-          h*=max/w;
-          w=max;
+msg.textContent=
+"Giriş hatası: "+e.message;
 
-        }else if(h>=w&&h>max){
+}
 
-          w*=max/h;
-          h=max;
-        }
+};
 
-        let c=
-          document.createElement("canvas");
+o.querySelector("#gateGo").onclick=go;
 
-        c.width=Math.round(w);
-        c.height=Math.round(h);
+o.querySelector("#gatePin").onkeydown=e=>{
+if(e.key==="Enter")go();
+};
 
-        let ctx=c.getContext("2d");
-
-        ctx.drawImage(
-          im,
-          0,
-          0,
-          c.width,
-          c.height
-        );
-
-        res(
-          c.toDataURL(
-            "image/jpeg",
-            q
-          )
-        );
-      };
-
-      im.onerror=rej;
-
-      im.src=e.target.result;
-    };
-
-    r.onerror=rej;
-
-    r.readAsDataURL(file);
-  });
 }
 
 
-/* =========================
+/* =========================================================
+   GÖRSEL
+========================================================= */
+
+function resizeImage(file,max=900,q=.82){
+
+return new Promise((res,rej)=>{
+
+let reader=new FileReader();
+
+reader.onload=e=>{
+
+let img=new Image();
+
+img.onload=()=>{
+
+let w=img.width;
+let h=img.height;
+
+if(w>h&&w>max){
+
+h*=max/w;
+w=max;
+
+}else if(h>=w&&h>max){
+
+w*=max/h;
+h=max;
+
+}
+
+let canvas=
+document.createElement("canvas");
+
+canvas.width=Math.round(w);
+canvas.height=Math.round(h);
+
+canvas
+.getContext("2d")
+.drawImage(
+img,
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+res(
+canvas.toDataURL(
+"image/jpeg",
+q
+)
+);
+
+};
+
+img.onerror=rej;
+
+img.src=e.target.result;
+
+};
+
+reader.onerror=rej;
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+/* =========================================================
    ÜRÜN BUL
-========================= */
+========================================================= */
 
 function findItem(id){
 
-  for(let c of menuData.categories){
+for(let c of menuData.categories){
 
-    let i=
-      c.items.find(x=>x.id===id);
+let item=
+c.items.find(
+x=>x.id===id
+);
 
-    if(i)return i;
-  }
+if(item)return item;
 
-  return null;
+}
+
+return null;
+
 }
 
 
-/* =========================
+/* =========================================================
+   RENK ALANLARI
+========================================================= */
+
+const colorFields=[
+["bg","Ana arka plan"],
+["surface","Kart arka planı"],
+["surfaceRaised","Ürün kutusu"],
+["title","Kafe adı"],
+["subtitle","Alt başlık"],
+["text","Ürün adı"],
+["description","Açıklamalar"],
+["price","Fiyatlar"],
+["categoryTitle","Kategori başlığı"],
+["categoryBg","Kategori arka planı"],
+["categoryText","Kategori yazısı"],
+["categoryActive","Aktif kategori"],
+["categoryActiveText","Aktif kategori yazısı"],
+["button","Ana buton"],
+["buttonText","Buton yazısı"],
+["border","Kenarlıklar"],
+["sold","Tükenen ürün"]
+];
+
+
+/* =========================================================
    YÖNETİM PANELİ
-========================= */
+========================================================= */
 
 function renderAdmin(){
 
-  let o=
-    document.getElementById(
-      "adminOverlay"
-    );
-
-  let cats=
-    menuData.categories.map(c=>
-
-    `<div class="cat-header">
-
-      <input
-        data-cat-name="${escAttr(c.id)}"
-        value="${escAttr(c.name)}"
-      >
-
-      <button
-        class="btn btn-danger"
-        data-del-cat="${escAttr(c.id)}"
-      >
-        Kategoriyi sil
-      </button>
-
-    </div>
-
-    ${
-      c.items.map(i=>
-
-      `<div class="item-edit-card">
-
-        <label>
-          Ürün adı
-        </label>
-
-        <input
-          data-item-name="${i.id}"
-          value="${escAttr(i.name)}"
-        >
-
-        <label>
-          Açıklama
-        </label>
-
-        <input
-          data-item-desc="${i.id}"
-          value="${escAttr(i.desc||"")}"
-        >
-
-        <label>
-          Fiyat (₺)
-        </label>
-
-        <input
-          type="number"
-          min="0"
-          step="1"
-          data-item-price="${i.id}"
-          value="${Number(i.price)||0}"
-        >
+let o=
+document.getElementById("adminOverlay");
+
+let t={
+...defaultTheme(),
+...(menuData.theme||{})
+};
+
+
+/* KATEGORİLER */
+
+let cats=
+menuData.categories.map(c=>
+
+`<div class="cat-header">
+
+<input
+data-cat-name="${escAttr(c.id)}"
+value="${escAttr(c.name)}"
+>
+
+<button
+class="btn btn-danger"
+data-del-cat="${escAttr(c.id)}"
+>
+Sil
+</button>
+
+</div>
+
+${c.items.map(i=>
+
+`<div class="item-edit-card">
+
+<label>
+Ürün adı
+</label>
 
-        <label>
-          Görsel
-        </label>
+<input
+data-item-name="${i.id}"
+value="${escAttr(i.name)}"
+>
+
+<label>
+Açıklama
+</label>
 
-        <div class="img-row">
+<input
+data-item-desc="${i.id}"
+value="${escAttr(i.desc||"")}"
+>
 
-          <img
-            class="admin-thumb"
-            data-preview="${i.id}"
-            src="${
-              i.image
-              ?escAttr(i.image)
-              :BLANK_PIXEL
-            }"
-          >
+<label>
+Fiyat (₺)
+</label>
 
-          <div class="img-controls">
+<input
+type="number"
+min="0"
+step="1"
+data-item-price="${i.id}"
+value="${Number(i.price)||0}"
+>
 
-            <input
-              type="file"
-              accept="image/*"
-              data-file="${i.id}"
-            >
+<label>
+Görsel
+</label>
 
-            <input
-              data-url="${i.id}"
-              placeholder="veya görsel linki"
-              value="${
-                i.image?.startsWith("http")
-                ?escAttr(i.image)
-                :""
-              }"
-            >
+<div class="img-row">
 
-            <button
-              class="btn btn-ghost"
-              data-remove-img="${i.id}"
-            >
-              Görseli kaldır
-            </button>
+<img
+class="admin-thumb"
+data-preview="${i.id}"
+src="${
+i.image
+?escAttr(i.image)
+:BLANK_PIXEL
+}"
+>
 
-          </div>
+<div class="img-controls">
 
-        </div>
+<input
+type="file"
+accept="image/*"
+data-file="${i.id}"
+>
 
-        <label class="avail-toggle">
+<input
+data-url="${i.id}"
+placeholder="Görsel linki"
+value="${
+i.image?.startsWith("http")
+?escAttr(i.image)
+:""
+}"
+>
 
-          <input
-            type="checkbox"
-            data-avail="${i.id}"
-            ${i.available?"checked":""}
-          >
+<button
+class="btn btn-ghost"
+data-remove-img="${i.id}"
+>
+Görseli kaldır
+</button>
 
-          Stokta / satışta
+</div>
 
-        </label>
+</div>
 
-        <div class="actions-row">
+<label class="avail-toggle">
 
-          <button
-            class="btn btn-danger"
-            data-del-item="${i.id}"
-            data-cat="${c.id}"
-          >
-            Ürünü sil
-          </button>
+<input
+type="checkbox"
+data-avail="${i.id}"
+${i.available?"checked":""}
+>
 
-        </div>
+Stokta / satışta
 
-      </div>`
+</label>
 
-      ).join("")
-    }
+<div class="actions-row">
 
-    <button
-      class="btn btn-ghost btn-block"
-      data-add-item="${c.id}"
-    >
-      + Ürün ekle
-    </button>`
+<button
+class="btn btn-danger"
+data-del-item="${i.id}"
+data-cat="${c.id}"
+>
+Ürünü sil
+</button>
 
-  ).join("");
+</div>
 
+</div>`
 
-  let theme=menuData.theme||{};
+).join("")}
 
-  let base=theme.baseColor||"#1E6F4C";
+<button
+class="btn btn-ghost btn-block"
+data-add-item="${c.id}"
+>
++ Ürün ekle
+</button>`
 
-  let bg=theme.bg||light(base,.93);
-  let surface=theme.surface||"#FFFFFF";
-  let raised=theme.surfaceRaised||light(base,.83);
-  let accent=theme.accent||base;
-  let accentText=theme.accentText||dark(base,.32);
-  let ink=theme.ink||dark(base,.72);
+).join("");
 
 
-  o.innerHTML=
+/* RENK KUTULARI */
 
-  `<div class="panel panel-rel">
+let colors=
+colorFields.map(([key,label])=>
 
-    <button
-      class="close-x"
-      id="adminClose"
-    >
-      ✕
-    </button>
+`<div class="color-box">
 
-    <h2>
-      Yönetim Paneli
-    </h2>
+<span>
+${label}
+</span>
 
+<input
+type="color"
+data-color="${key}"
+value="${t[key]}"
+>
 
-    <label>
-      Kafe adı
-    </label>
+</div>`
 
-    <input
-      id="cafeName"
-      value="${escAttr(menuData.cafeName)}"
-    >
-
-
-    <label>
-      Alt başlık
-    </label>
-
-    <input
-      id="subtitle"
-      value="${escAttr(menuData.subtitle)}"
-    >
-
-
-    <label>
-      Logo
-    </label>
-
-    ${
-      menuData.logo
-      ?
-      `<img
-        class="logo-admin"
-        id="logoPreview"
-        src="${escAttr(menuData.logo)}"
-      >`
-      :
-      `<img
-        class="logo-admin"
-        id="logoPreview"
-        src="${BLANK_PIXEL}"
-        style="display:none"
-      >`
-    }
-
-    <input
-      type="file"
-      id="logoFile"
-      accept="image/*"
-    >
-
-    <input
-      id="logoUrl"
-      placeholder="veya logo linki"
-      value="${
-        menuData.logo?.startsWith("http")
-        ?escAttr(menuData.logo)
-        :""
-      }"
-    >
-
-
-    ${cats}
-
-
-    <button
-      class="btn btn-ghost btn-block"
-      id="addCat"
-    >
-      + Yeni kategori
-    </button>
-
-
-    <hr
-      style="
-        border:none;
-        border-top:1px solid var(--border-soft);
-        margin:25px 0;
-      "
-    >
-
-
-    <label>
-      Tema renkleri
-    </label>
-
-    <div class="color-grid">
-
-      <div class="color-box">
-        <span>Arka plan</span>
-        <input
-          type="color"
-          id="colorBg"
-          value="${bg}"
-        >
-      </div>
-
-      <div class="color-box">
-        <span>Kartlar</span>
-        <input
-          type="color"
-          id="colorSurface"
-          value="${surface}"
-        >
-      </div>
+).join("");
 
-      <div class="color-box">
-        <span>Kart içi</span>
-        <input
-          type="color"
-          id="colorRaised"
-          value="${raised}"
-        >
-      </div>
 
-      <div class="color-box">
-        <span>Ana renk</span>
-        <input
-          type="color"
-          id="colorAccent"
-          value="${accent}"
-        >
-      </div>
+/* PANEL */
 
-      <div class="color-box">
-        <span>Başlık rengi</span>
-        <input
-          type="color"
-          id="colorAccentText"
-          value="${accentText}"
-        >
-      </div>
+o.innerHTML=
 
-      <div class="color-box">
-        <span>Yazı rengi</span>
-        <input
-          type="color"
-          id="colorInk"
-          value="${ink}"
-        >
-      </div>
+`<div class="panel panel-rel">
 
-    </div>
+<button
+class="close-x"
+id="adminClose"
+>
+✕
+</button>
 
+<h2>
+Yönetim Paneli
+</h2>
 
-    <label>
-      Yeni PIN
-    </label>
 
-    <div class="row-2">
+<!-- LOGO -->
 
-      <input
-        id="newPin"
-        type="password"
-        inputmode="numeric"
-        placeholder="En az 4 hane"
-      >
+<div class="color-section"
+style="margin-top:0">
 
-      <button
-        class="btn btn-ghost"
-        id="changePin"
-      >
-        Değiştir
-      </button>
+<div class="color-section-title">
+Logo
+</div>
 
-    </div>
+${
+menuData.logo
+?
+`<img
+class="logo-admin"
+id="logoPreview"
+src="${escAttr(menuData.logo)}"
+>`
+:
+`<img
+class="logo-admin"
+id="logoPreview"
+src="${BLANK_PIXEL}"
+style="display:none"
+>`
+}
 
+<input
+type="file"
+id="logoFile"
+accept="image/*"
+>
 
-    <div
-      class="status-msg"
-      id="adminMsg"
-    ></div>
+<input
+id="logoUrl"
+placeholder="veya logo linki"
+value="${
+menuData.logo?.startsWith("http")
+?escAttr(menuData.logo)
+:""
+}"
+>
 
+</div>
 
-    <button
-      class="btn btn-primary btn-block"
-      id="saveMenu"
-    >
-      Kaydet
-    </button>
 
-  </div>`;
+<!-- KAFE -->
 
+<label>
+Kafe adı
+</label>
 
-  /* KAFE */
+<input
+id="cafeName"
+value="${escAttr(menuData.cafeName)}"
+>
 
-  o.querySelector("#cafeName").oninput=e=>{
-    menuData.cafeName=e.target.value;
-  };
+<label>
+Alt başlık
+</label>
 
-  o.querySelector("#subtitle").oninput=e=>{
-    menuData.subtitle=e.target.value;
-  };
+<input
+id="subtitle"
+value="${escAttr(menuData.subtitle)}"
+>
 
 
-  /* LOGO */
+<!-- RENKLER -->
 
-  let logoFile=
-    o.querySelector("#logoFile");
+<div class="color-section">
 
-  let logoUrl=
-    o.querySelector("#logoUrl");
+<div class="color-section-title">
+Arka Plan Renkleri
+</div>
 
-  let logoPreview=
-    o.querySelector("#logoPreview");
+<div class="color-grid">
 
+${colors}
 
-  logoFile.onchange=async()=>{
+</div>
 
-    let f=logoFile.files?.[0];
+</div>
 
-    if(!f)return;
 
-    try{
+<!-- KATEGORİLER -->
 
-      menuData.logo=
-        await resizeImage(
-          f,
-          1000,
-          .85
-        );
+${cats}
 
-      logoPreview.src=
-        menuData.logo;
 
-      logoPreview.style.display=
-        "block";
+<button
+class="btn btn-ghost btn-block"
+id="addCat"
+>
++ Yeni kategori
+</button>
 
-      logoUrl.value="";
 
-    }catch{
+<hr
+style="
+border:none;
+border-top:1px solid var(--border);
+margin:25px 0;
+">
 
-      toast("Logo yüklenemedi");
 
-    }
-  };
+<!-- PIN -->
 
+<label>
+Yeni PIN
+</label>
 
-  logoUrl.oninput=e=>{
+<div style="display:flex;gap:8px">
 
-    let v=e.target.value.trim();
+<input
+id="newPin"
+type="password"
+inputmode="numeric"
+placeholder="En az 4 hane"
+>
 
-    menuData.logo=v;
+<button
+class="btn btn-ghost"
+id="changePin"
+>
+Değiştir
+</button>
 
-    if(v){
+</div>
 
-      logoPreview.src=v;
-      logoPreview.style.display="block";
 
-    }else{
+<div
+class="status-msg"
+id="adminMsg"
+></div>
 
-      logoPreview.style.display="none";
-    }
-  };
 
+<!-- SADECE KAYDET -->
 
-  /* KATEGORİ */
+<button
+class="btn btn-primary btn-block"
+id="saveMenu"
+style="
+margin-top:20px;
+padding:13px;
+font-size:14px;
+"
+>
+Kaydet
+</button>
 
-  o.querySelectorAll(
-    "[data-cat-name]"
-  ).forEach(x=>{
+</div>`;
 
-    x.oninput=e=>{
 
-      let c=
-        menuData.categories.find(
-          c=>c.id===x.dataset.catName
-        );
+/* =========================================================
+   KAFE
+========================================================= */
 
-      if(c){
-        c.name=e.target.value;
-      }
-    };
+o.querySelector("#cafeName").oninput=e=>{
+menuData.cafeName=e.target.value;
+};
 
-  });
+o.querySelector("#subtitle").oninput=e=>{
+menuData.subtitle=e.target.value;
+};
 
 
-  /* ÜRÜN ADI */
+/* =========================================================
+   LOGO
+========================================================= */
 
-  o.querySelectorAll(
-    "[data-item-name]"
-  ).forEach(x=>{
+let logoFile=
+o.querySelector("#logoFile");
 
-    x.oninput=e=>{
+let logoUrl=
+o.querySelector("#logoUrl");
 
-      let i=
-        findItem(x.dataset.itemName);
+let logoPreview=
+o.querySelector("#logoPreview");
 
-      if(i){
-        i.name=e.target.value;
-      }
-    };
 
-  });
+logoFile.onchange=async()=>{
 
+let file=logoFile.files?.[0];
 
-  /* AÇIKLAMA */
+if(!file)return;
 
-  o.querySelectorAll(
-    "[data-item-desc]"
-  ).forEach(x=>{
+try{
 
-    x.oninput=e=>{
+menuData.logo=
+await resizeImage(
+file,
+1200,
+.88
+);
 
-      let i=
-        findItem(x.dataset.itemDesc);
+logoPreview.src=
+menuData.logo;
 
-      if(i){
-        i.desc=e.target.value;
-      }
-    };
+logoPreview.style.display=
+"block";
 
-  });
+logoUrl.value="";
 
+}catch{
 
-  /* FİYAT */
+toast("Logo yüklenemedi");
 
-  o.querySelectorAll(
-    "[data-item-price]"
-  ).forEach(x=>{
+}
 
-    x.oninput=e=>{
+};
 
-      let i=
-        findItem(x.dataset.itemPrice);
 
-      if(i){
-        i.price=
-          Number(e.target.value)||0;
-      }
-    };
+logoUrl.oninput=e=>{
 
-  });
+let value=
+e.target.value.trim();
 
+menuData.logo=value;
 
-  /* STOK */
+if(value){
 
-  o.querySelectorAll(
-    "[data-avail]"
-  ).forEach(x=>{
+logoPreview.src=value;
+logoPreview.style.display="block";
 
-    x.onchange=e=>{
+}else{
 
-      let i=
-        findItem(x.dataset.avail);
+logoPreview.style.display="none";
 
-      if(i){
-        i.available=
-          e.target.checked;
-      }
-    };
+}
 
-  });
+};
 
 
-  /* ÜRÜN SİL */
+/* =========================================================
+   RENKLER
+========================================================= */
 
-  o.querySelectorAll(
-    "[data-del-item]"
-  ).forEach(b=>{
+o.querySelectorAll(
+"[data-color]"
+).forEach(input=>{
 
-    b.onclick=()=>{
+input.oninput=e=>{
 
-      let c=
-        menuData.categories.find(
-          c=>c.id===b.dataset.cat
-        );
+let key=
+e.target.dataset.color;
 
-      if(c){
+menuData.theme={
+...menuData.theme,
+[key]:e.target.value
+};
 
-        c.items=
-          c.items.filter(
-            i=>i.id!==b.dataset.delItem
-          );
+applyTheme(
+menuData.theme
+);
 
-        renderAdmin();
-      }
-    };
+};
 
-  });
+});
 
 
-  /* ÜRÜN EKLE */
+/* =========================================================
+   KATEGORİ
+========================================================= */
 
-  o.querySelectorAll(
-    "[data-add-item]"
-  ).forEach(b=>{
+o.querySelectorAll(
+"[data-cat-name]"
+).forEach(input=>{
 
-    b.onclick=()=>{
+input.oninput=e=>{
 
-      let c=
-        menuData.categories.find(
-          c=>c.id===b.dataset.addItem
-        );
+let c=
+menuData.categories.find(
+c=>c.id===input.dataset.catName
+);
 
-      if(c){
+if(c){
+c.name=e.target.value;
+}
 
-        c.items.push({
-          id:
-            "i"+
-            Date.now().toString(36)+
-            Math.random()
-              .toString(36)
-              .slice(2,7),
+};
 
-          name:"Yeni ürün",
-          desc:"",
-          price:0,
-          available:true,
-          image:""
-        });
+});
 
-        renderAdmin();
-      }
-    };
 
-  });
+/* =========================================================
+   ÜRÜN ADI
+========================================================= */
 
+o.querySelectorAll(
+"[data-item-name]"
+).forEach(input=>{
 
-  /* KATEGORİ SİL */
+input.oninput=e=>{
 
-  o.querySelectorAll(
-    "[data-del-cat]"
-  ).forEach(b=>{
+let i=
+findItem(
+input.dataset.itemName
+);
 
-    b.onclick=()=>{
+if(i){
+i.name=e.target.value;
+}
 
-      if(
-        confirm(
-          "Kategori ve içindeki ürünler silinsin mi?"
-        )
-      ){
+};
 
-        menuData.categories=
-          menuData.categories.filter(
-            c=>c.id!==b.dataset.delCat
-          );
+});
 
-        if(
-          activeCatId===b.dataset.delCat
-        ){
-          activeCatId=
-            menuData.categories[0]?.id||null;
-        }
 
-        renderAdmin();
-      }
-    };
+/* =========================================================
+   ÜRÜN AÇIKLAMA
+========================================================= */
 
-  });
+o.querySelectorAll(
+"[data-item-desc]"
+).forEach(input=>{
 
+input.oninput=e=>{
 
-  /* GÖRSEL DOSYASI */
+let i=
+findItem(
+input.dataset.itemDesc
+);
 
-  o.querySelectorAll(
-    "[data-file]"
-  ).forEach(x=>{
+if(i){
+i.desc=e.target.value;
+}
 
-    x.onchange=async()=>{
+};
 
-      let f=x.files?.[0];
+});
 
-      if(!f)return;
 
-      try{
+/* =========================================================
+   FİYAT
+========================================================= */
 
-        let i=
-          findItem(x.dataset.file);
+o.querySelectorAll(
+"[data-item-price]"
+).forEach(input=>{
 
-        i.image=
-          await resizeImage(
-            f,
-            800,
-            .78
-          );
+input.oninput=e=>{
 
-        renderAdmin();
+let i=
+findItem(
+input.dataset.itemPrice
+);
 
-      }catch{
+if(i){
+i.price=
+Number(e.target.value)||0;
+}
 
-        toast(
-          "Görsel yüklenemedi"
-        );
-      }
-    };
+};
 
-  });
+});
 
 
-  /* GÖRSEL LİNK */
+/* =========================================================
+   STOK
+========================================================= */
 
-  o.querySelectorAll(
-    "[data-url]"
-  ).forEach(x=>{
+o.querySelectorAll(
+"[data-avail]"
+).forEach(input=>{
 
-    x.oninput=e=>{
+input.onchange=e=>{
 
-      let i=
-        findItem(x.dataset.url);
+let i=
+findItem(
+input.dataset.avail
+);
 
-      if(!i)return;
+if(i){
+i.available=
+e.target.checked;
+}
 
-      i.image=
-        e.target.value.trim();
+};
 
-      let p=
-        o.querySelector(
-          `[data-preview="${i.id}"]`
-        );
+});
 
-      if(p){
 
-        p.src=
-          i.image||
-          BLANK_PIXEL;
-      }
-    };
+/* =========================================================
+   ÜRÜN SİL
+========================================================= */
 
-  });
+o.querySelectorAll(
+"[data-del-item]"
+).forEach(btn=>{
 
+btn.onclick=()=>{
 
-  /* GÖRSEL SİL */
+let c=
+menuData.categories.find(
+c=>c.id===btn.dataset.cat
+);
 
-  o.querySelectorAll(
-    "[data-remove-img]"
-  ).forEach(b=>{
+if(!c)return;
 
-    b.onclick=()=>{
+c.items=
+c.items.filter(
+i=>i.id!==btn.dataset.delItem
+);
 
-      let i=
-        findItem(
-          b.dataset.removeImg
-        );
+renderAdmin();
 
-      if(i){
+};
 
-        i.image="";
+});
 
-        renderAdmin();
-      }
-    };
 
-  });
+/* =========================================================
+   ÜRÜN EKLE
+========================================================= */
 
+o.querySelectorAll(
+"[data-add-item]"
+).forEach(btn=>{
 
-  /* KATEGORİ EKLE */
+btn.onclick=()=>{
 
-  o.querySelector("#addCat").onclick=()=>{
+let c=
+menuData.categories.find(
+c=>c.id===btn.dataset.addItem
+);
 
-    menuData.categories.push({
+if(!c)return;
 
-      id:
-        "c"+
-        Date.now().toString(36)+
-        Math.random()
-          .toString(36)
-          .slice(2,7),
+c.items.push({
 
-      name:"Yeni kategori",
+id:
+"i"+
+Date.now().toString(36)+
+Math.random()
+.toString(36)
+.slice(2,7),
 
-      items:[]
-    });
+name:"Yeni ürün",
+desc:"",
+price:0,
+available:true,
+image:""
 
-    renderAdmin();
-  };
+});
 
+renderAdmin();
 
-  /* RENKLER */
+};
 
-  function updateColor(){
+});
 
-    menuData.theme={
-      ...(menuData.theme||{}),
 
-      baseColor:
-        o.querySelector("#colorAccent").value,
+/* =========================================================
+   KATEGORİ SİL
+========================================================= */
 
-      bg:
-        o.querySelector("#colorBg").value,
+o.querySelectorAll(
+"[data-del-cat]"
+).forEach(btn=>{
 
-      surface:
-        o.querySelector("#colorSurface").value,
+btn.onclick=()=>{
 
-      surfaceRaised:
-        o.querySelector("#colorRaised").value,
+if(!confirm(
+"Kategori ve içindeki ürünler silinsin mi?"
+)){
+return;
+}
 
-      accent:
-        o.querySelector("#colorAccent").value,
+menuData.categories=
+menuData.categories.filter(
+c=>c.id!==btn.dataset.delCat
+);
 
-      accentText:
-        o.querySelector("#colorAccentText").value,
+if(
+activeCatId===btn.dataset.delCat
+){
 
-      ink:
-        o.querySelector("#colorInk").value
-    };
+activeCatId=
+menuData.categories[0]?.id||null;
 
-    applyTheme(
-      menuData.theme
-    );
-  }
+}
 
+renderAdmin();
 
-  [
-    "#colorBg",
-    "#colorSurface",
-    "#colorRaised",
-    "#colorAccent",
-    "#colorAccentText",
-    "#colorInk"
-  ].forEach(sel=>{
+};
 
-    o.querySelector(sel).oninput=
-      updateColor;
+});
 
-  });
 
+/* =========================================================
+   ÜRÜN GÖRSELİ
+========================================================= */
 
-  /* PIN DEĞİŞTİR */
+o.querySelectorAll(
+"[data-file]"
+).forEach(input=>{
 
-  o.querySelector(
-    "#changePin"
-  ).onclick=async()=>{
+input.onchange=async()=>{
 
-    let n=
-      o.querySelector(
-        "#newPin"
-      ).value.trim();
+let file=input.files?.[0];
 
-    let m=
-      o.querySelector(
-        "#adminMsg"
-      );
+if(!file)return;
 
-    if(n.length<4){
+try{
 
-      m.textContent=
-        "PIN en az 4 hane olmalı.";
+let i=
+findItem(
+input.dataset.file
+);
 
-      return;
-    }
+i.image=
+await resizeImage(
+file,
+900,
+.80
+);
 
-    try{
+renderAdmin();
 
-      let ok=
-        await rpc(
-          "change_menu_pin",
-          {
-            p_menu_id:MENU_ID,
-            p_old_pin:currentPin,
-            p_new_pin:n
-          }
-        );
+}catch{
 
-      if(
-        ok===true||
-        ok?.[0]===true||
-        ok?.result===true
-      ){
+toast(
+"Görsel yüklenemedi"
+);
 
-        currentPin=n;
+}
 
-        m.textContent=
-          "PIN değiştirildi.";
+};
 
-      }else{
+});
 
-        m.textContent=
-          "PIN değiştirilemedi.";
-      }
 
-    }catch(e){
+/* =========================================================
+   GÖRSEL LİNKİ
+========================================================= */
 
-      m.textContent=
-        "Hata: "+e.message;
-    }
-  };
+o.querySelectorAll(
+"[data-url]"
+).forEach(input=>{
 
+input.oninput=e=>{
 
-  /* KAYDET */
+let i=
+findItem(
+input.dataset.url
+);
 
-  o.querySelector(
-    "#saveMenu"
-  ).onclick=async()=>{
+if(!i)return;
 
-    let m=
-      o.querySelector(
-        "#adminMsg"
-      );
+i.image=
+e.target.value.trim();
 
-    m.textContent=
-      "Kaydediliyor…";
+let preview=
+o.querySelector(
+`[data-preview="${i.id}"]`
+);
 
-    try{
+if(preview){
 
-      /*
-        ÖNEMLİ:
-        Logo dahil mevcut verilerin tamamını
-        Supabase'e gönderiyoruz.
-      */
+preview.src=
+i.image||
+BLANK_PIXEL;
 
-      let payload={
+}
 
-        cafeName:
-          menuData.cafeName,
+};
 
-        subtitle:
-          menuData.subtitle,
+});
 
-        logo:
-          menuData.logo||"",
 
-        theme:
-          menuData.theme,
+/* =========================================================
+   GÖRSEL SİL
+========================================================= */
 
-        categories:
-          menuData.categories
-      };
+o.querySelectorAll(
+"[data-remove-img]"
+).forEach(btn=>{
 
+btn.onclick=()=>{
 
-      let ok=
-        await rpc(
-          "save_menu",
-          {
-            p_menu_id:MENU_ID,
-            p_pin:currentPin,
-            p_data:payload
-          }
-        );
+let i=
+findItem(
+btn.dataset.removeImg
+);
 
+if(i){
 
-      if(
-        ok===true||
-        ok?.[0]===true||
-        ok?.result===true
-      ){
+i.image="";
 
-        m.textContent=
-          "Kaydedildi ✓";
+renderAdmin();
 
-        setTimeout(()=>{
+}
 
-          o.remove();
+};
 
-          adminOpen=false;
+});
 
-          applyTheme(
-            menuData.theme
-          );
 
-          renderCustomer();
+/* =========================================================
+   KATEGORİ EKLE
+========================================================= */
 
-          toast(
-            "Menü kaydedildi ✓"
-          );
+o.querySelector("#addCat")
+.onclick=()=>{
 
-        },500);
+menuData.categories.push({
 
-      }else{
+id:
+"c"+
+Date.now().toString(36)+
+Math.random()
+.toString(36)
+.slice(2,7),
 
-        m.textContent=
-          "Kaydedilemedi.";
-      }
+name:"Yeni kategori",
 
-    }catch(e){
+items:[]
 
-      m.textContent=
-        "Hata: "+e.message;
-    }
-  };
+});
 
+renderAdmin();
 
-  /* KAPAT */
+};
 
-  o.querySelector(
-    "#adminClose"
-  ).onclick=()=>{
 
-    o.remove();
+/* =========================================================
+   PIN DEĞİŞTİR
+========================================================= */
 
-    adminOpen=false;
+o.querySelector("#changePin")
+.onclick=async()=>{
 
-    loadMenu();
-  };
+let newPin=
+o.querySelector("#newPin")
+.value
+.trim();
+
+let msg=
+o.querySelector("#adminMsg");
+
+if(newPin.length<4){
+
+msg.textContent=
+"PIN en az 4 hane olmalı.";
+
+return;
+
+}
+
+try{
+
+let ok=
+await rpc(
+"change_menu_pin",
+{
+p_menu_id:MENU_ID,
+p_old_pin:currentPin,
+p_new_pin:newPin
+}
+);
+
+if(
+ok===true||
+ok?.[0]===true||
+ok?.result===true
+){
+
+currentPin=newPin;
+
+msg.textContent=
+"PIN değiştirildi.";
+
+}else{
+
+msg.textContent=
+"PIN değiştirilemedi.";
+
+}
+
+}catch(e){
+
+msg.textContent=
+"Hata: "+e.message;
+
+}
+
+};
+
+
+/* =========================================================
+   KAYDET
+========================================================= */
+
+o.querySelector("#saveMenu")
+.onclick=async()=>{
+
+let msg=
+o.querySelector("#adminMsg");
+
+msg.textContent=
+"Kaydediliyor…";
+
+try{
+
+let payload={
+
+cafeName:
+menuData.cafeName,
+
+subtitle:
+menuData.subtitle,
+
+logo:
+menuData.logo||"",
+
+theme:
+menuData.theme,
+
+categories:
+menuData.categories
+
+};
+
+let ok=
+await rpc(
+"save_menu",
+{
+p_menu_id:MENU_ID,
+p_pin:currentPin,
+p_data:payload
+}
+);
+
+if(
+ok===true||
+ok?.[0]===true||
+ok?.result===true
+){
+
+msg.textContent=
+"Kaydedildi ✓";
+
+setTimeout(()=>{
+
+o.remove();
+
+applyTheme(
+menuData.theme
+);
+
+renderCustomer();
+
+toast(
+"Menü kaydedildi ✓"
+);
+
+},500);
+
+}else{
+
+msg.textContent=
+"Kaydedilemedi.";
+
+}
+
+}catch(e){
+
+msg.textContent=
+"Hata: "+e.message;
+
+}
+
+};
+
+
+/* =========================================================
+   KAPAT
+========================================================= */
+
+o.querySelector("#adminClose")
+.onclick=()=>{
+
+o.remove();
+
+loadMenu();
+
+};
+
 }
 
 
-/* =========================
+/* =========================================================
    ADMIN AÇ
-========================= */
+========================================================= */
 
 function openAdmin(){
 
-  adminOpen=true;
+let old=
+document.getElementById(
+"adminOverlay"
+);
 
-  let o=
-    document.createElement("div");
+if(old){
+old.remove();
+}
 
-  o.className="overlay";
-  o.id="adminOverlay";
+let o=
+document.createElement("div");
 
-  document.body.appendChild(o);
+o.className="overlay";
+o.id="adminOverlay";
 
-  renderAdmin();
+document.body.appendChild(o);
+
+renderAdmin();
+
 }
 
 
-/* =========================
-   YÖNETİM BUTONU
-========================= */
+/* =========================================================
+   YÖNETİM
+========================================================= */
 
 document
-  .getElementById("adminDot")
-  .onclick=openGate;
+.getElementById("adminDot")
+.onclick=openGate;
 
 document
-  .getElementById("adminDot")
-  .onkeydown=e=>{
+.getElementById("adminDot")
+.onkeydown=e=>{
 
-    if(e.key==="Enter"){
-      openGate();
-    }
-  };
+if(e.key==="Enter"){
+openGate();
+}
+
+};
 
 
-/* =========================
+/* =========================================================
    BAŞLAT
-========================= */
+========================================================= */
 
 loadMenu();
 
