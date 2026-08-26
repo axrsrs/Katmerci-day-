@@ -2,557 +2,535 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#F6F1E2">
 <title>Kafe Menü</title>
 
 <style>
 :root{
-  --bg:#F6F1E2;
-  --header:#F6F1E2;
-  --surface:#FFFFFF;
-  --surface-raised:#ECE2C7;
-  --category-bg:#1E6F4C;
-  --category-text:#FFFFFF;
-  --accent:#1E6F4C;
-  --accent-text:#134A32;
-  --ink:#20261D;
-  --ink-muted:#6E6A52;
-  --price:#1E6F4C;
-  --button:#1E6F4C;
-  --button-text:#FFFFFF;
-  --border:#D8D0B9;
-  --danger:#A9433A;
-  --tab-bg:#FFFFFF;
-  --tab-text:#6E6A52;
-  --tab-active:#1E6F4C;
-  --sold:#A9433A;
+--bg:#F6F1E2;
+--header:#F6F1E2;
+--surface:#fff;
+--surface-raised:#ECE2C7;
+--category-bg:#1E6F4C;
+--category-text:#fff;
+--accent:#1E6F4C;
+--accent-text:#134A32;
+--ink:#20261D;
+--ink-muted:#6E6A52;
+--price:#1E6F4C;
+--button:#1E6F4C;
+--button-text:#fff;
+--border:#D8D0B9;
+--tab-bg:#fff;
+--tab-text:#6E6A52;
+--tab-active:#1E6F4C;
+--sold:#A9433A;
 }
 
 *{box-sizing:border-box}
 
 html,body{
-  margin:0;
-  padding:0;
+margin:0;
+padding:0;
 }
 
 body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:Arial,sans-serif;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+background:var(--bg);
+color:var(--ink);
+font-family:Arial,sans-serif;
+min-height:100vh;
+-webkit-font-smoothing:antialiased;
+overflow-x:hidden;
 }
 
 button,input{
-  font-family:inherit;
+font-family:inherit;
 }
 
 .wrap{
-  max-width:640px;
-  margin:auto;
-  padding-bottom:100px;
+max-width:640px;
+margin:auto;
+padding-bottom:100px;
 }
 
-header.hero{
-  background:var(--header);
-  padding:38px 24px 30px;
-  text-align:center;
-  border-bottom:1px solid var(--border);
+.hero{
+background:var(--header);
+padding:38px 24px 30px;
+text-align:center;
+border-bottom:1px solid var(--border);
 }
 
 .logo-wrap{
-  display:flex;
-  justify-content:center;
-  margin-bottom:18px;
+display:flex;
+justify-content:center;
+margin-bottom:18px;
 }
 
 .logo{
-  width:110px;
-  height:110px;
-  object-fit:contain;
-  border-radius:18px;
+width:110px;
+height:110px;
+object-fit:contain;
+border-radius:18px;
 }
 
 .eyebrow{
-  font-size:11px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:var(--accent-text);
-  margin-bottom:14px;
+font-size:11px;
+letter-spacing:.28em;
+text-transform:uppercase;
+color:var(--accent-text);
+margin-bottom:14px;
 }
 
-h1.cafe-name{
-  font-family:Georgia,serif;
-  font-weight:600;
-  font-size:clamp(34px,9vw,52px);
-  margin:0 0 10px;
-  line-height:1.05;
+.cafe-name{
+font-family:Georgia,serif;
+font-weight:600;
+font-size:clamp(34px,9vw,52px);
+margin:0 0 10px;
+line-height:1.05;
 }
 
 .subtitle{
-  color:var(--ink-muted);
-  font-size:15px;
-  max-width:420px;
-  margin:auto;
-  line-height:1.5;
+color:var(--ink-muted);
+font-size:15px;
+max-width:420px;
+margin:auto;
+line-height:1.5;
 }
 
-nav.tabs{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:18px 20px;
-  scrollbar-width:none;
-  position:sticky;
-  top:0;
-  background:linear-gradient(var(--bg) 78%,transparent);
-  z-index:5;
+.tabs{
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding:18px 20px;
+scrollbar-width:none;
+position:sticky;
+top:0;
+background:linear-gradient(var(--bg) 78%,transparent);
+z-index:5;
 }
 
-nav.tabs::-webkit-scrollbar{
-  display:none;
-}
+.tabs::-webkit-scrollbar{display:none}
 
 .tab-btn{
-  flex:0 0 auto;
-  font-size:12.5px;
-  padding:9px 16px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--tab-bg);
-  color:var(--tab-text);
-  white-space:nowrap;
-  cursor:pointer;
+flex:0 0 auto;
+font-size:12.5px;
+padding:9px 16px;
+border-radius:999px;
+border:1px solid var(--border);
+background:var(--tab-bg);
+color:var(--tab-text);
+white-space:nowrap;
+cursor:pointer;
 }
 
 .tab-btn.active{
-  background:var(--tab-active);
-  border-color:var(--tab-active);
-  color:#fff;
-  font-weight:600;
+background:var(--tab-active);
+border-color:var(--tab-active);
+color:#fff;
+font-weight:600;
 }
 
 .category-block{
-  padding:6px 22px 8px;
+padding:6px 22px 8px;
 }
 
 .category-title{
-  display:inline-block;
-  background:var(--category-bg);
-  color:var(--category-text);
-  font-family:Georgia,serif;
-  font-size:21px;
-  font-weight:500;
-  padding:9px 16px;
-  border-radius:12px;
-  margin:22px 0 12px;
+display:inline-block;
+background:var(--category-bg);
+color:var(--category-text);
+font-family:Georgia,serif;
+font-size:21px;
+font-weight:500;
+padding:9px 16px;
+border-radius:12px;
+margin:22px 0 12px;
 }
 
 .item-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:13px 0;
-  border-bottom:1px dashed var(--border);
+display:flex;
+align-items:center;
+gap:12px;
+padding:13px 0;
+border-bottom:1px dashed var(--border);
 }
 
 .item-thumb{
-  width:54px;
-  height:54px;
-  flex:0 0 auto;
-  border-radius:10px;
-  object-fit:cover;
-  border:1px solid var(--border);
-  background:var(--surface-raised);
+width:54px;
+height:54px;
+flex:0 0 auto;
+border-radius:10px;
+object-fit:cover;
+border:1px solid var(--border);
+background:var(--surface-raised);
 }
 
 .item-text-row{
-  display:flex;
-  align-items:baseline;
-  gap:8px;
-  flex:1;
-  min-width:0;
+display:flex;
+align-items:baseline;
+gap:8px;
+flex:1;
+min-width:0;
 }
 
 .item-name-wrap{
-  min-width:0;
+min-width:0;
 }
 
 .item-name{
-  font-size:16px;
-  font-weight:600;
+font-size:16px;
+font-weight:600;
 }
 
 .item-name.unavailable{
-  color:var(--ink-muted);
-  text-decoration:line-through;
+color:var(--ink-muted);
+text-decoration:line-through;
 }
 
 .item-desc{
-  font-size:12.5px;
-  color:var(--ink-muted);
-  margin-top:2px;
-  line-height:1.4;
+font-size:12.5px;
+color:var(--ink-muted);
+margin-top:2px;
+line-height:1.4;
 }
 
 .leader{
-  flex:1;
-  border-bottom:1px dotted var(--border);
-  height:0;
-  margin:0 2px 5px;
-  min-width:12px;
+flex:1;
+border-bottom:1px dotted var(--border);
+height:0;
+margin:0 2px 5px;
+min-width:12px;
 }
 
 .item-price{
-  font-size:15px;
-  color:var(--price);
-  font-weight:600;
-  white-space:nowrap;
+font-size:15px;
+color:var(--price);
+font-weight:600;
+white-space:nowrap;
 }
 
 .item-price.unavailable{
-  color:var(--ink-muted);
+color:var(--ink-muted);
 }
 
 .sold-out-tag{
-  font-size:10px;
-  color:var(--sold);
-  letter-spacing:.08em;
-  margin-left:6px;
+font-size:10px;
+color:var(--sold);
+letter-spacing:.08em;
+margin-left:6px;
 }
 
-footer.note{
-  text-align:center;
-  padding:36px 24px 10px;
-  color:var(--ink-muted);
-  font-size:11.5px;
+.note{
+text-align:center;
+padding:36px 24px 10px;
+color:var(--ink-muted);
+font-size:11.5px;
 }
 
 .admin-dot{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:var(--surface);
-  border:1px solid var(--border);
-  color:var(--ink-muted);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  z-index:20;
-  box-shadow:0 3px 15px rgba(0,0,0,.12);
-  font-size:21px;
+position:fixed;
+bottom:18px;
+right:18px;
+width:48px;
+height:48px;
+border-radius:50%;
+background:var(--surface);
+border:1px solid var(--border);
+color:var(--ink-muted);
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:20;
+box-shadow:0 3px 15px rgba(0,0,0,.12);
+font-size:21px;
 }
 
 .overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.48);
-  z-index:50;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.48);
+z-index:50;
+display:flex;
+align-items:flex-end;
+justify-content:center;
 }
 
 @media(min-width:640px){
-  .overlay{
-    align-items:center;
-  }
+.overlay{align-items:center}
 }
 
 .panel{
-  background:var(--surface);
-  width:100%;
-  max-width:580px;
-  max-height:92vh;
-  overflow-y:auto;
-  border-radius:20px 20px 0 0;
-  padding:25px 20px 35px;
-  border:1px solid var(--border);
+background:var(--surface);
+width:100%;
+max-width:580px;
+max-height:92vh;
+overflow-y:auto;
+border-radius:20px 20px 0 0;
+padding:25px 20px 35px;
+border:1px solid var(--border);
 }
 
 @media(min-width:640px){
-  .panel{
-    border-radius:20px;
-  }
+.panel{border-radius:20px}
+}
+
+.panel-rel{
+position:relative;
 }
 
 .panel h2{
-  font-family:Georgia,serif;
-  font-size:25px;
-  margin:0 0 20px;
-  color:var(--accent-text);
+font-family:Georgia,serif;
+font-size:25px;
+margin:0 0 20px;
+color:var(--accent-text);
 }
 
 .panel label{
-  display:block;
-  font-size:10.5px;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:var(--ink-muted);
-  margin:15px 0 6px;
+display:block;
+font-size:10.5px;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:var(--ink-muted);
+margin:15px 0 6px;
 }
 
 .panel input,
 .panel textarea{
-  width:100%;
-  background:var(--surface-raised);
-  border:1px solid var(--border);
-  border-radius:9px;
-  padding:11px 12px;
-  color:var(--ink);
-  font-size:14.5px;
+width:100%;
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:9px;
+padding:11px 12px;
+color:var(--ink);
+font-size:14.5px;
 }
 
 .panel input[type=color]{
-  padding:3px;
-  height:44px;
-  cursor:pointer;
-}
-
-.row-2{
-  display:flex;
-  gap:10px;
-}
-
-.row-2>div{
-  flex:1;
+padding:3px;
+height:44px;
+cursor:pointer;
 }
 
 .btn{
-  font-size:12.5px;
-  padding:10px 15px;
-  border-radius:9px;
-  border:1px solid transparent;
-  cursor:pointer;
+font-size:12.5px;
+padding:10px 15px;
+border-radius:9px;
+border:1px solid transparent;
+cursor:pointer;
+}
+
+.btn:disabled{
+opacity:.6;
+cursor:not-allowed;
 }
 
 .btn-main{
-  background:var(--button);
-  color:var(--button-text);
-  font-weight:600;
+background:var(--button);
+color:var(--button-text);
+font-weight:600;
 }
 
 .btn-ghost{
-  background:var(--surface);
-  border-color:var(--border);
-  color:var(--ink);
+background:var(--surface);
+border-color:var(--border);
+color:var(--ink);
 }
 
 .btn-danger{
-  background:var(--surface);
-  border-color:var(--danger);
-  color:var(--danger);
+background:var(--surface);
+border-color:#A9433A;
+color:#A9433A;
 }
 
 .btn-block{
-  width:100%;
-  display:block;
-  text-align:center;
-  margin-top:9px;
+width:100%;
+display:block;
+text-align:center;
+margin-top:9px;
 }
 
 .save-button{
-  margin-top:28px;
-  padding:15px;
-  font-size:15px;
-  border-radius:12px;
+margin-top:28px;
+padding:15px;
+font-size:15px;
+border-radius:12px;
 }
 
 .item-edit-card{
-  background:var(--surface-raised);
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:14px;
-  margin-top:12px;
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:11px;
+padding:14px;
+margin-top:12px;
 }
 
 .cat-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:27px;
-  padding-bottom:9px;
-  border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-top:27px;
+padding-bottom:9px;
+border-bottom:1px solid var(--border);
 }
 
 .cat-header input{
-  font-family:Georgia,serif;
-  font-size:18px;
-  color:var(--accent-text);
-  border:none;
-  background:transparent;
-  padding:3px 0;
+font-family:Georgia,serif;
+font-size:18px;
+color:var(--accent-text);
+border:none;
+background:transparent;
+padding:3px 0;
 }
 
 .avail-toggle{
-  display:flex!important;
-  align-items:center;
-  gap:7px;
-  font-size:12px!important;
-  color:var(--ink-muted)!important;
-  margin-top:10px!important;
+display:flex!important;
+align-items:center;
+gap:7px;
+font-size:12px!important;
+color:var(--ink-muted)!important;
+margin-top:10px!important;
 }
 
 .avail-toggle input{
-  width:auto;
+width:auto;
 }
 
 .actions-row{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-  flex-wrap:wrap;
+display:flex;
+gap:8px;
+margin-top:10px;
+flex-wrap:wrap;
 }
 
 .status-msg{
-  font-size:12px;
-  color:var(--accent-text);
-  margin-top:11px;
-  min-height:17px;
+font-size:12px;
+color:var(--accent-text);
+margin-top:11px;
+min-height:17px;
 }
 
 .pin-box{
-  text-align:center;
+text-align:center;
 }
 
 .pin-box input{
-  text-align:center;
-  font-size:20px;
-  letter-spacing:.3em;
+text-align:center;
+font-size:20px;
+letter-spacing:.3em;
 }
 
 .close-x{
-  position:absolute;
-  top:14px;
-  right:16px;
-  background:none;
-  border:none;
-  color:var(--ink-muted);
-  font-size:21px;
-  cursor:pointer;
-}
-
-.panel-rel{
-  position:relative;
+position:absolute;
+top:14px;
+right:16px;
+background:none;
+border:none;
+color:var(--ink-muted);
+font-size:21px;
+cursor:pointer;
 }
 
 .loading{
-  text-align:center;
-  padding:45vh 20px 20px;
-  color:var(--ink-muted);
-  font-size:14px;
+text-align:center;
+padding:45vh 20px 20px;
+color:var(--ink-muted);
+font-size:14px;
 }
 
 .error-box{
-  padding:100px 25px;
-  text-align:center;
-  color:var(--ink);
+padding:100px 25px;
+text-align:center;
+color:var(--ink);
 }
 
 .error-box h2{
-  font-family:Georgia,serif;
+font-family:Georgia,serif;
 }
 
 .color-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
 .color-item{
-  background:var(--surface-raised);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:10px;
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:10px;
+padding:10px;
 }
 
 .color-item label{
-  margin:0 0 7px;
+margin:0 0 7px;
 }
 
 .color-item input[type=color]{
-  width:100%;
-  height:42px;
+width:100%;
+height:42px;
 }
 
 .logo-preview{
-  width:90px;
-  height:90px;
-  border-radius:15px;
-  object-fit:contain;
-  border:1px solid var(--border);
-  background:#fff;
-  display:block;
-  margin:8px auto 12px;
+width:90px;
+height:90px;
+border-radius:15px;
+object-fit:contain;
+border:1px solid var(--border);
+background:#fff;
+display:block;
+margin:8px auto 12px;
 }
 
 .img-row{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  margin-top:7px;
+display:flex;
+gap:12px;
+align-items:flex-start;
+margin-top:7px;
 }
 
 .admin-thumb{
-  width:64px;
-  height:64px;
-  border-radius:10px;
-  object-fit:cover;
-  flex:0 0 auto;
-  border:1px solid var(--border);
-  background:#fff;
+width:64px;
+height:64px;
+border-radius:10px;
+object-fit:cover;
+flex:0 0 auto;
+border:1px solid var(--border);
+background:#fff;
 }
 
 .img-controls{
-  flex:1;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  gap:7px;
+flex:1;
+min-width:0;
+display:flex;
+flex-direction:column;
+gap:7px;
 }
 
 .img-controls input[type=file]{
-  padding:7px;
-  font-size:12px;
+padding:7px;
+font-size:12px;
 }
 
 hr.sep{
-  border:none;
-  border-top:1px solid var(--border);
-  margin:25px 0;
+border:none;
+border-top:1px solid var(--border);
+margin:25px 0;
 }
 
 .toast{
-  position:fixed;
-  left:50%;
-  bottom:75px;
-  transform:translateX(-50%);
-  background:#20261D;
-  color:#fff;
-  padding:11px 16px;
-  border-radius:10px;
-  font-size:13px;
-  z-index:100;
-  display:none;
-  white-space:nowrap;
-}
-
-.connection-error{
-  margin-top:20px;
-  padding:12px;
-  border-radius:10px;
-  background:#fff;
-  border:1px solid var(--border);
-  text-align:left;
-  font-size:12px;
-  word-break:break-word;
+position:fixed;
+left:50%;
+bottom:75px;
+transform:translateX(-50%);
+background:#20261D;
+color:#fff;
+padding:11px 16px;
+border-radius:10px;
+font-size:13px;
+z-index:100;
+display:none;
+white-space:nowrap;
 }
 </style>
 </head>
@@ -560,25 +538,24 @@ hr.sep{
 <body>
 
 <div class="wrap" id="app">
-  <div class="loading">Menü yükleniyor...</div>
+<div class="loading">Menü yükleniyor...</div>
 </div>
 
 <div
-  class="admin-dot"
-  id="adminDot"
-  title="Yönetim"
-  role="button"
-  tabindex="0"
-  aria-label="Yönetim panelini aç"
+class="admin-dot"
+id="adminDot"
+role="button"
+tabindex="0"
+aria-label="Yönetim panelini aç"
 >⚙️</div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 
-/* =========================================================
-   SUPABASE AYARLARI
-========================================================= */
+/* =====================================================
+   SUPABASE
+===================================================== */
 
 const SUPABASE_URL =
 "https://cwofalezjvuxppmwipmc.supabase.co";
@@ -593,9 +570,9 @@ const BLANK_PIXEL =
 "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
 
-/* =========================================================
+/* =====================================================
    DURUM
-========================================================= */
+===================================================== */
 
 let menuData = null;
 let activeCatId = null;
@@ -603,2228 +580,2176 @@ let unlocked = false;
 let currentPin = "";
 
 
-/* =========================================================
+/* =====================================================
    YARDIMCI
-========================================================= */
+===================================================== */
 
-const app = document.getElementById("app");
+const app =
+document.getElementById("app");
 
 function uid(){
-  return "i" +
-    Date.now().toString(36) +
-    Math.random().toString(36).slice(2,7);
+
+return "i" +
+Date.now().toString(36) +
+Math.random().toString(36).slice(2,7);
+
 }
 
 function esc(s){
-  return String(s ?? "").replace(
-    /[&<>"']/g,
-    m => ({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    }[m])
-  );
-}
 
-function escAttr(s){
-  return esc(s);
+return String(s ?? "").replace(
+/[&<>"']/g,
+m=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+}[m])
+);
+
 }
 
 function money(n){
-  return (
-    Number(n)||0
-  ).toLocaleString("tr-TR") + " ₺";
+
+return (
+Number(n)||0
+).toLocaleString("tr-TR") + " ₺";
+
 }
 
 function toast(message){
-  const t = document.getElementById("toast");
 
-  t.textContent = message;
-  t.style.display = "block";
+const t =
+document.getElementById("toast");
 
-  clearTimeout(window.__toastTimer);
+t.textContent =
+message;
 
-  window.__toastTimer = setTimeout(()=>{
-    t.style.display = "none";
-  },2200);
-}
+t.style.display =
+"block";
 
-
-/* =========================================================
-   SUPABASE REST
-   Publishable key sadece apikey olarak kullanılıyor.
-========================================================= */
-
-async function api(path, options = {}){
-
-  const headers = {
-    "apikey": SUPABASE_KEY,
-    "Accept":"application/json",
-    "Content-Type":"application/json",
-    ...(options.headers || {})
-  };
-
-  const controller = new AbortController();
-
-  const timeout = setTimeout(()=>{
-    controller.abort();
-  },15000);
-
-  try{
-
-    const response = await fetch(
-      SUPABASE_URL + path,
-      {
-        ...options,
-        cache:"no-store",
-        headers,
-        signal:controller.signal
-      }
-    );
-
-    const text = await response.text();
-
-    let data = null;
-
-    if(text){
-
-      try{
-        data = JSON.parse(text);
-      }catch{
-        data = text;
-      }
-
-    }
-
-    if(!response.ok){
-
-      let detail =
-        data?.message ||
-        data?.error_description ||
-        data?.hint ||
-        data?.error ||
-        (
-          typeof data === "string"
-          ? data
-          : ""
-        );
-
-      throw new Error(
-        "HTTP " +
-        response.status +
-        (detail ? " - " + detail : "")
-      );
-
-    }
-
-    return data;
-
-  }catch(error){
-
-    if(error.name === "AbortError"){
-      throw new Error(
-        "Supabase bağlantısı zaman aşımına uğradı."
-      );
-    }
-
-    throw error;
-
-  }finally{
-
-    clearTimeout(timeout);
-
-  }
+setTimeout(()=>{
+t.style.display="none";
+},2200);
 
 }
 
 
-/* =========================================================
-   RPC
-========================================================= */
+/* =====================================================
+   API
+===================================================== */
+
+async function api(path,options={}){
+
+const headers={
+"apikey":SUPABASE_KEY,
+"Content-Type":"application/json",
+...(options.headers||{})
+};
+
+const controller =
+new AbortController();
+
+const timeout =
+setTimeout(()=>{
+controller.abort();
+},15000);
+
+try{
+
+const response =
+await fetch(
+SUPABASE_URL+path,
+{
+...options,
+cache:"no-store",
+headers,
+signal:controller.signal
+}
+);
+
+const text =
+await response.text();
+
+let data=null;
+
+try{
+data=text?JSON.parse(text):null;
+}catch{
+data=text;
+}
+
+if(!response.ok){
+
+throw new Error(
+data?.message ||
+data?.error_description ||
+data?.hint ||
+data?.error ||
+text ||
+("HTTP "+response.status)
+);
+
+}
+
+return data;
+
+}catch(error){
+
+if(error.name==="AbortError"){
+throw new Error(
+"Supabase bağlantısı zaman aşımına uğradı."
+);
+}
+
+throw error;
+
+}finally{
+
+clearTimeout(timeout);
+
+}
+
+}
+
 
 async function rpc(functionName,args){
 
-  return await api(
-    "/rest/v1/rpc/" +
-    encodeURIComponent(functionName),
-    {
-      method:"POST",
-      body:JSON.stringify(args)
-    }
-  );
+return await api(
+"/rest/v1/rpc/"+functionName,
+{
+method:"POST",
+body:JSON.stringify(args)
+}
+);
 
 }
 
 
-/* =========================================================
-   VARSAYILAN TEMA
-========================================================= */
+function rpcTrue(result){
+
+return (
+result===true ||
+result?.[0]===true ||
+result?.result===true
+);
+
+}
+
+
+/* =====================================================
+   TEMA
+===================================================== */
 
 function defaultTheme(){
 
-  return {
+return{
 
-    background:"#F6F1E2",
-    header:"#F6F1E2",
-    surface:"#FFFFFF",
-    surfaceRaised:"#ECE2C7",
+background:"#F6F1E2",
+header:"#F6F1E2",
+surface:"#FFFFFF",
+surfaceRaised:"#ECE2C7",
+baseColor:"#1E6F4C",
+accentText:"#134A32",
+categoryBg:"#1E6F4C",
+categoryText:"#FFFFFF",
+text:"#20261D",
+mutedText:"#6E6A52",
+price:"#1E6F4C",
+button:"#1E6F4C",
+buttonText:"#FFFFFF",
+border:"#D8D0B9",
+tabBg:"#FFFFFF",
+tabText:"#6E6A52",
+tabActive:"#1E6F4C",
+sold:"#A9433A"
 
-    baseColor:"#1E6F4C",
-    accentText:"#134A32",
-
-    categoryBg:"#1E6F4C",
-    categoryText:"#FFFFFF",
-
-    text:"#20261D",
-    mutedText:"#6E6A52",
-
-    price:"#1E6F4C",
-
-    button:"#1E6F4C",
-    buttonText:"#FFFFFF",
-
-    border:"#D8D0B9",
-
-    tabBg:"#FFFFFF",
-    tabText:"#6E6A52",
-    tabActive:"#1E6F4C",
-
-    sold:"#A9433A"
-
-  };
+};
 
 }
 
 
-/* =========================================================
-   TEMA UYGULA
-========================================================= */
+function applyTheme(t={}){
 
-function applyTheme(theme){
+const root =
+document.documentElement;
 
-  const t =
-    {
-      ...defaultTheme(),
-      ...(theme || {})
-    };
+root.style.setProperty(
+"--bg",
+t.background||"#F6F1E2"
+);
 
-  const root =
-    document.documentElement;
+root.style.setProperty(
+"--header",
+t.header||t.background||"#F6F1E2"
+);
 
-  root.style.setProperty(
-    "--bg",
-    t.background
-  );
+root.style.setProperty(
+"--surface",
+t.surface||"#FFFFFF"
+);
 
-  root.style.setProperty(
-    "--header",
-    t.header
-  );
+root.style.setProperty(
+"--surface-raised",
+t.surfaceRaised||"#ECE2C7"
+);
 
-  root.style.setProperty(
-    "--surface",
-    t.surface
-  );
+root.style.setProperty(
+"--category-bg",
+t.categoryBg||t.baseColor||"#1E6F4C"
+);
 
-  root.style.setProperty(
-    "--surface-raised",
-    t.surfaceRaised
-  );
+root.style.setProperty(
+"--category-text",
+t.categoryText||"#FFFFFF"
+);
 
-  root.style.setProperty(
-    "--category-bg",
-    t.categoryBg
-  );
+root.style.setProperty(
+"--accent",
+t.baseColor||"#1E6F4C"
+);
 
-  root.style.setProperty(
-    "--category-text",
-    t.categoryText
-  );
+root.style.setProperty(
+"--accent-text",
+t.accentText||"#134A32"
+);
 
-  root.style.setProperty(
-    "--accent",
-    t.baseColor
-  );
+root.style.setProperty(
+"--ink",
+t.text||"#20261D"
+);
 
-  root.style.setProperty(
-    "--accent-text",
-    t.accentText
-  );
+root.style.setProperty(
+"--ink-muted",
+t.mutedText||"#6E6A52"
+);
 
-  root.style.setProperty(
-    "--ink",
-    t.text
-  );
+root.style.setProperty(
+"--price",
+t.price||t.baseColor||"#1E6F4C"
+);
 
-  root.style.setProperty(
-    "--ink-muted",
-    t.mutedText
-  );
+root.style.setProperty(
+"--button",
+t.button||t.baseColor||"#1E6F4C"
+);
 
-  root.style.setProperty(
-    "--price",
-    t.price
-  );
+root.style.setProperty(
+"--button-text",
+t.buttonText||"#FFFFFF"
+);
 
-  root.style.setProperty(
-    "--button",
-    t.button
-  );
+root.style.setProperty(
+"--border",
+t.border||"#D8D0B9"
+);
 
-  root.style.setProperty(
-    "--button-text",
-    t.buttonText
-  );
+root.style.setProperty(
+"--tab-bg",
+t.tabBg||"#FFFFFF"
+);
 
-  root.style.setProperty(
-    "--border",
-    t.border
-  );
+root.style.setProperty(
+"--tab-text",
+t.tabText||"#6E6A52"
+);
 
-  root.style.setProperty(
-    "--tab-bg",
-    t.tabBg
-  );
+root.style.setProperty(
+"--tab-active",
+t.tabActive||t.baseColor||"#1E6F4C"
+);
 
-  root.style.setProperty(
-    "--tab-text",
-    t.tabText
-  );
-
-  root.style.setProperty(
-    "--tab-active",
-    t.tabActive
-  );
-
-  root.style.setProperty(
-    "--sold",
-    t.sold
-  );
+root.style.setProperty(
+"--sold",
+t.sold||"#A9433A"
+);
 
 }
 
 
-/* =========================================================
+/* =====================================================
    MENÜYÜ YÜKLE
-========================================================= */
+===================================================== */
 
 async function loadMenu(){
 
-  app.innerHTML =
-    `<div class="loading">Menü yükleniyor...</div>`;
+try{
 
-  try{
+const rows =
+await api(
+"/rest/v1/menus?id=eq."+
+MENU_ID+
+"&select=id,data"
+);
 
-    const path =
-      "/rest/v1/menus" +
-      "?id=eq." +
-      encodeURIComponent(MENU_ID) +
-      "&select=id,data";
+if(!rows||!rows.length){
 
-    const rows =
-      await api(path,{
-        method:"GET"
-      });
+showError(
+"Menü kaydı bulunamadı."
+);
 
-    if(!Array.isArray(rows)){
+return;
 
-      throw new Error(
-        "Supabase geçersiz veri döndürdü."
-      );
+}
 
-    }
+const data =
+rows[0].data||{};
 
-    if(rows.length === 0){
+menuData={
 
-      throw new Error(
-        "Menü kaydı bulunamadı."
-      );
+cafeName:
+data.cafeName||
+"Katmerci Dayı",
 
-    }
+subtitle:
+data.subtitle||
+"Geleneksel lezzetler, sıcak sunum.",
 
-    const data =
-      rows[0]?.data || {};
+logo:
+data.logo||"",
 
-    menuData = {
+theme:{
+...defaultTheme(),
+...(data.theme||{})
+},
 
-      cafeName:
-        data.cafeName ||
-        "Katmerci Dayı",
+categories:
+Array.isArray(data.categories)
+?data.categories:[]
 
-      subtitle:
-        data.subtitle ||
-        "Geleneksel lezzetler, sıcak sunum.",
+};
 
-      logo:
-        data.logo ||
-        "",
+menuData.categories.forEach(c=>{
 
-      theme:{
-        ...defaultTheme(),
-        ...(data.theme || {})
-      },
+if(!Array.isArray(c.items)){
+c.items=[];
+}
 
-      categories:
-        Array.isArray(data.categories)
-        ? data.categories
-        : []
+c.items.forEach(item=>{
 
-    };
+if(item.image===undefined){
+item.image="";
+}
 
+if(item.available===undefined){
+item.available=true;
+}
 
-    menuData.categories.forEach(
-      category=>{
+});
 
-        if(!category.id){
-          category.id = uid();
-        }
+});
 
-        if(!Array.isArray(category.items)){
-          category.items = [];
-        }
+activeCatId =
+menuData.categories[0]?.id||null;
 
-        category.items.forEach(
-          item=>{
+applyTheme(menuData.theme);
 
-            if(!item.id){
-              item.id = uid();
-            }
+renderCustomer();
 
-            if(item.image === undefined){
-              item.image = "";
-            }
+}catch(error){
 
-            if(item.desc === undefined){
-              item.desc = "";
-            }
+showError(
+"Menü yüklenemedi: "+
+error.message
+);
 
-            if(item.price === undefined){
-              item.price = 0;
-            }
-
-            if(item.available === undefined){
-              item.available = true;
-            }
-
-          }
-        );
-
-      }
-    );
-
-
-    activeCatId =
-      menuData.categories[0]?.id ||
-      null;
-
-    applyTheme(
-      menuData.theme
-    );
-
-    renderCustomer();
-
-  }catch(error){
-
-    console.error(
-      "MENU LOAD ERROR:",
-      error
-    );
-
-    showError(
-      error.message ||
-      "Menü yüklenemedi."
-    );
-
-  }
+}
 
 }
 
 
-/* =========================================================
-   HATA EKRANI
-========================================================= */
+/* =====================================================
+   HATA
+===================================================== */
 
 function showError(message){
 
-  app.innerHTML = `
+app.innerHTML=`
 
-    <div class="error-box">
+<div class="error-box">
 
-      <h2>Menü yüklenemedi</h2>
+<h2>Menü yüklenemedi</h2>
 
-      <p>
-        ${esc(message)}
-      </p>
+<p>${esc(message)}</p>
 
-      <div class="connection-error">
+<button
+class="btn btn-main"
+onclick="location.reload()"
+>
+Tekrar dene
+</button>
 
-        <strong>Kontrol:</strong><br><br>
+</div>
 
-        Supabase bağlantısı cevap vermiyor
-        veya RLS / Data API yetkisi engelliyor.
-
-        <br><br>
-
-        Menü ID:
-        <br>
-        ${esc(MENU_ID)}
-
-      </div>
-
-      <button
-        class="btn btn-main"
-        style="margin-top:18px"
-        onclick="location.reload()"
-      >
-        Tekrar dene
-      </button>
-
-    </div>
-
-  `;
+`;
 
 }
 
 
-/* =========================================================
+/* =====================================================
    MÜŞTERİ MENÜSÜ
-========================================================= */
+===================================================== */
 
 function renderCustomer(){
 
-  if(!menuData) return;
+if(!menuData)return;
 
-  const categories =
-    menuData.categories || [];
+const categories =
+menuData.categories||[];
 
-  let active =
-    categories.find(
-      c => c.id === activeCatId
-    ) || categories[0];
+let active =
+categories.find(
+c=>c.id===activeCatId
+)||categories[0];
 
-  if(active){
-    activeCatId =
-      active.id;
-  }
+if(active){
+activeCatId=active.id;
+}
 
+const tabs =
+categories.map(c=>`
 
-  const tabs =
-    categories.map(
-      category=>`
+<button
+class="tab-btn ${
+c.id===active?.id?"active":""
+}"
+data-cat="${esc(c.id)}"
+>
+${esc(c.name)}
+</button>
 
-      <button
-        class="tab-btn ${
-          category.id === active?.id
-          ? "active"
-          : ""
-        }"
-        data-cat="${escAttr(category.id)}"
-      >
-        ${esc(category.name)}
-      </button>
+`).join("");
 
-    `
-    ).join("");
+const items =
+active
+?active.items.map(item=>`
 
+<div class="item-row">
 
-  const items =
-    active
-    ? active.items.map(
-      item=>`
+${
+item.image
+?`
+<img
+class="item-thumb"
+src="${esc(item.image)}"
+alt=""
+loading="lazy"
+onerror="this.style.display='none'"
+>
+`:""
+}
 
-      <div class="item-row">
+<div class="item-text-row">
 
-        ${
-          item.image
-          ? `
-            <img
-              class="item-thumb"
-              src="${escAttr(item.image)}"
-              alt=""
-              loading="lazy"
-              onerror="this.style.display='none'"
-            >
-          `
-          : ""
-        }
+<div class="item-name-wrap">
 
-        <div class="item-text-row">
+<div class="item-name ${
+item.available?"":"unavailable"
+}">
 
-          <div class="item-name-wrap">
+${esc(item.name)}
 
-            <div class="item-name ${
-              item.available
-              ? ""
-              : "unavailable"
-            }">
+${
+item.available
+?""
+:`
+<span class="sold-out-tag">
+TÜKENDİ
+</span>
+`
+}
 
-              ${esc(item.name)}
+</div>
 
-              ${
-                item.available
-                ? ""
-                : `
-                  <span class="sold-out-tag">
-                    TÜKENDİ
-                  </span>
-                `
-              }
+${
+item.desc
+?`
+<div class="item-desc">
+${esc(item.desc)}
+</div>
+`:""
+}
 
-            </div>
+</div>
 
-            ${
-              item.desc
-              ? `
-                <div class="item-desc">
-                  ${esc(item.desc)}
-                </div>
-              `
-              : ""
-            }
+<div class="leader"></div>
 
-          </div>
+<div class="item-price ${
+item.available?"":"unavailable"
+}">
 
-          <div class="leader"></div>
+${money(item.price)}
 
-          <div class="item-price ${
-            item.available
-            ? ""
-            : "unavailable"
-          }">
+</div>
 
-            ${money(item.price)}
+</div>
 
-          </div>
+</div>
 
-        </div>
+`).join("")
+:`
+<div class="item-desc">
+Bu kategoride henüz ürün yok.
+</div>
+`;
 
-      </div>
+const logoHTML =
+menuData.logo
+?`
+<div class="logo-wrap">
+<img
+class="logo"
+src="${esc(menuData.logo)}"
+alt="${esc(menuData.cafeName)}"
+>
+</div>
+`
+:"";
 
-      `
-    ).join("")
+app.innerHTML=`
 
-    : `
-      <div class="item-desc">
-        Bu kategoride henüz ürün yok.
-      </div>
-    `;
+<header class="hero">
 
+${logoHTML}
 
-  const logoHTML =
-    menuData.logo
-    ? `
-      <div class="logo-wrap">
+<div class="eyebrow">
+MENÜ
+</div>
 
-        <img
-          class="logo"
-          src="${escAttr(menuData.logo)}"
-          alt="${escAttr(menuData.cafeName)}"
-        >
+<h1 class="cafe-name">
+${esc(menuData.cafeName)}
+</h1>
 
-      </div>
-    `
-    : "";
+<p class="subtitle">
+${esc(menuData.subtitle)}
+</p>
 
+</header>
 
-  app.innerHTML = `
+<nav class="tabs">
+${tabs}
+</nav>
 
-    <header class="hero">
+<div class="category-block">
 
-      ${logoHTML}
+<div class="category-title">
+${esc(active?.name||"")}
+</div>
 
-      <div class="eyebrow">
-        MENÜ
-      </div>
+${items}
 
-      <h1 class="cafe-name">
-        ${esc(menuData.cafeName)}
-      </h1>
+</div>
 
-      <p class="subtitle">
-        ${esc(menuData.subtitle)}
-      </p>
+<footer class="note">
+QR ile açıldı
+</footer>
 
-    </header>
+`;
 
-    ${
-      categories.length
-      ? `
-        <nav class="tabs">
-          ${tabs}
-        </nav>
-      `
-      : ""
-    }
+app
+.querySelectorAll("[data-cat]")
+.forEach(btn=>{
 
-    <div class="category-block">
+btn.onclick=()=>{
 
-      ${
-        active
-        ? `
-          <div class="category-title">
-            ${esc(active.name)}
-          </div>
+activeCatId=
+btn.dataset.cat;
 
-          ${items}
-        `
-        : `
-          <div class="item-desc">
-            Henüz kategori eklenmemiş.
-          </div>
-        `
-      }
+renderCustomer();
 
-    </div>
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
-    <footer class="note">
-      QR ile açıldı
-    </footer>
+};
 
-  `;
-
-
-  app
-    .querySelectorAll("[data-cat]")
-    .forEach(button=>{
-
-      button.onclick = ()=>{
-
-        activeCatId =
-          button.dataset.cat;
-
-        renderCustomer();
-
-        window.scrollTo({
-          top:0,
-          behavior:"smooth"
-        });
-
-      };
-
-    });
+});
 
 }
 
 
-/* =========================================================
-   PIN
-========================================================= */
+/* =====================================================
+   PIN GİRİŞİ
+===================================================== */
 
 function openGate(){
 
-  if(unlocked){
+if(unlocked){
 
-    openAdmin();
+openAdmin();
 
-    return;
+return;
 
-  }
+}
 
+const overlay =
+document.createElement("div");
 
-  const overlay =
-    document.createElement("div");
+overlay.className="overlay";
 
-  overlay.className =
-    "overlay";
+overlay.innerHTML=`
 
-  overlay.innerHTML = `
+<div class="panel panel-rel pin-box">
 
-    <div class="panel panel-rel pin-box">
+<button
+class="close-x"
+id="gateClose"
+>
+✕
+</button>
 
-      <button
-        class="close-x"
-        aria-label="Kapat"
-      >
-        ✕
-      </button>
+<h2>
+Yönetim Girişi
+</h2>
 
-      <h2>
-        Yönetim Girişi
-      </h2>
+<label>
+PIN kodu
+</label>
 
-      <label>
-        PIN kodu
-      </label>
+<input
+id="gatePin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="••••"
+>
 
-      <input
-        id="gatePin"
-        type="password"
-        inputmode="numeric"
-        maxlength="20"
-        placeholder="••••"
-      >
+<div
+class="status-msg"
+id="gateMsg"
+></div>
 
-      <div
-        class="status-msg"
-        id="gateMsg"
-      ></div>
+<button
+class="btn btn-main btn-block"
+id="gateGo"
+>
+Giriş yap
+</button>
 
-      <button
-        class="btn btn-main btn-block"
-        id="gateGo"
-      >
-        Giriş yap
-      </button>
+</div>
 
-    </div>
+`;
 
-  `;
+document.body.appendChild(overlay);
 
+overlay
+.querySelector("#gateClose")
+.onclick=()=>{
+overlay.remove();
+};
 
-  document.body.appendChild(
-    overlay
-  );
+const go=async()=>{
 
+const pin =
+overlay
+.querySelector("#gatePin")
+.value.trim();
 
-  overlay
-    .querySelector(".close-x")
-    .onclick = ()=>{
-      overlay.remove();
-    };
+const msg =
+overlay.querySelector("#gateMsg");
 
+if(!pin){
 
-  const go = async ()=>{
+msg.textContent=
+"PIN kodunu gir.";
 
-    const pin =
-      overlay
-        .querySelector("#gatePin")
-        .value
-        .trim();
+return;
 
-    const message =
-      overlay.querySelector(
-        "#gateMsg"
-      );
+}
 
+msg.textContent=
+"Kontrol ediliyor...";
 
-    if(!pin){
+try{
 
-      message.textContent =
-        "PIN kodunu gir.";
+const result =
+await rpc(
+"check_menu_pin",
+{
+p_menu_id:MENU_ID,
+p_pin:pin
+}
+);
 
-      return;
+if(rpcTrue(result)){
 
-    }
+unlocked=true;
+currentPin=pin;
 
+overlay.remove();
 
-    message.textContent =
-      "Kontrol ediliyor...";
+openAdmin();
 
+}else{
 
-    try{
+msg.textContent=
+"Hatalı PIN.";
 
-      const result =
-        await rpc(
-          "check_menu_pin",
-          {
-            p_menu_id:MENU_ID,
-            p_pin:pin
-          }
-        );
+}
 
+}catch(error){
 
-      const ok =
-        result === true ||
-        result?.[0] === true ||
-        result?.result === true;
+msg.textContent=
+"Giriş hatası: "+
+error.message;
 
+}
 
-      if(ok){
+};
 
-        unlocked = true;
+overlay
+.querySelector("#gateGo")
+.onclick=go;
 
-        currentPin = pin;
+overlay
+.querySelector("#gatePin")
+.onkeydown=e=>{
 
-        overlay.remove();
+if(e.key==="Enter"){
+go();
+}
 
-        openAdmin();
+};
 
-      }else{
-
-        message.textContent =
-          "Hatalı PIN.";
-
-      }
-
-    }catch(error){
-
-      console.error(
-        "PIN ERROR:",
-        error
-      );
-
-      message.textContent =
-        error.message ||
-        "Giriş hatası.";
-
-    }
-
-  };
-
-
-  overlay
-    .querySelector("#gateGo")
-    .onclick = go;
-
-
-  overlay
-    .querySelector("#gatePin")
-    .onkeydown = event=>{
-
-      if(event.key === "Enter"){
-        go();
-      }
-
-    };
-
-
-  setTimeout(()=>{
-
-    overlay
-      .querySelector("#gatePin")
-      ?.focus();
-
-  },100);
+setTimeout(()=>{
+overlay
+.querySelector("#gatePin")
+?.focus();
+},100);
 
 }
 
 
-/* =========================================================
-   RESİM
-========================================================= */
+/* =====================================================
+   GÖRSEL
+===================================================== */
 
-function resizeImage(
-  file,
-  max=700,
-  quality=.75
-){
+function resizeImage(file,max=700,quality=.75){
 
-  return new Promise(
-    (resolve,reject)=>{
+return new Promise((resolve,reject)=>{
 
-      const reader =
-        new FileReader();
+const reader=new FileReader();
 
-      reader.onload = event=>{
+reader.onload=e=>{
 
-        const image =
-          new Image();
+const image=new Image();
 
-        image.onload = ()=>{
+image.onload=()=>{
 
-          let width =
-            image.width;
+let w=image.width;
+let h=image.height;
 
-          let height =
-            image.height;
+if(w>h&&w>max){
 
+h=h*max/w;
+w=max;
 
-          if(width > height && width > max){
+}else if(h>=w&&h>max){
 
-            height =
-              height * max / width;
-
-            width =
-              max;
-
-          }else if(
-            height >= width &&
-            height > max
-          ){
-
-            width =
-              width * max / height;
-
-            height =
-              max;
-
-          }
-
-
-          const canvas =
-            document.createElement(
-              "canvas"
-            );
-
-          canvas.width =
-            Math.round(width);
-
-          canvas.height =
-            Math.round(height);
-
-
-          const context =
-            canvas.getContext("2d");
-
-          context.drawImage(
-            image,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-
-          resolve(
-            canvas.toDataURL(
-              "image/jpeg",
-              quality
-            )
-          );
-
-        };
-
-        image.onerror =
-          reject;
-
-        image.src =
-          event.target.result;
-
-      };
-
-      reader.onerror =
-        reject;
-
-      reader.readAsDataURL(file);
-
-    }
-  );
+w=w*max/h;
+h=max;
 
 }
 
+const canvas=
+document.createElement("canvas");
 
-/* =========================================================
-   LOGO
-========================================================= */
+canvas.width=Math.round(w);
+canvas.height=Math.round(h);
+
+canvas
+.getContext("2d")
+.drawImage(
+image,
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+resolve(
+canvas.toDataURL(
+"image/jpeg",
+quality
+)
+);
+
+};
+
+image.onerror=reject;
+image.src=e.target.result;
+
+};
+
+reader.onerror=reject;
+reader.readAsDataURL(file);
+
+});
+
+}
+
 
 function resizeLogo(file){
 
-  return new Promise(
-    (resolve,reject)=>{
+return new Promise((resolve,reject)=>{
 
-      const reader =
-        new FileReader();
+const reader=new FileReader();
 
-      reader.onload = event=>{
+reader.onload=e=>{
 
-        const image =
-          new Image();
+const image=new Image();
 
-        image.onload = ()=>{
+image.onload=()=>{
 
-          const max=800;
+const max=800;
 
-          let width =
-            image.width;
+let w=image.width;
+let h=image.height;
 
-          let height =
-            image.height;
+if(w>h&&w>max){
 
+h=h*max/w;
+w=max;
 
-          if(width > height && width > max){
+}else if(h>=w&&h>max){
 
-            height =
-              height * max / width;
+w=w*max/h;
+h=max;
 
-            width=max;
+}
 
-          }else if(
-            height >= width &&
-            height > max
-          ){
+const canvas=
+document.createElement("canvas");
 
-            width =
-              width * max / height;
+canvas.width=Math.round(w);
+canvas.height=Math.round(h);
 
-            height=max;
+canvas
+.getContext("2d")
+.drawImage(
+image,
+0,
+0,
+canvas.width,
+canvas.height
+);
 
-          }
+resolve(
+canvas.toDataURL("image/png")
+);
 
+};
 
-          const canvas =
-            document.createElement(
-              "canvas"
-            );
+image.onerror=reject;
+image.src=e.target.result;
 
-          canvas.width =
-            Math.round(width);
+};
 
-          canvas.height =
-            Math.round(height);
-
-
-          const context =
-            canvas.getContext("2d");
-
-          context.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-          context.drawImage(
-            image,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-
-          resolve(
-            canvas.toDataURL(
-              "image/png"
-            )
-          );
-
-        };
-
-        image.onerror =
-          reject;
-
-        image.src =
-          event.target.result;
-
-      };
-
-      reader.onerror =
-        reject;
-
-      reader.readAsDataURL(file);
-
-    }
-  );
+reader.onerror=reject;
+reader.readAsDataURL(file);
 
 }
 
 
-/* =========================================================
+/* =====================================================
    ÜRÜN BUL
-========================================================= */
+===================================================== */
 
 function findItem(id){
 
-  for(
-    const category
-    of menuData.categories
-  ){
+for(const c of menuData.categories){
 
-    const item =
-      category.items.find(
-        x => x.id === id
-      );
+const item =
+c.items.find(
+x=>x.id===id
+);
 
-    if(item){
-      return item;
-    }
+if(item)return item;
 
-  }
+}
 
-  return null;
+return null;
 
 }
 
 
-/* =========================================================
+/* =====================================================
    RENK ALANI
-========================================================= */
+===================================================== */
 
-function colorField(
-  id,
-  title,
-  value
-){
+function colorField(id,title,value){
 
-  return `
+return`
 
-    <div class="color-item">
+<div class="color-item">
 
-      <label>
-        ${title}
-      </label>
+<label>${title}</label>
 
-      <input
-        type="color"
-        id="${id}"
-        value="${escAttr(value)}"
-      >
+<input
+type="color"
+id="${id}"
+value="${esc(value)}"
+>
 
-    </div>
+</div>
 
-  `;
+`;
 
 }
 
 
-/* =========================================================
-   ADMIN
-========================================================= */
+/* =====================================================
+   PAROLA DEĞİŞTİRME
+===================================================== */
+
+function openChangePin(){
+
+const overlay=
+document.createElement("div");
+
+overlay.className="overlay";
+overlay.style.zIndex="100";
+
+overlay.innerHTML=`
+
+<div class="panel panel-rel">
+
+<button
+class="close-x"
+id="pinClose"
+>
+✕
+</button>
+
+<h2>
+Parolayı Değiştir
+</h2>
+
+<label>
+Mevcut PIN
+</label>
+
+<input
+id="oldPin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Mevcut PIN"
+>
+
+<label>
+Yeni PIN
+</label>
+
+<input
+id="newPin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Yeni PIN"
+>
+
+<label>
+Yeni PIN tekrar
+</label>
+
+<input
+id="newPin2"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Yeni PIN tekrar"
+>
+
+<div
+class="status-msg"
+id="pinMsg"
+></div>
+
+<button
+class="btn btn-main btn-block"
+id="changePinSave"
+style="margin-top:15px"
+>
+Parolayı değiştir
+</button>
+
+</div>
+
+`;
+
+document.body.appendChild(overlay);
+
+overlay
+.querySelector("#pinClose")
+.onclick=()=>{
+overlay.remove();
+};
+
+overlay
+.querySelector("#changePinSave")
+.onclick=async()=>{
+
+const oldPin=
+overlay.querySelector("#oldPin")
+.value.trim();
+
+const newPin=
+overlay.querySelector("#newPin")
+.value.trim();
+
+const newPin2=
+overlay.querySelector("#newPin2")
+.value.trim();
+
+const msg=
+overlay.querySelector("#pinMsg");
+
+const button=
+overlay.querySelector("#changePinSave");
+
+if(!oldPin){
+
+msg.textContent=
+"Mevcut PIN'i gir.";
+
+return;
+
+}
+
+if(!newPin){
+
+msg.textContent=
+"Yeni PIN'i gir.";
+
+return;
+
+}
+
+if(newPin.length<4){
+
+msg.textContent=
+"Yeni PIN en az 4 karakter olmalı.";
+
+return;
+
+}
+
+if(newPin!==newPin2){
+
+msg.textContent=
+"Yeni PIN'ler aynı değil.";
+
+return;
+
+}
+
+button.disabled=true;
+button.textContent=
+"Değiştiriliyor...";
+
+msg.textContent=
+"Kontrol ediliyor...";
+
+try{
+
+const result=
+await rpc(
+"change_menu_pin",
+{
+p_menu_id:MENU_ID,
+p_old_pin:oldPin,
+p_new_pin:newPin
+}
+);
+
+if(!rpcTrue(result)){
+
+throw new Error(
+"Mevcut PIN hatalı veya parola değiştirilemedi."
+);
+
+}
+
+currentPin=newPin;
+
+msg.textContent=
+"Parola başarıyla değiştirildi ✓";
+
+button.textContent=
+"Değiştirildi ✓";
+
+setTimeout(()=>{
+
+overlay.remove();
+
+toast(
+"Parola değiştirildi ✓"
+);
+
+},800);
+
+}catch(error){
+
+msg.textContent=
+error.message;
+
+button.disabled=false;
+button.textContent=
+"Parolayı değiştir";
+
+}
+
+};
+
+setTimeout(()=>{
+
+overlay
+.querySelector("#oldPin")
+?.focus();
+
+},100);
+
+}
+
+
+/* =====================================================
+   ADMIN PANELİ
+===================================================== */
 
 function renderAdmin(){
 
-  const overlay =
-    document.getElementById(
-      "adminOverlay"
-    );
+const overlay=
+document.getElementById(
+"adminOverlay"
+);
+
+if(!overlay)return;
+
+const theme=
+menuData.theme||defaultTheme();
+
+const categories=
+menuData.categories.map(
+category=>`
+
+<div class="cat-header">
+
+<input
+data-cat-name="${esc(category.id)}"
+value="${esc(category.name)}"
+>
+
+<button
+class="btn btn-danger"
+data-del-cat="${esc(category.id)}"
+>
+Kategoriyi sil
+</button>
+
+</div>
+
+${category.items.map(item=>`
+
+<div class="item-edit-card">
+
+<label>
+Ürün adı
+</label>
+
+<input
+data-item-name="${esc(item.id)}"
+value="${esc(item.name)}"
+>
+
+<label>
+Açıklama
+</label>
+
+<input
+data-item-desc="${esc(item.id)}"
+value="${esc(item.desc||"")}"
+>
 
-  if(!overlay) return;
+<label>
+Fiyat (₺)
+</label>
+
+<input
+type="number"
+min="0"
+step="1"
+data-item-price="${esc(item.id)}"
+value="${Number(item.price)||0}"
+>
 
+<label>
+Görsel
+</label>
 
-  const theme =
-    {
-      ...defaultTheme(),
-      ...(menuData.theme || {})
-    };
-
-
-  const categories =
-    menuData.categories.map(
-      category=>`
+<div class="img-row">
+
+<img
+class="admin-thumb"
+data-preview="${esc(item.id)}"
+src="${
+item.image
+?esc(item.image)
+:BLANK_PIXEL
+}"
+>
 
-      <div class="cat-header">
+<div class="img-controls">
+
+<input
+type="file"
+accept="image/*"
+data-file="${esc(item.id)}"
+>
 
-        <input
-          data-cat-name="${escAttr(category.id)}"
-          value="${escAttr(category.name)}"
-        >
+<input
+data-url="${esc(item.id)}"
+placeholder="veya görsel linki"
+value="${
+item.image?.startsWith("http")
+?esc(item.image)
+:""
+}"
+>
 
-        <button
-          class="btn btn-danger"
-          data-del-cat="${escAttr(category.id)}"
-        >
-          Kategoriyi sil
-        </button>
+<button
+class="btn btn-ghost"
+data-remove-img="${esc(item.id)}"
+>
+Görseli kaldır
+</button>
 
-      </div>
+</div>
 
+</div>
 
-      ${category.items.map(
-        item=>`
+<label class="avail-toggle">
 
-        <div class="item-edit-card">
+<input
+type="checkbox"
+data-avail="${esc(item.id)}"
+${item.available?"checked":""}
+>
 
-          <label>
-            Ürün adı
-          </label>
+Stokta / satışta
 
-          <input
-            data-item-name="${escAttr(item.id)}"
-            value="${escAttr(item.name)}"
-          >
+</label>
 
+<div class="actions-row">
 
-          <label>
-            Açıklama
-          </label>
+<button
+class="btn btn-danger"
+data-del-item="${esc(item.id)}"
+data-cat="${esc(category.id)}"
+>
+Ürünü sil
+</button>
 
-          <input
-            data-item-desc="${escAttr(item.id)}"
-            value="${escAttr(item.desc || "")}"
-          >
+</div>
 
+</div>
 
-          <label>
-            Fiyat (₺)
-          </label>
+`).join("")}
 
-          <input
-            type="number"
-            min="0"
-            step="1"
-            data-item-price="${escAttr(item.id)}"
-            value="${Number(item.price)||0}"
-          >
+<button
+class="btn btn-ghost btn-block"
+data-add-item="${esc(category.id)}"
+>
++ Ürün ekle
+</button>
 
+`
+).join("");
 
-          <label>
-            Görsel
-          </label>
+overlay.innerHTML=`
 
-          <div class="img-row">
+<div class="panel panel-rel">
 
-            <img
-              class="admin-thumb"
-              data-preview="${escAttr(item.id)}"
-              src="${
-                item.image
-                ? escAttr(item.image)
-                : BLANK_PIXEL
-              }"
-            >
+<button
+class="close-x"
+id="adminClose"
+>
+✕
+</button>
 
-            <div class="img-controls">
+<h2>
+Yönetim Paneli
+</h2>
 
-              <input
-                type="file"
-                accept="image/*"
-                data-file="${escAttr(item.id)}"
-              >
 
-              <input
-                data-url="${escAttr(item.id)}"
-                placeholder="veya görsel linki"
-                value="${
-                  item.image?.startsWith("http")
-                  ? escAttr(item.image)
-                  : ""
-                }"
-              >
+<label>
+Kafe adı
+</label>
 
-              <button
-                class="btn btn-ghost"
-                data-remove-img="${escAttr(item.id)}"
-              >
-                Görseli kaldır
-              </button>
+<input
+id="cafeName"
+value="${esc(menuData.cafeName)}"
+>
 
-            </div>
 
-          </div>
+<label>
+Alt başlık
+</label>
 
+<input
+id="subtitle"
+value="${esc(menuData.subtitle)}"
+>
+
+
+<hr class="sep">
+
+
+<label>
+Logo
+</label>
+
+<img
+id="logoPreview"
+class="logo-preview"
+src="${
+menuData.logo
+?esc(menuData.logo)
+:BLANK_PIXEL
+}"
+>
+
+<input
+type="file"
+id="logoFile"
+accept="image/*"
+>
+
+<label>
+Logo linki
+</label>
+
+<input
+id="logoUrl"
+placeholder="https://..."
+value="${
+menuData.logo?.startsWith("http")
+?esc(menuData.logo)
+:""
+}"
+>
+
+<button
+class="btn btn-ghost btn-block"
+id="removeLogo"
+>
+Logoyu kaldır
+</button>
+
+
+<hr class="sep">
+
+
+<h2 style="font-size:21px;margin-bottom:10px">
+Tema Renkleri
+</h2>
+
+<div class="color-grid">
+
+${colorField(
+"colorBackground",
+"Ana arka plan",
+theme.background
+)}
+
+${colorField(
+"colorHeader",
+"Üst bölüm",
+theme.header
+)}
+
+${colorField(
+"colorSurface",
+"Kart / yüzey",
+theme.surface
+)}
+
+${colorField(
+"colorRaised",
+"Açık kart",
+theme.surfaceRaised
+)}
+
+${colorField(
+"colorCategory",
+"Kategori",
+theme.categoryBg
+)}
+
+${colorField(
+"colorCategoryText",
+"Kategori yazısı",
+theme.categoryText
+)}
+
+${colorField(
+"colorText",
+"Ana yazılar",
+theme.text
+)}
+
+${colorField(
+"colorMuted",
+"Açıklama yazıları",
+theme.mutedText
+)}
+
+${colorField(
+"colorPrice",
+"Fiyat",
+theme.price
+)}
+
+${colorField(
+"colorButton",
+"Buton",
+theme.button
+)}
 
-          <label class="avail-toggle">
+${colorField(
+"colorButtonText",
+"Buton yazısı",
+theme.buttonText
+)}
 
-            <input
-              type="checkbox"
-              data-avail="${escAttr(item.id)}"
-              ${item.available ? "checked" : ""}
-            >
+${colorField(
+"colorBorder",
+"Kenarlık",
+theme.border
+)}
 
-            Stokta / satışta
+${colorField(
+"colorTabBg",
+"Kategori arka planı",
+theme.tabBg
+)}
 
-          </label>
+${colorField(
+"colorTabText",
+"Kategori yazısı",
+theme.tabText
+)}
 
+${colorField(
+"colorTabActive",
+"Seçili kategori",
+theme.tabActive
+)}
 
-          <div class="actions-row">
+${colorField(
+"colorSold",
+"Tükendi yazısı",
+theme.sold
+)}
 
-            <button
-              class="btn btn-danger"
-              data-del-item="${escAttr(item.id)}"
-              data-cat="${escAttr(category.id)}"
-            >
-              Ürünü sil
-            </button>
+${colorField(
+"colorAccentText",
+"Başlık rengi",
+theme.accentText
+)}
 
-          </div>
+</div>
 
-        </div>
 
-        `
-      ).join("")}
+<hr class="sep">
 
 
-      <button
-        class="btn btn-ghost btn-block"
-        data-add-item="${escAttr(category.id)}"
-      >
-        + Ürün ekle
-      </button>
+<h2 style="font-size:21px;margin-bottom:5px">
+Kategoriler ve Ürünler
+</h2>
 
-    `
-    ).join("");
+${categories}
 
 
-  overlay.innerHTML = `
+<button
+class="btn btn-ghost btn-block"
+id="addCat"
+style="margin-top:18px"
+>
++ Yeni kategori
+</button>
 
-    <div class="panel panel-rel">
 
-      <button
-        class="close-x"
-        id="adminClose"
-      >
-        ✕
-      </button>
+<div
+class="status-msg"
+id="adminMsg"
+></div>
 
 
-      <h2>
-        Yönetim Paneli
-      </h2>
+<!-- PAROLA -->
 
+<button
+class="btn btn-ghost btn-block"
+id="changePinBtn"
+style="margin-top:18px"
+>
+🔐 Parolayı değiştir
+</button>
 
-      <label>
-        Kafe adı
-      </label>
 
-      <input
-        id="cafeName"
-        value="${escAttr(menuData.cafeName)}"
-      >
+<!-- EN ALTTA SADECE KAYDET -->
 
+<button
+class="btn btn-main btn-block save-button"
+id="saveMenu"
+>
+Kaydet
+</button>
 
-      <label>
-        Alt başlık
-      </label>
+</div>
 
-      <input
-        id="subtitle"
-        value="${escAttr(menuData.subtitle)}"
-      >
+`;
 
 
-      <hr class="sep">
+/* =====================================================
+   GENEL
+===================================================== */
 
+overlay
+.querySelector("#adminClose")
+.onclick=()=>{
 
-      <label>
-        Logo
-      </label>
+overlay.remove();
 
+renderCustomer();
 
-      <img
-        id="logoPreview"
-        class="logo-preview"
-        src="${
-          menuData.logo ||
-          BLANK_PIXEL
-        }"
-      >
+};
 
 
-      <input
-        type="file"
-        id="logoFile"
-        accept="image/*"
-      >
+overlay
+.querySelector("#cafeName")
+.oninput=e=>{
 
+menuData.cafeName=
+e.target.value;
 
-      <label>
-        Logo linki
-      </label>
+};
 
-      <input
-        id="logoUrl"
-        placeholder="https://..."
-        value="${
-          menuData.logo?.startsWith("http")
-          ? escAttr(menuData.logo)
-          : ""
-        }"
-      >
 
+overlay
+.querySelector("#subtitle")
+.oninput=e=>{
 
-      <button
-        class="btn btn-ghost btn-block"
-        id="removeLogo"
-      >
-        Logoyu kaldır
-      </button>
+menuData.subtitle=
+e.target.value;
 
+};
 
-      <hr class="sep">
 
+/* =====================================================
+   PAROLA BUTONU
+===================================================== */
 
-      <h2 style="font-size:21px;margin-bottom:10px;">
-        Tema Renkleri
-      </h2>
+overlay
+.querySelector("#changePinBtn")
+.onclick=()=>{
 
+openChangePin();
 
-      <div class="color-grid">
+};
 
-        ${colorField(
-          "colorBackground",
-          "Ana arka plan",
-          theme.background
-        )}
 
-        ${colorField(
-          "colorHeader",
-          "Üst bölüm",
-          theme.header
-        )}
+/* =====================================================
+   LOGO
+===================================================== */
 
-        ${colorField(
-          "colorSurface",
-          "Kart / yüzey",
-          theme.surface
-        )}
+overlay
+.querySelector("#logoUrl")
+.oninput=e=>{
 
-        ${colorField(
-          "colorRaised",
-          "Açık kart",
-          theme.surfaceRaised
-        )}
+menuData.logo=
+e.target.value.trim();
 
-        ${colorField(
-          "colorCategory",
-          "Kategori",
-          theme.categoryBg
-        )}
+overlay.querySelector(
+"#logoPreview"
+).src=
+menuData.logo||BLANK_PIXEL;
 
-        ${colorField(
-          "colorCategoryText",
-          "Kategori yazısı",
-          theme.categoryText
-        )}
+};
 
-        ${colorField(
-          "colorText",
-          "Ana yazılar",
-          theme.text
-        )}
 
-        ${colorField(
-          "colorMuted",
-          "Açıklama yazıları",
-          theme.mutedText
-        )}
+overlay
+.querySelector("#logoFile")
+.onchange=async e=>{
 
-        ${colorField(
-          "colorPrice",
-          "Fiyat",
-          theme.price
-        )}
+const file=
+e.target.files?.[0];
 
-        ${colorField(
-          "colorButton",
-          "Buton",
-          theme.button
-        )}
+if(!file)return;
 
-        ${colorField(
-          "colorButtonText",
-          "Buton yazısı",
-          theme.buttonText
-        )}
+try{
 
-        ${colorField(
-          "colorBorder",
-          "Kenarlık",
-          theme.border
-        )}
+menuData.logo=
+await resizeLogo(file);
 
-        ${colorField(
-          "colorTabBg",
-          "Kategori arka planı",
-          theme.tabBg
-        )}
+overlay.querySelector(
+"#logoPreview"
+).src=
+menuData.logo;
 
-        ${colorField(
-          "colorTabText",
-          "Kategori yazısı",
-          theme.tabText
-        )}
+}catch{
 
-        ${colorField(
-          "colorTabActive",
-          "Seçili kategori",
-          theme.tabActive
-        )}
+toast(
+"Logo yüklenemedi."
+);
 
-        ${colorField(
-          "colorSold",
-          "Tükendi yazısı",
-          theme.sold
-        )}
+}
 
-        ${colorField(
-          "colorAccentText",
-          "Başlık rengi",
-          theme.accentText
-        )}
+};
 
-      </div>
 
+overlay
+.querySelector("#removeLogo")
+.onclick=()=>{
 
-      <hr class="sep">
+menuData.logo="";
 
+overlay.querySelector(
+"#logoPreview"
+).src=
+BLANK_PIXEL;
 
-      <h2 style="font-size:21px;margin-bottom:5px;">
-        Kategoriler ve Ürünler
-      </h2>
+overlay.querySelector(
+"#logoFile"
+).value="";
 
+overlay.querySelector(
+"#logoUrl"
+).value="";
 
-      ${categories}
+};
 
 
-      <button
-        class="btn btn-ghost btn-block"
-        id="addCat"
-        style="margin-top:18px;"
-      >
-        + Yeni kategori
-      </button>
+/* =====================================================
+   KATEGORİ ADLARI
+===================================================== */
 
+overlay
+.querySelectorAll("[data-cat-name]")
+.forEach(input=>{
 
-      <div
-        class="status-msg"
-        id="adminMsg"
-      ></div>
+input.oninput=e=>{
 
+const c=
+menuData.categories.find(
+x=>x.id===input.dataset.catName
+);
 
-      <button
-        class="btn btn-main btn-block save-button"
-        id="saveMenu"
-      >
-        Kaydet
-      </button>
+if(c)c.name=e.target.value;
 
-    </div>
+};
 
-  `;
+});
 
 
-  overlay
-    .querySelector("#adminClose")
-    .onclick = ()=>{
+/* =====================================================
+   ÜRÜN ADLARI
+===================================================== */
 
-      overlay.remove();
+overlay
+.querySelectorAll("[data-item-name]")
+.forEach(input=>{
 
-      renderCustomer();
+input.oninput=e=>{
 
-    };
+const item=
+findItem(input.dataset.itemName);
 
+if(item)item.name=e.target.value;
 
-  overlay
-    .querySelector("#cafeName")
-    .oninput = event=>{
+};
 
-      menuData.cafeName =
-        event.target.value;
+});
 
-    };
 
+/* =====================================================
+   AÇIKLAMA
+===================================================== */
 
-  overlay
-    .querySelector("#subtitle")
-    .oninput = event=>{
+overlay
+.querySelectorAll("[data-item-desc]")
+.forEach(input=>{
 
-      menuData.subtitle =
-        event.target.value;
+input.oninput=e=>{
 
-    };
+const item=
+findItem(input.dataset.itemDesc);
 
+if(item)item.desc=e.target.value;
 
-  overlay
-    .querySelector("#logoUrl")
-    .oninput = event=>{
+};
 
-      menuData.logo =
-        event.target.value.trim();
+});
 
-      overlay.querySelector(
-        "#logoPreview"
-      ).src =
-        menuData.logo ||
-        BLANK_PIXEL;
 
-    };
+/* =====================================================
+   FİYAT
+===================================================== */
 
+overlay
+.querySelectorAll("[data-item-price]")
+.forEach(input=>{
 
-  overlay
-    .querySelector("#logoFile")
-    .onchange = async event=>{
+input.oninput=e=>{
 
-      const file =
-        event.target.files?.[0];
+const item=
+findItem(input.dataset.itemPrice);
 
-      if(!file) return;
+if(item){
+item.price=
+Number(e.target.value)||0;
+}
 
-      try{
+};
 
-        menuData.logo =
-          await resizeLogo(file);
+});
 
-        overlay.querySelector(
-          "#logoPreview"
-        ).src =
-          menuData.logo;
 
-      }catch{
+/* =====================================================
+   STOK
+===================================================== */
 
-        toast(
-          "Logo yüklenemedi."
-        );
+overlay
+.querySelectorAll("[data-avail]")
+.forEach(input=>{
 
-      }
+input.onchange=e=>{
 
-    };
+const item=
+findItem(input.dataset.avail);
 
+if(item){
+item.available=
+e.target.checked;
+}
 
-  overlay
-    .querySelector("#removeLogo")
-    .onclick = ()=>{
+};
 
-      menuData.logo = "";
+});
 
-      overlay.querySelector(
-        "#logoPreview"
-      ).src =
-        BLANK_PIXEL;
 
-      overlay.querySelector(
-        "#logoFile"
-      ).value = "";
+/* =====================================================
+   ÜRÜN SİL
+===================================================== */
 
-      overlay.querySelector(
-        "#logoUrl"
-      ).value = "";
+overlay
+.querySelectorAll("[data-del-item]")
+.forEach(button=>{
 
-    };
+button.onclick=()=>{
 
+const category=
+menuData.categories.find(
+c=>c.id===button.dataset.cat
+);
 
-  overlay
-    .querySelectorAll("[data-cat-name]")
-    .forEach(input=>{
+if(!category)return;
 
-      input.oninput = event=>{
+category.items=
+category.items.filter(
+item=>
+item.id!==button.dataset.delItem
+);
 
-        const category =
-          menuData.categories.find(
-            c =>
-              c.id ===
-              input.dataset.catName
-          );
+renderAdmin();
 
-        if(category){
+};
 
-          category.name =
-            event.target.value;
+});
 
-        }
 
-      };
+/* =====================================================
+   ÜRÜN EKLE
+===================================================== */
 
-    });
+overlay
+.querySelectorAll("[data-add-item]")
+.forEach(button=>{
 
+button.onclick=()=>{
 
-  overlay
-    .querySelectorAll("[data-item-name]")
-    .forEach(input=>{
+const category=
+menuData.categories.find(
+c=>c.id===button.dataset.addItem
+);
 
-      input.oninput = event=>{
+if(!category)return;
 
-        const item =
-          findItem(
-            input.dataset.itemName
-          );
+category.items.push({
 
-        if(item){
+id:uid(),
+name:"Yeni ürün",
+desc:"",
+price:0,
+available:true,
+image:""
 
-          item.name =
-            event.target.value;
+});
 
-        }
+renderAdmin();
 
-      };
+};
 
-    });
+});
 
 
-  overlay
-    .querySelectorAll("[data-item-desc]")
-    .forEach(input=>{
+/* =====================================================
+   KATEGORİ SİL
+===================================================== */
 
-      input.oninput = event=>{
+overlay
+.querySelectorAll("[data-del-cat]")
+.forEach(button=>{
 
-        const item =
-          findItem(
-            input.dataset.itemDesc
-          );
+button.onclick=()=>{
 
-        if(item){
+if(!confirm(
+"Kategori ve ürünleri silinsin mi?"
+))return;
 
-          item.desc =
-            event.target.value;
+menuData.categories=
+menuData.categories.filter(
+c=>c.id!==button.dataset.delCat
+);
 
-        }
+activeCatId=
+menuData.categories[0]?.id||null;
 
-      };
+renderAdmin();
 
-    });
+};
 
+});
 
-  overlay
-    .querySelectorAll("[data-item-price]")
-    .forEach(input=>{
 
-      input.oninput = event=>{
+/* =====================================================
+   ÜRÜN GÖRSELİ
+===================================================== */
 
-        const item =
-          findItem(
-            input.dataset.itemPrice
-          );
+overlay
+.querySelectorAll("[data-file]")
+.forEach(input=>{
 
-        if(item){
+input.onchange=async e=>{
 
-          item.price =
-            Number(
-              event.target.value
-            ) || 0;
+const file=
+e.target.files?.[0];
 
-        }
+if(!file)return;
 
-      };
+try{
 
-    });
+const item=
+findItem(input.dataset.file);
 
+if(!item)return;
 
-  overlay
-    .querySelectorAll("[data-avail]")
-    .forEach(input=>{
+item.image=
+await resizeImage(file);
 
-      input.onchange = event=>{
+renderAdmin();
 
-        const item =
-          findItem(
-            input.dataset.avail
-          );
+}catch{
 
-        if(item){
+toast(
+"Görsel yüklenemedi."
+);
 
-          item.available =
-            event.target.checked;
+}
 
-        }
+};
 
-      };
+});
 
-    });
 
+/* =====================================================
+   GÖRSEL URL
+===================================================== */
 
-  overlay
-    .querySelectorAll("[data-del-item]")
-    .forEach(button=>{
+overlay
+.querySelectorAll("[data-url]")
+.forEach(input=>{
 
-      button.onclick = ()=>{
+input.oninput=e=>{
 
-        const category =
-          menuData.categories.find(
-            c =>
-              c.id ===
-              button.dataset.cat
-          );
+const item=
+findItem(input.dataset.url);
 
-        if(!category) return;
+if(!item)return;
 
-        category.items =
-          category.items.filter(
-            item =>
-              item.id !==
-              button.dataset.delItem
-          );
+item.image=
+e.target.value.trim();
 
-        renderAdmin();
+const preview=
+overlay.querySelector(
+`[data-preview="${CSS.escape(item.id)}"]`
+);
 
-      };
+if(preview){
 
-    });
+preview.src=
+item.image||BLANK_PIXEL;
 
+}
 
-  overlay
-    .querySelectorAll("[data-add-item]")
-    .forEach(button=>{
+};
 
-      button.onclick = ()=>{
+});
 
-        const category =
-          menuData.categories.find(
-            c =>
-              c.id ===
-              button.dataset.addItem
-          );
 
-        if(!category) return;
+/* =====================================================
+   GÖRSEL SİL
+===================================================== */
 
-        category.items.push({
+overlay
+.querySelectorAll("[data-remove-img]")
+.forEach(button=>{
 
-          id:uid(),
-          name:"Yeni ürün",
-          desc:"",
-          price:0,
-          available:true,
-          image:""
+button.onclick=()=>{
 
-        });
+const item=
+findItem(button.dataset.removeImg);
 
-        renderAdmin();
+if(!item)return;
 
-      };
+item.image="";
 
-    });
+renderAdmin();
 
+};
 
-  overlay
-    .querySelectorAll("[data-del-cat]")
-    .forEach(button=>{
+});
 
-      button.onclick = ()=>{
 
-        if(
-          !confirm(
-            "Kategori ve ürünleri silinsin mi?"
-          )
-        ){
-          return;
-        }
+/* =====================================================
+   YENİ KATEGORİ
+===================================================== */
 
-        menuData.categories =
-          menuData.categories.filter(
-            c =>
-              c.id !==
-              button.dataset.delCat
-          );
+overlay
+.querySelector("#addCat")
+.onclick=()=>{
 
-        activeCatId =
-          menuData.categories[0]?.id ||
-          null;
+menuData.categories.push({
 
-        renderAdmin();
+id:uid(),
+name:"Yeni kategori",
+items:[]
 
-      };
+});
 
-    });
+renderAdmin();
 
+};
 
-  overlay
-    .querySelectorAll("[data-file]")
-    .forEach(input=>{
 
-      input.onchange = async event=>{
+/* =====================================================
+   RENKLER
+===================================================== */
 
-        const file =
-          event.target.files?.[0];
+const colorMap={
 
-        if(!file) return;
+colorBackground:"background",
+colorHeader:"header",
+colorSurface:"surface",
+colorRaised:"surfaceRaised",
+colorCategory:"categoryBg",
+colorCategoryText:"categoryText",
+colorText:"text",
+colorMuted:"mutedText",
+colorPrice:"price",
+colorButton:"button",
+colorButtonText:"buttonText",
+colorBorder:"border",
+colorTabBg:"tabBg",
+colorTabText:"tabText",
+colorTabActive:"tabActive",
+colorSold:"sold",
+colorAccentText:"accentText"
 
-        try{
+};
 
-          const item =
-            findItem(
-              input.dataset.file
-            );
+Object.keys(colorMap)
+.forEach(id=>{
 
-          if(!item) return;
+const input=
+overlay.querySelector("#"+id);
 
-          item.image =
-            await resizeImage(file);
+if(!input)return;
 
-          renderAdmin();
+input.oninput=e=>{
 
-        }catch{
+menuData.theme[
+colorMap[id]
+]=e.target.value;
 
-          toast(
-            "Görsel yüklenemedi."
-          );
+applyTheme(
+menuData.theme
+);
 
-        }
+};
 
-      };
+});
 
-    });
 
+/* =====================================================
+   KAYDET
+===================================================== */
 
-  overlay
-    .querySelectorAll("[data-url]")
-    .forEach(input=>{
+overlay
+.querySelector("#saveMenu")
+.onclick=async()=>{
 
-      input.oninput = event=>{
+const msg=
+overlay.querySelector("#adminMsg");
 
-        const item =
-          findItem(
-            input.dataset.url
-          );
+const button=
+overlay.querySelector("#saveMenu");
 
-        if(!item) return;
+msg.textContent=
+"Kaydediliyor...";
 
-        item.image =
-          event.target.value.trim();
+button.disabled=true;
 
-        const preview =
-          overlay.querySelector(
-            `[data-preview="${CSS.escape(item.id)}"]`
-          );
+button.textContent=
+"Kaydediliyor...";
 
-        if(preview){
+try{
 
-          preview.src =
-            item.image ||
-            BLANK_PIXEL;
+const payload={
 
-        }
+cafeName:
+menuData.cafeName,
 
-      };
+subtitle:
+menuData.subtitle,
 
-    });
+logo:
+menuData.logo,
 
+theme:
+menuData.theme,
 
-  overlay
-    .querySelectorAll("[data-remove-img]")
-    .forEach(button=>{
+categories:
+menuData.categories
 
-      button.onclick = ()=>{
+};
 
-        const item =
-          findItem(
-            button.dataset.removeImg
-          );
+const result=
+await rpc(
+"save_menu",
+{
+p_menu_id:MENU_ID,
+p_pin:currentPin,
+p_data:payload
+}
+);
 
-        if(!item) return;
+if(!rpcTrue(result)){
 
-        item.image = "";
+throw new Error(
+"PIN doğrulanamadı veya menü kaydedilemedi."
+);
 
-        renderAdmin();
+}
 
-      };
+msg.textContent=
+"Kaydedildi ✓";
 
-    });
+button.textContent=
+"Kaydedildi ✓";
 
+setTimeout(()=>{
 
-  overlay
-    .querySelector("#addCat")
-    .onclick = ()=>{
+overlay.remove();
 
-      menuData.categories.push({
+renderCustomer();
 
-        id:uid(),
+toast(
+"Menü güncellendi ✓"
+);
 
-        name:"Yeni kategori",
+},700);
 
-        items:[]
+}catch(error){
 
-      });
+msg.textContent=
+"Hata: "+
+error.message;
 
-      renderAdmin();
+button.disabled=false;
 
-    };
+button.textContent=
+"Kaydet";
 
+}
 
-  const colorMap = {
-
-    colorBackground:"background",
-    colorHeader:"header",
-    colorSurface:"surface",
-    colorRaised:"surfaceRaised",
-    colorCategory:"categoryBg",
-    colorCategoryText:"categoryText",
-    colorText:"text",
-    colorMuted:"mutedText",
-    colorPrice:"price",
-    colorButton:"button",
-    colorButtonText:"buttonText",
-    colorBorder:"border",
-    colorTabBg:"tabBg",
-    colorTabText:"tabText",
-    colorTabActive:"tabActive",
-    colorSold:"sold",
-    colorAccentText:"accentText"
-
-  };
-
-
-  Object.keys(colorMap)
-    .forEach(elementId=>{
-
-      const input =
-        overlay.querySelector(
-          "#" + elementId
-        );
-
-      if(!input) return;
-
-      input.oninput = event=>{
-
-        menuData.theme[
-          colorMap[elementId]
-        ] =
-          event.target.value;
-
-        applyTheme(
-          menuData.theme
-        );
-
-      };
-
-    });
-
-
-  overlay
-    .querySelector("#saveMenu")
-    .onclick = async ()=>{
-
-      const message =
-        overlay.querySelector(
-          "#adminMsg"
-        );
-
-      const saveButton =
-        overlay.querySelector(
-          "#saveMenu"
-        );
-
-
-      message.textContent =
-        "Kaydediliyor...";
-
-      saveButton.disabled =
-        true;
-
-      saveButton.textContent =
-        "Kaydediliyor...";
-
-
-      try{
-
-        const payload = {
-
-          cafeName:
-            menuData.cafeName,
-
-          subtitle:
-            menuData.subtitle,
-
-          logo:
-            menuData.logo,
-
-          theme:
-            menuData.theme,
-
-          categories:
-            menuData.categories
-
-        };
-
-
-        const result =
-          await rpc(
-            "save_menu",
-            {
-              p_menu_id:MENU_ID,
-              p_pin:currentPin,
-              p_data:payload
-            }
-          );
-
-
-        const ok =
-          result === true ||
-          result?.[0] === true ||
-          result?.result === true;
-
-
-        if(!ok){
-
-          throw new Error(
-            "PIN doğrulanamadı veya menü kaydedilemedi."
-          );
-
-        }
-
-
-        message.textContent =
-          "Kaydedildi ✓";
-
-        saveButton.textContent =
-          "Kaydedildi ✓";
-
-
-        setTimeout(()=>{
-
-          overlay.remove();
-
-          applyTheme(
-            menuData.theme
-          );
-
-          renderCustomer();
-
-          toast(
-            "Menü güncellendi ✓"
-          );
-
-        },600);
-
-
-      }catch(error){
-
-        console.error(
-          "SAVE ERROR:",
-          error
-        );
-
-        message.textContent =
-          "Hata: " +
-          error.message;
-
-        saveButton.disabled =
-          false;
-
-        saveButton.textContent =
-          "Kaydet";
-
-      }
-
-    };
+};
 
 }
 
 
-/* =========================================================
+/* =====================================================
    ADMIN AÇ
-========================================================= */
+===================================================== */
 
 function openAdmin(){
 
-  const old =
-    document.getElementById(
-      "adminOverlay"
-    );
+const old=
+document.getElementById(
+"adminOverlay"
+);
 
-  if(old){
-    old.remove();
-  }
+if(old)old.remove();
 
+const overlay=
+document.createElement("div");
 
-  const overlay =
-    document.createElement("div");
+overlay.className="overlay";
+overlay.id="adminOverlay";
 
-  overlay.className =
-    "overlay";
+document.body.appendChild(
+overlay
+);
 
-  overlay.id =
-    "adminOverlay";
-
-  document.body.appendChild(
-    overlay
-  );
-
-  renderAdmin();
+renderAdmin();
 
 }
 
 
-/* =========================================================
+/* =====================================================
    AYAR BUTONU
-========================================================= */
+===================================================== */
 
 document
-  .getElementById("adminDot")
-  .onclick =
-  openGate;
+.getElementById("adminDot")
+.onclick=openGate;
 
 document
-  .getElementById("adminDot")
-  .onkeydown =
-  event=>{
+.getElementById("adminDot")
+.onkeydown=e=>{
 
-    if(
-      event.key === "Enter" ||
-      event.key === " "
-    ){
+if(e.key==="Enter"){
+openGate();
+}
 
-      event.preventDefault();
-
-      openGate();
-
-    }
-
-  };
+};
 
 
-/* =========================================================
+/* =====================================================
    BAŞLAT
-========================================================= */
+===================================================== */
 
 loadMenu();
 
