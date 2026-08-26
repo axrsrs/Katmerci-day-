@@ -2,589 +2,575 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#F6F1E2">
 <title>Kafe Menü</title>
 
 <style>
 :root{
-  --bg:#F6F1E2;
-  --header:#F6F1E2;
-  --surface:#FFFFFF;
-  --surface-raised:#ECE2C7;
-  --category-bg:#1E6F4C;
-  --category-text:#FFFFFF;
-  --accent:#1E6F4C;
-  --accent-text:#134A32;
-  --ink:#20261D;
-  --ink-muted:#6E6A52;
-  --price:#1E6F4C;
-  --button:#1E6F4C;
-  --button-text:#FFFFFF;
-  --border:#D8D0B9;
-  --danger:#A9433A;
-  --tab-bg:#FFFFFF;
-  --tab-text:#6E6A52;
-  --tab-active:#1E6F4C;
-  --sold:#A9433A;
+--bg:#F6F1E2;
+--header:#F6F1E2;
+--surface:#fff;
+--surface-raised:#ECE2C7;
+--category-bg:#1E6F4C;
+--category-text:#fff;
+--accent:#1E6F4C;
+--accent-text:#134A32;
+--ink:#20261D;
+--ink-muted:#6E6A52;
+--price:#1E6F4C;
+--button:#1E6F4C;
+--button-text:#fff;
+--border:#D8D0B9;
+--danger:#A9433A;
+--tab-bg:#fff;
+--tab-text:#6E6A52;
+--tab-active:#1E6F4C;
+--sold:#A9433A;
 }
 
 *{box-sizing:border-box}
 
 html,body{
-  margin:0;
-  padding:0;
+margin:0;
+padding:0;
 }
 
 body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:Arial,sans-serif;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+background:var(--bg);
+color:var(--ink);
+font-family:Arial,sans-serif;
+min-height:100vh;
+-webkit-font-smoothing:antialiased;
+overflow-x:hidden;
 }
 
 button,input{
-  font-family:inherit;
+font-family:inherit;
 }
 
 button{
-  -webkit-tap-highlight-color:transparent;
+-webkit-tap-highlight-color:transparent;
 }
 
 .wrap{
-  max-width:640px;
-  margin:auto;
-  padding-bottom:100px;
+max-width:640px;
+margin:auto;
+padding-bottom:100px;
 }
 
 /* HEADER */
 
-header.hero{
-  background:var(--header);
-  padding:38px 24px 30px;
-  text-align:center;
-  border-bottom:1px solid var(--border);
+.hero{
+background:var(--header);
+padding:38px 24px 30px;
+text-align:center;
+border-bottom:1px solid var(--border);
 }
 
 .logo-wrap{
-  display:flex;
-  justify-content:center;
-  margin-bottom:18px;
+display:flex;
+justify-content:center;
+margin-bottom:18px;
 }
 
 .logo{
-  width:110px;
-  height:110px;
-  object-fit:contain;
-  border-radius:18px;
+width:110px;
+height:110px;
+object-fit:contain;
+border-radius:18px;
 }
 
 .eyebrow{
-  font-size:11px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:var(--accent-text);
-  margin-bottom:14px;
+font-size:11px;
+letter-spacing:.28em;
+text-transform:uppercase;
+color:var(--accent-text);
+margin-bottom:14px;
 }
 
-h1.cafe-name{
-  font-family:Georgia,serif;
-  font-weight:600;
-  font-size:clamp(34px,9vw,52px);
-  margin:0 0 10px;
-  line-height:1.05;
+.cafe-name{
+font-family:Georgia,serif;
+font-weight:600;
+font-size:clamp(34px,9vw,52px);
+margin:0 0 10px;
+line-height:1.05;
 }
 
 .subtitle{
-  color:var(--ink-muted);
-  font-size:15px;
-  max-width:420px;
-  margin:auto;
-  line-height:1.5;
+color:var(--ink-muted);
+font-size:15px;
+max-width:420px;
+margin:auto;
+line-height:1.5;
 }
 
 /* TABS */
 
-nav.tabs{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding:18px 20px;
-  scrollbar-width:none;
-  position:sticky;
-  top:0;
-  background:linear-gradient(var(--bg) 78%,transparent);
-  z-index:5;
+.tabs{
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding:18px 20px;
+scrollbar-width:none;
+position:sticky;
+top:0;
+background:linear-gradient(var(--bg) 78%,transparent);
+z-index:5;
 }
 
-nav.tabs::-webkit-scrollbar{
-  display:none;
+.tabs::-webkit-scrollbar{
+display:none;
 }
 
 .tab-btn{
-  flex:0 0 auto;
-  font-size:12.5px;
-  padding:9px 16px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--tab-bg);
-  color:var(--tab-text);
-  white-space:nowrap;
-  cursor:pointer;
+flex:0 0 auto;
+font-size:12.5px;
+padding:9px 16px;
+border-radius:999px;
+border:1px solid var(--border);
+background:var(--tab-bg);
+color:var(--tab-text);
+white-space:nowrap;
+cursor:pointer;
 }
 
 .tab-btn.active{
-  background:var(--tab-active);
-  border-color:var(--tab-active);
-  color:#fff;
-  font-weight:600;
-}
-
-/* CATEGORY */
-
-.category-block{
-  padding:6px 22px 8px;
-}
-
-.category-title{
-  display:inline-block;
-  background:var(--category-bg);
-  color:var(--category-text);
-  font-family:Georgia,serif;
-  font-size:21px;
-  font-weight:500;
-  padding:9px 16px;
-  border-radius:12px;
-  margin:22px 0 12px;
+background:var(--tab-active);
+border-color:var(--tab-active);
+color:#fff;
+font-weight:600;
 }
 
 /* PRODUCTS */
 
+.category-block{
+padding:6px 22px 8px;
+}
+
+.category-title{
+display:inline-block;
+background:var(--category-bg);
+color:var(--category-text);
+font-family:Georgia,serif;
+font-size:21px;
+font-weight:500;
+padding:9px 16px;
+border-radius:12px;
+margin:22px 0 12px;
+}
+
 .item-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:13px 0;
-  border-bottom:1px dashed var(--border);
+display:flex;
+align-items:center;
+gap:12px;
+padding:13px 0;
+border-bottom:1px dashed var(--border);
 }
 
 .item-thumb{
-  width:54px;
-  height:54px;
-  flex:0 0 auto;
-  border-radius:10px;
-  object-fit:cover;
-  border:1px solid var(--border);
-  background:var(--surface-raised);
+width:54px;
+height:54px;
+flex:0 0 auto;
+border-radius:10px;
+object-fit:cover;
+border:1px solid var(--border);
+background:var(--surface-raised);
 }
 
 .item-text-row{
-  display:flex;
-  align-items:baseline;
-  gap:8px;
-  flex:1;
-  min-width:0;
+display:flex;
+align-items:baseline;
+gap:8px;
+flex:1;
+min-width:0;
 }
 
 .item-name-wrap{
-  min-width:0;
+min-width:0;
 }
 
 .item-name{
-  font-size:16px;
-  font-weight:600;
+font-size:16px;
+font-weight:600;
 }
 
 .item-name.unavailable{
-  color:var(--ink-muted);
-  text-decoration:line-through;
+color:var(--ink-muted);
+text-decoration:line-through;
 }
 
 .item-desc{
-  font-size:12.5px;
-  color:var(--ink-muted);
-  margin-top:2px;
-  line-height:1.4;
+font-size:12.5px;
+color:var(--ink-muted);
+margin-top:2px;
+line-height:1.4;
 }
 
 .leader{
-  flex:1;
-  border-bottom:1px dotted var(--border);
-  height:0;
-  margin:0 2px 5px;
-  min-width:12px;
+flex:1;
+border-bottom:1px dotted var(--border);
+height:0;
+margin:0 2px 5px;
+min-width:12px;
 }
 
 .item-price{
-  font-size:15px;
-  color:var(--price);
-  font-weight:600;
-  white-space:nowrap;
+font-size:15px;
+color:var(--price);
+font-weight:600;
+white-space:nowrap;
 }
 
 .item-price.unavailable{
-  color:var(--ink-muted);
+color:var(--ink-muted);
 }
 
 .sold-out-tag{
-  font-size:10px;
-  color:var(--sold);
-  letter-spacing:.08em;
-  margin-left:6px;
+font-size:10px;
+color:var(--sold);
+letter-spacing:.08em;
+margin-left:6px;
 }
 
 /* FOOTER */
 
-footer.note{
-  text-align:center;
-  padding:36px 24px 10px;
-  color:var(--ink-muted);
-  font-size:11.5px;
+.note{
+text-align:center;
+padding:36px 24px 10px;
+color:var(--ink-muted);
+font-size:11.5px;
 }
 
 /* ADMIN */
 
 .admin-dot{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:var(--surface);
-  border:1px solid var(--border);
-  color:var(--ink-muted);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  z-index:20;
-  box-shadow:0 3px 15px rgba(0,0,0,.12);
-  font-size:21px;
+position:fixed;
+bottom:18px;
+right:18px;
+width:48px;
+height:48px;
+border-radius:50%;
+background:var(--surface);
+border:1px solid var(--border);
+color:var(--ink-muted);
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:20;
+box-shadow:0 3px 15px rgba(0,0,0,.12);
+font-size:21px;
 }
-
-/* OVERLAY */
 
 .overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.48);
-  z-index:50;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-}
-
-@media(min-width:640px){
-  .overlay{
-    align-items:center;
-  }
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.48);
+z-index:50;
+display:flex;
+align-items:flex-end;
+justify-content:center;
 }
 
 .panel{
-  background:var(--surface);
-  width:100%;
-  max-width:580px;
-  max-height:92vh;
-  overflow-y:auto;
-  border-radius:20px 20px 0 0;
-  padding:25px 20px 35px;
-  border:1px solid var(--border);
-}
-
-@media(min-width:640px){
-  .panel{
-    border-radius:20px;
-  }
-}
-
-.panel h2{
-  font-family:Georgia,serif;
-  font-size:25px;
-  margin:0 0 20px;
-  color:var(--accent-text);
-}
-
-.panel label{
-  display:block;
-  font-size:10.5px;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:var(--ink-muted);
-  margin:15px 0 6px;
-}
-
-.panel input{
-  width:100%;
-  background:var(--surface-raised);
-  border:1px solid var(--border);
-  border-radius:9px;
-  padding:11px 12px;
-  color:var(--ink);
-  font-size:14.5px;
-}
-
-.panel input[type=color]{
-  padding:3px;
-  height:44px;
-  cursor:pointer;
-}
-
-.btn{
-  font-size:12.5px;
-  padding:10px 15px;
-  border-radius:9px;
-  border:1px solid transparent;
-  cursor:pointer;
-}
-
-.btn-main{
-  background:var(--button);
-  color:var(--button-text);
-  font-weight:600;
-}
-
-.btn-ghost{
-  background:var(--surface);
-  border-color:var(--border);
-  color:var(--ink);
-}
-
-.btn-danger{
-  background:var(--surface);
-  border-color:var(--danger);
-  color:var(--danger);
-}
-
-.btn-block{
-  width:100%;
-  display:block;
-  text-align:center;
-  margin-top:9px;
-}
-
-.save-button{
-  margin-top:28px;
-  padding:15px;
-  font-size:15px;
-  border-radius:12px;
-}
-
-.password-button{
-  margin-bottom:8px;
-  padding:13px;
-  font-size:14px;
-}
-
-.item-edit-card{
-  background:var(--surface-raised);
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:14px;
-  margin-top:12px;
-}
-
-.cat-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:27px;
-  padding-bottom:9px;
-  border-bottom:1px solid var(--border);
-}
-
-.cat-header input{
-  font-family:Georgia,serif;
-  font-size:18px;
-  color:var(--accent-text);
-  border:none;
-  background:transparent;
-  padding:3px 0;
-}
-
-.avail-toggle{
-  display:flex!important;
-  align-items:center;
-  gap:7px;
-  font-size:12px!important;
-  color:var(--ink-muted)!important;
-  margin-top:10px!important;
-}
-
-.avail-toggle input{
-  width:auto;
-}
-
-.actions-row{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-  flex-wrap:wrap;
-}
-
-.status-msg{
-  font-size:12px;
-  color:var(--accent-text);
-  margin-top:11px;
-  min-height:17px;
-}
-
-.pin-box{
-  text-align:center;
-}
-
-.pin-box input{
-  text-align:center;
-  font-size:20px;
-  letter-spacing:.3em;
-}
-
-.close-x{
-  position:absolute;
-  top:14px;
-  right:16px;
-  background:none;
-  border:none;
-  color:var(--ink-muted);
-  font-size:21px;
-  cursor:pointer;
+background:var(--surface);
+width:100%;
+max-width:580px;
+max-height:94vh;
+overflow-y:auto;
+border-radius:20px 20px 0 0;
+padding:25px 20px 35px;
+border:1px solid var(--border);
 }
 
 .panel-rel{
-  position:relative;
+position:relative;
+}
+
+@media(min-width:640px){
+.overlay{
+align-items:center;
+}
+.panel{
+border-radius:20px;
+}
+}
+
+.panel h2{
+font-family:Georgia,serif;
+font-size:25px;
+margin:0 0 20px;
+color:var(--accent-text);
+}
+
+.panel label{
+display:block;
+font-size:10.5px;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:var(--ink-muted);
+margin:15px 0 6px;
+}
+
+.panel input{
+width:100%;
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:9px;
+padding:11px 12px;
+color:var(--ink);
+font-size:14.5px;
+}
+
+.panel input[type=color]{
+padding:3px;
+height:44px;
+cursor:pointer;
+}
+
+.btn{
+font-size:12.5px;
+padding:10px 15px;
+border-radius:9px;
+border:1px solid transparent;
+cursor:pointer;
+}
+
+.btn-main{
+background:var(--button);
+color:var(--button-text);
+font-weight:600;
+}
+
+.btn-ghost{
+background:var(--surface);
+border-color:var(--border);
+color:var(--ink);
+}
+
+.btn-danger{
+background:var(--surface);
+border-color:var(--danger);
+color:var(--danger);
+}
+
+.btn-block{
+width:100%;
+display:block;
+text-align:center;
+margin-top:9px;
+}
+
+.save-button{
+margin-top:28px;
+padding:15px;
+font-size:15px;
+border-radius:12px;
+}
+
+.item-edit-card{
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:11px;
+padding:14px;
+margin-top:12px;
+}
+
+.cat-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-top:27px;
+padding-bottom:9px;
+border-bottom:1px solid var(--border);
+}
+
+.cat-header input{
+font-family:Georgia,serif;
+font-size:18px;
+color:var(--accent-text);
+border:none;
+background:transparent;
+padding:3px 0;
+}
+
+.avail-toggle{
+display:flex!important;
+align-items:center;
+gap:7px;
+font-size:12px!important;
+color:var(--ink-muted)!important;
+margin-top:10px!important;
+}
+
+.avail-toggle input{
+width:auto;
+}
+
+.actions-row{
+display:flex;
+gap:8px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+
+.status-msg{
+font-size:12px;
+color:var(--accent-text);
+margin-top:11px;
+min-height:17px;
+}
+
+.close-x{
+position:absolute;
+top:14px;
+right:16px;
+background:none;
+border:none;
+color:var(--ink-muted);
+font-size:21px;
+cursor:pointer;
+}
+
+.pin-box{
+text-align:center;
+}
+
+.pin-box input{
+text-align:center;
+font-size:20px;
+letter-spacing:.3em;
 }
 
 .loading{
-  text-align:center;
-  padding:45vh 20px 20px;
-  color:var(--ink-muted);
-  font-size:14px;
+text-align:center;
+padding:45vh 20px 20px;
+color:var(--ink-muted);
+font-size:14px;
 }
 
 .error-box{
-  padding:100px 25px;
-  text-align:center;
-  color:var(--ink);
+padding:100px 25px;
+text-align:center;
+color:var(--ink);
 }
 
 .error-box h2{
-  font-family:Georgia,serif;
+font-family:Georgia,serif;
 }
 
 .color-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
 .color-item{
-  background:var(--surface-raised);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:10px;
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:10px;
+padding:10px;
 }
 
 .color-item label{
-  margin:0 0 7px;
+margin:0 0 7px;
 }
 
 .color-item input[type=color]{
-  width:100%;
-  height:42px;
+width:100%;
+height:42px;
 }
 
 .logo-preview{
-  width:90px;
-  height:90px;
-  border-radius:15px;
-  object-fit:contain;
-  border:1px solid var(--border);
-  background:#fff;
-  display:block;
-  margin:8px auto 12px;
+width:90px;
+height:90px;
+border-radius:15px;
+object-fit:contain;
+border:1px solid var(--border);
+background:#fff;
+display:block;
+margin:8px auto 12px;
 }
 
 .img-row{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  margin-top:7px;
+display:flex;
+gap:12px;
+align-items:flex-start;
+margin-top:7px;
 }
 
 .admin-thumb{
-  width:64px;
-  height:64px;
-  border-radius:10px;
-  object-fit:cover;
-  flex:0 0 auto;
-  border:1px solid var(--border);
-  background:#fff;
+width:64px;
+height:64px;
+border-radius:10px;
+object-fit:cover;
+flex:0 0 auto;
+border:1px solid var(--border);
+background:#fff;
 }
 
 .img-controls{
-  flex:1;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  gap:7px;
+flex:1;
+min-width:0;
+display:flex;
+flex-direction:column;
+gap:7px;
 }
 
 .img-controls input[type=file]{
-  padding:7px;
-  font-size:12px;
+padding:7px;
+font-size:12px;
 }
 
 hr.sep{
-  border:none;
-  border-top:1px solid var(--border);
-  margin:25px 0;
+border:none;
+border-top:1px solid var(--border);
+margin:25px 0;
+}
+
+.security-box{
+background:var(--surface-raised);
+border:1px solid var(--border);
+border-radius:12px;
+padding:14px;
+margin-top:15px;
+}
+
+.security-title{
+font-weight:700;
+color:var(--accent-text);
+font-size:15px;
+margin-bottom:5px;
+}
+
+.security-text{
+font-size:12px;
+color:var(--ink-muted);
+line-height:1.45;
 }
 
 .toast{
-  position:fixed;
-  left:50%;
-  bottom:75px;
-  transform:translateX(-50%);
-  background:#20261D;
-  color:#fff;
-  padding:11px 16px;
-  border-radius:10px;
-  font-size:13px;
-  z-index:100;
-  display:none;
-  white-space:nowrap;
+position:fixed;
+left:50%;
+bottom:75px;
+transform:translateX(-50%);
+background:#20261D;
+color:#fff;
+padding:11px 16px;
+border-radius:10px;
+font-size:13px;
+z-index:100;
+display:none;
+white-space:nowrap;
 }
 
-.password-modal{
-  max-width:430px;
-}
-
-.password-title{
-  text-align:center;
-  margin-bottom:10px!important;
-}
-
-.password-info{
-  text-align:center;
-  color:var(--ink-muted);
-  font-size:12px;
-  line-height:1.5;
-  margin-bottom:20px;
-}
-
-.password-actions{
-  margin-top:18px;
-}
-
-.success-text{
-  color:#1E6F4C!important;
-}
-
-.error-text{
-  color:#A9433A!important;
+.small-note{
+font-size:11px;
+color:var(--ink-muted);
+line-height:1.45;
+margin-top:8px;
 }
 </style>
 </head>
@@ -592,16 +578,15 @@ hr.sep{
 <body>
 
 <div class="wrap" id="app">
-  <div class="loading">Menü yükleniyor...</div>
+<div class="loading">Menü yükleniyor...</div>
 </div>
 
 <div
-  class="admin-dot"
-  id="adminDot"
-  title="Yönetim"
-  role="button"
-  tabindex="0"
-  aria-label="Yönetim panelini aç"
+class="admin-dot"
+id="adminDot"
+role="button"
+tabindex="0"
+aria-label="Yönetim panelini aç"
 >⚙️</div>
 
 <div class="toast" id="toast"></div>
@@ -609,7 +594,7 @@ hr.sep{
 <script>
 
 /* =========================================================
-   SUPABASE
+   SUPABASE AYARLARI
 ========================================================= */
 
 const SUPABASE_URL =
@@ -621,6 +606,9 @@ const SUPABASE_KEY =
 const MENU_ID =
 "00000000-0000-0000-0000-000000000001";
 
+const LOCAL_BACKUP_KEY =
+"kafe_menu_backup_v3";
+
 const BLANK_PIXEL =
 "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
@@ -629,63 +617,105 @@ const BLANK_PIXEL =
    DURUM
 ========================================================= */
 
-let menuData = null;
-let activeCatId = null;
-let unlocked = false;
-let currentPin = "";
+let menuData=null;
+let activeCatId=null;
+let unlocked=false;
+let currentPin="";
+
+
+const app=
+document.getElementById("app");
 
 
 /* =========================================================
    YARDIMCI
 ========================================================= */
 
-const app =
-document.getElementById("app");
-
 function uid(){
-  return "i" +
-    Date.now().toString(36) +
-    Math.random().toString(36).slice(2,7);
+return "i"+
+Date.now().toString(36)+
+Math.random().toString(36).slice(2,7);
 }
 
 function esc(s){
-  return String(s ?? "").replace(
-    /[&<>"']/g,
-    m => ({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    }[m])
-  );
+return String(s??"").replace(
+/[&<>"']/g,
+m=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+}[m])
+);
 }
 
 function escAttr(s){
-  return esc(s);
+return esc(s);
 }
 
 function money(n){
-  return (
-    Number(n)||0
-  ).toLocaleString("tr-TR") + " ₺";
+return (
+Number(n)||0
+).toLocaleString("tr-TR")+" ₺";
 }
 
 function toast(message){
+const t=document.getElementById("toast");
+t.textContent=message;
+t.style.display="block";
 
-  const t =
-    document.getElementById("toast");
+clearTimeout(window.__toastTimer);
 
-  t.textContent =
-    message;
+window.__toastTimer=setTimeout(()=>{
+t.style.display="none";
+},2500);
+}
 
-  t.style.display =
-    "block";
 
-  setTimeout(()=>{
-    t.style.display =
-      "none";
-  },2200);
+/* =========================================================
+   LOCAL YEDEK
+========================================================= */
+
+function saveLocalBackup(){
+
+try{
+
+localStorage.setItem(
+LOCAL_BACKUP_KEY,
+JSON.stringify(menuData)
+);
+
+}catch(e){
+
+console.warn(
+"Yerel yedek oluşturulamadı",
+e
+);
+
+}
+
+}
+
+function loadLocalBackup(){
+
+try{
+
+const raw=
+localStorage.getItem(
+LOCAL_BACKUP_KEY
+);
+
+if(!raw) return null;
+
+return JSON.parse(raw);
+
+}catch{
+
+return null;
+
+}
+
 }
 
 
@@ -695,77 +725,77 @@ function toast(message){
 
 async function api(path,options={}){
 
-  const headers = {
-    "apikey":SUPABASE_KEY,
-    "Content-Type":"application/json",
-    ...(options.headers || {})
-  };
+const headers={
+"apikey":SUPABASE_KEY,
+"Content-Type":"application/json",
+...(options.headers||{})
+};
 
-  const controller =
-    new AbortController();
+const controller=
+new AbortController();
 
-  const timeout =
-    setTimeout(()=>{
-      controller.abort();
-    },12000);
+const timeout=
+setTimeout(
+()=>controller.abort(),
+15000
+);
 
-  try{
+try{
 
-    const response =
-      await fetch(
-        SUPABASE_URL + path,
-        {
-          ...options,
-          cache:"no-store",
-          headers,
-          signal:controller.signal
-        }
-      );
+const response=
+await fetch(
+SUPABASE_URL+path,
+{
+...options,
+cache:"no-store",
+headers,
+signal:controller.signal
+}
+);
 
-    const text =
-      await response.text();
+const text=
+await response.text();
 
-    let data = null;
+let data=null;
 
-    try{
-      data =
-        text
-        ? JSON.parse(text)
-        : null;
-    }catch{
-      data = text;
-    }
+try{
+data=text?JSON.parse(text):null;
+}catch{
+data=text;
+}
 
-    if(!response.ok){
+if(!response.ok){
 
-      throw new Error(
-        data?.message ||
-        data?.error_description ||
-        data?.hint ||
-        data?.error ||
-        text ||
-        ("HTTP " + response.status)
-      );
+throw new Error(
+data?.message||
+data?.error_description||
+data?.hint||
+data?.error||
+text||
+("HTTP "+response.status)
+);
 
-    }
+}
 
-    return data;
+return data;
 
-  }catch(error){
+}catch(error){
 
-    if(error.name === "AbortError"){
-      throw new Error(
-        "Supabase bağlantısı zaman aşımına uğradı."
-      );
-    }
+if(error.name==="AbortError"){
 
-    throw error;
+throw new Error(
+"Supabase bağlantısı zaman aşımına uğradı."
+);
 
-  }finally{
+}
 
-    clearTimeout(timeout);
+throw error;
 
-  }
+}finally{
+
+clearTimeout(timeout);
+
+}
 
 }
 
@@ -776,13 +806,13 @@ async function api(path,options={}){
 
 async function rpc(functionName,args){
 
-  return await api(
-    "/rest/v1/rpc/" + functionName,
-    {
-      method:"POST",
-      body:JSON.stringify(args)
-    }
-  );
+return await api(
+"/rest/v1/rpc/"+functionName,
+{
+method:"POST",
+body:JSON.stringify(args)
+}
+);
 
 }
 
@@ -791,157 +821,203 @@ async function rpc(functionName,args){
    TEMA
 ========================================================= */
 
-function applyTheme(theme){
+function defaultTheme(){
 
-  const t =
-    theme || {};
+return{
 
-  const root =
-    document.documentElement;
+background:"#F6F1E2",
+header:"#F6F1E2",
+surface:"#FFFFFF",
+surfaceRaised:"#ECE2C7",
+baseColor:"#1E6F4C",
+accentText:"#134A32",
+categoryBg:"#1E6F4C",
+categoryText:"#FFFFFF",
+text:"#20261D",
+mutedText:"#6E6A52",
+price:"#1E6F4C",
+button:"#1E6F4C",
+buttonText:"#FFFFFF",
+border:"#D8D0B9",
+tabBg:"#FFFFFF",
+tabText:"#6E6A52",
+tabActive:"#1E6F4C",
+sold:"#A9433A"
 
-  root.style.setProperty(
-    "--bg",
-    t.background || "#F6F1E2"
-  );
+};
 
-  root.style.setProperty(
-    "--header",
-    t.header ||
-    t.background ||
-    "#F6F1E2"
-  );
+}
 
-  root.style.setProperty(
-    "--surface",
-    t.surface ||
-    "#FFFFFF"
-  );
 
-  root.style.setProperty(
-    "--surface-raised",
-    t.surfaceRaised ||
-    "#ECE2C7"
-  );
+function applyTheme(t){
 
-  root.style.setProperty(
-    "--category-bg",
-    t.categoryBg ||
-    t.baseColor ||
-    "#1E6F4C"
-  );
+t=t||defaultTheme();
 
-  root.style.setProperty(
-    "--category-text",
-    t.categoryText ||
-    "#FFFFFF"
-  );
+const root=
+document.documentElement;
 
-  root.style.setProperty(
-    "--accent",
-    t.baseColor ||
-    "#1E6F4C"
-  );
+root.style.setProperty(
+"--bg",
+t.background||"#F6F1E2"
+);
 
-  root.style.setProperty(
-    "--accent-text",
-    t.accentText ||
-    "#134A32"
-  );
+root.style.setProperty(
+"--header",
+t.header||t.background||"#F6F1E2"
+);
 
-  root.style.setProperty(
-    "--ink",
-    t.text ||
-    "#20261D"
-  );
+root.style.setProperty(
+"--surface",
+t.surface||"#fff"
+);
 
-  root.style.setProperty(
-    "--ink-muted",
-    t.mutedText ||
-    "#6E6A52"
-  );
+root.style.setProperty(
+"--surface-raised",
+t.surfaceRaised||"#ECE2C7"
+);
 
-  root.style.setProperty(
-    "--price",
-    t.price ||
-    t.baseColor ||
-    "#1E6F4C"
-  );
+root.style.setProperty(
+"--category-bg",
+t.categoryBg||t.baseColor||"#1E6F4C"
+);
 
-  root.style.setProperty(
-    "--button",
-    t.button ||
-    t.baseColor ||
-    "#1E6F4C"
-  );
+root.style.setProperty(
+"--category-text",
+t.categoryText||"#fff"
+);
 
-  root.style.setProperty(
-    "--button-text",
-    t.buttonText ||
-    "#FFFFFF"
-  );
+root.style.setProperty(
+"--accent",
+t.baseColor||"#1E6F4C"
+);
 
-  root.style.setProperty(
-    "--border",
-    t.border ||
-    "#D8D0B9"
-  );
+root.style.setProperty(
+"--accent-text",
+t.accentText||"#134A32"
+);
 
-  root.style.setProperty(
-    "--tab-bg",
-    t.tabBg ||
-    "#FFFFFF"
-  );
+root.style.setProperty(
+"--ink",
+t.text||"#20261D"
+);
 
-  root.style.setProperty(
-    "--tab-text",
-    t.tabText ||
-    "#6E6A52"
-  );
+root.style.setProperty(
+"--ink-muted",
+t.mutedText||"#6E6A52"
+);
 
-  root.style.setProperty(
-    "--tab-active",
-    t.tabActive ||
-    t.baseColor ||
-    "#1E6F4C"
-  );
+root.style.setProperty(
+"--price",
+t.price||t.baseColor||"#1E6F4C"
+);
 
-  root.style.setProperty(
-    "--sold",
-    t.sold ||
-    "#A9433A"
-  );
+root.style.setProperty(
+"--button",
+t.button||t.baseColor||"#1E6F4C"
+);
+
+root.style.setProperty(
+"--button-text",
+t.buttonText||"#fff"
+);
+
+root.style.setProperty(
+"--border",
+t.border||"#D8D0B9"
+);
+
+root.style.setProperty(
+"--tab-bg",
+t.tabBg||"#fff"
+);
+
+root.style.setProperty(
+"--tab-text",
+t.tabText||"#6E6A52"
+);
+
+root.style.setProperty(
+"--tab-active",
+t.tabActive||t.baseColor||"#1E6F4C"
+);
+
+root.style.setProperty(
+"--sold",
+t.sold||"#A9433A"
+);
 
 }
 
 
 /* =========================================================
-   VARSAYILAN TEMA
+   VERİYİ NORMALLEŞTİR
 ========================================================= */
 
-function defaultTheme(){
+function normalizeMenu(data){
 
-  return {
+const d=data||{};
 
-    background:"#F6F1E2",
-    header:"#F6F1E2",
-    surface:"#FFFFFF",
-    surfaceRaised:"#ECE2C7",
-    baseColor:"#1E6F4C",
-    accentText:"#134A32",
-    categoryBg:"#1E6F4C",
-    categoryText:"#FFFFFF",
-    text:"#20261D",
-    mutedText:"#6E6A52",
-    price:"#1E6F4C",
-    button:"#1E6F4C",
-    buttonText:"#FFFFFF",
-    border:"#D8D0B9",
-    tabBg:"#FFFFFF",
-    tabText:"#6E6A52",
-    tabActive:"#1E6F4C",
-    sold:"#A9433A"
+const result={
 
-  };
+cafeName:
+d.cafeName||
+"Katmerci Dayı",
+
+subtitle:
+d.subtitle||
+"Geleneksel lezzetler, sıcak sunum.",
+
+logo:
+d.logo||"",
+
+theme:{
+...defaultTheme(),
+...(d.theme||{})
+},
+
+categories:
+Array.isArray(d.categories)
+?d.categories
+:[]
+
+};
+
+result.categories.forEach(cat=>{
+
+if(!cat.id)
+cat.id=uid();
+
+if(!cat.name)
+cat.name="Kategori";
+
+if(!Array.isArray(cat.items))
+cat.items=[];
+
+cat.items.forEach(item=>{
+
+if(!item.id)
+item.id=uid();
+
+if(item.name===undefined)
+item.name="Yeni ürün";
+
+if(item.desc===undefined)
+item.desc="";
+
+if(item.price===undefined)
+item.price=0;
+
+if(item.image===undefined)
+item.image="";
+
+if(item.available===undefined)
+item.available=true;
+
+});
+
+});
+
+return result;
 
 }
 
@@ -952,104 +1028,83 @@ function defaultTheme(){
 
 async function loadMenu(){
 
-  try{
+let remoteError=null;
 
-    const rows =
-      await api(
-        "/rest/v1/menus?id=eq." +
-        MENU_ID +
-        "&select=id,data"
-      );
+try{
 
-    if(
-      !rows ||
-      !rows.length
-    ){
+const rows=
+await api(
+"/rest/v1/menus?id=eq."+
+encodeURIComponent(MENU_ID)+
+"&select=id,data"
+);
 
-      showError(
-        "Menü kaydı bulunamadı."
-      );
+if(!rows||!rows.length){
 
-      return;
-    }
+throw new Error(
+"Menü kaydı bulunamadı."
+);
 
-    const data =
-      rows[0].data || {};
+}
 
-    menuData = {
+menuData=
+normalizeMenu(rows[0].data);
 
-      cafeName:
-        data.cafeName ||
-        "Katmerci Dayı",
+saveLocalBackup();
 
-      subtitle:
-        data.subtitle ||
-        "Geleneksel lezzetler, sıcak sunum.",
+activeCatId=
+menuData.categories[0]?.id||null;
 
-      logo:
-        data.logo ||
-        "",
+applyTheme(menuData.theme);
 
-      theme:{
-        ...defaultTheme(),
-        ...(data.theme || {})
-      },
+renderCustomer();
 
-      categories:
-        Array.isArray(data.categories)
-        ? data.categories
-        : []
+return;
 
-    };
+}catch(error){
 
-    menuData.categories.forEach(
-      category=>{
+remoteError=error;
 
-        if(
-          !Array.isArray(category.items)
-        ){
-          category.items = [];
-        }
+}
 
-        category.items.forEach(
-          item=>{
 
-            if(
-              item.image === undefined
-            ){
-              item.image = "";
-            }
+/* =====================================================
+   SUPABASE YOKSA YEDEKTEN AÇ
+===================================================== */
 
-            if(
-              item.available === undefined
-            ){
-              item.available = true;
-            }
+const backup=
+loadLocalBackup();
 
-          }
-        );
+if(backup){
 
-      }
-    );
+menuData=
+normalizeMenu(backup);
 
-    activeCatId =
-      menuData.categories[0]?.id ||
-      null;
+activeCatId=
+menuData.categories[0]?.id||null;
 
-    applyTheme(
-      menuData.theme
-    );
+applyTheme(menuData.theme);
 
-    renderCustomer();
+renderCustomer();
 
-  }catch(error){
+toast(
+"Çevrimdışı yedek kullanılıyor."
+);
 
-    showError(
-      "Menü yüklenemedi: " +
-      error.message
-    );
+return;
 
-  }
+}
+
+
+/* =====================================================
+   HATA
+===================================================== */
+
+showError(
+"Menü yüklenemedi.",
+remoteError?.message||
+"Supabase bağlantısı kurulamadı."
+);
 
 }
 
@@ -1058,30 +1113,30 @@ async function loadMenu(){
    HATA
 ========================================================= */
 
-function showError(message){
+function showError(title,message){
 
-  app.innerHTML = `
+app.innerHTML=`
 
-    <div class="error-box">
+<div class="error-box">
 
-      <h2>
-        Menü yüklenemedi
-      </h2>
+<h2>${esc(title)}</h2>
 
-      <p>
-        ${esc(message)}
-      </p>
+<p>${esc(message)}</p>
 
-      <button
-        class="btn btn-main"
-        onclick="location.reload()"
-      >
-        Tekrar dene
-      </button>
+<button
+class="btn btn-main"
+id="retryButton"
+>
+Tekrar dene
+</button>
 
-    </div>
+</div>
 
-  `;
+`;
+
+document
+.getElementById("retryButton")
+.onclick=loadMenu;
 
 }
 
@@ -1092,916 +1147,427 @@ function showError(message){
 
 function renderCustomer(){
 
-  if(!menuData) return;
+if(!menuData)return;
 
-  const categories =
-    menuData.categories || [];
+const categories=
+menuData.categories||[];
 
-  let active =
-    categories.find(
-      c => c.id === activeCatId
-    ) || categories[0];
+let active=
+categories.find(
+c=>c.id===activeCatId
+)||categories[0];
 
-  if(active){
-    activeCatId =
-      active.id;
-  }
-
-  const tabs =
-    categories.map(
-      category=>`
-
-      <button
-        class="tab-btn ${
-          category.id === active?.id
-          ? "active"
-          : ""
-        }"
-        data-cat="${escAttr(category.id)}"
-      >
-        ${esc(category.name)}
-      </button>
-
-    `
-    ).join("");
+if(active)
+activeCatId=active.id;
 
 
-  const items =
-    active
-    ? active.items.map(
-      item=>`
+const tabs=
+categories.map(cat=>`
 
-      <div class="item-row">
+<button
+class="tab-btn ${
+cat.id===active?.id
+?"active":""
+}"
+data-cat="${escAttr(cat.id)}"
+>
+${esc(cat.name)}
+</button>
 
-        ${
-          item.image
-          ? `
-            <img
-              class="item-thumb"
-              src="${escAttr(item.image)}"
-              alt=""
-              loading="lazy"
-              onerror="this.style.display='none'"
-            >
-          `
-          : ""
-        }
-
-        <div class="item-text-row">
-
-          <div class="item-name-wrap">
-
-            <div class="item-name ${
-              item.available
-              ? ""
-              : "unavailable"
-            }">
-
-              ${esc(item.name)}
-
-              ${
-                item.available
-                ? ""
-                : `
-                  <span class="sold-out-tag">
-                    TÜKENDİ
-                  </span>
-                `
-              }
-
-            </div>
-
-            ${
-              item.desc
-              ? `
-                <div class="item-desc">
-                  ${esc(item.desc)}
-                </div>
-              `
-              : ""
-            }
-
-          </div>
-
-          <div class="leader"></div>
-
-          <div class="item-price ${
-            item.available
-            ? ""
-            : "unavailable"
-          }">
-
-            ${money(item.price)}
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `
-    ).join("")
-    : `
-      <div class="item-desc">
-        Bu kategoride henüz ürün yok.
-      </div>
-    `;
+`).join("");
 
 
-  const logoHTML =
-    menuData.logo
-    ? `
-      <div class="logo-wrap">
-        <img
-          class="logo"
-          src="${escAttr(menuData.logo)}"
-          alt="${escAttr(menuData.cafeName)}"
-        >
-      </div>
-    `
-    : "";
+const items=
+active?
+active.items.map(item=>`
+
+<div class="item-row">
+
+${
+item.image
+?`
+<img
+class="item-thumb"
+src="${escAttr(item.image)}"
+alt=""
+loading="lazy"
+onerror="this.style.display='none'"
+>
+`
+:""
+}
+
+<div class="item-text-row">
+
+<div class="item-name-wrap">
+
+<div class="item-name ${
+item.available?"":"unavailable"
+}">
+
+${esc(item.name)}
+
+${
+item.available
+?""
+:`
+<span class="sold-out-tag">
+TÜKENDİ
+</span>
+`
+}
+
+</div>
+
+${
+item.desc
+?`
+<div class="item-desc">
+${esc(item.desc)}
+</div>
+`
+:""
+}
+
+</div>
+
+<div class="leader"></div>
+
+<div class="item-price ${
+item.available?"":"unavailable"
+}">
+${money(item.price)}
+</div>
+
+</div>
+
+</div>
+
+`).join("")
+:`
+<div class="item-desc">
+Bu kategoride henüz ürün yok.
+</div>
+`;
 
 
-  app.innerHTML = `
-
-    <header class="hero">
-
-      ${logoHTML}
-
-      <div class="eyebrow">
-        MENÜ
-      </div>
-
-      <h1 class="cafe-name">
-        ${esc(menuData.cafeName)}
-      </h1>
-
-      <p class="subtitle">
-        ${esc(menuData.subtitle)}
-      </p>
-
-    </header>
-
-    <nav class="tabs">
-      ${tabs}
-    </nav>
-
-    <div class="category-block">
-
-      <div class="category-title">
-        ${esc(active?.name || "")}
-      </div>
-
-      ${items}
-
-    </div>
-
-    <footer class="note">
-      QR ile açıldı
-    </footer>
-
-  `;
+const logoHTML=
+menuData.logo
+?`
+<div class="logo-wrap">
+<img
+class="logo"
+src="${escAttr(menuData.logo)}"
+alt="${escAttr(menuData.cafeName)}"
+>
+</div>
+`
+:"";
 
 
-  app
-    .querySelectorAll("[data-cat]")
-    .forEach(button=>{
+app.innerHTML=`
 
-      button.onclick = ()=>{
+<header class="hero">
 
-        activeCatId =
-          button.dataset.cat;
+${logoHTML}
 
-        renderCustomer();
+<div class="eyebrow">
+MENÜ
+</div>
 
-        window.scrollTo({
-          top:0,
-          behavior:"smooth"
-        });
+<h1 class="cafe-name">
+${esc(menuData.cafeName)}
+</h1>
 
-      };
+<p class="subtitle">
+${esc(menuData.subtitle)}
+</p>
 
-    });
+</header>
+
+<nav class="tabs">
+${tabs}
+</nav>
+
+<div class="category-block">
+
+<div class="category-title">
+${esc(active?.name||"")}
+</div>
+
+${items}
+
+</div>
+
+<footer class="note">
+QR ile açıldı
+</footer>
+
+`;
+
+
+app
+.querySelectorAll("[data-cat]")
+.forEach(button=>{
+
+button.onclick=()=>{
+
+activeCatId=
+button.dataset.cat;
+
+renderCustomer();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+});
 
 }
 
 
 /* =========================================================
-   PIN GİRİŞİ
+   PIN GİRİŞ
 ========================================================= */
 
 function openGate(){
 
-  if(unlocked){
+if(unlocked){
 
-    openAdmin();
+openAdmin();
 
-    return;
-  }
+return;
 
+}
 
-  const overlay =
-    document.createElement("div");
+const overlay=
+document.createElement("div");
 
-  overlay.className =
-    "overlay";
+overlay.className="overlay";
 
-  overlay.innerHTML = `
+overlay.innerHTML=`
 
-    <div class="panel panel-rel pin-box">
+<div class="panel panel-rel pin-box">
 
-      <button
-        class="close-x"
-        aria-label="Kapat"
-      >
-        ✕
-      </button>
+<button
+class="close-x"
+id="gateClose"
+>
+✕
+</button>
 
-      <h2>
-        Yönetim Girişi
-      </h2>
+<h2>
+Yönetim Girişi
+</h2>
 
-      <label>
-        PIN kodu
-      </label>
+<label>
+PIN kodu
+</label>
 
-      <input
-        id="gatePin"
-        type="password"
-        inputmode="numeric"
-        maxlength="20"
-        placeholder="••••"
-      >
+<input
+id="gatePin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="••••"
+>
 
-      <div
-        class="status-msg"
-        id="gateMsg"
-      ></div>
+<div
+class="status-msg"
+id="gateMsg"
+></div>
 
-      <button
-        class="btn btn-main btn-block"
-        id="gateGo"
-      >
-        Giriş yap
-      </button>
+<button
+class="btn btn-main btn-block"
+id="gateGo"
+>
+Giriş yap
+</button>
 
-    </div>
+</div>
 
-  `;
+`;
 
-  document.body.appendChild(
-    overlay
-  );
+document.body.appendChild(overlay);
 
 
-  overlay
-    .querySelector(".close-x")
-    .onclick = ()=>{
-      overlay.remove();
-    };
+overlay
+.querySelector("#gateClose")
+.onclick=()=>{
+overlay.remove();
+};
 
 
-  const go = async ()=>{
+const go=async()=>{
 
-    const pin =
-      overlay
-        .querySelector("#gatePin")
-        .value
-        .trim();
+const pin=
+overlay
+.querySelector("#gatePin")
+.value
+.trim();
 
-    const message =
-      overlay.querySelector(
-        "#gateMsg"
-      );
+const msg=
+overlay.querySelector("#gateMsg");
 
-    if(!pin){
+if(!pin){
 
-      message.textContent =
-        "PIN kodunu gir.";
+msg.textContent=
+"PIN kodunu gir.";
 
-      return;
-    }
+return;
 
-    message.textContent =
-      "Kontrol ediliyor...";
+}
 
-
-    try{
-
-      const result =
-        await rpc(
-          "check_menu_pin",
-          {
-            p_menu_id:MENU_ID,
-            p_pin:pin
-          }
-        );
+msg.textContent=
+"Kontrol ediliyor...";
 
 
-      const ok =
-        result === true ||
-        result?.[0] === true ||
-        result?.result === true;
+try{
+
+const result=
+await rpc(
+"check_menu_pin",
+{
+p_menu_id:MENU_ID,
+p_pin:pin
+}
+);
+
+const ok=
+result===true||
+result?.[0]===true||
+result?.result===true;
+
+if(!ok){
+
+msg.textContent=
+"Hatalı PIN.";
+
+return;
+
+}
+
+unlocked=true;
+currentPin=pin;
+
+overlay.remove();
+
+openAdmin();
+
+}catch(error){
+
+msg.textContent=
+"Giriş hatası: "+
+error.message;
+
+}
+
+};
 
 
-      if(ok){
+overlay
+.querySelector("#gateGo")
+.onclick=go;
 
-        unlocked = true;
+overlay
+.querySelector("#gatePin")
+.onkeydown=e=>{
 
-        currentPin =
-          pin;
+if(e.key==="Enter")
+go();
 
-        overlay.remove();
+};
 
-        openAdmin();
-
-      }else{
-
-        message.textContent =
-          "Hatalı PIN.";
-
-      }
-
-    }catch(error){
-
-      message.textContent =
-        "Giriş hatası: " +
-        error.message;
-
-    }
-
-  };
-
-
-  overlay
-    .querySelector("#gateGo")
-    .onclick = go;
-
-
-  overlay
-    .querySelector("#gatePin")
-    .onkeydown = event=>{
-
-      if(event.key === "Enter"){
-        go();
-      }
-
-    };
-
-
-  setTimeout(()=>{
-
-    overlay
-      .querySelector("#gatePin")
-      ?.focus();
-
-  },100);
+setTimeout(()=>{
+overlay
+.querySelector("#gatePin")
+.focus();
+},100);
 
 }
 
 
 /* =========================================================
-   PAROLA DEĞİŞTİR
+   RESİM
 ========================================================= */
 
-function openChangePassword(){
+function resizeImage(file,max=700,quality=.75){
 
-  const oldOverlay =
-    document.getElementById(
-      "passwordOverlay"
-    );
+return new Promise((resolve,reject)=>{
 
-  if(oldOverlay){
-    oldOverlay.remove();
-  }
+const reader=new FileReader();
 
+reader.onload=e=>{
 
-  const overlay =
-    document.createElement("div");
+const image=new Image();
 
-  overlay.className =
-    "overlay";
+image.onload=()=>{
 
-  overlay.id =
-    "passwordOverlay";
+let w=image.width;
+let h=image.height;
 
+if(w>h&&w>max){
 
-  overlay.innerHTML = `
+h=h*max/w;
+w=max;
 
-    <div class="panel panel-rel password-modal">
+}else if(h>=w&&h>max){
 
-      <button
-        class="close-x"
-        id="passwordClose"
-        aria-label="Kapat"
-      >
-        ✕
-      </button>
-
-      <h2 class="password-title">
-        🔐 Parolayı Değiştir
-      </h2>
-
-      <div class="password-info">
-        Yeni parolanı belirle.
-        En az 4 karakter olmalıdır.
-      </div>
-
-
-      <label>
-        Mevcut parola
-      </label>
-
-      <input
-        id="oldPin"
-        type="password"
-        inputmode="numeric"
-        autocomplete="current-password"
-        placeholder="Mevcut parola"
-      >
-
-
-      <label>
-        Yeni parola
-      </label>
-
-      <input
-        id="newPin"
-        type="password"
-        inputmode="numeric"
-        autocomplete="new-password"
-        maxlength="20"
-        placeholder="Yeni parola"
-      >
-
-
-      <label>
-        Yeni parola tekrar
-      </label>
-
-      <input
-        id="newPinAgain"
-        type="password"
-        inputmode="numeric"
-        autocomplete="new-password"
-        maxlength="20"
-        placeholder="Yeni parola tekrar"
-      >
-
-
-      <div
-        class="status-msg"
-        id="passwordMsg"
-      ></div>
-
-
-      <div class="password-actions">
-
-        <button
-          class="btn btn-main btn-block"
-          id="changePasswordBtn"
-        >
-          Parolayı Değiştir
-        </button>
-
-        <button
-          class="btn btn-ghost btn-block"
-          id="passwordCancel"
-        >
-          Vazgeç
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-
-  document.body.appendChild(
-    overlay
-  );
-
-
-  const close = ()=>{
-    overlay.remove();
-  };
-
-
-  overlay
-    .querySelector("#passwordClose")
-    .onclick = close;
-
-
-  overlay
-    .querySelector("#passwordCancel")
-    .onclick = close;
-
-
-  overlay
-    .querySelector("#changePasswordBtn")
-    .onclick =
-    async ()=>{
-
-      const oldPin =
-        overlay
-          .querySelector("#oldPin")
-          .value
-          .trim();
-
-      const newPin =
-        overlay
-          .querySelector("#newPin")
-          .value
-          .trim();
-
-      const newPinAgain =
-        overlay
-          .querySelector("#newPinAgain")
-          .value
-          .trim();
-
-      const msg =
-        overlay.querySelector(
-          "#passwordMsg"
-        );
-
-      const btn =
-        overlay.querySelector(
-          "#changePasswordBtn"
-        );
-
-
-      msg.className =
-        "status-msg";
-
-      if(!oldPin){
-
-        msg.textContent =
-          "Mevcut parolanı gir.";
-
-        return;
-      }
-
-
-      if(!newPin){
-
-        msg.textContent =
-          "Yeni parolanı gir.";
-
-        return;
-      }
-
-
-      if(newPin.length < 4){
-
-        msg.textContent =
-          "Yeni parola en az 4 karakter olmalı.";
-
-        return;
-      }
-
-
-      if(newPin.length > 20){
-
-        msg.textContent =
-          "Yeni parola en fazla 20 karakter olabilir.";
-
-        return;
-      }
-
-
-      if(newPin !== newPinAgain){
-
-        msg.textContent =
-          "Yeni parolalar aynı değil.";
-
-        return;
-      }
-
-
-      if(oldPin === newPin){
-
-        msg.textContent =
-          "Yeni parola mevcut paroladan farklı olmalı.";
-
-        return;
-      }
-
-
-      btn.disabled = true;
-
-      btn.textContent =
-        "Değiştiriliyor...";
-
-      msg.textContent =
-        "Kontrol ediliyor...";
-
-
-      try{
-
-        const result =
-          await rpc(
-            "change_menu_pin",
-            {
-              p_menu_id:MENU_ID,
-              p_current_pin:oldPin,
-              p_new_pin:newPin
-            }
-          );
-
-
-        const ok =
-          result === true ||
-          result?.[0] === true ||
-          result?.result === true;
-
-
-        if(!ok){
-
-          throw new Error(
-            "Mevcut parola hatalı."
-          );
-
-        }
-
-
-        currentPin =
-          newPin;
-
-        msg.className =
-          "status-msg success-text";
-
-        msg.textContent =
-          "Parola başarıyla değiştirildi ✓";
-
-        btn.textContent =
-          "Tamamlandı ✓";
-
-
-        setTimeout(()=>{
-
-          overlay.remove();
-
-          toast(
-            "Parola değiştirildi ✓"
-          );
-
-        },900);
-
-
-      }catch(error){
-
-        msg.className =
-          "status-msg error-text";
-
-        msg.textContent =
-          "Hata: " +
-          error.message;
-
-        btn.disabled =
-          false;
-
-        btn.textContent =
-          "Parolayı Değiştir";
-
-      }
-
-    };
-
-
-  setTimeout(()=>{
-
-    overlay
-      .querySelector("#oldPin")
-      ?.focus();
-
-  },100);
+w=w*max/h;
+h=max;
 
 }
 
+const canvas=
+document.createElement("canvas");
 
-/* =========================================================
-   GÖRSEL SIKIŞTIRMA
-========================================================= */
+canvas.width=Math.round(w);
+canvas.height=Math.round(h);
 
-function resizeImage(
-  file,
-  max=700,
-  quality=.75
-){
+canvas
+.getContext("2d")
+.drawImage(
+image,
+0,
+0,
+canvas.width,
+canvas.height
+);
 
-  return new Promise(
-    (resolve,reject)=>{
+resolve(
+canvas.toDataURL(
+"image/jpeg",
+quality
+)
+);
 
-      const reader =
-        new FileReader();
+};
 
-      reader.onload =
-      event=>{
+image.onerror=reject;
 
-        const image =
-          new Image();
+image.src=e.target.result;
 
-        image.onload = ()=>{
+};
 
-          let width =
-            image.width;
+reader.onerror=reject;
 
-          let height =
-            image.height;
+reader.readAsDataURL(file);
 
-
-          if(
-            width > height &&
-            width > max
-          ){
-
-            height =
-              height * max / width;
-
-            width =
-              max;
-
-          }else if(
-            height >= width &&
-            height > max
-          ){
-
-            width =
-              width * max / height;
-
-            height =
-              max;
-
-          }
-
-
-          const canvas =
-            document.createElement(
-              "canvas"
-            );
-
-          canvas.width =
-            Math.round(width);
-
-          canvas.height =
-            Math.round(height);
-
-
-          const context =
-            canvas.getContext("2d");
-
-          context.drawImage(
-            image,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-
-          resolve(
-            canvas.toDataURL(
-              "image/jpeg",
-              quality
-            )
-          );
-
-        };
-
-
-        image.onerror =
-          reject;
-
-        image.src =
-          event.target.result;
-
-      };
-
-
-      reader.onerror =
-        reject;
-
-      reader.readAsDataURL(file);
-
-    }
-  );
+});
 
 }
 
-
-/* =========================================================
-   LOGO
-========================================================= */
 
 function resizeLogo(file){
 
-  return new Promise(
-    (resolve,reject)=>{
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-      event=>{
-
-        const image =
-          new Image();
-
-        image.onload = ()=>{
-
-          const max =
-            800;
-
-          let width =
-            image.width;
-
-          let height =
-            image.height;
-
-
-          if(
-            width > height &&
-            width > max
-          ){
-
-            height =
-              height * max / width;
-
-            width =
-              max;
-
-          }else if(
-            height >= width &&
-            height > max
-          ){
-
-            width =
-              width * max / height;
-
-            height =
-              max;
-
-          }
-
-
-          const canvas =
-            document.createElement(
-              "canvas"
-            );
-
-          canvas.width =
-            Math.round(width);
-
-          canvas.height =
-            Math.round(height);
-
-
-          const context =
-            canvas.getContext("2d");
-
-          context.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-          context.drawImage(
-            image,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-
-
-          resolve(
-            canvas.toDataURL(
-              "image/png"
-            )
-          );
-
-        };
-
-
-        image.onerror =
-          reject;
-
-        image.src =
-          event.target.result;
-
-      };
-
-
-      reader.onerror =
-        reject;
-
-      reader.readAsDataURL(file);
-
-    }
-  );
+return resizeImage(
+file,
+800,
+.9
+);
 
 }
 
@@ -2012,1184 +1578,1291 @@ function resizeLogo(file){
 
 function findItem(id){
 
-  for(
-    const category
-    of menuData.categories
-  ){
+for(const cat of menuData.categories){
 
-    const item =
-      category.items.find(
-        x => x.id === id
-      );
+const item=
+cat.items.find(
+x=>x.id===id
+);
 
-    if(item){
-      return item;
-    }
+if(item)return item;
 
-  }
+}
 
-  return null;
+return null;
+
 }
 
 
 /* =========================================================
-   RENK ALANI
+   RENK
 ========================================================= */
 
-function colorField(
-  id,
-  title,
-  value
-){
+function colorField(id,title,value){
 
-  return `
+return`
 
-    <div class="color-item">
+<div class="color-item">
 
-      <label>
-        ${title}
-      </label>
+<label>${title}</label>
 
-      <input
-        type="color"
-        id="${id}"
-        value="${escAttr(value)}"
-      >
+<input
+type="color"
+id="${id}"
+value="${escAttr(value)}"
+>
 
-    </div>
+</div>
 
-  `;
+`;
 
 }
 
 
 /* =========================================================
-   ADMIN PANELİ
+   PAROLA DEĞİŞTİRME
+========================================================= */
+
+function openChangePin(){
+
+const overlay=
+document.createElement("div");
+
+overlay.className="overlay";
+
+overlay.innerHTML=`
+
+<div class="panel panel-rel pin-box">
+
+<button
+class="close-x"
+id="pinClose"
+>
+✕
+</button>
+
+<h2>
+🔐 Parolayı Değiştir
+</h2>
+
+<label>
+Mevcut parola
+</label>
+
+<input
+id="oldPin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Mevcut PIN"
+>
+
+<label>
+Yeni parola
+</label>
+
+<input
+id="newPin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Yeni PIN"
+>
+
+<label>
+Yeni parola tekrar
+</label>
+
+<input
+id="newPin2"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Yeni PIN tekrar"
+>
+
+<div
+class="status-msg"
+id="pinMsg"
+></div>
+
+<button
+class="btn btn-main btn-block"
+id="changePinBtn"
+>
+Parolayı değiştir
+</button>
+
+<p class="small-note">
+Parola Supabase veritabanında değiştirilir.
+Sayfayı yenilediğinde yeni parola geçerli olur.
+</p>
+
+</div>
+
+`;
+
+document.body.appendChild(overlay);
+
+
+overlay
+.querySelector("#pinClose")
+.onclick=()=>{
+overlay.remove();
+};
+
+
+overlay
+.querySelector("#changePinBtn")
+.onclick=async()=>{
+
+const oldPin=
+overlay.querySelector("#oldPin").value.trim();
+
+const newPin=
+overlay.querySelector("#newPin").value.trim();
+
+const newPin2=
+overlay.querySelector("#newPin2").value.trim();
+
+const msg=
+overlay.querySelector("#pinMsg");
+
+const btn=
+overlay.querySelector("#changePinBtn");
+
+
+if(!oldPin||
+!newPin||
+!newPin2){
+
+msg.textContent=
+"Tüm alanları doldur.";
+
+return;
+
+}
+
+if(newPin!==newPin2){
+
+msg.textContent=
+"Yeni parolalar aynı değil.";
+
+return;
+
+}
+
+if(newPin.length<4){
+
+msg.textContent=
+"Yeni parola en az 4 haneli olmalı.";
+
+return;
+
+}
+
+
+btn.disabled=true;
+btn.textContent=
+"Değiştiriliyor...";
+
+msg.textContent=
+"Kontrol ediliyor...";
+
+
+try{
+
+/*
+ Mevcut fonksiyon:
+ change_menu_pin(uuid,text,text)
+
+ Parametreler:
+ p_menu_id
+ p_old_pin
+ p_new_pin
+*/
+
+const result=
+await rpc(
+"change_menu_pin",
+{
+p_menu_id:MENU_ID,
+p_old_pin:oldPin,
+p_new_pin:newPin
+}
+);
+
+const ok=
+result===true||
+result?.[0]===true||
+result?.result===true;
+
+if(!ok){
+
+throw new Error(
+"Mevcut parola yanlış veya parola değiştirilemedi."
+);
+
+}
+
+currentPin=newPin;
+
+msg.textContent=
+"Parola başarıyla değiştirildi ✓";
+
+btn.textContent=
+"Değiştirildi ✓";
+
+setTimeout(()=>{
+overlay.remove();
+toast(
+"Parola değiştirildi ✓"
+);
+},900);
+
+}catch(error){
+
+msg.textContent=
+"Hata: "+
+error.message;
+
+btn.disabled=false;
+
+btn.textContent=
+"Parolayı değiştir";
+
+}
+
+};
+
+}
+
+
+/* =========================================================
+   ADMIN
 ========================================================= */
 
 function renderAdmin(){
 
-  const overlay =
-    document.getElementById(
-      "adminOverlay"
-    );
+const overlay=
+document.getElementById(
+"adminOverlay"
+);
+
+if(!overlay)return;
+
+const theme=
+menuData.theme||
+defaultTheme();
+
+
+const categories=
+menuData.categories.map(cat=>`
+
+<div class="cat-header">
+
+<input
+data-cat-name="${escAttr(cat.id)}"
+value="${escAttr(cat.name)}"
+>
+
+<button
+class="btn btn-danger"
+data-del-cat="${escAttr(cat.id)}"
+>
+Kategoriyi sil
+</button>
+
+</div>
+
+${cat.items.map(item=>`
+
+<div class="item-edit-card">
+
+<label>
+Ürün adı
+</label>
 
-  if(!overlay) return;
+<input
+data-item-name="${escAttr(item.id)}"
+value="${escAttr(item.name)}"
+>
+
+<label>
+Açıklama
+</label>
 
+<input
+data-item-desc="${escAttr(item.id)}"
+value="${escAttr(item.desc||"")}"
+>
 
-  const theme =
-    menuData.theme ||
-    defaultTheme();
+<label>
+Fiyat (₺)
+</label>
 
+<input
+type="number"
+min="0"
+step="1"
+data-item-price="${escAttr(item.id)}"
+value="${Number(item.price)||0}"
+>
 
-  const categories =
-    menuData.categories
-      .map(
-        category=>`
+<label>
+Görsel
+</label>
 
-        <div class="cat-header">
+<div class="img-row">
 
-          <input
-            data-cat-name="${escAttr(category.id)}"
-            value="${escAttr(category.name)}"
-          >
+<img
+class="admin-thumb"
+data-preview="${escAttr(item.id)}"
+src="${
+item.image
+?escAttr(item.image)
+:BLANK_PIXEL
+}"
+>
 
-          <button
-            class="btn btn-danger"
-            data-del-cat="${escAttr(category.id)}"
-          >
-            Kategoriyi sil
-          </button>
+<div class="img-controls">
 
-        </div>
+<input
+type="file"
+accept="image/*"
+data-file="${escAttr(item.id)}"
+>
 
+<input
+data-url="${escAttr(item.id)}"
+placeholder="veya görsel linki"
+value="${
+item.image?.startsWith("http")
+?escAttr(item.image)
+:""
+}"
+>
 
-        ${category.items.map(
-          item=>`
+<button
+class="btn btn-ghost"
+data-remove-img="${escAttr(item.id)}"
+>
+Görseli kaldır
+</button>
 
-          <div class="item-edit-card">
+</div>
 
-            <label>
-              Ürün adı
-            </label>
+</div>
 
-            <input
-              data-item-name="${escAttr(item.id)}"
-              value="${escAttr(item.name)}"
-            >
+<label class="avail-toggle">
 
+<input
+type="checkbox"
+data-avail="${escAttr(item.id)}"
+${item.available?"checked":""}
+>
 
-            <label>
-              Açıklama
-            </label>
+Stokta / satışta
 
-            <input
-              data-item-desc="${escAttr(item.id)}"
-              value="${escAttr(item.desc || "")}"
-            >
+</label>
 
+<div class="actions-row">
 
-            <label>
-              Fiyat (₺)
-            </label>
+<button
+class="btn btn-danger"
+data-del-item="${escAttr(item.id)}"
+data-cat="${escAttr(cat.id)}"
+>
+Ürünü sil
+</button>
 
-            <input
-              type="number"
-              min="0"
-              step="1"
-              data-item-price="${escAttr(item.id)}"
-              value="${Number(item.price)||0}"
-            >
+</div>
 
+</div>
 
-            <label>
-              Görsel
-            </label>
+`).join("")}
 
-            <div class="img-row">
+<button
+class="btn btn-ghost btn-block"
+data-add-item="${escAttr(cat.id)}"
+>
++ Ürün ekle
+</button>
 
-              <img
-                class="admin-thumb"
-                data-preview="${escAttr(item.id)}"
-                src="${
-                  item.image
-                  ? escAttr(item.image)
-                  : BLANK_PIXEL
-                }"
-              >
+`).join("");
 
-              <div class="img-controls">
 
-                <input
-                  type="file"
-                  accept="image/*"
-                  data-file="${escAttr(item.id)}"
-                >
+overlay.innerHTML=`
 
-                <input
-                  data-url="${escAttr(item.id)}"
-                  placeholder="veya görsel linki"
-                  value="${
-                    item.image?.startsWith("http")
-                    ? escAttr(item.image)
-                    : ""
-                  }"
-                >
+<div class="panel panel-rel">
 
-                <button
-                  class="btn btn-ghost"
-                  data-remove-img="${escAttr(item.id)}"
-                >
-                  Görseli kaldır
-                </button>
+<button
+class="close-x"
+id="adminClose"
+>
+✕
+</button>
 
-              </div>
+<h2>
+Yönetim Paneli
+</h2>
 
-            </div>
 
+<label>
+Kafe adı
+</label>
 
-            <label class="avail-toggle">
+<input
+id="cafeName"
+value="${escAttr(menuData.cafeName)}"
+>
 
-              <input
-                type="checkbox"
-                data-avail="${escAttr(item.id)}"
-                ${item.available ? "checked" : ""}
-              >
 
-              Stokta / satışta
+<label>
+Alt başlık
+</label>
 
-            </label>
+<input
+id="subtitle"
+value="${escAttr(menuData.subtitle)}"
+>
 
 
-            <div class="actions-row">
+<hr class="sep">
 
-              <button
-                class="btn btn-danger"
-                data-del-item="${escAttr(item.id)}"
-                data-cat="${escAttr(category.id)}"
-              >
-                Ürünü sil
-              </button>
 
-            </div>
+<h2 style="font-size:21px">
+🔐 Güvenlik
+</h2>
 
-          </div>
+<div class="security-box">
 
-          `
-        ).join("")}
+<div class="security-title">
+Yönetici Parolası
+</div>
 
+<div class="security-text">
+Mevcut yönetici PIN'inizi değiştirebilirsiniz.
+Yeni parola Supabase'e kaydedilir.
+</div>
 
-        <button
-          class="btn btn-ghost btn-block"
-          data-add-item="${escAttr(category.id)}"
-        >
-          + Ürün ekle
-        </button>
+<button
+class="btn btn-ghost btn-block"
+id="changePinOpen"
+>
+🔐 Parolayı Değiştir
+</button>
 
-      `
-      )
-      .join("");
+</div>
 
 
-  overlay.innerHTML = `
+<hr class="sep">
 
-    <div class="panel panel-rel">
 
-      <button
-        class="close-x"
-        id="adminClose"
-      >
-        ✕
-      </button>
+<label>
+Logo
+</label>
 
+<img
+id="logoPreview"
+class="logo-preview"
+src="${
+menuData.logo
+?escAttr(menuData.logo)
+:BLANK_PIXEL
+}"
+>
 
-      <h2>
-        Yönetim Paneli
-      </h2>
+<input
+type="file"
+id="logoFile"
+accept="image/*"
+>
 
+<label>
+Logo linki
+</label>
 
-      <!-- PAROLA -->
+<input
+id="logoUrl"
+placeholder="https://..."
+value="${
+menuData.logo?.startsWith("http")
+?escAttr(menuData.logo)
+:""
+}"
+>
+
+<button
+class="btn btn-ghost btn-block"
+id="removeLogo"
+>
+Logoyu kaldır
+</button>
+
+
+<hr class="sep">
+
+
+<h2 style="font-size:21px">
+Tema Renkleri
+</h2>
+
+<div class="color-grid">
+
+${colorField(
+"colorBackground",
+"Ana arka plan",
+theme.background
+)}
+
+${colorField(
+"colorHeader",
+"Üst bölüm",
+theme.header
+)}
+
+${colorField(
+"colorSurface",
+"Kart / yüzey",
+theme.surface
+)}
 
-      <button
-        class="btn btn-ghost btn-block password-button"
-        id="changePassword"
-      >
-        🔐 Parolayı Değiştir
-      </button>
+${colorField(
+"colorRaised",
+"Açık kart",
+theme.surfaceRaised
+)}
 
+${colorField(
+"colorCategory",
+"Kategori",
+theme.categoryBg
+)}
 
-      <!-- KAFE -->
+${colorField(
+"colorCategoryText",
+"Kategori yazısı",
+theme.categoryText
+)}
 
-      <label>
-        Kafe adı
-      </label>
+${colorField(
+"colorText",
+"Ana yazılar",
+theme.text
+)}
 
-      <input
-        id="cafeName"
-        value="${escAttr(menuData.cafeName)}"
-      >
+${colorField(
+"colorMuted",
+"Açıklama yazıları",
+theme.mutedText
+)}
 
+${colorField(
+"colorPrice",
+"Fiyat",
+theme.price
+)}
 
-      <label>
-        Alt başlık
-      </label>
+${colorField(
+"colorButton",
+"Buton",
+theme.button
+)}
 
-      <input
-        id="subtitle"
-        value="${escAttr(menuData.subtitle)}"
-      >
+${colorField(
+"colorButtonText",
+"Buton yazısı",
+theme.buttonText
+)}
 
+${colorField(
+"colorBorder",
+"Kenarlık",
+theme.border
+)}
 
-      <!-- LOGO -->
+${colorField(
+"colorTabBg",
+"Kategori arka planı",
+theme.tabBg
+)}
 
-      <hr class="sep">
+${colorField(
+"colorTabText",
+"Kategori yazısı",
+theme.tabText
+)}
 
-      <label>
-        Logo
-      </label>
+${colorField(
+"colorTabActive",
+"Seçili kategori",
+theme.tabActive
+)}
 
-      <img
-        id="logoPreview"
-        class="logo-preview"
-        src="${
-          menuData.logo
-          ? escAttr(menuData.logo)
-          : BLANK_PIXEL
-        }"
-      >
+${colorField(
+"colorSold",
+"Tükendi yazısı",
+theme.sold
+)}
 
+${colorField(
+"colorAccentText",
+"Başlık rengi",
+theme.accentText
+)}
 
-      <input
-        type="file"
-        id="logoFile"
-        accept="image/*"
-      >
+</div>
 
 
-      <label>
-        Logo linki
-      </label>
+<hr class="sep">
 
-      <input
-        id="logoUrl"
-        placeholder="https://..."
-        value="${
-          menuData.logo?.startsWith("http")
-          ? escAttr(menuData.logo)
-          : ""
-        }"
-      >
 
+<h2 style="font-size:21px">
+Kategoriler ve Ürünler
+</h2>
 
-      <button
-        class="btn btn-ghost btn-block"
-        id="removeLogo"
-      >
-        Logoyu kaldır
-      </button>
+${categories}
 
 
-      <!-- RENKLER -->
+<button
+class="btn btn-ghost btn-block"
+id="addCat"
+style="margin-top:18px"
+>
++ Yeni kategori
+</button>
 
-      <hr class="sep">
 
-      <h2 style="font-size:21px;margin-bottom:10px;">
-        Tema Renkleri
-      </h2>
+<div
+class="status-msg"
+id="adminMsg"
+></div>
 
 
-      <div class="color-grid">
+<button
+class="btn btn-main btn-block save-button"
+id="saveMenu"
+>
+Kaydet
+</button>
 
-        ${colorField(
-          "colorBackground",
-          "Ana arka plan",
-          theme.background
-        )}
+</div>
 
-        ${colorField(
-          "colorHeader",
-          "Üst bölüm",
-          theme.header
-        )}
+`;
 
-        ${colorField(
-          "colorSurface",
-          "Kart / yüzey",
-          theme.surface
-        )}
 
-        ${colorField(
-          "colorRaised",
-          "Açık kart",
-          theme.surfaceRaised
-        )}
+/* =====================================================
+   KAPAT
+===================================================== */
 
-        ${colorField(
-          "colorCategory",
-          "Kategori",
-          theme.categoryBg
-        )}
+overlay
+.querySelector("#adminClose")
+.onclick=()=>{
 
-        ${colorField(
-          "colorCategoryText",
-          "Kategori yazısı",
-          theme.categoryText
-        )}
+overlay.remove();
 
-        ${colorField(
-          "colorText",
-          "Ana yazılar",
-          theme.text
-        )}
+renderCustomer();
 
-        ${colorField(
-          "colorMuted",
-          "Açıklama yazıları",
-          theme.mutedText
-        )}
+};
 
-        ${colorField(
-          "colorPrice",
-          "Fiyat",
-          theme.price
-        )}
 
-        ${colorField(
-          "colorButton",
-          "Buton",
-          theme.button
-        )}
+/* =====================================================
+   KAFE
+===================================================== */
 
-        ${colorField(
-          "colorButtonText",
-          "Buton yazısı",
-          theme.buttonText
-        )}
+overlay
+.querySelector("#cafeName")
+.oninput=e=>{
 
-        ${colorField(
-          "colorBorder",
-          "Kenarlık",
-          theme.border
-        )}
+menuData.cafeName=
+e.target.value;
 
-        ${colorField(
-          "colorTabBg",
-          "Kategori arka planı",
-          theme.tabBg
-        )}
+};
 
-        ${colorField(
-          "colorTabText",
-          "Kategori yazısı",
-          theme.tabText
-        )}
+overlay
+.querySelector("#subtitle")
+.oninput=e=>{
 
-        ${colorField(
-          "colorTabActive",
-          "Seçili kategori",
-          theme.tabActive
-        )}
+menuData.subtitle=
+e.target.value;
 
-        ${colorField(
-          "colorSold",
-          "Tükendi yazısı",
-          theme.sold
-        )}
+};
 
-        ${colorField(
-          "colorAccentText",
-          "Başlık rengi",
-          theme.accentText
-        )}
 
-      </div>
+/* =====================================================
+   PAROLA
+===================================================== */
 
+overlay
+.querySelector("#changePinOpen")
+.onclick=openChangePin;
 
-      <!-- KATEGORİLER -->
 
-      <hr class="sep">
+/* =====================================================
+   LOGO
+===================================================== */
 
-      <h2 style="font-size:21px;margin-bottom:5px;">
-        Kategoriler ve Ürünler
-      </h2>
+overlay
+.querySelector("#logoUrl")
+.oninput=e=>{
 
-      ${categories}
+menuData.logo=
+e.target.value.trim();
 
+overlay
+.querySelector("#logoPreview")
+.src=
+menuData.logo||
+BLANK_PIXEL;
 
-      <button
-        class="btn btn-ghost btn-block"
-        id="addCat"
-        style="margin-top:18px;"
-      >
-        + Yeni kategori
-      </button>
+};
 
 
-      <div
-        class="status-msg"
-        id="adminMsg"
-      ></div>
+overlay
+.querySelector("#logoFile")
+.onchange=async e=>{
 
+const file=e.target.files?.[0];
 
-      <!-- EN ALTTA SADECE KAYDET -->
+if(!file)return;
 
-      <button
-        class="btn btn-main btn-block save-button"
-        id="saveMenu"
-      >
-        Kaydet
-      </button>
+try{
 
-    </div>
+menuData.logo=
+await resizeLogo(file);
 
-  `;
+overlay
+.querySelector("#logoPreview")
+.src=
+menuData.logo;
 
+}catch{
 
-  /* =====================================================
-     PAROLA BUTONU
-  ===================================================== */
+toast(
+"Logo yüklenemedi."
+);
 
-  overlay
-    .querySelector("#changePassword")
-    .onclick =
-    openChangePassword;
+}
 
+};
 
-  /* =====================================================
-     KAPAT
-  ===================================================== */
 
-  overlay
-    .querySelector("#adminClose")
-    .onclick = ()=>{
+overlay
+.querySelector("#removeLogo")
+.onclick=()=>{
 
-      overlay.remove();
+menuData.logo="";
 
-      renderCustomer();
+overlay
+.querySelector("#logoPreview")
+.src=
+BLANK_PIXEL;
 
-    };
+overlay
+.querySelector("#logoFile")
+.value="";
 
+overlay
+.querySelector("#logoUrl")
+.value="";
 
-  /* =====================================================
-     KAFE
-  ===================================================== */
+};
 
-  overlay
-    .querySelector("#cafeName")
-    .oninput =
-    event=>{
 
-      menuData.cafeName =
-        event.target.value;
+/* =====================================================
+   KATEGORİ ADI
+===================================================== */
 
-    };
+overlay
+.querySelectorAll("[data-cat-name]")
+.forEach(input=>{
 
+input.oninput=e=>{
 
-  overlay
-    .querySelector("#subtitle")
-    .oninput =
-    event=>{
+const cat=
+menuData.categories.find(
+c=>c.id===
+input.dataset.catName
+);
 
-      menuData.subtitle =
-        event.target.value;
+if(cat)
+cat.name=e.target.value;
 
-    };
+};
 
+});
 
-  /* =====================================================
-     LOGO URL
-  ===================================================== */
 
-  overlay
-    .querySelector("#logoUrl")
-    .oninput =
-    event=>{
+/* =====================================================
+   ÜRÜN
+===================================================== */
 
-      menuData.logo =
-        event.target.value.trim();
+overlay
+.querySelectorAll("[data-item-name]")
+.forEach(input=>{
 
-      const preview =
-        overlay.querySelector(
-          "#logoPreview"
-        );
+input.oninput=e=>{
 
-      if(preview){
+const item=
+findItem(
+input.dataset.itemName
+);
 
-        preview.src =
-          menuData.logo ||
-          BLANK_PIXEL;
+if(item)
+item.name=e.target.value;
 
-      }
+};
 
-    };
+});
 
 
-  /* =====================================================
-     LOGO DOSYA
-  ===================================================== */
+overlay
+.querySelectorAll("[data-item-desc]")
+.forEach(input=>{
 
-  overlay
-    .querySelector("#logoFile")
-    .onchange =
-    async event=>{
+input.oninput=e=>{
 
-      const file =
-        event.target.files?.[0];
+const item=
+findItem(
+input.dataset.itemDesc
+);
 
-      if(!file) return;
+if(item)
+item.desc=e.target.value;
 
-      try{
+};
 
-        menuData.logo =
-          await resizeLogo(file);
+});
 
-        const preview =
-          overlay.querySelector(
-            "#logoPreview"
-          );
 
-        if(preview){
-          preview.src =
-            menuData.logo;
-        }
+overlay
+.querySelectorAll("[data-item-price]")
+.forEach(input=>{
 
-      }catch{
+input.oninput=e=>{
 
-        toast(
-          "Logo yüklenemedi."
-        );
+const item=
+findItem(
+input.dataset.itemPrice
+);
 
-      }
+if(item)
+item.price=
+Number(e.target.value)||0;
 
-    };
+};
 
+});
 
-  /* =====================================================
-     LOGO SİL
-  ===================================================== */
 
-  overlay
-    .querySelector("#removeLogo")
-    .onclick = ()=>{
+overlay
+.querySelectorAll("[data-avail]")
+.forEach(input=>{
 
-      menuData.logo =
-        "";
+input.onchange=e=>{
 
-      const preview =
-        overlay.querySelector(
-          "#logoPreview"
-        );
+const item=
+findItem(
+input.dataset.avail
+);
 
-      if(preview){
-        preview.src =
-          BLANK_PIXEL;
-      }
+if(item)
+item.available=
+e.target.checked;
 
-      overlay.querySelector(
-        "#logoFile"
-      ).value = "";
+};
 
-      overlay.querySelector(
-        "#logoUrl"
-      ).value = "";
+});
 
-    };
 
+/* =====================================================
+   ÜRÜN SİL
+===================================================== */
 
-  /* =====================================================
-     KATEGORİ ADI
-  ===================================================== */
+overlay
+.querySelectorAll("[data-del-item]")
+.forEach(button=>{
 
-  overlay
-    .querySelectorAll("[data-cat-name]")
-    .forEach(input=>{
+button.onclick=()=>{
 
-      input.oninput =
-      event=>{
+const cat=
+menuData.categories.find(
+c=>c.id===
+button.dataset.cat
+);
 
-        const category =
-          menuData.categories.find(
-            c =>
-              c.id ===
-              input.dataset.catName
-          );
+if(!cat)return;
 
-        if(category){
+cat.items=
+cat.items.filter(
+item=>
+item.id!==
+button.dataset.delItem
+);
 
-          category.name =
-            event.target.value;
+renderAdmin();
 
-        }
+};
 
-      };
+});
 
-    });
 
+/* =====================================================
+   ÜRÜN EKLE
+===================================================== */
 
-  /* =====================================================
-     ÜRÜN ADI
-  ===================================================== */
+overlay
+.querySelectorAll("[data-add-item]")
+.forEach(button=>{
 
-  overlay
-    .querySelectorAll("[data-item-name]")
-    .forEach(input=>{
+button.onclick=()=>{
 
-      input.oninput =
-      event=>{
+const cat=
+menuData.categories.find(
+c=>c.id===
+button.dataset.addItem
+);
 
-        const item =
-          findItem(
-            input.dataset.itemName
-          );
+if(!cat)return;
 
-        if(item){
+cat.items.push({
 
-          item.name =
-            event.target.value;
+id:uid(),
+name:"Yeni ürün",
+desc:"",
+price:0,
+available:true,
+image:""
 
-        }
+});
 
-      };
+renderAdmin();
 
-    });
+};
 
+});
 
-  /* =====================================================
-     ÜRÜN AÇIKLAMA
-  ===================================================== */
 
-  overlay
-    .querySelectorAll("[data-item-desc]")
-    .forEach(input=>{
+/* =====================================================
+   KATEGORİ SİL
+===================================================== */
 
-      input.oninput =
-      event=>{
+overlay
+.querySelectorAll("[data-del-cat]")
+.forEach(button=>{
 
-        const item =
-          findItem(
-            input.dataset.itemDesc
-          );
+button.onclick=()=>{
 
-        if(item){
+if(
+!confirm(
+"Kategori ve ürünleri silinsin mi?"
+)
+)return;
 
-          item.desc =
-            event.target.value;
+menuData.categories=
+menuData.categories.filter(
+c=>c.id!==
+button.dataset.delCat
+);
 
-        }
+activeCatId=
+menuData.categories[0]?.id||null;
 
-      };
+renderAdmin();
 
-    });
+};
 
+});
 
-  /* =====================================================
-     FİYAT
-  ===================================================== */
 
-  overlay
-    .querySelectorAll("[data-item-price]")
-    .forEach(input=>{
+/* =====================================================
+   GÖRSEL DOSYA
+===================================================== */
 
-      input.oninput =
-      event=>{
+overlay
+.querySelectorAll("[data-file]")
+.forEach(input=>{
 
-        const item =
-          findItem(
-            input.dataset.itemPrice
-          );
+input.onchange=async e=>{
 
-        if(item){
+const file=
+e.target.files?.[0];
 
-          item.price =
-            Number(
-              event.target.value
-            ) || 0;
+if(!file)return;
 
-        }
+try{
 
-      };
+const item=
+findItem(
+input.dataset.file
+);
 
-    });
+if(!item)return;
 
+item.image=
+await resizeImage(file);
 
-  /* =====================================================
-     STOK
-  ===================================================== */
+renderAdmin();
 
-  overlay
-    .querySelectorAll("[data-avail]")
-    .forEach(input=>{
+}catch{
 
-      input.onchange =
-      event=>{
+toast(
+"Görsel yüklenemedi."
+);
 
-        const item =
-          findItem(
-            input.dataset.avail
-          );
+}
 
-        if(item){
+};
 
-          item.available =
-            event.target.checked;
+});
 
-        }
 
-      };
+/* =====================================================
+   GÖRSEL URL
+===================================================== */
 
-    });
+overlay
+.querySelectorAll("[data-url]")
+.forEach(input=>{
 
+input.oninput=e=>{
 
-  /* =====================================================
-     ÜRÜN SİL
-  ===================================================== */
+const item=
+findItem(
+input.dataset.url
+);
 
-  overlay
-    .querySelectorAll("[data-del-item]")
-    .forEach(button=>{
+if(!item)return;
 
-      button.onclick = ()=>{
+item.image=
+e.target.value.trim();
 
-        const category =
-          menuData.categories.find(
-            c =>
-              c.id ===
-              button.dataset.cat
-          );
+const preview=
+overlay.querySelector(
+`[data-preview="${CSS.escape(item.id)}"]`
+);
 
-        if(!category) return;
+if(preview){
 
-        category.items =
-          category.items.filter(
-            item =>
-              item.id !==
-              button.dataset.delItem
-          );
+preview.src=
+item.image||
+BLANK_PIXEL;
 
-        renderAdmin();
+}
 
-      };
+};
 
-    });
+});
 
 
-  /* =====================================================
-     ÜRÜN EKLE
-  ===================================================== */
+/* =====================================================
+   GÖRSEL SİL
+===================================================== */
 
-  overlay
-    .querySelectorAll("[data-add-item]")
-    .forEach(button=>{
+overlay
+.querySelectorAll("[data-remove-img]")
+.forEach(button=>{
 
-      button.onclick = ()=>{
+button.onclick=()=>{
 
-        const category =
-          menuData.categories.find(
-            c =>
-              c.id ===
-              button.dataset.addItem
-          );
+const item=
+findItem(
+button.dataset.removeImg
+);
 
-        if(!category) return;
+if(!item)return;
 
-        category.items.push({
+item.image="";
 
-          id:uid(),
+renderAdmin();
 
-          name:"Yeni ürün",
+};
 
-          desc:"",
+});
 
-          price:0,
 
-          available:true,
+/* =====================================================
+   YENİ KATEGORİ
+===================================================== */
 
-          image:""
+overlay
+.querySelector("#addCat")
+.onclick=()=>{
 
-        });
+menuData.categories.push({
 
-        renderAdmin();
+id:uid(),
 
-      };
+name:"Yeni kategori",
 
-    });
+items:[]
 
+});
 
-  /* =====================================================
-     KATEGORİ SİL
-  ===================================================== */
+renderAdmin();
 
-  overlay
-    .querySelectorAll("[data-del-cat]")
-    .forEach(button=>{
+};
 
-      button.onclick = ()=>{
 
-        if(
-          !confirm(
-            "Kategori ve ürünleri silinsin mi?"
-          )
-        ){
-          return;
-        }
+/* =====================================================
+   RENKLER
+===================================================== */
 
-        menuData.categories =
-          menuData.categories.filter(
-            c =>
-              c.id !==
-              button.dataset.delCat
-          );
+const colorMap={
 
-        activeCatId =
-          menuData.categories[0]?.id ||
-          null;
+colorBackground:"background",
+colorHeader:"header",
+colorSurface:"surface",
+colorRaised:"surfaceRaised",
+colorCategory:"categoryBg",
+colorCategoryText:"categoryText",
+colorText:"text",
+colorMuted:"mutedText",
+colorPrice:"price",
+colorButton:"button",
+colorButtonText:"buttonText",
+colorBorder:"border",
+colorTabBg:"tabBg",
+colorTabText:"tabText",
+colorTabActive:"tabActive",
+colorSold:"sold",
+colorAccentText:"accentText"
 
-        renderAdmin();
+};
 
-      };
+Object.keys(colorMap)
+.forEach(id=>{
 
-    });
+const input=
+overlay.querySelector("#"+id);
 
+if(!input)return;
 
-  /* =====================================================
-     ÜRÜN GÖRSELİ
-  ===================================================== */
+input.oninput=e=>{
 
-  overlay
-    .querySelectorAll("[data-file]")
-    .forEach(input=>{
+menuData.theme[
+colorMap[id]
+]=e.target.value;
 
-      input.onchange =
-      async event=>{
+applyTheme(
+menuData.theme
+);
 
-        const file =
-          event.target.files?.[0];
+};
 
-        if(!file) return;
+});
 
-        try{
 
-          const item =
-            findItem(
-              input.dataset.file
-            );
+/* =====================================================
+   KAYDET
+===================================================== */
 
-          if(!item) return;
+overlay
+.querySelector("#saveMenu")
+.onclick=async()=>{
 
-          item.image =
-            await resizeImage(file);
+const msg=
+overlay.querySelector("#adminMsg");
 
-          renderAdmin();
+const btn=
+overlay.querySelector("#saveMenu");
 
-        }catch{
+msg.textContent=
+"Kaydediliyor...";
 
-          toast(
-            "Görsel yüklenemedi."
-          );
+btn.disabled=true;
 
-        }
+btn.textContent=
+"Kaydediliyor...";
 
-      };
 
-    });
+try{
 
+const payload={
 
-  /* =====================================================
-     GÖRSEL URL
-  ===================================================== */
+cafeName:
+menuData.cafeName,
 
-  overlay
-    .querySelectorAll("[data-url]")
-    .forEach(input=>{
+subtitle:
+menuData.subtitle,
 
-      input.oninput =
-      event=>{
+logo:
+menuData.logo,
 
-        const item =
-          findItem(
-            input.dataset.url
-          );
+theme:
+menuData.theme,
 
-        if(!item) return;
+categories:
+menuData.categories
 
-        item.image =
-          event.target.value.trim();
+};
 
-        const preview =
-          overlay.querySelector(
-            `[data-preview="${CSS.escape(item.id)}"]`
-          );
 
-        if(preview){
+const result=
+await rpc(
+"save_menu",
+{
+p_menu_id:MENU_ID,
+p_pin:currentPin,
+p_data:payload
+}
+);
 
-          preview.src =
-            item.image ||
-            BLANK_PIXEL;
 
-        }
+const ok=
+result===true||
+result?.[0]===true||
+result?.result===true;
 
-      };
 
-    });
+if(!ok){
 
+throw new Error(
+"Menü kaydedilemedi."
+);
 
-  /* =====================================================
-     GÖRSEL SİL
-  ===================================================== */
+}
 
-  overlay
-    .querySelectorAll("[data-remove-img]")
-    .forEach(button=>{
 
-      button.onclick = ()=>{
+/* Başarılıysa tarayıcı yedeği de güncelle */
 
-        const item =
-          findItem(
-            button.dataset.removeImg
-          );
+saveLocalBackup();
 
-        if(!item) return;
+msg.textContent=
+"Kaydedildi ✓";
 
-        item.image =
-          "";
+btn.textContent=
+"Kaydedildi ✓";
 
-        renderAdmin();
 
-      };
+setTimeout(()=>{
 
-    });
+overlay.remove();
 
+renderCustomer();
 
-  /* =====================================================
-     YENİ KATEGORİ
-  ===================================================== */
+toast(
+"Menü güncellendi ✓"
+);
 
-  overlay
-    .querySelector("#addCat")
-    .onclick = ()=>{
+},700);
 
-      menuData.categories.push({
 
-        id:uid(),
+}catch(error){
 
-        name:"Yeni kategori",
+msg.textContent=
+"Hata: "+
+error.message;
 
-        items:[]
+btn.disabled=false;
 
-      });
+btn.textContent=
+"Kaydet";
 
-      renderAdmin();
+}
 
-    };
-
-
-  /* =====================================================
-     RENKLER
-  ===================================================== */
-
-  const colorMap = {
-
-    colorBackground:"background",
-    colorHeader:"header",
-    colorSurface:"surface",
-    colorRaised:"surfaceRaised",
-    colorCategory:"categoryBg",
-    colorCategoryText:"categoryText",
-    colorText:"text",
-    colorMuted:"mutedText",
-    colorPrice:"price",
-    colorButton:"button",
-    colorButtonText:"buttonText",
-    colorBorder:"border",
-    colorTabBg:"tabBg",
-    colorTabText:"tabText",
-    colorTabActive:"tabActive",
-    colorSold:"sold",
-    colorAccentText:"accentText"
-
-  };
-
-
-  Object.keys(colorMap)
-    .forEach(elementId=>{
-
-      const input =
-        overlay.querySelector(
-          "#" + elementId
-        );
-
-      if(!input) return;
-
-      input.oninput =
-      event=>{
-
-        menuData.theme[
-          colorMap[elementId]
-        ] =
-          event.target.value;
-
-        applyTheme(
-          menuData.theme
-        );
-
-      };
-
-    });
-
-
-  /* =====================================================
-     KAYDET
-  ===================================================== */
-
-  overlay
-    .querySelector("#saveMenu")
-    .onclick =
-    async ()=>{
-
-      const message =
-        overlay.querySelector(
-          "#adminMsg"
-        );
-
-      const saveButton =
-        overlay.querySelector(
-          "#saveMenu"
-        );
-
-
-      message.textContent =
-        "Kaydediliyor...";
-
-      saveButton.disabled =
-        true;
-
-      saveButton.textContent =
-        "Kaydediliyor...";
-
-
-      try{
-
-        const payload = {
-
-          cafeName:
-            menuData.cafeName,
-
-          subtitle:
-            menuData.subtitle,
-
-          logo:
-            menuData.logo,
-
-          theme:
-            menuData.theme,
-
-          categories:
-            menuData.categories
-
-        };
-
-
-        const result =
-          await rpc(
-            "save_menu",
-            {
-              p_menu_id:MENU_ID,
-              p_pin:currentPin,
-              p_data:payload
-            }
-          );
-
-
-        const ok =
-          result === true ||
-          result?.[0] === true ||
-          result?.result === true;
-
-
-        if(!ok){
-
-          throw new Error(
-            "PIN doğrulanamadı veya menü kaydedilemedi."
-          );
-
-        }
-
-
-        message.textContent =
-          "Kaydedildi ✓";
-
-        saveButton.textContent =
-          "Kaydedildi ✓";
-
-
-        setTimeout(()=>{
-
-          overlay.remove();
-
-          renderCustomer();
-
-          toast(
-            "Menü güncellendi ✓"
-          );
-
-        },600);
-
-
-      }catch(error){
-
-        message.textContent =
-          "Hata: " +
-          error.message;
-
-        saveButton.disabled =
-          false;
-
-        saveButton.textContent =
-          "Kaydet";
-
-      }
-
-    };
+};
 
 }
 
@@ -3200,53 +2873,47 @@ function renderAdmin(){
 
 function openAdmin(){
 
-  const old =
-    document.getElementById(
-      "adminOverlay"
-    );
+const old=
+document.getElementById(
+"adminOverlay"
+);
 
-  if(old){
-    old.remove();
-  }
+if(old)
+old.remove();
 
 
-  const overlay =
-    document.createElement("div");
+const overlay=
+document.createElement("div");
 
-  overlay.className =
-    "overlay";
+overlay.className="overlay";
 
-  overlay.id =
-    "adminOverlay";
+overlay.id="adminOverlay";
 
-  document.body.appendChild(
-    overlay
-  );
+document.body.appendChild(
+overlay
+);
 
-  renderAdmin();
+renderAdmin();
 
 }
 
 
 /* =========================================================
-   AYAR BUTONU
+   AYAR
 ========================================================= */
 
 document
-  .getElementById("adminDot")
-  .onclick =
-  openGate;
+.getElementById("adminDot")
+.onclick=openGate;
 
 document
-  .getElementById("adminDot")
-  .onkeydown =
-  event=>{
+.getElementById("adminDot")
+.onkeydown=e=>{
 
-    if(event.key === "Enter"){
-      openGate();
-    }
+if(e.key==="Enter")
+openGate();
 
-  };
+};
 
 
 /* =========================================================
