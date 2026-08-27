@@ -3,34 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="theme-color" content="#17130F">
+<meta name="theme-color" content="#F4EBDD">
 <title>Kafe Menü</title>
 
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
-
 :root{
---bg:#17130F;
---header:#1D1812;
---surface:#241E17;
---surface-raised:#30271D;
---category-bg:#7D8A5B;
---category-text:#F7F0DF;
---accent:#B8894A;
---accent-text:#D6B477;
---ink:#F4EBDD;
---ink-muted:#B9AA95;
---price:#D3A15B;
---button:#B8894A;
---button-text:#17130F;
---border:#594A38;
---danger:#B95A4D;
---tab-bg:#211B15;
---tab-text:#C7B99F;
---tab-active:#B8894A;
---sold:#D06A5D;
+--bg:#F4EBDD;
+--header:#F4EBDD;
+--surface:#FFF9EF;
+--surface-raised:#E8DDC8;
+--category-bg:#78835A;
+--category-text:#FFF8E9;
+--accent:#B85F43;
+--accent-text:#4B3A2F;
+--ink:#3F352C;
+--ink-muted:#75695B;
+--price:#B85F43;
+--button:#B85F43;
+--button-text:#FFF9EF;
+--border:#CBBDA5;
+--danger:#A94C40;
+--tab-bg:#F8F0E1;
+--tab-text:#687052;
+--tab-active:#B85F43;
+--sold:#B94F45;
 }
 
 *{
@@ -45,32 +41,26 @@ padding:0;
 body{
 background:
 radial-gradient(
-circle at 10% 5%,
-rgba(184,137,74,.10),
+circle at 10% 0%,
+rgba(184,95,67,.08),
 transparent 28%
 ),
 radial-gradient(
-circle at 90% 30%,
-rgba(120,94,54,.08),
+circle at 90% 25%,
+rgba(120,131,90,.10),
 transparent 30%
 ),
 linear-gradient(
 180deg,
-#17130F,
-#1B1611 50%,
-#14110D
+#F4EBDD 0%,
+#F1E7D6 55%,
+#EEE2D0 100%
 );
 
 color:var(--ink);
-
-font-family:
-Arial,
-sans-serif;
-
+font-family:Arial,sans-serif;
 min-height:100vh;
-
 -webkit-font-smoothing:antialiased;
-
 overflow-x:hidden;
 }
 
@@ -80,19 +70,16 @@ position:fixed;
 inset:0;
 pointer-events:none;
 z-index:-1;
-opacity:.15;
-
+opacity:.18;
 background-image:
 radial-gradient(
-rgba(255,255,255,.12) .6px,
-transparent .6px
+rgba(90,70,50,.16) .55px,
+transparent .55px
 );
-
-background-size:7px 7px;
+background-size:8px 8px;
 }
 
-button,
-input{
+button,input{
 font-family:inherit;
 }
 
@@ -103,58 +90,51 @@ button{
 .wrap{
 max-width:640px;
 margin:auto;
-padding-bottom:100px;
+padding-bottom:110px;
 }
 
 
-/* =========================================================
+/* =========================
 HEADER
-========================================================= */
+========================= */
 
 .hero{
 position:relative;
-
 background:
 radial-gradient(
-circle at 50% 20%,
-rgba(184,137,74,.13),
-transparent 35%
+circle at 50% 25%,
+rgba(255,255,255,.65),
+transparent 38%
 ),
 linear-gradient(
 180deg,
-#211A13,
-#19140F
+#F8F0E2,
+#F1E6D4
 );
 
-padding:48px 24px 42px;
-
+padding:42px 24px 38px;
 text-align:center;
 
-border-bottom:
-1px solid rgba(184,137,74,.30);
+border-bottom:1px solid rgba(130,105,72,.28);
 
 box-shadow:
-0 18px 50px rgba(0,0,0,.35);
+0 15px 45px rgba(83,64,44,.10);
 
 overflow:hidden;
 }
 
 .hero:after{
 content:"";
-
 position:absolute;
-
 left:12%;
 right:12%;
 bottom:0;
-
 height:1px;
-
 background:
 linear-gradient(
 90deg,
 transparent,
-rgba(184,137,74,.55),
+rgba(139,111,73,.55),
 transparent
 );
 }
@@ -162,9 +142,7 @@ transparent
 .logo-wrap{
 display:flex;
 justify-content:center;
-
-margin-bottom:22px;
-
+margin-bottom:21px;
 position:relative;
 z-index:1;
 }
@@ -172,97 +150,75 @@ z-index:1;
 .logo{
 width:120px;
 height:120px;
-
 object-fit:contain;
-
 border-radius:50%;
 
-background:#100D0A;
+background:#fffaf0;
 
 border:
-1px solid rgba(205,164,94,.45);
+1px solid rgba(100,80,55,.28);
 
 box-shadow:
-0 12px 35px rgba(0,0,0,.45),
-0 0 0 7px rgba(184,137,74,.04),
-0 0 35px rgba(184,137,74,.08);
+0 12px 32px rgba(76,58,40,.18),
+0 0 0 7px rgba(255,255,255,.35);
 }
 
 .eyebrow{
 font-size:11px;
-
 letter-spacing:.38em;
-
 text-transform:uppercase;
-
-color:#C9A66C;
-
-margin-bottom:15px;
+color:#735B4A;
+margin-bottom:13px;
 }
 
 .cafe-name{
 font-family:Georgia,serif;
-
 font-weight:600;
-
-font-size:
-clamp(34px,9vw,52px);
-
-margin:0 0 12px;
-
+font-size:clamp(34px,9vw,52px);
+margin:0 0 11px;
 line-height:1.05;
-
-color:#F3E7D3;
+color:#3E332A;
 
 text-shadow:
-0 4px 20px rgba(0,0,0,.4);
+0 2px 10px rgba(76,58,40,.08);
 }
 
 .subtitle{
-color:#B9AA95;
-
+color:#786D60;
 font-size:15px;
-
 max-width:420px;
-
 margin:auto;
-
 line-height:1.5;
 }
 
 
-/* =========================================================
+/* =========================
 TABS
-========================================================= */
+========================= */
 
 .tabs{
 display:flex;
-
 gap:10px;
-
 overflow-x:auto;
-
 padding:18px 20px;
 
 scrollbar-width:none;
 
 position:sticky;
-
 top:0;
 
 background:
 linear-gradient(
 180deg,
-rgba(23,19,15,.98),
-rgba(23,19,15,.92),
-rgba(23,19,15,0)
+rgba(244,235,221,.98),
+rgba(244,235,221,.93),
+rgba(244,235,221,0)
 );
 
-z-index:5;
-
 backdrop-filter:blur(12px);
-
 -webkit-backdrop-filter:blur(12px);
+
+z-index:5;
 }
 
 .tabs::-webkit-scrollbar{
@@ -272,30 +228,27 @@ display:none;
 .tab-btn{
 flex:0 0 auto;
 
-font-size:12.5px;
-
-padding:11px 18px;
+font-size:13px;
+padding:10px 18px;
 
 border-radius:999px;
 
-border:
-1px solid rgba(184,137,74,.30);
+border:1px solid #C8B99F;
 
 background:
 linear-gradient(
 180deg,
-#30271D,
-#1F1913
+#FAF3E6,
+#EDE1CC
 );
 
-color:#C6B79E;
+color:#687052;
 
 white-space:nowrap;
-
 cursor:pointer;
 
 box-shadow:
-0 4px 15px rgba(0,0,0,.20);
+0 3px 10px rgba(76,58,40,.07);
 
 transition:.2s;
 }
@@ -308,25 +261,22 @@ transform:scale(.96);
 background:
 linear-gradient(
 135deg,
-#C99A55,
-#94642F
+#BF694B,
+#A94F38
 );
 
-border-color:#D4AA68;
-
-color:#18130E;
-
+border-color:#A94F38;
+color:#FFF8ED;
 font-weight:700;
 
 box-shadow:
-0 6px 22px rgba(0,0,0,.35),
-0 0 20px rgba(184,137,74,.15);
+0 6px 18px rgba(135,73,51,.22);
 }
 
 
-/* =========================================================
+/* =========================
 PRODUCTS
-========================================================= */
+========================= */
 
 .category-block{
 padding:8px 22px;
@@ -334,102 +284,87 @@ padding:8px 22px;
 
 .category-title{
 display:inline-flex;
-
 align-items:center;
 
 background:
 linear-gradient(
 135deg,
-#7D8A5B,
-#56613E
+#7E895D,
+#69744C
 );
 
-color:#F7F0DF;
+color:#FFF8E9;
 
 font-family:Georgia,serif;
-
-font-size:21px;
-
+font-size:22px;
 font-weight:500;
 
-padding:11px 21px;
+padding:11px 20px;
 
-border-radius:14px;
+border-radius:15px;
 
 margin:22px 0 17px;
 
 border:
-1px solid rgba(193,165,103,.30);
+1px solid rgba(255,255,255,.22);
 
 box-shadow:
-0 9px 25px rgba(0,0,0,.30),
-inset 0 1px 0 rgba(255,255,255,.12);
+0 8px 22px rgba(76,82,51,.16),
+inset 0 1px 0 rgba(255,255,255,.20);
 }
 
 .category-title:before{
 content:"";
-
 width:6px;
 height:6px;
-
 border-radius:50%;
-
-background:#D3AF6C;
-
+background:#E5C88F;
 margin-right:10px;
-
 box-shadow:
-0 0 10px rgba(211,175,108,.55);
+0 0 8px rgba(229,200,143,.45);
 }
 
 .item-row{
 display:flex;
-
 align-items:center;
-
 gap:12px;
 
-padding:15px 13px;
-
+padding:14px 11px;
 margin-bottom:9px;
 
 border:
-1px solid rgba(184,137,74,.15);
+1px solid rgba(125,104,77,.15);
 
-border-radius:16px;
+border-radius:15px;
 
 background:
 linear-gradient(
 135deg,
-rgba(48,39,29,.94),
-rgba(31,25,19,.94)
+rgba(255,250,241,.90),
+rgba(242,231,213,.82)
 );
 
 box-shadow:
-0 9px 28px rgba(0,0,0,.24),
-inset 0 1px 0 rgba(255,255,255,.035);
+0 8px 25px rgba(83,64,44,.08),
+inset 0 1px 0 rgba(255,255,255,.70);
 
 position:relative;
-
 overflow:hidden;
 }
 
 .item-row:before{
 content:"";
-
 position:absolute;
-
 left:0;
 top:0;
 bottom:0;
-
 width:2px;
 
 background:
 linear-gradient(
 180deg,
 transparent,
-rgba(184,137,74,.55),
+rgba(184,95,67,.45),
 transparent
 );
 }
@@ -437,31 +372,25 @@ transparent
 .item-thumb{
 width:58px;
 height:58px;
-
 flex:0 0 auto;
 
 border-radius:13px;
-
 object-fit:cover;
 
-border:
-1px solid rgba(207,168,99,.30);
+border:1px solid #CDBDA4;
 
-background:#241D16;
+background:#E8DDC8;
 
 box-shadow:
-0 5px 16px rgba(0,0,0,.35);
+0 5px 14px rgba(76,58,40,.16);
 }
 
 .item-text-row{
 display:flex;
-
 align-items:baseline;
-
 gap:8px;
 
 flex:1;
-
 min-width:0;
 }
 
@@ -471,112 +400,91 @@ min-width:0;
 
 .item-name{
 font-size:16px;
-
 font-weight:700;
-
-color:#F2E6D2;
+color:#44392F;
 }
 
 .item-name.unavailable{
-color:#817767;
-
+color:#8C8174;
 text-decoration:line-through;
 }
 
 .item-desc{
 font-size:12.5px;
-
-color:#AFA18E;
-
+color:#776C60;
 margin-top:3px;
-
 line-height:1.4;
 }
 
 .leader{
 flex:1;
-
 border-bottom:
-1px dotted rgba(190,158,105,.38);
+1px dotted rgba(126,108,83,.55);
 
 height:0;
-
 margin:0 2px 5px;
-
 min-width:12px;
 }
 
 .item-price{
 font-size:16px;
-
-color:#D2A15C;
-
+color:#B85F43;
 font-weight:700;
-
 white-space:nowrap;
 }
 
 .item-price.unavailable{
-color:#766C60;
+color:#918579;
 }
 
 .sold-out-tag{
 font-size:9px;
-
-color:#D16A5D;
-
+color:#B94F45;
 letter-spacing:.08em;
-
 margin-left:6px;
 }
 
 
-/* =========================================================
+/* =========================
 FOOTER
-========================================================= */
+========================= */
 
 .note{
 text-align:center;
-
 padding:42px 24px 15px;
-
-color:#9E9281;
-
+color:#817669;
 font-size:11.5px;
 }
 
 
-/* =========================================================
+/* =========================
 ADMIN BUTTON
-========================================================= */
+========================= */
 
 .admin-dot{
 position:fixed;
-
-bottom:18px;
+bottom:20px;
 right:18px;
 
-width:50px;
-height:50px;
+width:52px;
+height:52px;
 
 border-radius:50%;
 
 background:
 linear-gradient(
 145deg,
-#C59A58,
-#80602F
+#D2B277,
+#A87C3E
 );
 
 border:
-1px solid rgba(232,202,147,.55);
+1px solid rgba(119,89,45,.38);
 
-color:#1A140E;
+color:#fff;
 
 display:flex;
-
 align-items:center;
-
 justify-content:center;
 
 cursor:pointer;
@@ -584,36 +492,32 @@ cursor:pointer;
 z-index:20;
 
 box-shadow:
-0 10px 30px rgba(0,0,0,.45),
-0 0 20px rgba(184,137,74,.12),
-inset 0 1px 0 rgba(255,255,255,.35);
+0 10px 28px rgba(76,58,40,.24),
+0 0 18px rgba(184,137,74,.12),
+inset 0 1px 0 rgba(255,255,255,.55);
 
 font-size:21px;
 }
 
 
-/* =========================================================
-ADMIN
-========================================================= */
+/* =========================
+OVERLAY
+========================= */
 
 .overlay{
 position:fixed;
-
 inset:0;
 
 background:
-rgba(4,3,2,.78);
+rgba(50,39,29,.52);
 
 backdrop-filter:blur(7px);
-
 -webkit-backdrop-filter:blur(7px);
 
 z-index:50;
 
 display:flex;
-
 align-items:flex-end;
-
 justify-content:center;
 }
 
@@ -621,30 +525,26 @@ justify-content:center;
 background:
 linear-gradient(
 180deg,
-#292119,
-#1D1812
+#F8F0E2,
+#EFE2CF
 );
 
 width:100%;
-
 max-width:580px;
 
 max-height:94vh;
-
 overflow-y:auto;
 
-border-radius:
-24px 24px 0 0;
+border-radius:24px 24px 0 0;
 
-padding:
-27px 20px 35px;
+padding:27px 20px 35px;
 
 border:
-1px solid rgba(184,137,74,.30);
+1px solid rgba(130,105,72,.28);
 
 box-shadow:
-0 -15px 60px rgba(0,0,0,.55),
-inset 0 1px 0 rgba(255,255,255,.04);
+0 -15px 60px rgba(50,39,29,.25),
+inset 0 1px 0 rgba(255,255,255,.60);
 
 color:var(--ink);
 }
@@ -667,74 +567,58 @@ border-radius:24px;
 
 .panel h2{
 font-family:Georgia,serif;
-
 font-size:25px;
-
 margin:0 0 20px;
-
-color:#D3AF70;
+color:#5B4637;
 }
 
 .panel label{
 display:block;
-
 font-size:10.5px;
-
 letter-spacing:.06em;
-
 text-transform:uppercase;
-
-color:#A99A86;
-
-margin:
-15px 0 6px;
+color:#75695B;
+margin:15px 0 6px;
 }
 
 .panel input{
 width:100%;
 
-background:#17130F;
+background:#FFF9EF;
 
 border:
-1px solid #594936;
+1px solid #CDBEA7;
 
 border-radius:11px;
 
-padding:
-11px 12px;
+padding:11px 12px;
 
-color:#F2E7D5;
+color:#44392F;
 
 font-size:14.5px;
-
 outline:none;
 }
 
 .panel input:focus{
-border-color:#B8894A;
+border-color:#B85F43;
 
 box-shadow:
-0 0 0 3px rgba(184,137,74,.10);
+0 0 0 3px rgba(184,95,67,.10);
 }
 
 .panel input[type=color]{
 padding:3px;
-
 height:44px;
-
 cursor:pointer;
 }
 
 .btn{
 font-size:12.5px;
-
 padding:10px 15px;
 
 border-radius:10px;
 
-border:
-1px solid transparent;
-
+border:1px solid transparent;
 cursor:pointer;
 }
 
@@ -742,53 +626,42 @@ cursor:pointer;
 background:
 linear-gradient(
 135deg,
-#C49A59,
-#93642F
+#BF694B,
+#A84F38
 );
 
-color:#17120D;
-
+color:#FFF9EF;
 font-weight:700;
 
-border-color:#D0A96C;
+border-color:#A84F38;
 
 box-shadow:
-0 7px 20px rgba(0,0,0,.25);
+0 7px 18px rgba(130,68,48,.16);
 }
 
 .btn-ghost{
-background:#241D16;
-
-border-color:#5B4B38;
-
-color:#D6C6AE;
+background:#FFF9EF;
+border-color:#CDBEA7;
+color:#5C5044;
 }
 
 .btn-danger{
-background:#241816;
-
-border-color:#93483E;
-
-color:#D57568;
+background:#FFF6F3;
+border-color:#B96A5E;
+color:#A84C41;
 }
 
 .btn-block{
 width:100%;
-
 display:block;
-
 text-align:center;
-
 margin-top:9px;
 }
 
 .save-button{
 margin-top:28px;
-
 padding:15px;
-
 font-size:15px;
-
 border-radius:13px;
 }
 
@@ -796,27 +669,26 @@ border-radius:13px;
 background:
 linear-gradient(
 135deg,
-#30271D,
-#211A14
+#F9F1E3,
+#EDE1CE
 );
 
 border:
-1px solid rgba(184,137,74,.18);
+1px solid #D1C1A8;
 
 border-radius:14px;
 
 padding:14px;
-
 margin-top:12px;
+
+box-shadow:
+0 5px 15px rgba(83,64,44,.06);
 }
 
 .cat-header{
 display:flex;
-
 align-items:center;
-
 justify-content:space-between;
-
 gap:10px;
 
 margin-top:27px;
@@ -824,34 +696,24 @@ margin-top:27px;
 padding-bottom:9px;
 
 border-bottom:
-1px solid #4A3D2F;
+1px solid #CFC0A8;
 }
 
 .cat-header input{
 font-family:Georgia,serif;
-
 font-size:18px;
-
-color:#D4B276;
-
+color:#5D4939;
 border:none;
-
 background:transparent;
-
 padding:3px 0;
 }
 
 .avail-toggle{
 display:flex!important;
-
 align-items:center;
-
 gap:7px;
-
 font-size:12px!important;
-
-color:#A99A86!important;
-
+color:#75695B!important;
 margin-top:10px!important;
 }
 
@@ -861,38 +723,29 @@ width:auto;
 
 .actions-row{
 display:flex;
-
 gap:8px;
-
 margin-top:10px;
-
 flex-wrap:wrap;
 }
 
 .status-msg{
 font-size:12px;
-
-color:#D1AF70;
-
+color:#80633F;
 margin-top:11px;
-
 min-height:17px;
 }
 
 .close-x{
 position:absolute;
-
 top:14px;
 right:16px;
 
 background:none;
-
 border:none;
 
-color:#B5A58F;
+color:#806F60;
 
 font-size:21px;
-
 cursor:pointer;
 }
 
@@ -902,66 +755,81 @@ text-align:center;
 
 .pin-box input{
 text-align:center;
-
 font-size:20px;
-
 letter-spacing:.3em;
 }
 
 .loading{
 text-align:center;
 
-padding:
-45vh 20px 20px;
+padding:45vh 20px 20px;
 
-color:#A99A86;
+color:#75695B;
 
 font-size:14px;
 }
 
+.loading:after{
+content:"";
+display:block;
+
+width:22px;
+height:22px;
+
+margin:16px auto 0;
+
+border:
+2px solid #D4C5AE;
+
+border-top-color:#B85F43;
+
+border-radius:50%;
+
+animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
 .error-box{
-padding:
-100px 25px;
-
+padding:100px 25px;
 text-align:center;
-
-color:#F0E5D4;
+color:#44392F;
 }
 
 .error-box h2{
 font-family:Georgia,serif;
+color:#6A4D3A;
+}
 
-color:#D4AF70;
+.error-box p{
+line-height:1.6;
+font-size:13px;
+word-break:break-word;
 }
 
 .color-grid{
 display:grid;
-
-grid-template-columns:
-1fr 1fr;
-
+grid-template-columns:1fr 1fr;
 gap:10px;
 }
 
 .color-item{
-background:#211A14;
-
-border:
-1px solid #4B3D2E;
-
+background:#F4E8D5;
+border:1px solid #D0C0A7;
 border-radius:11px;
-
 padding:10px;
 }
 
 .color-item label{
-margin:
-0 0 7px;
+margin:0 0 7px;
 }
 
 .color-item input[type=color]{
 width:100%;
-
 height:42px;
 }
 
@@ -974,23 +842,19 @@ border-radius:50%;
 object-fit:contain;
 
 border:
-1px solid #6A5438;
+1px solid #CBB99D;
 
-background:#100D0A;
+background:#FFF9EF;
 
 display:block;
 
-margin:
-8px auto 12px;
+margin:8px auto 12px;
 }
 
 .img-row{
 display:flex;
-
 gap:12px;
-
 align-items:flex-start;
-
 margin-top:7px;
 }
 
@@ -1004,50 +868,41 @@ object-fit:cover;
 
 flex:0 0 auto;
 
-border:
-1px solid #5B4935;
+border:1px solid #CDBEA6;
 
-background:#17130F;
+background:#FFF9EF;
 }
 
 .img-controls{
 flex:1;
-
 min-width:0;
 
 display:flex;
-
 flex-direction:column;
-
 gap:7px;
 }
 
 .img-controls input[type=file]{
 padding:7px;
-
 font-size:12px;
 }
 
 hr.sep{
 border:none;
-
-border-top:
-1px solid #44372A;
-
-margin:
-25px 0;
+border-top:1px solid #D2C2A9;
+margin:25px 0;
 }
 
 .security-box{
 background:
 linear-gradient(
 135deg,
-#30271D,
-#211A14
+#EEE1CD,
+#E4D5BE
 );
 
 border:
-1px solid #5B4935;
+1px solid #C8B79C;
 
 border-radius:14px;
 
@@ -1058,19 +913,14 @@ margin-top:15px;
 
 .security-title{
 font-weight:700;
-
-color:#D2AE70;
-
+color:#6D553E;
 font-size:15px;
-
 margin-bottom:5px;
 }
 
 .security-text{
 font-size:12px;
-
-color:#A99A86;
-
+color:#75695B;
 line-height:1.45;
 }
 
@@ -1078,28 +928,24 @@ line-height:1.45;
 position:fixed;
 
 left:50%;
-
 bottom:75px;
 
-transform:
-translateX(-50%);
+transform:translateX(-50%);
 
 background:
 linear-gradient(
 135deg,
-#C39A59,
-#8C6030
+#BF694B,
+#A54D37
 );
 
-color:#18130E;
+color:#FFF9EF;
 
-padding:
-11px 16px;
+padding:11px 16px;
 
 border-radius:11px;
 
 font-size:13px;
-
 font-weight:600;
 
 z-index:100;
@@ -1109,24 +955,20 @@ display:none;
 white-space:nowrap;
 
 box-shadow:
-0 10px 30px rgba(0,0,0,.45);
+0 10px 30px rgba(76,58,40,.25);
 }
 
 .small-note{
 font-size:11px;
-
-color:#9E9180;
-
+color:#817467;
 line-height:1.45;
-
 margin-top:8px;
 }
 
 @media(max-width:420px){
 
 .hero{
-padding:
-42px 18px 36px;
+padding:40px 18px 35px;
 }
 
 .logo{
@@ -1144,9 +986,7 @@ padding-right:16px;
 }
 
 .item-row{
-padding:
-13px 10px;
-
+padding:13px 10px;
 border-radius:14px;
 }
 
@@ -1179,8 +1019,8 @@ scroll-behavior:smooth;
 }
 
 ::selection{
-background:#B8894A;
-color:#17130F;
+background:#B85F43;
+color:#FFF9EF;
 }
 
 ::-webkit-scrollbar{
@@ -1189,14 +1029,13 @@ height:5px;
 }
 
 ::-webkit-scrollbar-track{
-background:#17130F;
+background:#EFE3D1;
 }
 
 ::-webkit-scrollbar-thumb{
-background:#594936;
+background:#C2B197;
 border-radius:10px;
 }
-
 </style>
 </head>
 
@@ -1210,7 +1049,6 @@ Menü yükleniyor...
 
 </div>
 
-
 <div
 class="admin-dot"
 id="adminDot"
@@ -1221,7 +1059,6 @@ aria-label="Yönetim panelini aç"
 ⚙️
 </div>
 
-
 <div
 class="toast"
 id="toast"
@@ -1231,7 +1068,7 @@ id="toast"
 <script>
 
 /* =========================================================
-SUPABASE
+   SUPABASE AYARLARI
 ========================================================= */
 
 const SUPABASE_URL =
@@ -1243,47 +1080,23 @@ const SUPABASE_KEY =
 const MENU_ID =
 "00000000-0000-0000-0000-000000000001";
 
-
-const supabaseClient =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY,
-{
-db:{
-schema:"public"
-},
-auth:{
-persistSession:false,
-autoRefreshToken:false
-}
-}
-);
-
-
-/* =========================================================
-DURUM
-========================================================= */
-
-let menuData=null;
-
-let activeCatId=null;
-
-let unlocked=false;
-
-let currentPin="";
-
 const LOCAL_BACKUP_KEY =
 "kafe_menu_backup_v4";
 
 const BLANK_PIXEL =
 "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
+let menuData=null;
+let activeCatId=null;
+let unlocked=false;
+let currentPin="";
+
 const app =
 document.getElementById("app");
 
 
 /* =========================================================
-YARDIMCI
+   YARDIMCI
 ========================================================= */
 
 function uid(){
@@ -1332,6 +1145,8 @@ function toast(message){
 const t =
 document.getElementById("toast");
 
+if(!t)return;
+
 t.textContent=message;
 
 t.style.display="block";
@@ -1352,23 +1167,27 @@ t.style.display="none";
 
 
 /* =========================================================
-LOCAL YEDEK
+   LOCAL YEDEK
 ========================================================= */
 
 function saveLocalBackup(){
 
 try{
 
+if(menuData){
+
 localStorage.setItem(
 LOCAL_BACKUP_KEY,
 JSON.stringify(menuData)
 );
 
-}catch(e){
+}
+
+}catch(error){
 
 console.warn(
-"Local yedek hatası:",
-e
+"Local yedek kaydedilemedi:",
+error
 );
 
 }
@@ -1389,7 +1208,12 @@ if(!raw)return null;
 
 return JSON.parse(raw);
 
-}catch{
+}catch(error){
+
+console.warn(
+"Local yedek okunamadı:",
+error
+);
 
 return null;
 
@@ -1399,48 +1223,31 @@ return null;
 
 
 /* =========================================================
-DEFAULT THEME
+   DEFAULT THEME
 ========================================================= */
 
 function defaultTheme(){
 
 return{
 
-background:"#17130F",
-
-header:"#1D1812",
-
-surface:"#241E17",
-
-surfaceRaised:"#30271D",
-
-baseColor:"#B8894A",
-
-accentText:"#D6B477",
-
-categoryBg:"#7D8A5B",
-
-categoryText:"#F7F0DF",
-
-text:"#F4EBDD",
-
-mutedText:"#B9AA95",
-
-price:"#D3A15B",
-
-button:"#B8894A",
-
-buttonText:"#17130F",
-
-border:"#594A38",
-
-tabBg:"#211B15",
-
-tabText:"#C7B99F",
-
-tabActive:"#B8894A",
-
-sold:"#D06A5D"
+background:"#F4EBDD",
+header:"#F4EBDD",
+surface:"#FFF9EF",
+surfaceRaised:"#E8DDC8",
+baseColor:"#B85F43",
+accentText:"#4B3A2F",
+categoryBg:"#78835A",
+categoryText:"#FFF8E9",
+text:"#3F352C",
+mutedText:"#75695B",
+price:"#B85F43",
+button:"#B85F43",
+buttonText:"#FFF9EF",
+border:"#CBBDA5",
+tabBg:"#F8F0E1",
+tabText:"#687052",
+tabActive:"#B85F43",
+sold:"#B94F45"
 
 };
 
@@ -1448,7 +1255,7 @@ sold:"#D06A5D"
 
 
 /* =========================================================
-THEME
+   TEMA UYGULA
 ========================================================= */
 
 function applyTheme(t){
@@ -1555,7 +1362,7 @@ t.sold
 
 
 /* =========================================================
-NORMALIZE
+   NORMALIZE
 ========================================================= */
 
 function normalizeMenu(data){
@@ -1586,7 +1393,6 @@ Array.isArray(d.categories)
 :[]
 
 };
-
 
 result.categories.forEach(
 cat=>{
@@ -1633,7 +1439,124 @@ return result;
 
 
 /* =========================================================
-SUPABASE MENÜ OKU
+   SUPABASE FETCH
+========================================================= */
+
+async function supabaseFetch(
+path,
+options={}
+){
+
+const headers={
+
+"apikey":
+SUPABASE_KEY,
+
+"Authorization":
+"Bearer "+SUPABASE_KEY,
+
+"Content-Type":
+"application/json",
+
+"Accept":
+"application/json",
+
+...(options.headers||{})
+
+};
+
+const response =
+await fetch(
+SUPABASE_URL+path,
+{
+...options,
+headers,
+cache:"no-store"
+}
+);
+
+const text =
+await response.text();
+
+let data=null;
+
+try{
+
+data =
+text
+?JSON.parse(text)
+:null;
+
+}catch{
+
+data=text;
+
+}
+
+if(!response.ok){
+
+let message="";
+
+if(
+data &&
+typeof data==="object"
+){
+
+message =
+data.message||
+data.error_description||
+data.hint||
+data.error||
+"";
+
+}
+
+if(!message){
+
+message =
+typeof data==="string"
+?data
+:text;
+
+}
+
+throw new Error(
+"HTTP "+
+response.status+
+": "+
+message
+);
+
+}
+
+return data;
+
+}
+
+
+/* =========================================================
+   RPC
+========================================================= */
+
+async function rpc(
+functionName,
+args
+){
+
+return await supabaseFetch(
+"/rest/v1/rpc/"+
+encodeURIComponent(functionName),
+{
+method:"POST",
+body:JSON.stringify(args)
+}
+);
+
+}
+
+
+/* =========================================================
+   MENÜ YÜKLE
 ========================================================= */
 
 async function loadMenu(){
@@ -1641,51 +1564,41 @@ async function loadMenu(){
 try{
 
 app.innerHTML=`
+
 <div class="loading">
 Menü yükleniyor...
 </div>
+
 `;
 
 
-console.log(
-"Supabase bağlantısı başlatılıyor..."
+/*
+  Doğrudan REST API.
+  supabase-js kullanılmıyor.
+*/
+
+const rows =
+await supabaseFetch(
+"/rest/v1/menus?id=eq."+
+encodeURIComponent(MENU_ID)+
+"&select=id,data"
 );
 
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("menus")
-.select("id,data")
-.eq(
-"id",
-MENU_ID
-)
-.maybeSingle();
-
-
-console.log(
-"Supabase sonucu:",
-data,
-error
-);
-
-
-if(error){
+if(
+!Array.isArray(rows)
+){
 
 throw new Error(
-error.message||
-error.details||
-error.hint||
-"Supabase menüsü okunamadı."
+"Supabase geçersiz bir cevap döndürdü."
 );
 
 }
 
 
-if(!data){
+if(
+rows.length===0
+){
 
 throw new Error(
 "Menü kaydı bulunamadı."
@@ -1694,10 +1607,12 @@ throw new Error(
 }
 
 
-if(!data.data){
+if(
+!rows[0].data
+){
 
 throw new Error(
-"Menü kaydının data alanı boş."
+"Menü kaydındaki data alanı boş."
 );
 
 }
@@ -1705,7 +1620,7 @@ throw new Error(
 
 menuData =
 normalizeMenu(
-data.data
+rows[0].data
 );
 
 
@@ -1733,6 +1648,10 @@ error
 );
 
 
+/*
+  Önce local yedek deniyoruz.
+*/
+
 const backup =
 loadLocalBackup();
 
@@ -1755,7 +1674,7 @@ menuData.theme
 renderCustomer();
 
 toast(
-"Çevrimdışı yedek kullanılıyor."
+"Supabase'e ulaşılamadı. Yerel yedek açıldı."
 );
 
 return;
@@ -1763,8 +1682,12 @@ return;
 }
 
 
+/*
+  Artık sonsuza kadar loading yok.
+*/
+
 showError(
-"Menü yüklenemedi.",
+"Menü yüklenemedi",
 error.message
 );
 
@@ -1774,7 +1697,7 @@ error.message
 
 
 /* =========================================================
-HATA
+   HATA
 ========================================================= */
 
 function showError(
@@ -1802,21 +1725,27 @@ Tekrar dene
 </button>
 
 </div>
+
 `;
 
 
-document
-.getElementById(
+const retry =
+document.getElementById(
 "retryButton"
-)
-.onclick=
+);
+
+if(retry){
+
+retry.onclick =
 loadMenu;
+
+}
 
 }
 
 
 /* =========================================================
-MÜŞTERİ MENÜSÜ
+   MÜŞTERİ MENÜSÜ
 ========================================================= */
 
 function renderCustomer(){
@@ -2047,7 +1976,7 @@ behavior:"smooth"
 
 
 /* =========================================================
-PIN GİRİŞİ
+   PIN GİRİŞ
 ========================================================= */
 
 function openGate(){
@@ -2062,7 +1991,9 @@ return;
 
 
 const overlay =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 overlay.className="overlay";
 
@@ -2127,7 +2058,8 @@ overlay.remove();
 };
 
 
-const go=async()=>{
+const go =
+async()=>{
 
 const pin =
 overlay
@@ -2161,12 +2093,8 @@ msg.textContent=
 
 try{
 
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc(
+const result =
+await rpc(
 "check_menu_pin",
 {
 p_menu_id:MENU_ID,
@@ -2176,30 +2104,17 @@ p_pin:pin
 
 
 console.log(
-"PIN sonucu:",
-data,
-error
+"PIN SONUCU:",
+result
 );
-
-
-if(error){
-
-throw new Error(
-error.message||
-error.details||
-error.hint||
-"PIN kontrolü başarısız."
-);
-
-}
 
 
 const ok =
-data===true||
-data==="true"||
-data?.[0]===true||
-data?.[0]?.check_menu_pin===true||
-data?.result===true;
+result===true||
+result==="true"||
+result?.[0]===true||
+result?.[0]?.check_menu_pin===true||
+result?.result===true;
 
 
 if(!ok){
@@ -2229,7 +2144,7 @@ error
 );
 
 msg.textContent=
-"Giriş hatası: "+
+"Hata: "+
 error.message;
 
 }
@@ -2271,7 +2186,7 @@ overlay
 
 
 /* =========================================================
-RESİM
+   RESİM
 ========================================================= */
 
 function resizeImage(
@@ -2296,26 +2211,27 @@ new Image();
 image.onload=()=>{
 
 let w=image.width;
-
 let h=image.height;
 
 
 if(
-w>h&&
+w>h &&
 w>max
 ){
 
-h=h*max/w;
+h =
+h*max/w;
 
 w=max;
 
 }
 else if(
-h>=w&&
+h>=w &&
 h>max
 ){
 
-w=w*max/h;
+w =
+w*max/h;
 
 h=max;
 
@@ -2335,9 +2251,13 @@ canvas.height =
 Math.round(h);
 
 
-canvas
-.getContext("2d")
-.drawImage(
+const ctx =
+canvas.getContext(
+"2d"
+);
+
+
+ctx.drawImage(
 image,
 0,
 0,
@@ -2356,20 +2276,30 @@ quality
 };
 
 
-image.onerror=reject;
+image.onerror =
+()=>reject(
+new Error(
+"Görsel okunamadı."
+)
+);
 
-image.src=e.target.result;
+image.src =
+e.target.result;
 
 };
 
 
-reader.onerror=reject;
+reader.onerror =
+()=>reject(
+new Error(
+"Dosya okunamadı."
+)
+);
 
 reader.readAsDataURL(file);
 
 }
 );
-
 
 }
 
@@ -2386,7 +2316,7 @@ file,
 
 
 /* =========================================================
-ÜRÜN BUL
+   ÜRÜN BUL
 ========================================================= */
 
 function findItem(id){
@@ -2412,7 +2342,7 @@ return null;
 
 
 /* =========================================================
-RENK ALANI
+   RENK ALANI
 ========================================================= */
 
 function colorField(
@@ -2445,7 +2375,7 @@ value||"#ffffff"
 
 
 /* =========================================================
-PAROLA DEĞİŞTİR
+   PAROLA DEĞİŞTİR
 ========================================================= */
 
 function openChangePin(){
@@ -2643,12 +2573,8 @@ msg.textContent=
 
 try{
 
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc(
+const result =
+await rpc(
 "change_menu_pin",
 {
 p_menu_id:MENU_ID,
@@ -2658,24 +2584,12 @@ p_new_pin:newPin
 );
 
 
-if(error){
-
-throw new Error(
-error.message||
-error.details||
-error.hint||
-"Parola değiştirilemedi."
-);
-
-}
-
-
 const ok =
-data===true||
-data==="true"||
-data?.[0]===true||
-data?.[0]?.change_menu_pin===true||
-data?.result===true;
+result===true||
+result==="true"||
+result?.[0]===true||
+result?.[0]?.change_menu_pin===true||
+result?.result===true;
 
 
 if(!ok){
@@ -2715,7 +2629,7 @@ toast(
 }catch(error){
 
 console.error(
-"PAROLA DEĞİŞTİRME:",
+"PAROLA DEĞİŞTİRME HATASI:",
 error
 );
 
@@ -2736,7 +2650,7 @@ btn.textContent=
 
 
 /* =========================================================
-ADMIN RENDER
+   ADMIN
 ========================================================= */
 
 function renderAdmin(){
@@ -3192,7 +3106,7 @@ Kaydet
 
 
 /* =========================================================
-KAPAT
+   KAPAT
 ========================================================= */
 
 overlay
@@ -3209,7 +3123,7 @@ renderCustomer();
 
 
 /* =========================================================
-KAFE
+   KAFE
 ========================================================= */
 
 overlay
@@ -3237,19 +3151,19 @@ e.target.value;
 
 
 /* =========================================================
-PAROLA
+   PAROLA
 ========================================================= */
 
 overlay
 .querySelector(
 "#changePinOpen"
 )
-.onclick=
+.onclick =
 openChangePin;
 
 
 /* =========================================================
-LOGO URL
+   LOGO URL
 ========================================================= */
 
 overlay
@@ -3274,14 +3188,14 @@ BLANK_PIXEL;
 
 
 /* =========================================================
-LOGO DOSYA
+   LOGO DOSYA
 ========================================================= */
 
 overlay
 .querySelector(
 "#logoFile"
 )
-.onchange=
+.onchange =
 async e=>{
 
 const file =
@@ -3304,7 +3218,9 @@ overlay
 .src =
 menuData.logo;
 
-}catch{
+}catch(error){
+
+console.error(error);
 
 toast(
 "Logo yüklenemedi."
@@ -3316,7 +3232,7 @@ toast(
 
 
 /* =========================================================
-LOGO SİL
+   LOGO SİL
 ========================================================= */
 
 overlay
@@ -3350,7 +3266,7 @@ overlay
 
 
 /* =========================================================
-KATEGORİ
+   KATEGORİ
 ========================================================= */
 
 overlay
@@ -3379,7 +3295,7 @@ e.target.value;
 
 
 /* =========================================================
-ÜRÜN ADI
+   ÜRÜN ADI
 ========================================================= */
 
 overlay
@@ -3407,7 +3323,7 @@ e.target.value;
 
 
 /* =========================================================
-AÇIKLAMA
+   AÇIKLAMA
 ========================================================= */
 
 overlay
@@ -3435,7 +3351,7 @@ e.target.value;
 
 
 /* =========================================================
-FİYAT
+   FİYAT
 ========================================================= */
 
 overlay
@@ -3463,7 +3379,7 @@ Number(e.target.value)||0;
 
 
 /* =========================================================
-STOK
+   STOK
 ========================================================= */
 
 overlay
@@ -3491,7 +3407,7 @@ e.target.checked;
 
 
 /* =========================================================
-ÜRÜN SİL
+   ÜRÜN SİL
 ========================================================= */
 
 overlay
@@ -3530,7 +3446,7 @@ renderAdmin();
 
 
 /* =========================================================
-ÜRÜN EKLE
+   ÜRÜN EKLE
 ========================================================= */
 
 overlay
@@ -3578,7 +3494,7 @@ renderAdmin();
 
 
 /* =========================================================
-KATEGORİ SİL
+   KATEGORİ SİL
 ========================================================= */
 
 overlay
@@ -3620,7 +3536,7 @@ renderAdmin();
 
 
 /* =========================================================
-GÖRSEL DOSYA
+   GÖRSEL DOSYA
 ========================================================= */
 
 overlay
@@ -3630,7 +3546,7 @@ overlay
 .forEach(
 input=>{
 
-input.onchange=
+input.onchange =
 async e=>{
 
 const file =
@@ -3657,7 +3573,9 @@ await resizeImage(file);
 
 renderAdmin();
 
-}catch{
+}catch(error){
+
+console.error(error);
 
 toast(
 "Görsel yüklenemedi."
@@ -3672,7 +3590,7 @@ toast(
 
 
 /* =========================================================
-GÖRSEL URL
+   GÖRSEL URL
 ========================================================= */
 
 overlay
@@ -3718,7 +3636,7 @@ BLANK_PIXEL;
 
 
 /* =========================================================
-GÖRSEL SİL
+   GÖRSEL SİL
 ========================================================= */
 
 overlay
@@ -3751,7 +3669,7 @@ renderAdmin();
 
 
 /* =========================================================
-YENİ KATEGORİ
+   YENİ KATEGORİ
 ========================================================= */
 
 overlay
@@ -3777,7 +3695,7 @@ renderAdmin();
 
 
 /* =========================================================
-RENKLER
+   RENKLER
 ========================================================= */
 
 const colorMap={
@@ -3869,14 +3787,14 @@ menuData.theme
 
 
 /* =========================================================
-KAYDET
+   KAYDET
 ========================================================= */
 
 overlay
 .querySelector(
 "#saveMenu"
 )
-.onclick=
+.onclick =
 async()=>{
 
 const msg =
@@ -3913,7 +3831,6 @@ menuData.categories
 msg.textContent =
 "Kaydediliyor...";
 
-
 btn.disabled=true;
 
 btn.textContent =
@@ -3922,18 +3839,12 @@ btn.textContent =
 
 try{
 
+/*
+  save_menu RPC
+*/
 
-console.log(
-"Supabase save_menu çağrılıyor..."
-);
-
-
-const {
-data,
-error
-} =
-await supabaseClient
-.rpc(
+const result =
+await rpc(
 "save_menu",
 {
 p_menu_id:
@@ -3949,71 +3860,47 @@ payload
 
 
 console.log(
-"save_menu sonucu:",
-data,
-error
+"SAVE_MENU SONUCU:",
+result
 );
-
-
-if(error){
-
-throw new Error(
-error.message||
-error.details||
-error.hint||
-"Menü kaydedilemedi."
-);
-
-}
 
 
 const explicitlyFalse =
-data===false||
-data==="false"||
-data?.[0]===false||
-data?.[0]?.save_menu===false||
-data?.result===false;
+result===false||
+result==="false"||
+result?.[0]===false||
+result?.[0]?.save_menu===false||
+result?.result===false;
 
 
 if(explicitlyFalse){
 
 throw new Error(
-"Supabase menüyü kaydetmeyi reddetti."
+"Supabase kaydetme işlemini reddetti."
 );
 
 }
 
 
-/* KAYITTAN SONRA TEKRAR OKU */
+/*
+  Kayıttan sonra tekrar oku.
+*/
 
-const {
-data:saved,
-error:readError
-} =
-await supabaseClient
-.from("menus")
-.select("id,data")
-.eq(
-"id",
-MENU_ID
-)
-.maybeSingle();
-
-
-if(readError){
-
-throw new Error(
-"Kaydetme sonrası menü okunamadı: "+
-readError.message
+const checkRows =
+await supabaseFetch(
+"/rest/v1/menus?id=eq."+
+encodeURIComponent(MENU_ID)+
+"&select=id,data"
 );
 
-}
 
-
-if(!saved){
+if(
+!checkRows ||
+!checkRows.length
+){
 
 throw new Error(
-"Kaydetme sonrası menü bulunamadı."
+"Kaydetme sonrası menü tekrar okunamadı."
 );
 
 }
@@ -4021,16 +3908,11 @@ throw new Error(
 
 menuData =
 normalizeMenu(
-saved.data
+checkRows[0].data
 );
 
 
 saveLocalBackup();
-
-
-activeCatId =
-menuData.categories[0]?.id||
-null;
 
 
 applyTheme(
@@ -4040,7 +3922,6 @@ menuData.theme
 
 msg.textContent =
 "Kaydedildi ✓";
-
 
 btn.textContent =
 "Kaydedildi ✓";
@@ -4072,11 +3953,7 @@ error
 
 msg.textContent =
 "Hata: "+
-(
-error?.message||
-"Menü kaydedilemedi."
-);
-
+error.message;
 
 btn.disabled=false;
 
@@ -4091,7 +3968,7 @@ btn.textContent =
 
 
 /* =========================================================
-ADMIN AÇ
+   ADMIN AÇ
 ========================================================= */
 
 function openAdmin(){
@@ -4130,7 +4007,7 @@ renderAdmin();
 
 
 /* =========================================================
-AYAR BUTONU
+   AYAR BUTONU
 ========================================================= */
 
 document
@@ -4147,14 +4024,22 @@ document
 )
 .onkeydown=e=>{
 
-if(e.key==="Enter")
+if(
+e.key==="Enter"||
+e.key===" "
+){
+
+e.preventDefault();
+
 openGate();
+
+}
 
 };
 
 
 /* =========================================================
-BAŞLAT
+   BAŞLAT
 ========================================================= */
 
 loadMenu();
