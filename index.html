@@ -12,61 +12,35 @@
 --header:#1D1812;
 --surface:#241E17;
 --surface-raised:#30271D;
-
---category-bg:#9B6A32;
---category-text:#FFF4DD;
-
+--category-bg:#7D8A5B;
+--category-text:#F7F0DF;
 --accent:#B8894A;
 --accent-text:#D6B477;
-
 --ink:#F4EBDD;
 --ink-muted:#B9AA95;
-
 --price:#D3A15B;
-
 --button:#B8894A;
 --button-text:#17130F;
-
 --border:#594A38;
-
 --danger:#B95A4D;
-
 --tab-bg:#211B15;
 --tab-text:#C7B99F;
 --tab-active:#B8894A;
-
 --sold:#D06A5D;
 }
 
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html,
-body{
+html,body{
 margin:0;
 padding:0;
 }
 
 body{
 background:
-radial-gradient(
-circle at 10% 5%,
-rgba(184,137,74,.09),
-transparent 28%
-),
-radial-gradient(
-circle at 90% 30%,
-rgba(120,94,54,.08),
-transparent 30%
-),
-linear-gradient(
-180deg,
-#17130F 0%,
-#1B1611 50%,
-#14110D 100%
-);
-
+radial-gradient(circle at 10% 5%,rgba(184,137,74,.10),transparent 28%),
+radial-gradient(circle at 90% 30%,rgba(120,94,54,.08),transparent 30%),
+linear-gradient(180deg,#17130F,#1B1611 50%,#14110D);
 color:var(--ink);
 font-family:Arial,sans-serif;
 min-height:100vh;
@@ -80,23 +54,13 @@ position:fixed;
 inset:0;
 pointer-events:none;
 z-index:-1;
-opacity:.18;
-background-image:
-radial-gradient(
-rgba(255,255,255,.12) .6px,
-transparent .6px
-);
+opacity:.15;
+background-image:radial-gradient(rgba(255,255,255,.12) .6px,transparent .6px);
 background-size:7px 7px;
 }
 
-button,
-input{
-font-family:inherit;
-}
-
-button{
--webkit-tap-highlight-color:transparent;
-}
+button,input{font-family:inherit}
+button{-webkit-tap-highlight-color:transparent}
 
 .wrap{
 max-width:640px;
@@ -104,54 +68,18 @@ margin:auto;
 padding-bottom:100px;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 
 .hero{
 position:relative;
 background:
-radial-gradient(
-circle at 50% 20%,
-rgba(184,137,74,.12),
-transparent 35%
-),
-linear-gradient(
-180deg,
-#211A13 0%,
-#19140F 100%
-);
-
+radial-gradient(circle at 50% 20%,rgba(184,137,74,.13),transparent 35%),
+linear-gradient(180deg,#211A13,#19140F);
 padding:48px 24px 42px;
 text-align:center;
-
 border-bottom:1px solid rgba(184,137,74,.30);
-
-box-shadow:
-0 18px 50px rgba(0,0,0,.35),
-inset 0 -1px 0 rgba(255,255,255,.03);
-
+box-shadow:0 18px 50px rgba(0,0,0,.35);
 overflow:hidden;
-}
-
-.hero:before{
-content:"";
-position:absolute;
-width:240px;
-height:240px;
-border-radius:50%;
-left:50%;
-top:-150px;
-transform:translateX(-50%);
-
-background:
-radial-gradient(
-circle,
-rgba(207,164,91,.12),
-transparent 65%
-);
-
-pointer-events:none;
 }
 
 .hero:after{
@@ -161,14 +89,7 @@ left:12%;
 right:12%;
 bottom:0;
 height:1px;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(184,137,74,.5),
-transparent
-);
+background:linear-gradient(90deg,transparent,rgba(184,137,74,.55),transparent);
 }
 
 .logo-wrap{
@@ -184,11 +105,8 @@ width:120px;
 height:120px;
 object-fit:contain;
 border-radius:50%;
-
 background:#100D0A;
-
 border:1px solid rgba(205,164,94,.45);
-
 box-shadow:
 0 12px 35px rgba(0,0,0,.45),
 0 0 0 7px rgba(184,137,74,.04),
@@ -199,185 +117,93 @@ box-shadow:
 font-size:11px;
 letter-spacing:.38em;
 text-transform:uppercase;
-
 color:#C9A66C;
-
 margin-bottom:15px;
-
-position:relative;
-z-index:1;
 }
 
 .cafe-name{
 font-family:Georgia,serif;
 font-weight:600;
-
 font-size:clamp(34px,9vw,52px);
-
 margin:0 0 12px;
-
 line-height:1.05;
-
 color:#F3E7D3;
-
-text-shadow:
-0 4px 20px rgba(0,0,0,.4);
-
-position:relative;
-z-index:1;
+text-shadow:0 4px 20px rgba(0,0,0,.4);
 }
 
 .subtitle{
 color:#B9AA95;
-
 font-size:15px;
-
 max-width:420px;
-
 margin:auto;
-
 line-height:1.5;
-
-position:relative;
-z-index:1;
 }
 
-/* =========================================================
-   TABS
-========================================================= */
+/* KATEGORİLER */
 
 .tabs{
 display:flex;
-
 gap:10px;
-
 overflow-x:auto;
-
 padding:18px 20px;
-
 scrollbar-width:none;
-
 position:sticky;
-
 top:0;
-
-background:
-linear-gradient(
-180deg,
-rgba(23,19,15,.98),
-rgba(23,19,15,.92),
-rgba(23,19,15,0)
-);
-
+background:linear-gradient(180deg,rgba(23,19,15,.98),rgba(23,19,15,.92),rgba(23,19,15,0));
 z-index:5;
-
-border-bottom:1px solid rgba(184,137,74,.10);
-
 backdrop-filter:blur(12px);
 -webkit-backdrop-filter:blur(12px);
 }
 
-.tabs::-webkit-scrollbar{
-display:none;
-}
+.tabs::-webkit-scrollbar{display:none}
 
 .tab-btn{
 flex:0 0 auto;
-
 font-size:12.5px;
-
 padding:11px 18px;
-
 border-radius:999px;
-
 border:1px solid rgba(184,137,74,.30);
-
-background:
-linear-gradient(
-180deg,
-rgba(48,39,29,.95),
-rgba(31,25,19,.95)
-);
-
+background:linear-gradient(180deg,#30271D,#1F1913);
 color:#C6B79E;
-
 white-space:nowrap;
-
 cursor:pointer;
-
-box-shadow:
-0 4px 15px rgba(0,0,0,.20),
-inset 0 1px 0 rgba(255,255,255,.04);
-
-transition:
-all .2s ease;
+box-shadow:0 4px 15px rgba(0,0,0,.20);
+transition:.2s;
 }
 
-.tab-btn:active{
-transform:scale(.96);
-}
+.tab-btn:active{transform:scale(.96)}
 
 .tab-btn.active{
-background:
-linear-gradient(
-135deg,
-#C99A55,
-#94642F
-);
-
+background:linear-gradient(135deg,#C99A55,#94642F);
 border-color:#D4AA68;
-
 color:#18130E;
-
 font-weight:700;
-
 box-shadow:
 0 6px 22px rgba(0,0,0,.35),
-0 0 20px rgba(184,137,74,.15),
-inset 0 1px 0 rgba(255,255,255,.35);
+0 0 20px rgba(184,137,74,.15);
 }
 
-/* =========================================================
-   PRODUCTS
-========================================================= */
+/* ÜRÜNLER */
 
 .category-block{
-padding:8px 22px 8px;
+padding:8px 22px;
 }
 
 .category-title{
 display:inline-flex;
-
 align-items:center;
-
-background:
-linear-gradient(
-135deg,
-#7D8A5B,
-#56613E
-);
-
+background:linear-gradient(135deg,#7D8A5B,#56613E);
 color:#F7F0DF;
-
 font-family:Georgia,serif;
-
 font-size:21px;
-
 font-weight:500;
-
 padding:11px 21px;
-
 border-radius:14px;
-
 margin:22px 0 17px;
-
 border:1px solid rgba(193,165,103,.30);
-
 box-shadow:
 0 9px 25px rgba(0,0,0,.30),
 inset 0 1px 0 rgba(255,255,255,.12);
-
-position:relative;
 }
 
 .category-title:before{
@@ -385,777 +211,454 @@ content:"";
 width:6px;
 height:6px;
 border-radius:50%;
-
 background:#D3AF6C;
-
 margin-right:10px;
-
-box-shadow:
-0 0 10px rgba(211,175,108,.55);
+box-shadow:0 0 10px rgba(211,175,108,.55);
 }
 
 .item-row{
 display:flex;
-
 align-items:center;
-
 gap:12px;
-
 padding:15px 13px;
-
 margin-bottom:9px;
-
 border:1px solid rgba(184,137,74,.15);
-
 border-radius:16px;
-
-background:
-linear-gradient(
-135deg,
-rgba(48,39,29,.92),
-rgba(31,25,19,.92)
-);
-
+background:linear-gradient(135deg,rgba(48,39,29,.94),rgba(31,25,19,.94));
 box-shadow:
 0 9px 28px rgba(0,0,0,.24),
 inset 0 1px 0 rgba(255,255,255,.035);
-
-transition:
-transform .2s ease,
-box-shadow .2s ease;
-
 position:relative;
-
 overflow:hidden;
 }
 
 .item-row:before{
 content:"";
-
 position:absolute;
-
 left:0;
 top:0;
 bottom:0;
-
 width:2px;
-
-background:
-linear-gradient(
-180deg,
-transparent,
-rgba(184,137,74,.5),
-transparent
-);
+background:linear-gradient(180deg,transparent,rgba(184,137,74,.55),transparent);
 }
 
 .item-thumb{
 width:58px;
 height:58px;
-
 flex:0 0 auto;
-
 border-radius:13px;
-
 object-fit:cover;
-
 border:1px solid rgba(207,168,99,.30);
-
 background:#241D16;
-
-box-shadow:
-0 5px 16px rgba(0,0,0,.35);
+box-shadow:0 5px 16px rgba(0,0,0,.35);
 }
 
 .item-text-row{
 display:flex;
-
 align-items:baseline;
-
 gap:8px;
-
 flex:1;
-
 min-width:0;
 }
 
-.item-name-wrap{
-min-width:0;
-}
+.item-name-wrap{min-width:0}
 
 .item-name{
 font-size:16px;
-
 font-weight:700;
-
 color:#F2E6D2;
 }
 
 .item-name.unavailable{
 color:#817767;
-
 text-decoration:line-through;
 }
 
 .item-desc{
 font-size:12.5px;
-
 color:#AFA18E;
-
 margin-top:3px;
-
 line-height:1.4;
 }
 
 .leader{
 flex:1;
-
-border-bottom:
-1px dotted rgba(190,158,105,.38);
-
+border-bottom:1px dotted rgba(190,158,105,.38);
 height:0;
-
-margin:
-0 2px 5px;
-
+margin:0 2px 5px;
 min-width:12px;
 }
 
 .item-price{
 font-size:16px;
-
 color:#D2A15C;
-
 font-weight:700;
-
 white-space:nowrap;
-
-text-shadow:
-0 2px 12px rgba(184,137,74,.12);
 }
 
-.item-price.unavailable{
-color:#766C60;
-}
+.item-price.unavailable{color:#766C60}
 
 .sold-out-tag{
 font-size:9px;
-
 color:#D16A5C;
-
 letter-spacing:.08em;
-
 margin-left:6px;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 .note{
 text-align:center;
-
 padding:42px 24px 15px;
-
 color:#9E9281;
-
 font-size:11.5px;
 }
 
-/* =========================================================
-   ADMIN BUTTON
-========================================================= */
+/* AYAR BUTONU */
 
 .admin-dot{
 position:fixed;
-
 bottom:18px;
-
 right:18px;
-
 width:50px;
-
 height:50px;
-
 border-radius:50%;
-
-background:
-linear-gradient(
-145deg,
-#C59A58,
-#80602F
-);
-
+background:linear-gradient(145deg,#C59A58,#80602F);
 border:1px solid rgba(232,202,147,.55);
-
 color:#1A140E;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 cursor:pointer;
-
 z-index:20;
-
 box-shadow:
 0 10px 30px rgba(0,0,0,.45),
 0 0 20px rgba(184,137,74,.12),
 inset 0 1px 0 rgba(255,255,255,.35);
-
 font-size:21px;
-
-transition:
-transform .2s ease;
 }
 
-.admin-dot:active{
-transform:scale(.92);
-}
-
-/* =========================================================
-   ADMIN OVERLAY
-========================================================= */
+/* ADMIN */
 
 .overlay{
 position:fixed;
-
 inset:0;
-
-background:
-rgba(4,3,2,.78);
-
+background:rgba(4,3,2,.78);
 backdrop-filter:blur(7px);
 -webkit-backdrop-filter:blur(7px);
-
 z-index:50;
-
 display:flex;
-
 align-items:flex-end;
-
 justify-content:center;
 }
 
 .panel{
-background:
-linear-gradient(
-180deg,
-#292119,
-#1D1812
-);
-
+background:linear-gradient(180deg,#292119,#1D1812);
 width:100%;
-
 max-width:580px;
-
 max-height:94vh;
-
 overflow-y:auto;
-
 border-radius:24px 24px 0 0;
-
 padding:27px 20px 35px;
-
 border:1px solid rgba(184,137,74,.30);
-
 box-shadow:
 0 -15px 60px rgba(0,0,0,.55),
 inset 0 1px 0 rgba(255,255,255,.04);
-
 color:var(--ink);
 }
 
-.panel-rel{
-position:relative;
-}
+.panel-rel{position:relative}
 
 @media(min-width:640px){
-
-.overlay{
-align-items:center;
-}
-
-.panel{
-border-radius:24px;
-}
+.overlay{align-items:center}
+.panel{border-radius:24px}
 }
 
 .panel h2{
 font-family:Georgia,serif;
-
 font-size:25px;
-
 margin:0 0 20px;
-
 color:#D3AF70;
-
-text-shadow:
-0 2px 12px rgba(0,0,0,.3);
 }
 
 .panel label{
 display:block;
-
 font-size:10.5px;
-
 letter-spacing:.06em;
-
 text-transform:uppercase;
-
 color:#A99A86;
-
 margin:15px 0 6px;
 }
 
 .panel input{
 width:100%;
-
 background:#17130F;
-
 border:1px solid #594936;
-
 border-radius:11px;
-
 padding:11px 12px;
-
 color:#F2E7D5;
-
 font-size:14.5px;
-
 outline:none;
-
-transition:
-border .2s ease,
-box-shadow .2s ease;
 }
 
 .panel input:focus{
 border-color:#B8894A;
-
-box-shadow:
-0 0 0 3px rgba(184,137,74,.10);
+box-shadow:0 0 0 3px rgba(184,137,74,.10);
 }
 
 .panel input[type=color]{
 padding:3px;
-
 height:44px;
-
 cursor:pointer;
 }
 
 .btn{
 font-size:12.5px;
-
 padding:10px 15px;
-
 border-radius:10px;
-
 border:1px solid transparent;
-
 cursor:pointer;
-
-transition:
-transform .15s ease,
-box-shadow .15s ease;
-}
-
-.btn:active{
-transform:scale(.97);
 }
 
 .btn-main{
-background:
-linear-gradient(
-135deg,
-#C49A59,
-#93642F
-);
-
+background:linear-gradient(135deg,#C49A59,#93642F);
 color:#17120D;
-
 font-weight:700;
-
 border-color:#D0A96C;
-
-box-shadow:
-0 7px 20px rgba(0,0,0,.25),
-inset 0 1px 0 rgba(255,255,255,.3);
+box-shadow:0 7px 20px rgba(0,0,0,.25);
 }
 
 .btn-ghost{
 background:#241D16;
-
 border-color:#5B4B38;
-
 color:#D6C6AE;
 }
 
 .btn-danger{
 background:#241816;
-
 border-color:#93483E;
-
 color:#D57568;
 }
 
 .btn-block{
 width:100%;
-
 display:block;
-
 text-align:center;
-
 margin-top:9px;
 }
 
 .save-button{
 margin-top:28px;
-
 padding:15px;
-
 font-size:15px;
-
 border-radius:13px;
 }
 
 .item-edit-card{
-background:
-linear-gradient(
-135deg,
-#30271D,
-#211A14
-);
-
+background:linear-gradient(135deg,#30271D,#211A14);
 border:1px solid rgba(184,137,74,.18);
-
 border-radius:14px;
-
 padding:14px;
-
 margin-top:12px;
-
-box-shadow:
-0 7px 20px rgba(0,0,0,.18);
 }
 
 .cat-header{
 display:flex;
-
 align-items:center;
-
 justify-content:space-between;
-
 gap:10px;
-
 margin-top:27px;
-
 padding-bottom:9px;
-
 border-bottom:1px solid #4A3D2F;
 }
 
 .cat-header input{
 font-family:Georgia,serif;
-
 font-size:18px;
-
 color:#D4B276;
-
 border:none;
-
 background:transparent;
-
 padding:3px 0;
 }
 
 .avail-toggle{
 display:flex!important;
-
 align-items:center;
-
 gap:7px;
-
 font-size:12px!important;
-
 color:#A99A86!important;
-
 margin-top:10px!important;
 }
 
-.avail-toggle input{
-width:auto;
-}
+.avail-toggle input{width:auto}
 
 .actions-row{
 display:flex;
-
 gap:8px;
-
 margin-top:10px;
-
 flex-wrap:wrap;
 }
 
 .status-msg{
 font-size:12px;
-
 color:#D1AF70;
-
 margin-top:11px;
-
 min-height:17px;
 }
 
 .close-x{
 position:absolute;
-
 top:14px;
-
 right:16px;
-
 background:none;
-
 border:none;
-
 color:#B5A58F;
-
 font-size:21px;
-
 cursor:pointer;
 }
 
-.pin-box{
-text-align:center;
-}
+.pin-box{text-align:center}
 
 .pin-box input{
 text-align:center;
-
 font-size:20px;
-
 letter-spacing:.3em;
 }
 
 .loading{
 text-align:center;
-
 padding:45vh 20px 20px;
-
 color:#A99A86;
-
 font-size:14px;
 }
 
 .error-box{
 padding:100px 25px;
-
 text-align:center;
-
 color:#F0E5D4;
 }
 
 .error-box h2{
 font-family:Georgia,serif;
-
 color:#D4AF70;
 }
 
 .color-grid{
 display:grid;
-
 grid-template-columns:1fr 1fr;
-
 gap:10px;
 }
 
 .color-item{
 background:#211A14;
-
 border:1px solid #4B3D2E;
-
 border-radius:11px;
-
 padding:10px;
 }
 
-.color-item label{
-margin:0 0 7px;
-}
+.color-item label{margin:0 0 7px}
 
 .color-item input[type=color]{
 width:100%;
-
 height:42px;
 }
 
 .logo-preview{
 width:90px;
-
 height:90px;
-
 border-radius:50%;
-
 object-fit:contain;
-
 border:1px solid #6A5438;
-
 background:#100D0A;
-
 display:block;
-
 margin:8px auto 12px;
-
-box-shadow:
-0 8px 25px rgba(0,0,0,.3);
 }
 
 .img-row{
 display:flex;
-
 gap:12px;
-
 align-items:flex-start;
-
 margin-top:7px;
 }
 
 .admin-thumb{
 width:64px;
-
 height:64px;
-
 border-radius:11px;
-
 object-fit:cover;
-
 flex:0 0 auto;
-
 border:1px solid #5B4935;
-
 background:#17130F;
 }
 
 .img-controls{
 flex:1;
-
 min-width:0;
-
 display:flex;
-
 flex-direction:column;
-
 gap:7px;
 }
 
 .img-controls input[type=file]{
 padding:7px;
-
 font-size:12px;
 }
 
 hr.sep{
 border:none;
-
 border-top:1px solid #44372A;
-
 margin:25px 0;
 }
 
 .security-box{
-background:
-linear-gradient(
-135deg,
-#30271D,
-#211A14
-);
-
+background:linear-gradient(135deg,#30271D,#211A14);
 border:1px solid #5B4935;
-
 border-radius:14px;
-
 padding:14px;
-
 margin-top:15px;
 }
 
 .security-title{
 font-weight:700;
-
 color:#D2AE70;
-
 font-size:15px;
-
 margin-bottom:5px;
 }
 
 .security-text{
 font-size:12px;
-
 color:#A99A86;
-
 line-height:1.45;
 }
 
 .toast{
 position:fixed;
-
 left:50%;
-
 bottom:75px;
-
 transform:translateX(-50%);
-
-background:
-linear-gradient(
-135deg,
-#C39A59,
-#8C6030
-);
-
+background:linear-gradient(135deg,#C39A59,#8C6030);
 color:#18130E;
-
 padding:11px 16px;
-
 border-radius:11px;
-
 font-size:13px;
-
 font-weight:600;
-
 z-index:100;
-
 display:none;
-
 white-space:nowrap;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,.45);
+box-shadow:0 10px 30px rgba(0,0,0,.45);
 }
 
 .small-note{
 font-size:11px;
-
 color:#9E9180;
-
 line-height:1.45;
-
 margin-top:8px;
 }
-
-/* =========================================================
-   MOBİL
-========================================================= */
 
 @media(max-width:420px){
 
 .hero{
-padding:
-42px 18px
-36px;
+padding:42px 18px 36px;
 }
 
 .logo{
@@ -1201,26 +704,12 @@ padding-right:16px;
 
 }
 
-/* =========================================================
-   YUMUŞAK SCROLL
-========================================================= */
-
-html{
-scroll-behavior:smooth;
-}
-
-/* =========================================================
-   SEÇİM RENGİ
-========================================================= */
+html{scroll-behavior:smooth}
 
 ::selection{
 background:#B8894A;
 color:#17130F;
 }
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
 
 ::-webkit-scrollbar{
 width:5px;
@@ -1235,7 +724,6 @@ background:#17130F;
 background:#594936;
 border-radius:10px;
 }
-
 </style>
 </head>
 
@@ -1277,18 +765,12 @@ const BLANK_PIXEL =
 "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
 
-/* =========================================================
-   DURUM
-========================================================= */
-
 let menuData=null;
 let activeCatId=null;
 let unlocked=false;
 let currentPin="";
 
-
-const app=
-document.getElementById("app");
+const app=document.getElementById("app");
 
 
 /* =========================================================
@@ -1296,16 +778,12 @@ document.getElementById("app");
 ========================================================= */
 
 function uid(){
-
 return "i"+
 Date.now().toString(36)+
 Math.random().toString(36).slice(2,8);
-
 }
 
-
 function esc(s){
-
 return String(s??"").replace(
 /[&<>"']/g,
 m=>({
@@ -1316,39 +794,26 @@ m=>({
 "'":"&#39;"
 }[m])
 );
-
 }
-
 
 function escAttr(s){
-
 return esc(s);
-
 }
-
 
 function money(n){
-
-return (
-Number(n)||0
-).toLocaleString("tr-TR")+" ₺";
-
+return (Number(n)||0).toLocaleString("tr-TR")+" ₺";
 }
-
 
 function toast(message){
 
-const t=
-document.getElementById("toast");
+const t=document.getElementById("toast");
 
 t.textContent=message;
-
 t.style.display="block";
 
 clearTimeout(window.__toastTimer);
 
-window.__toastTimer=
-setTimeout(()=>{
+window.__toastTimer=setTimeout(()=>{
 t.style.display="none";
 },2500);
 
@@ -1376,7 +841,6 @@ console.warn(e);
 
 }
 
-
 function loadLocalBackup(){
 
 try{
@@ -1401,24 +865,22 @@ return null;
 
 /* =========================================================
    SUPABASE API
+   ÖNEMLİ:
+   Publishable key sadece apikey olarak gönderiliyor.
 ========================================================= */
 
 async function api(path,options={}){
 
 const headers={
 "apikey":SUPABASE_KEY,
-"Authorization":
-"Bearer "+SUPABASE_KEY,
 "Content-Type":"application/json",
 "Accept":"application/json",
 ...(options.headers||{})
 };
 
-const controller=
-new AbortController();
+const controller=new AbortController();
 
-const timeout=
-setTimeout(
+const timeout=setTimeout(
 ()=>controller.abort(),
 20000
 );
@@ -1436,8 +898,7 @@ signal:controller.signal
 }
 );
 
-const text=
-await response.text();
+const text=await response.text();
 
 let data=null;
 
@@ -1545,103 +1006,41 @@ sold:"#D06A5D"
 
 }
 
-
 function applyTheme(t){
 
-t=t||defaultTheme();
+t={
+...defaultTheme(),
+...(t||{})
+};
 
-const root=
-document.documentElement;
+const root=document.documentElement;
 
-root.style.setProperty(
-"--bg",
-t.background||"#17130F"
-);
+root.style.setProperty("--bg",t.background);
+root.style.setProperty("--header",t.header);
+root.style.setProperty("--surface",t.surface);
+root.style.setProperty("--surface-raised",t.surfaceRaised);
 
-root.style.setProperty(
-"--header",
-t.header||t.background||"#1D1812"
-);
+root.style.setProperty("--category-bg",t.categoryBg);
+root.style.setProperty("--category-text",t.categoryText);
 
-root.style.setProperty(
-"--surface",
-t.surface||"#241E17"
-);
+root.style.setProperty("--accent",t.baseColor);
+root.style.setProperty("--accent-text",t.accentText);
 
-root.style.setProperty(
-"--surface-raised",
-t.surfaceRaised||"#30271D"
-);
+root.style.setProperty("--ink",t.text);
+root.style.setProperty("--ink-muted",t.mutedText);
 
-root.style.setProperty(
-"--category-bg",
-t.categoryBg||t.baseColor||"#7D8A5B"
-);
+root.style.setProperty("--price",t.price);
 
-root.style.setProperty(
-"--category-text",
-t.categoryText||"#F7F0DF"
-);
+root.style.setProperty("--button",t.button);
+root.style.setProperty("--button-text",t.buttonText);
 
-root.style.setProperty(
-"--accent",
-t.baseColor||"#B8894A"
-);
+root.style.setProperty("--border",t.border);
 
-root.style.setProperty(
-"--accent-text",
-t.accentText||"#D6B477"
-);
+root.style.setProperty("--tab-bg",t.tabBg);
+root.style.setProperty("--tab-text",t.tabText);
+root.style.setProperty("--tab-active",t.tabActive);
 
-root.style.setProperty(
-"--ink",
-t.text||"#F4EBDD"
-);
-
-root.style.setProperty(
-"--ink-muted",
-t.mutedText||"#B9AA95"
-);
-
-root.style.setProperty(
-"--price",
-t.price||t.baseColor||"#D3A15B"
-);
-
-root.style.setProperty(
-"--button",
-t.button||t.baseColor||"#B8894A"
-);
-
-root.style.setProperty(
-"--button-text",
-t.buttonText||"#17130F"
-);
-
-root.style.setProperty(
-"--border",
-t.border||"#594A38"
-);
-
-root.style.setProperty(
-"--tab-bg",
-t.tabBg||"#211B15"
-);
-
-root.style.setProperty(
-"--tab-text",
-t.tabText||"#C7B99F"
-);
-
-root.style.setProperty(
-"--tab-active",
-t.tabActive||t.baseColor||"#B8894A"
-);
-
-root.style.setProperty(
-"--sold",
-t.sold||"#D06A5D"
-);
+root.style.setProperty("--sold",t.sold);
 
 }
 
@@ -1753,8 +1152,6 @@ menuData.categories[0]?.id||null;
 applyTheme(menuData.theme);
 
 renderCustomer();
-
-return;
 
 }catch(error){
 
@@ -2017,7 +1414,7 @@ behavior:"smooth"
 
 
 /* =========================================================
-   PIN GİRİŞ
+   PIN
 ========================================================= */
 
 function openGate(){
@@ -2025,13 +1422,11 @@ function openGate(){
 if(unlocked){
 
 openAdmin();
-
 return;
 
 }
 
-const overlay=
-document.createElement("div");
+const overlay=document.createElement("div");
 
 overlay.className="overlay";
 
@@ -2080,7 +1475,6 @@ Giriş yap
 
 document.body.appendChild(overlay);
 
-
 overlay
 .querySelector("#gateClose")
 .onclick=()=>{
@@ -2110,7 +1504,6 @@ return;
 msg.textContent=
 "Kontrol ediliyor...";
 
-
 try{
 
 const result=
@@ -2139,7 +1532,6 @@ return;
 }
 
 unlocked=true;
-
 currentPin=pin;
 
 overlay.remove();
@@ -2157,7 +1549,6 @@ error.message;
 }
 
 };
-
 
 overlay
 .querySelector("#gateGo")
@@ -2212,8 +1603,7 @@ h=max;
 
 }
 
-const canvas=
-document.createElement("canvas");
+const canvas=document.createElement("canvas");
 
 canvas.width=Math.round(w);
 canvas.height=Math.round(h);
@@ -2249,14 +1639,9 @@ reader.readAsDataURL(file);
 
 }
 
-
 function resizeLogo(file){
 
-return resizeImage(
-file,
-800,
-.9
-);
+return resizeImage(file,800,.9);
 
 }
 
@@ -2284,7 +1669,7 @@ return null;
 
 
 /* =========================================================
-   RENK
+   RENK ALANI
 ========================================================= */
 
 function colorField(id,title,value){
@@ -2309,231 +1694,13 @@ value="${escAttr(value||"#ffffff")}"
 
 
 /* =========================================================
-   PAROLA DEĞİŞTİR
-========================================================= */
-
-function openChangePin(){
-
-const overlay=
-document.createElement("div");
-
-overlay.className="overlay";
-
-overlay.innerHTML=`
-
-<div class="panel panel-rel pin-box">
-
-<button
-class="close-x"
-id="pinClose"
->
-✕
-</button>
-
-<h2>
-🔐 Parolayı Değiştir
-</h2>
-
-<label>
-Mevcut parola
-</label>
-
-<input
-id="oldPin"
-type="password"
-inputmode="numeric"
-maxlength="20"
-placeholder="Mevcut PIN"
->
-
-<label>
-Yeni parola
-</label>
-
-<input
-id="newPin"
-type="password"
-inputmode="numeric"
-maxlength="20"
-placeholder="Yeni PIN"
->
-
-<label>
-Yeni parola tekrar
-</label>
-
-<input
-id="newPin2"
-type="password"
-inputmode="numeric"
-maxlength="20"
-placeholder="Yeni PIN tekrar"
->
-
-<div
-class="status-msg"
-id="pinMsg"
-></div>
-
-<button
-class="btn btn-main btn-block"
-id="changePinBtn"
->
-Parolayı değiştir
-</button>
-
-<p class="small-note">
-Parola Supabase veritabanında değiştirilir.
-</p>
-
-</div>
-
-`;
-
-document.body.appendChild(overlay);
-
-
-overlay
-.querySelector("#pinClose")
-.onclick=()=>{
-overlay.remove();
-};
-
-
-overlay
-.querySelector("#changePinBtn")
-.onclick=async()=>{
-
-const oldPin=
-overlay.querySelector("#oldPin").value.trim();
-
-const newPin=
-overlay.querySelector("#newPin").value.trim();
-
-const newPin2=
-overlay.querySelector("#newPin2").value.trim();
-
-const msg=
-overlay.querySelector("#pinMsg");
-
-const btn=
-overlay.querySelector("#changePinBtn");
-
-
-if(!oldPin||
-!newPin||
-!newPin2){
-
-msg.textContent=
-"Tüm alanları doldur.";
-
-return;
-
-}
-
-if(newPin!==newPin2){
-
-msg.textContent=
-"Yeni parolalar aynı değil.";
-
-return;
-
-}
-
-if(newPin.length<4){
-
-msg.textContent=
-"Yeni parola en az 4 haneli olmalı.";
-
-return;
-
-}
-
-
-btn.disabled=true;
-
-btn.textContent=
-"Değiştiriliyor...";
-
-msg.textContent=
-"Kontrol ediliyor...";
-
-
-try{
-
-const result=
-await rpc(
-"change_menu_pin",
-{
-p_menu_id:MENU_ID,
-p_old_pin:oldPin,
-p_new_pin:newPin
-}
-);
-
-const ok=
-result===true||
-result==="true"||
-result?.[0]===true||
-result?.[0]?.change_menu_pin===true||
-result?.result===true;
-
-if(!ok){
-
-throw new Error(
-"Mevcut parola yanlış veya parola değiştirilemedi."
-);
-
-}
-
-currentPin=newPin;
-
-msg.textContent=
-"Parola başarıyla değiştirildi ✓";
-
-btn.textContent=
-"Değiştirildi ✓";
-
-setTimeout(()=>{
-
-overlay.remove();
-
-toast(
-"Parola değiştirildi ✓"
-);
-
-},900);
-
-}catch(error){
-
-console.error(error);
-
-msg.textContent=
-"Hata: "+
-error.message;
-
-btn.disabled=false;
-
-btn.textContent=
-"Parolayı değiştir";
-
-}
-
-};
-
-}
-
-
-/* =========================================================
-   ADMIN RENDER
+   ADMIN
 ========================================================= */
 
 function renderAdmin(){
 
 const overlay=
-document.getElementById(
-"adminOverlay"
-);
+document.getElementById("adminOverlay");
 
 if(!overlay)return;
 
@@ -2565,27 +1732,21 @@ ${cat.items.map(item=>`
 
 <div class="item-edit-card">
 
-<label>
-Ürün adı
-</label>
+<label>Ürün adı</label>
 
 <input
 data-item-name="${escAttr(item.id)}"
 value="${escAttr(item.name)}"
 >
 
-<label>
-Açıklama
-</label>
+<label>Açıklama</label>
 
 <input
 data-item-desc="${escAttr(item.id)}"
 value="${escAttr(item.desc||"")}"
 >
 
-<label>
-Fiyat (₺)
-</label>
+<label>Fiyat (₺)</label>
 
 <input
 type="number"
@@ -2595,9 +1756,7 @@ data-item-price="${escAttr(item.id)}"
 value="${Number(item.price)||0}"
 >
 
-<label>
-Görsel
-</label>
+<label>Görsel</label>
 
 <div class="img-row">
 
@@ -2693,29 +1852,21 @@ id="adminClose"
 Yönetim Paneli
 </h2>
 
-
-<label>
-Kafe adı
-</label>
+<label>Kafe adı</label>
 
 <input
 id="cafeName"
 value="${escAttr(menuData.cafeName)}"
 >
 
-
-<label>
-Alt başlık
-</label>
+<label>Alt başlık</label>
 
 <input
 id="subtitle"
 value="${escAttr(menuData.subtitle)}"
 >
 
-
 <hr class="sep">
-
 
 <h2 style="font-size:21px">
 🔐 Güvenlik
@@ -2740,13 +1891,9 @@ id="changePinOpen"
 
 </div>
 
-
 <hr class="sep">
 
-
-<label>
-Logo
-</label>
+<label>Logo</label>
 
 <img
 id="logoPreview"
@@ -2764,9 +1911,7 @@ id="logoFile"
 accept="image/*"
 >
 
-<label>
-Logo linki
-</label>
+<label>Logo linki</label>
 
 <input
 id="logoUrl"
@@ -2785,9 +1930,7 @@ id="removeLogo"
 Logoyu kaldır
 </button>
 
-
 <hr class="sep">
-
 
 <h2 style="font-size:21px">
 Tema Renkleri
@@ -2795,120 +1938,33 @@ Tema Renkleri
 
 <div class="color-grid">
 
-${colorField(
-"colorBackground",
-"Ana arka plan",
-theme.background
-)}
-
-${colorField(
-"colorHeader",
-"Üst bölüm",
-theme.header
-)}
-
-${colorField(
-"colorSurface",
-"Kart / yüzey",
-theme.surface
-)}
-
-${colorField(
-"colorRaised",
-"Açık kart",
-theme.surfaceRaised
-)}
-
-${colorField(
-"colorCategory",
-"Kategori",
-theme.categoryBg
-)}
-
-${colorField(
-"colorCategoryText",
-"Kategori yazısı",
-theme.categoryText
-)}
-
-${colorField(
-"colorText",
-"Ana yazılar",
-theme.text
-)}
-
-${colorField(
-"colorMuted",
-"Açıklama yazıları",
-theme.mutedText
-)}
-
-${colorField(
-"colorPrice",
-"Fiyat",
-theme.price
-)}
-
-${colorField(
-"colorButton",
-"Buton",
-theme.button
-)}
-
-${colorField(
-"colorButtonText",
-"Buton yazısı",
-theme.buttonText
-)}
-
-${colorField(
-"colorBorder",
-"Kenarlık",
-theme.border
-)}
-
-${colorField(
-"colorTabBg",
-"Kategori arka planı",
-theme.tabBg
-)}
-
-${colorField(
-"colorTabText",
-"Kategori yazısı",
-theme.tabText
-)}
-
-${colorField(
-"colorTabActive",
-"Seçili kategori",
-theme.tabActive
-)}
-
-${colorField(
-"colorSold",
-"Tükendi yazısı",
-theme.sold
-)}
-
-${colorField(
-"colorAccentText",
-"Başlık rengi",
-theme.accentText
-)}
+${colorField("colorBackground","Ana arka plan",theme.background)}
+${colorField("colorHeader","Üst bölüm",theme.header)}
+${colorField("colorSurface","Kart / yüzey",theme.surface)}
+${colorField("colorRaised","Açık kart",theme.surfaceRaised)}
+${colorField("colorCategory","Kategori",theme.categoryBg)}
+${colorField("colorCategoryText","Kategori yazısı",theme.categoryText)}
+${colorField("colorText","Ana yazılar",theme.text)}
+${colorField("colorMuted","Açıklama yazıları",theme.mutedText)}
+${colorField("colorPrice","Fiyat",theme.price)}
+${colorField("colorButton","Buton",theme.button)}
+${colorField("colorButtonText","Buton yazısı",theme.buttonText)}
+${colorField("colorBorder","Kenarlık",theme.border)}
+${colorField("colorTabBg","Kategori arka planı",theme.tabBg)}
+${colorField("colorTabText","Kategori yazısı",theme.tabText)}
+${colorField("colorTabActive","Seçili kategori",theme.tabActive)}
+${colorField("colorSold","Tükendi yazısı",theme.sold)}
+${colorField("colorAccentText","Başlık rengi",theme.accentText)}
 
 </div>
 
-
 <hr class="sep">
-
 
 <h2 style="font-size:21px">
 Kategoriler ve Ürünler
 </h2>
 
 ${categories}
-
 
 <button
 class="btn btn-ghost btn-block"
@@ -2918,12 +1974,10 @@ style="margin-top:18px"
 + Yeni kategori
 </button>
 
-
 <div
 class="status-msg"
 id="adminMsg"
 ></div>
-
 
 <button
 class="btn btn-main btn-block save-button"
@@ -2933,68 +1987,50 @@ Kaydet
 </button>
 
 </div>
-
 `;
 
 
-/* =========================================================
-   KAPAT
-========================================================= */
+/* KAPAT */
 
 overlay
 .querySelector("#adminClose")
 .onclick=()=>{
 
 overlay.remove();
-
 renderCustomer();
 
 };
 
 
-/* =========================================================
-   KAFE
-========================================================= */
+/* KAFE */
 
 overlay
 .querySelector("#cafeName")
 .oninput=e=>{
-
-menuData.cafeName=
-e.target.value;
-
+menuData.cafeName=e.target.value;
 };
-
 
 overlay
 .querySelector("#subtitle")
 .oninput=e=>{
-
-menuData.subtitle=
-e.target.value;
-
+menuData.subtitle=e.target.value;
 };
 
 
-/* =========================================================
-   PAROLA
-========================================================= */
+/* PAROLA */
 
 overlay
 .querySelector("#changePinOpen")
 .onclick=openChangePin;
 
 
-/* =========================================================
-   LOGO
-========================================================= */
+/* LOGO URL */
 
 overlay
 .querySelector("#logoUrl")
 .oninput=e=>{
 
-menuData.logo=
-e.target.value.trim();
+menuData.logo=e.target.value.trim();
 
 overlay
 .querySelector("#logoPreview")
@@ -3004,6 +2040,8 @@ BLANK_PIXEL;
 
 };
 
+
+/* LOGO DOSYA */
 
 overlay
 .querySelector("#logoFile")
@@ -3025,14 +2063,14 @@ menuData.logo;
 
 }catch{
 
-toast(
-"Logo yüklenemedi."
-);
+toast("Logo yüklenemedi.");
 
 }
 
 };
 
+
+/* LOGO SİL */
 
 overlay
 .querySelector("#removeLogo")
@@ -3042,8 +2080,7 @@ menuData.logo="";
 
 overlay
 .querySelector("#logoPreview")
-.src=
-BLANK_PIXEL;
+.src=BLANK_PIXEL;
 
 overlay
 .querySelector("#logoFile")
@@ -3056,9 +2093,7 @@ overlay
 };
 
 
-/* =========================================================
-   KATEGORİ
-========================================================= */
+/* KATEGORİ */
 
 overlay
 .querySelectorAll("[data-cat-name]")
@@ -3080,9 +2115,7 @@ cat.name=e.target.value;
 });
 
 
-/* =========================================================
-   ÜRÜN
-========================================================= */
+/* ÜRÜN ADI */
 
 overlay
 .querySelectorAll("[data-item-name]")
@@ -3101,6 +2134,8 @@ item.name=e.target.value;
 });
 
 
+/* AÇIKLAMA */
+
 overlay
 .querySelectorAll("[data-item-desc]")
 .forEach(input=>{
@@ -3117,6 +2152,8 @@ item.desc=e.target.value;
 
 });
 
+
+/* FİYAT */
 
 overlay
 .querySelectorAll("[data-item-price]")
@@ -3136,6 +2173,8 @@ Number(e.target.value)||0;
 });
 
 
+/* STOK */
+
 overlay
 .querySelectorAll("[data-avail]")
 .forEach(input=>{
@@ -3154,9 +2193,7 @@ e.target.checked;
 });
 
 
-/* =========================================================
-   ÜRÜN SİL
-========================================================= */
+/* ÜRÜN SİL */
 
 overlay
 .querySelectorAll("[data-del-item]")
@@ -3186,9 +2223,7 @@ renderAdmin();
 });
 
 
-/* =========================================================
-   ÜRÜN EKLE
-========================================================= */
+/* ÜRÜN EKLE */
 
 overlay
 .querySelectorAll("[data-add-item]")
@@ -3222,9 +2257,7 @@ renderAdmin();
 });
 
 
-/* =========================================================
-   KATEGORİ SİL
-========================================================= */
+/* KATEGORİ SİL */
 
 overlay
 .querySelectorAll("[data-del-cat]")
@@ -3232,11 +2265,9 @@ overlay
 
 button.onclick=()=>{
 
-if(
-!confirm(
+if(!confirm(
 "Kategori ve ürünleri silinsin mi?"
-)
-)return;
+))return;
 
 menuData.categories=
 menuData.categories.filter(
@@ -3254,9 +2285,7 @@ renderAdmin();
 });
 
 
-/* =========================================================
-   GÖRSEL DOSYA
-========================================================= */
+/* GÖRSEL DOSYA */
 
 overlay
 .querySelectorAll("[data-file]")
@@ -3283,9 +2312,7 @@ renderAdmin();
 
 }catch{
 
-toast(
-"Görsel yüklenemedi."
-);
+toast("Görsel yüklenemedi.");
 
 }
 
@@ -3294,9 +2321,7 @@ toast(
 });
 
 
-/* =========================================================
-   GÖRSEL URL
-========================================================= */
+/* GÖRSEL URL */
 
 overlay
 .querySelectorAll("[data-url]")
@@ -3330,9 +2355,7 @@ BLANK_PIXEL;
 });
 
 
-/* =========================================================
-   GÖRSEL SİL
-========================================================= */
+/* GÖRSEL SİL */
 
 overlay
 .querySelectorAll("[data-remove-img]")
@@ -3354,9 +2377,7 @@ renderAdmin();
 });
 
 
-/* =========================================================
-   YENİ KATEGORİ
-========================================================= */
+/* YENİ KATEGORİ */
 
 overlay
 .querySelector("#addCat")
@@ -3365,9 +2386,7 @@ overlay
 menuData.categories.push({
 
 id:uid(),
-
 name:"Yeni kategori",
-
 items:[]
 
 });
@@ -3377,9 +2396,7 @@ renderAdmin();
 };
 
 
-/* =========================================================
-   RENKLER
-========================================================= */
+/* RENKLER */
 
 const colorMap={
 
@@ -3402,7 +2419,6 @@ colorSold:"sold",
 colorAccentText:"accentText"
 
 };
-
 
 Object.keys(colorMap)
 .forEach(id=>{
@@ -3441,7 +2457,6 @@ overlay.querySelector("#adminMsg");
 const btn=
 overlay.querySelector("#saveMenu");
 
-
 const payload={
 
 cafeName:
@@ -3461,7 +2476,6 @@ menuData.categories
 
 };
 
-
 msg.textContent=
 "Kaydediliyor...";
 
@@ -3469,7 +2483,6 @@ btn.disabled=true;
 
 btn.textContent=
 "Kaydediliyor...";
-
 
 try{
 
@@ -3483,7 +2496,6 @@ p_data:payload
 }
 );
 
-
 const explicitlyFalse=
 result===false||
 result==="false"||
@@ -3491,15 +2503,16 @@ result?.[0]===false||
 result?.[0]?.save_menu===false||
 result?.result===false;
 
-
 if(explicitlyFalse){
 
 throw new Error(
-"Supabase menüyü kaydetmeyi reddetti. PIN veya save_menu yetkisini kontrol et."
+"Supabase kaydetmeyi reddetti."
 );
 
 }
 
+
+/* KAYITTAN SONRA GERÇEK VERİYİ TEKRAR OKU */
 
 const checkRows=
 await api(
@@ -3508,43 +2521,34 @@ encodeURIComponent(MENU_ID)+
 "&select=id,data"
 );
 
-
 if(!checkRows||
 !checkRows.length){
 
 throw new Error(
-"Kaydetme sonrası menü tekrar okunamadı."
+"Kaydetme sonrası menü okunamadı."
 );
 
 }
 
-
-const savedMenu=
+menuData=
 normalizeMenu(
 checkRows[0].data
 );
 
-
-menuData=
-savedMenu;
-
 saveLocalBackup();
 
 activeCatId=
-menuData.categories[0]?.id||
-null;
+menuData.categories[0]?.id||null;
 
 applyTheme(
 menuData.theme
 );
-
 
 msg.textContent=
 "Kaydedildi ✓";
 
 btn.textContent=
 "Kaydedildi ✓";
-
 
 setTimeout(()=>{
 
@@ -3557,7 +2561,6 @@ toast(
 );
 
 },800);
-
 
 }catch(error){
 
@@ -3586,6 +2589,210 @@ btn.textContent=
 
 
 /* =========================================================
+   PAROLA DEĞİŞTİR
+========================================================= */
+
+function openChangePin(){
+
+const overlay=document.createElement("div");
+
+overlay.className="overlay";
+
+overlay.innerHTML=`
+
+<div class="panel panel-rel pin-box">
+
+<button
+class="close-x"
+id="pinClose"
+>
+✕
+</button>
+
+<h2>
+🔐 Parolayı Değiştir
+</h2>
+
+<label>
+Mevcut parola
+</label>
+
+<input
+id="oldPin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Mevcut PIN"
+>
+
+<label>
+Yeni parola
+</label>
+
+<input
+id="newPin"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Yeni PIN"
+>
+
+<label>
+Yeni parola tekrar
+</label>
+
+<input
+id="newPin2"
+type="password"
+inputmode="numeric"
+maxlength="20"
+placeholder="Yeni PIN tekrar"
+>
+
+<div
+class="status-msg"
+id="pinMsg"
+></div>
+
+<button
+class="btn btn-main btn-block"
+id="changePinBtn"
+>
+Parolayı değiştir
+</button>
+
+<p class="small-note">
+Parola Supabase veritabanında değiştirilir.
+</p>
+
+</div>
+
+`;
+
+document.body.appendChild(overlay);
+
+overlay
+.querySelector("#pinClose")
+.onclick=()=>{
+overlay.remove();
+};
+
+overlay
+.querySelector("#changePinBtn")
+.onclick=async()=>{
+
+const oldPin=
+overlay.querySelector("#oldPin").value.trim();
+
+const newPin=
+overlay.querySelector("#newPin").value.trim();
+
+const newPin2=
+overlay.querySelector("#newPin2").value.trim();
+
+const msg=
+overlay.querySelector("#pinMsg");
+
+const btn=
+overlay.querySelector("#changePinBtn");
+
+if(!oldPin||!newPin||!newPin2){
+
+msg.textContent=
+"Tüm alanları doldur.";
+
+return;
+
+}
+
+if(newPin!==newPin2){
+
+msg.textContent=
+"Yeni parolalar aynı değil.";
+
+return;
+
+}
+
+if(newPin.length<4){
+
+msg.textContent=
+"Yeni parola en az 4 haneli olmalı.";
+
+return;
+
+}
+
+btn.disabled=true;
+btn.textContent="Değiştiriliyor...";
+msg.textContent="Kontrol ediliyor...";
+
+try{
+
+const result=
+await rpc(
+"change_menu_pin",
+{
+p_menu_id:MENU_ID,
+p_old_pin:oldPin,
+p_new_pin:newPin
+}
+);
+
+const ok=
+result===true||
+result==="true"||
+result?.[0]===true||
+result?.[0]?.change_menu_pin===true||
+result?.result===true;
+
+if(!ok){
+
+throw new Error(
+"Mevcut parola yanlış veya değiştirilemedi."
+);
+
+}
+
+currentPin=newPin;
+
+msg.textContent=
+"Parola başarıyla değiştirildi ✓";
+
+btn.textContent=
+"Değiştirildi ✓";
+
+setTimeout(()=>{
+
+overlay.remove();
+
+toast(
+"Parola değiştirildi ✓"
+);
+
+},900);
+
+}catch(error){
+
+console.error(error);
+
+msg.textContent=
+"Hata: "+
+error.message;
+
+btn.disabled=false;
+
+btn.textContent=
+"Parolayı değiştir";
+
+}
+
+};
+
+}
+
+
+/* =========================================================
    ADMIN AÇ
 ========================================================= */
 
@@ -3598,7 +2805,6 @@ document.getElementById(
 
 if(old)
 old.remove();
-
 
 const overlay=
 document.createElement("div");
@@ -3623,7 +2829,6 @@ renderAdmin();
 document
 .getElementById("adminDot")
 .onclick=openGate;
-
 
 document
 .getElementById("adminDot")
