@@ -2,2532 +2,3981 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 
-<title>Katmerci Dayı - Menü</title>
+<title>Katmerci Dayı Menü</title>
 
-<meta name="theme-color" content="#17110d">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-    --bg:#17110d;
-    --bg2:#1d1510;
-    --surface:#241b14;
-    --surface2:#2a2018;
-
-    --gold:#d6a653;
-    --gold2:#b98436;
-
-    --cream:#f4ead8;
-    --text:#f3eadc;
-    --muted:#bdb2a3;
-
-    --green:#8a9a62;
-
-    --border:rgba(214,166,83,.30);
-
-    --radius:22px;
+  --bg:#F4EBDD;
+  --surface:#FFFDF8;
+  --surface2:#E9DDC9;
+  --heading:#4E282C;
+  --text:#493B32;
+  --muted:#817366;
+  --accent:#7C8957;
+  --accentText:#4D5933;
+  --category:#7C8957;
+  --categoryText:#FFFDF5;
+  --price:#A86143;
+  --border:#D8CBB8;
+  --danger:#B44E48;
+  --shadow:rgba(63,42,29,.10);
 }
-
-/* RESET */
 
 *{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
-html{
-    width:100%;
-    min-height:100%;
-    background:var(--bg);
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
 }
 
 body{
-    margin:0;
-    padding:0;
-    width:100%;
-    min-height:100vh;
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(120,80,30,.16),
-            transparent 40%
-        ),
-        linear-gradient(
-            180deg,
-            #17110d 0%,
-            #17110d 100%
-        );
-
-    color:var(--text);
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
-    overflow-x:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
 }
 
-/* MAIN */
-
-.app{
-    width:100%;
-    min-height:100vh;
+button,
+input,
+textarea{
+  font-family:inherit;
 }
 
-/* HEADER */
-
-.header{
-    width:100%;
-    text-align:center;
-
-    padding:
-        42px
-        18px
-        34px;
-
-    border-bottom:1px solid var(--border);
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(185,132,54,.08),
-            transparent 55%
-        );
+button{
+  cursor:pointer;
 }
 
-/* LOGO */
-
-.logo-wrap{
-    width:120px;
-    height:120px;
-
-    margin:0 auto 22px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    overflow:hidden;
-
-    background:#0d0d0d;
-
-    border:1px solid rgba(214,166,83,.45);
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.35),
-        0 0 0 5px rgba(214,166,83,.035);
+img{
+  max-width:100%;
 }
 
-.logo{
-    width:100%;
-    height:100%;
+/* =========================
+   MÜŞTERİ MENÜSÜ
+========================= */
 
-    object-fit:contain;
-
-    display:block;
+#app{
+  min-height:100vh;
 }
 
-/* FALLBACK LOGO */
-
-.logo-fallback{
-    color:#fff;
-    font-family:Georgia,serif;
-    font-size:20px;
-    text-align:center;
-    line-height:1.05;
+.menu-wrap{
+  width:100%;
+  max-width:680px;
+  margin:0 auto;
+  min-height:100vh;
+  padding-bottom:85px;
 }
 
-/* MENU LABEL */
-
-.menu-label{
-    margin-bottom:12px;
-
-    color:var(--gold);
-
-    font-size:12px;
-    letter-spacing:7px;
-    font-weight:500;
+.hero{
+  text-align:center;
+  padding:28px 18px 25px;
+  position:relative;
 }
 
-/* TITLE */
-
-.title{
-    margin:0;
-
-    color:var(--cream);
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:48px;
-    line-height:1.05;
-
-    font-weight:700;
-
-    letter-spacing:-1.5px;
+.logo-box{
+  width:112px;
+  height:112px;
+  border-radius:50%;
+  margin:0 auto 17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:var(--surface);
+  border:2px solid var(--accent);
+  box-shadow:
+    0 0 0 6px rgba(124,137,87,.10),
+    0 12px 30px rgba(0,0,0,.10);
 }
 
-/* SUBTITLE */
-
-.subtitle{
-    margin-top:14px;
-
-    color:var(--muted);
-
-    font-size:17px;
-
-    line-height:1.4;
+.logo-box img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
-/* CATEGORY NAV */
-
-.category-bar{
-    width:100%;
-
-    padding:14px 12px;
-
-    border-bottom:1px solid var(--border);
-
-    overflow-x:auto;
-    overflow-y:hidden;
-
-    scrollbar-width:none;
-
-    position:sticky;
-    top:0;
-
-    z-index:20;
-
-    background:
-        rgba(23,17,13,.94);
-
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
+.logo-placeholder{
+  text-align:center;
+  padding:10px;
+  color:var(--accent);
+  font-family:"Playfair Display",serif;
+  font-size:13px;
+  font-weight:700;
 }
 
-.category-bar::-webkit-scrollbar{
-    display:none;
+.eyebrow{
+  font-size:10px;
+  letter-spacing:.45em;
+  text-transform:uppercase;
+  color:var(--accentText);
+  margin-left:.45em;
+  margin-bottom:9px;
+  font-weight:700;
 }
 
-.category-list{
-    display:flex;
-
-    width:max-content;
-
-    gap:8px;
-
-    margin:0 auto;
+.cafe-title{
+  margin:0;
+  color:var(--heading);
+  font-family:"Playfair Display",serif;
+  font-size:clamp(38px,10vw,62px);
+  line-height:1;
+  letter-spacing:-.04em;
+  font-weight:700;
 }
 
-/* CATEGORY BUTTON */
-
-.category-btn{
-    appearance:none;
-
-    border:1px solid rgba(214,166,83,.32);
-
-    background:#1e1711;
-
-    color:#cfc4b5;
-
-    border-radius:999px;
-
-    padding:
-        11px
-        20px;
-
-    min-height:44px;
-
-    font-size:14px;
-    font-weight:500;
-
-    white-space:nowrap;
-
-    cursor:pointer;
-
-    transition:
-        .2s ease;
-
-    font-family:inherit;
+.cafe-subtitle{
+  max-width:470px;
+  margin:11px auto 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
 }
 
-.category-btn:active{
-    transform:scale(.97);
+/* =========================
+   KATEGORİLER
+========================= */
+
+.tabs-wrap{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(244,235,221,.94);
+  backdrop-filter:blur(13px);
+  -webkit-backdrop-filter:blur(13px);
+  border-bottom:1px solid var(--border);
 }
 
-.category-btn.active{
-    background:
-        linear-gradient(
-            135deg,
-            #d7aa5b,
-            #b98438
-        );
-
-    color:#21170f;
-
-    border-color:#e0bb78;
-
-    font-weight:700;
-
-    box-shadow:
-        0 7px 20px rgba(0,0,0,.22);
+.tabs{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:10px 13px;
+  scrollbar-width:none;
 }
 
-/* CONTENT */
-
-.content{
-    width:100%;
-
-    max-width:780px;
-
-    margin:0 auto;
-
-    padding:
-        28px
-        18px
-        90px;
+.tabs::-webkit-scrollbar{
+  display:none;
 }
 
-/* SECTION TITLE */
-
-.section-title{
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    margin:
-        4px
-        0
-        18px;
-
-    color:var(--cream);
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:24px;
-
-    font-weight:700;
+.tab{
+  flex:0 0 auto;
+  min-width:90px;
+  height:40px;
+  padding:0 15px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--muted);
+  font-size:11.5px;
+  font-weight:700;
+  white-space:nowrap;
+  transition:.2s ease;
 }
 
-.section-title::before{
-    content:"";
-
-    width:7px;
-    height:7px;
-
-    flex:none;
-
-    border-radius:50%;
-
-    background:var(--gold);
-
-    box-shadow:
-        0 0 12px rgba(214,166,83,.35);
+.tab.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:var(--categoryText);
+  box-shadow:0 6px 18px rgba(124,137,87,.20);
 }
 
-/* ITEMS */
+/* =========================
+   İÇERİK
+========================= */
 
-.items{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
+.category-area{
+  padding:22px 15px 0;
 }
 
-/* PRODUCT CARD */
-
-.product{
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    width:100%;
-
-    min-height:96px;
-
-    padding:14px 16px;
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(44,32,23,.98),
-            rgba(34,25,18,.98)
-        );
-
-    border:1px solid rgba(214,166,83,.23);
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.13);
-
-    overflow:hidden;
-
-    transition:
-        transform .18s ease,
-        border-color .18s ease;
+.category-heading{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 18px;
+  border-radius:15px;
+  background:var(--category);
+  color:var(--categoryText);
+  font-family:"Playfair Display",serif;
+  font-size:19px;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  margin-bottom:14px;
 }
 
-.product:active{
-    transform:scale(.99);
+.category-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--price);
 }
 
-/* IMAGE */
+/* =========================
+   ÜRÜNLER
+========================= */
 
-.product-image{
-    width:72px;
-    height:72px;
-
-    flex:0 0 72px;
-
-    margin-right:14px;
-
-    border-radius:16px;
-
-    object-fit:cover;
-
-    background:#31261c;
-
-    border:1px solid rgba(255,255,255,.08);
+.products{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
 }
 
-/* PRODUCT INFO */
+.product-card{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:74px;
+  padding:9px 10px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 5px 18px var(--shadow);
+}
+
+.product-image,
+.product-no-image{
+  width:57px;
+  height:57px;
+  flex:0 0 57px;
+  border-radius:12px;
+  object-fit:cover;
+  border:1px solid var(--border);
+  background:var(--surface2);
+}
+
+.product-no-image{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent);
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+}
 
 .product-info{
-    min-width:0;
-
-    flex:1;
-
-    padding-right:10px;
+  flex:1;
+  min-width:0;
 }
 
 .product-top{
-    display:flex;
-
-    align-items:baseline;
-
-    width:100%;
-
-    gap:8px;
+  display:flex;
+  align-items:baseline;
+  gap:7px;
 }
-
-/* NAME */
 
 .product-name{
-    flex:none;
-
-    color:#f4ecdf;
-
-    font-size:18px;
-
-    line-height:1.25;
-
-    font-weight:700;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    max-width:48%;
+  color:var(--heading);
+  font-size:14px;
+  line-height:1.25;
+  font-weight:700;
 }
 
-/* DOT LINE */
-
-.product-line{
-    flex:1;
-
-    height:1px;
-
-    min-width:20px;
-
-    border-top:
-        1px dotted
-        rgba(214,166,83,.38);
-
-    transform:translateY(-2px);
+.product-desc{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:10.5px;
+  line-height:1.35;
 }
 
-/* PRICE */
+.dots{
+  flex:1;
+  min-width:10px;
+  border-bottom:1px dotted var(--border);
+  margin-bottom:4px;
+}
 
 .product-price{
-    flex:none;
-
-    color:var(--gold);
-
-    font-size:19px;
-
-    font-weight:800;
-
-    white-space:nowrap;
+  color:var(--price);
+  white-space:nowrap;
+  font-family:"Playfair Display",serif;
+  font-size:15px;
+  font-weight:700;
 }
 
-/* DESCRIPTION */
-
-.product-description{
-    margin-top:7px;
-
-    color:#bcb0a1;
-
-    font-size:14px;
-
-    line-height:1.35;
-
-    display:-webkit-box;
-
-    -webkit-line-clamp:2;
-
-    -webkit-box-orient:vertical;
-
-    overflow:hidden;
+.product-card.sold{
+  opacity:.52;
 }
 
-/* NO IMAGE CARD */
-
-.product.no-image{
-    min-height:82px;
+.product-card.sold .product-name{
+  text-decoration:line-through;
 }
 
-.product.no-image .product-info{
-    padding-right:0;
+.sold-label{
+  color:var(--danger);
+  font-size:8px;
+  margin-left:5px;
+  letter-spacing:.06em;
 }
 
-/* EMPTY */
+/* =========================
+   ALT
+========================= */
 
-.empty{
-    padding:45px 20px;
-
-    text-align:center;
-
-    color:var(--muted);
-
-    font-size:15px;
+.menu-footer{
+  text-align:center;
+  padding:32px 20px 8px;
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:.05em;
 }
 
-/* LOADING */
+.footer-line{
+  width:55px;
+  height:1px;
+  background:var(--border);
+  margin:0 auto 12px;
+}
 
-.loading{
-    min-height:65vh;
+/* =========================
+   AYAR BUTONU
+========================= */
 
-    display:flex;
+.settings-button{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  z-index:30;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
+}
 
+.settings-button:active{
+  transform:scale(.94);
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(35,25,18,.58);
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:0;
+}
+
+.admin-panel{
+  width:100%;
+  max-width:680px;
+  max-height:94vh;
+  overflow-y:auto;
+  background:#F8F2E7;
+  color:#352D26;
+  border-radius:22px 22px 0 0;
+  padding:15px 14px 25px;
+  box-shadow:0 -15px 50px rgba(0,0,0,.30);
+}
+
+@media(min-width:700px){
+  .overlay{
     align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-    gap:16px;
-
-    padding:30px;
-
-    text-align:center;
-}
-
-.spinner{
-    width:30px;
-    height:30px;
-
-    border-radius:50%;
-
-    border:
-        2px solid
-        rgba(214,166,83,.18);
-
-    border-top-color:var(--gold);
-
-    animation:
-        spin .8s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-.loading-text{
-    color:#bdb2a3;
-    font-size:15px;
-}
-
-/* ERROR */
-
-.error{
-    min-height:75vh;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-
-    text-align:center;
-
-    padding:30px;
-}
-
-.error h2{
-    margin:0 0 12px;
-
-    color:var(--cream);
-
-    font-family:Georgia,serif;
-
-    font-size:28px;
-}
-
-.error p{
-    margin:0 0 22px;
-
-    color:#bdb2a3;
-
-    font-size:15px;
-
-    max-width:420px;
-
-    line-height:1.5;
-}
-
-.retry{
-    border:0;
-
-    border-radius:12px;
-
-    padding:12px 22px;
-
-    background:var(--gold);
-
-    color:#21170f;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    cursor:pointer;
-}
-
-/* FOOTER */
-
-.footer{
-    text-align:center;
-
-    padding:
-        15px
-        20px
-        35px;
-
-    color:#756b60;
-
-    font-size:12px;
-}
-
-.footer span{
-    color:#9b8f82;
-}
-
-/* ADMIN BUTTON */
-
-.admin-button{
-    position:fixed;
-
-    right:16px;
-    bottom:18px;
-
-    width:48px;
-    height:48px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(255,255,255,.25);
-
-    background:
-        linear-gradient(
-            145deg,
-            #d8ad62,
-            #b27c31
-        );
-
-    color:#fff;
-
-    font-size:22px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.4);
-
-    cursor:pointer;
-
-    z-index:50;
-}
-
-/* ADMIN MODAL */
-
-.modal{
-    position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
     padding:20px;
+  }
 
-    background:
-        rgba(0,0,0,.65);
-
-    backdrop-filter:blur(8px);
-
-    z-index:100;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:380px;
-
-    background:#241b14;
-
-    border:
-        1px solid
-        rgba(214,166,83,.35);
-
+  .admin-panel{
+    max-height:92vh;
     border-radius:22px;
-
-    padding:24px;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5);
+  }
 }
 
-.modal-title{
-    margin:0 0 18px;
+.admin-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
 
-    color:var(--cream);
+.admin-title{
+  margin:0;
+  font-family:"Playfair Display",serif;
+  font-size:23px;
+  color:#352D26;
+}
 
-    font-family:Georgia,serif;
+.close-button{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:1px solid #D7CCBB;
+  background:#FFFDF8;
+  color:#706557;
+  font-size:18px;
+}
 
-    font-size:24px;
+/* =========================
+   ADMIN SEKME
+========================= */
+
+.admin-tabs{
+  display:flex;
+  gap:5px;
+  padding:4px;
+  background:#EDE3D4;
+  border-radius:11px;
+  margin-bottom:12px;
+}
+
+.admin-tab{
+  flex:1;
+  height:35px;
+  border:0;
+  border-radius:8px;
+  background:transparent;
+  color:#776C60;
+  font-size:10.5px;
+  font-weight:800;
+}
+
+.admin-tab.active{
+  background:#FFFDF8;
+  color:#352D26;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+
+/* =========================
+   ADMIN SECTIONS
+========================= */
+
+.admin-section{
+  background:#FFFDF8;
+  border:1px solid #DDD2C1;
+  border-radius:15px;
+  padding:12px;
+  margin-bottom:10px;
+}
+
+.section-title{
+  margin:0 0 10px;
+  color:#40372E;
+  font-size:13px;
+  font-weight:800;
+}
+
+.section-note{
+  color:#8B7F70;
+  font-size:9.5px;
+  line-height:1.45;
+  margin-top:6px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-label{
+  display:block;
+  margin:9px 0 4px;
+  color:#776B5C;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+.form-input,
+.form-textarea{
+  width:100%;
+  border:1px solid #D8CCBB;
+  border-radius:9px;
+  background:#FBF7EF;
+  color:#352D26;
+  padding:9px 10px;
+  font-size:12px;
+  outline:none;
+}
+
+.form-input:focus,
+.form-textarea:focus{
+  border-color:#8B9966;
+  box-shadow:0 0 0 3px rgba(124,137,87,.10);
+}
+
+.form-textarea{
+  min-height:60px;
+  resize:vertical;
+}
+
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-admin{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:11px;
+  align-items:center;
+}
+
+.logo-preview{
+  width:80px;
+  height:80px;
+  border-radius:15px;
+  background:#241912;
+  border:1px solid #CBA668;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.logo-preview img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.logo-actions{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.file-button{
+  position:relative;
+  overflow:hidden;
+  min-height:35px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  background:#7C8957;
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+}
+
+.file-button input{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  cursor:pointer;
+}
+
+.small-button{
+  min-height:34px;
+  border-radius:8px;
+  border:1px solid #D7CCBB;
+  background:#FFFDF8;
+  color:#62584D;
+  font-size:10px;
+  font-weight:800;
+}
+
+/* =========================
+   RENKLER
+========================= */
+
+.color-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+}
+
+.color-control{
+  border:1px solid #DED3C3;
+  background:#FAF6EE;
+  border-radius:10px;
+  padding:7px;
+}
+
+.color-name{
+  color:#716657;
+  font-size:8.5px;
+  font-weight:800;
+  margin-bottom:5px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.color-row{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.color-picker{
+  width:29px !important;
+  height:29px !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:7px !important;
+  flex:0 0 29px;
+  cursor:pointer;
+}
+
+.hex-input{
+  min-width:0;
+  flex:1;
+  height:29px;
+  border:1px solid #D8CCBB;
+  border-radius:7px;
+  background:#FFFDF8;
+  color:#4A4037;
+  padding:0 6px;
+  font-family:monospace;
+  font-size:9px;
+  text-transform:uppercase;
+}
+
+.reset-color{
+  width:27px;
+  height:27px;
+  flex:0 0 27px;
+  border-radius:50%;
+  border:1px solid #D8CCBB;
+  background:#FFFDF8;
+  color:#8B7D6C;
+  font-size:11px;
+}
+
+/* =========================
+   TEMA ÖNİZLEME
+========================= */
+
+.preview-box{
+  margin-top:10px;
+  padding:10px;
+  border-radius:11px;
+  background:var(--preview-bg);
+  border:1px solid var(--preview-border);
+}
+
+.preview-top{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.preview-circle{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+  border-radius:50%;
+  background:var(--preview-accent);
+}
+
+.preview-text{
+  flex:1;
+}
+
+.preview-title{
+  color:var(--preview-heading);
+  font-family:"Playfair Display",serif;
+  font-size:13px;
+  font-weight:700;
+}
+
+.preview-sub{
+  color:var(--preview-muted);
+  font-size:9px;
+  margin-top:2px;
+}
+
+.preview-price{
+  color:var(--preview-price);
+  font-family:"Playfair Display",serif;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* =========================
+   KATEGORİ ADMIN
+========================= */
+
+.category-admin{
+  border:1px solid #DED3C3;
+  background:#FAF6EE;
+  border-radius:11px;
+  padding:8px;
+  margin-bottom:7px;
+}
+
+.category-head{
+  display:flex;
+  gap:6px;
+}
+
+.category-head input{
+  flex:1;
+}
+
+.delete-button{
+  min-height:33px;
+  padding:0 9px;
+  border-radius:7px;
+  border:1px solid #CF8A83;
+  background:#FFF7F5;
+  color:#A94741;
+  font-size:9px;
+  font-weight:800;
+}
+
+.item-admin{
+  margin-top:7px;
+  padding:8px;
+  background:#FFFDF8;
+  border:1px solid #E3D9C9;
+  border-radius:9px;
+}
+
+.item-admin-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.item-number{
+  color:#978875;
+  font-size:8px;
+  font-weight:800;
+}
+
+.remove-item{
+  border:0;
+  background:none;
+  color:#AF5C55;
+  font-size:9px;
+}
+
+.item-grid{
+  display:grid;
+  grid-template-columns:1fr 85px;
+  gap:6px;
+}
+
+.availability{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:#756A5D;
+  font-size:9px;
+  margin-top:6px;
+}
+
+.add-button{
+  width:100%;
+  min-height:35px;
+  border-radius:8px;
+  border:1px dashed #BBAF9C;
+  background:#FFFDF8;
+  color:#6E6255;
+  font-size:9px;
+  font-weight:800;
+}
+
+/* =========================
+   KAYDET
+========================= */
+
+.status{
+  min-height:18px;
+  text-align:center;
+  color:#6E6255;
+  font-size:9.5px;
+  margin:7px 0;
+}
+
+.main-save{
+  width:100%;
+  min-height:45px;
+  border:0;
+  border-radius:11px;
+  background:#7C8957;
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  box-shadow:0 8px 20px rgba(124,137,87,.20);
+}
+
+/* =========================
+   PIN
+========================= */
+
+.pin-panel{
+  width:calc(100% - 24px);
+  max-width:370px;
+  background:#FFFDF8;
+  color:#352D26;
+  border-radius:18px;
+  padding:18px;
+  margin:auto;
+}
+
+.pin-title{
+  text-align:center;
+  font-family:"Playfair Display",serif;
+  font-size:23px;
+  margin:0 0 3px;
+}
+
+.pin-subtitle{
+  text-align:center;
+  color:#897D6E;
+  font-size:10px;
+  margin-bottom:13px;
 }
 
 .pin-input{
-    width:100%;
-
-    padding:14px 15px;
-
-    border:
-        1px solid
-        rgba(214,166,83,.3);
-
-    border-radius:12px;
-
-    outline:none;
-
-    background:#17110d;
-
-    color:#fff;
-
-    font-size:16px;
+  text-align:center;
+  letter-spacing:.35em;
+  font-size:18px !important;
 }
 
-.modal-actions{
-    display:flex;
-
-    gap:10px;
-
-    margin-top:14px;
+.pin-login{
+  width:100%;
+  margin-top:9px;
+  min-height:42px;
+  border:0;
+  border-radius:9px;
+  background:#7C8957;
+  color:#fff;
+  font-weight:800;
 }
 
-.modal-btn{
-    flex:1;
-
-    border:0;
-
-    border-radius:12px;
-
-    padding:13px;
-
-    font-weight:700;
-
-    cursor:pointer;
+.error{
+  text-align:center;
+  color:#B14C46;
+  font-size:10px;
+  margin-top:7px;
 }
 
-.cancel{
-    background:#33271d;
-    color:#c9bcae;
-}
+/* =========================
+   MOBİL
+========================= */
 
-.confirm{
-    background:var(--gold);
-    color:#20160e;
-}
+@media(max-width:480px){
 
-/* ADMIN PANEL */
+  .hero{
+    padding-top:25px;
+  }
 
-.admin-panel{
-    position:fixed;
+  .logo-box{
+    width:96px;
+    height:96px;
+  }
 
-    inset:0;
+  .cafe-title{
+    font-size:39px;
+  }
 
-    z-index:120;
+  .category-area{
+    padding-left:12px;
+    padding-right:12px;
+  }
 
-    display:none;
+  .product-card{
+    min-height:71px;
+  }
 
-    background:#17110d;
+  .product-image,
+  .product-no-image{
+    width:54px;
+    height:54px;
+    flex-basis:54px;
+  }
 
-    overflow-y:auto;
-}
-
-.admin-panel.show{
-    display:block;
-}
-
-.admin-header{
-    position:sticky;
-
-    top:0;
-
-    z-index:10;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:16px 18px;
-
-    background:
-        rgba(23,17,13,.96);
-
-    border-bottom:
-        1px solid
-        rgba(214,166,83,.25);
-
-    backdrop-filter:blur(12px);
-}
-
-.admin-header h2{
-    margin:0;
-
-    color:var(--cream);
-
-    font-size:18px;
-}
-
-.close-admin{
-    width:38px;
-    height:38px;
-
-    border:0;
-
-    border-radius:50%;
-
-    background:#30241b;
-
-    color:#fff;
-
-    font-size:20px;
-}
-
-.admin-content{
-    max-width:700px;
-
-    margin:auto;
-
-    padding:22px 18px 80px;
-}
-
-.admin-card{
-    background:#241b14;
-
-    border:
-        1px solid
-        rgba(214,166,83,.22);
-
-    border-radius:18px;
-
-    padding:18px;
-
-    margin-bottom:14px;
-}
-
-.admin-card h3{
-    margin:
-        0
-        0
-        10px;
-
-    color:var(--cream);
-
-    font-size:16px;
-}
-
-.admin-card p{
-    margin:0;
-
-    color:#aaa094;
-
+  .product-name{
     font-size:13px;
+  }
 
-    line-height:1.5;
+  .product-desc{
+    font-size:10px;
+  }
+
+  .product-price{
+    font-size:14px;
+  }
+
+  .color-grid{
+    gap:5px;
+  }
 }
-
-.admin-value{
-    margin-top:10px;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    background:#17110d;
-
-    color:#d6a653;
-
-    font-size:13px;
-
-    word-break:break-all;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:600px){
-
-    .header{
-        padding:
-            28px
-            16px
-            27px;
-    }
-
-    .logo-wrap{
-        width:104px;
-        height:104px;
-
-        margin-bottom:18px;
-    }
-
-    .menu-label{
-        font-size:10px;
-
-        letter-spacing:6px;
-
-        margin-bottom:9px;
-    }
-
-    .title{
-        font-size:38px;
-
-        letter-spacing:-1px;
-    }
-
-    .subtitle{
-        font-size:15px;
-
-        margin-top:10px;
-    }
-
-    .category-bar{
-        padding:10px 10px;
-    }
-
-    .category-list{
-        gap:7px;
-    }
-
-    .category-btn{
-        min-height:40px;
-
-        padding:
-            9px
-            16px;
-
-        font-size:13px;
-    }
-
-    .content{
-        padding:
-            24px
-            14px
-            80px;
-    }
-
-    .section-title{
-        font-size:21px;
-
-        margin-bottom:15px;
-    }
-
-    .product{
-        min-height:84px;
-
-        padding:
-            12px
-            12px;
-
-        border-radius:17px;
-    }
-
-    .product-image{
-        width:62px;
-        height:62px;
-
-        flex-basis:62px;
-
-        margin-right:12px;
-
-        border-radius:13px;
-    }
-
-    .product-name{
-        font-size:16px;
-
-        max-width:45%;
-    }
-
-    .product-price{
-        font-size:17px;
-    }
-
-    .product-description{
-        font-size:13px;
-
-        margin-top:5px;
-    }
-
-    .admin-button{
-        width:44px;
-        height:44px;
-
-        right:13px;
-        bottom:15px;
-
-        font-size:20px;
-    }
-}
-
-/* VERY SMALL */
-
-@media(max-width:380px){
-
-    .title{
-        font-size:34px;
-    }
-
-    .logo-wrap{
-        width:94px;
-        height:94px;
-    }
-
-    .product-name{
-        font-size:15px;
-    }
-
-    .product-price{
-        font-size:16px;
-    }
-
-    .product-description{
-        font-size:12px;
-    }
-
-    .product-image{
-        width:56px;
-        height:56px;
-
-        flex-basis:56px;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
-    <!-- HEADER -->
-    <header class="header">
-
-        <div class="logo-wrap">
-
-            <img
-                id="logo"
-                class="logo"
-                src=""
-                alt="Katmerci Dayı"
-                style="display:none;"
-            >
-
-            <div
-                id="logoFallback"
-                class="logo-fallback"
-            >
-                Katmerci<br>Dayı
-            </div>
-
-        </div>
-
-        <div class="menu-label">
-            MENÜ
-        </div>
-
-        <h1
-            id="restaurantName"
-            class="title"
-        >
-            Katmerci Dayı
-        </h1>
-
-        <div
-            id="restaurantSubtitle"
-            class="subtitle"
-        >
-            Gaziantepten gelen lezzet
-        </div>
-
-    </header>
-
-
-    <!-- CATEGORY NAV -->
-
-    <nav
-        id="categoryBar"
-        class="category-bar"
-        style="display:none;"
-    >
-
-        <div
-            id="categoryList"
-            class="category-list"
-        ></div>
-
-    </nav>
-
-
-    <!-- LOADING -->
-
-    <main
-        id="loading"
-        class="loading"
-    >
-
-        <div class="spinner"></div>
-
-        <div class="loading-text">
-            Menü yükleniyor...
-        </div>
-
-    </main>
-
-
-    <!-- ERROR -->
-
-    <main
-        id="error"
-        class="error"
-        style="display:none;"
-    >
-
-        <h2>
-            Menü yüklenemedi
-        </h2>
-
-        <p id="errorText">
-            Bağlantı sırasında bir hata oluştu.
-        </p>
-
-        <button
-            class="retry"
-            onclick="loadMenu()"
-        >
-            Tekrar Dene
-        </button>
-
-    </main>
-
-
-    <!-- CONTENT -->
-
-    <main
-        id="content"
-        class="content"
-        style="display:none;"
-    >
-
-        <div
-            id="menuSections"
-        ></div>
-
-        <div class="footer">
-            QR ile açıldı
-        </div>
-
-    </main>
-
+<div id="app">
+  <div style="
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#817366;
+    font-size:13px;
+  ">
+    Menü yükleniyor…
+  </div>
 </div>
-
-
-<!-- ADMIN BUTTON -->
 
 <button
-    id="adminButton"
-    class="admin-button"
-    aria-label="Yönetim"
+  id="settingsButton"
+  class="settings-button"
+  aria-label="Yönetim paneli"
 >
-    ⚙️
+  ⚙
 </button>
-
-
-<!-- PIN MODAL -->
-
-<div
-    id="pinModal"
-    class="modal"
->
-
-    <div class="modal-box">
-
-        <h2 class="modal-title">
-            Yönetim
-        </h2>
-
-        <input
-            id="pinInput"
-            class="pin-input"
-            type="password"
-            inputmode="numeric"
-            maxlength="10"
-            placeholder="PIN kodu"
-        >
-
-        <div class="modal-actions">
-
-            <button
-                class="modal-btn cancel"
-                onclick="closePinModal()"
-            >
-                İptal
-            </button>
-
-            <button
-                class="modal-btn confirm"
-                onclick="checkPin()"
-            >
-                Giriş
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ADMIN PANEL -->
-
-<div
-    id="adminPanel"
-    class="admin-panel"
->
-
-    <div class="admin-header">
-
-        <h2>
-            Menü Yönetimi
-        </h2>
-
-        <button
-            class="close-admin"
-            onclick="closeAdmin()"
-        >
-            ×
-        </button>
-
-    </div>
-
-    <div class="admin-content">
-
-        <div class="admin-card">
-
-            <h3>
-                Supabase bağlantısı
-            </h3>
-
-            <p>
-                Menü verileri Supabase üzerinden yükleniyor.
-            </p>
-
-            <div
-                id="adminConnection"
-                class="admin-value"
-            >
-                Bağlantı kontrol ediliyor...
-            </div>
-
-        </div>
-
-        <div class="admin-card">
-
-            <h3>
-                Menü kaydı
-            </h3>
-
-            <p>
-                Aktif menü ID'si:
-            </p>
-
-            <div
-                class="admin-value"
-            >
-                00000000-0000-0000-0000-000000000001
-            </div>
-
-        </div>
-
-        <div class="admin-card">
-
-            <h3>
-                Logo
-            </h3>
-
-            <p>
-                Supabase menü verisindeki
-                <b>logo</b> alanı kullanılır.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
 
 <script>
 
 /* =========================================================
    SUPABASE AYARLARI
-   ========================================================= */
+========================================================= */
 
 const SUPABASE_URL =
-    "https://cwofalezjvuxppmwipmc.supabase.co";
+"https://cwofalezjvuxppmwipmc.supabase.co";
 
-const SUPABASE_KEY =
-    "sb_publishable_n9xGFNXF-wl4C-BFLBGmeg_hsKy9GtU";
+const SUPABASE_ANON_KEY =
+"sb_publishable_n9xGFNXF-wl4C-BFLBGmeg_hsKy9GtU";
 
 const MENU_ID =
-    "00000000-0000-0000-0000-000000000001";
+"00000000-0000-0000-0000-000000000001";
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
 
 /* =========================================================
-   SUPABASE REQUEST
-   ========================================================= */
+   VARSAYILAN TEMA
+========================================================= */
 
-/*
-   ÖNEMLİ:
+const DEFAULT_THEME = {
 
-   Yeni sb_publishable_ anahtarında:
+  background:"#F4EBDD",
+  surface:"#FFFDF8",
+  surfaceRaised:"#E9DDC9",
 
-   apikey = publishable key
+  heading:"#4E282C",
+  text:"#493B32",
+  muted:"#817366",
 
-   kullanıyoruz.
+  accent:"#7C8957",
+  accentText:"#4D5933",
 
-   Authorization: Bearer sb_publishable_...
-   KULLANMIYORUZ.
-*/
+  category:"#7C8957",
+  categoryText:"#FFFDF5",
 
-async function supabaseFetch(
-    path,
-    options={}
-){
+  price:"#A86143",
 
-    const headers = {
+  border:"#D8CBB8",
 
-        "apikey":
-            SUPABASE_KEY,
+  danger:"#B44E48"
 
-        "Content-Type":
-            "application/json",
+};
 
-        "Accept":
-            "application/json",
 
-        ...(options.headers || {})
+/* =========================================================
+   VARSAYILAN MENÜ
+========================================================= */
 
-    };
+const DEFAULT_DATA = {
 
-    const response =
-        await fetch(
-            SUPABASE_URL + path,
-            {
-                ...options,
-                headers
-            }
-        );
+  cafeName:"Katmerci Dayı",
 
-    const text =
-        await response.text();
+  subtitle:"Gaziantepten gelen lezzet",
 
-    let data = null;
+  logo:"",
 
-    try{
-        data =
-            text
-                ? JSON.parse(text)
-                : null;
-    }
-    catch{
-        data = text;
-    }
+  theme:{
+    ...DEFAULT_THEME
+  },
 
-    if(!response.ok){
+  categories:[
 
-        let message =
-            "HTTP " +
-            response.status;
+    {
+      id:"cat-katmer",
+      name:"Katmer",
+      items:[
 
-        if(
-            data &&
-            typeof data === "object"
-        ){
+        {
+          id:"katmer-1",
+          name:"Antep Katmeri",
+          desc:"Geleneksel Antep usulü",
+          price:500,
+          available:true,
+          image:""
+        },
 
-            message =
-                data.message ||
-                data.error_description ||
-                data.hint ||
-                data.details ||
-                message;
+        {
+          id:"katmer-2",
+          name:"Fıstıklı Katmer",
+          desc:"Bol Antep fıstıklı",
+          price:280,
+          available:true,
+          image:""
+        },
 
+        {
+          id:"katmer-3",
+          name:"Kaymaklı Katmer",
+          desc:"Taze kaymak ile",
+          price:270,
+          available:true,
+          image:""
         }
 
-        throw new Error(message);
+      ]
+    },
 
+    {
+      id:"cat-kunefe",
+      name:"Künefe",
+      items:[
+
+        {
+          id:"kunefe-1",
+          name:"Künefe",
+          desc:"Taze peynirli",
+          price:300,
+          available:true,
+          image:""
+        }
+
+      ]
+    },
+
+    {
+      id:"cat-dessert",
+      name:"Tatlılar",
+      items:[
+
+        {
+          id:"dessert-1",
+          name:"Baklava",
+          desc:"Antep fıstıklı",
+          price:250,
+          available:true,
+          image:""
+        },
+
+        {
+          id:"dessert-2",
+          name:"Fıstık Sarma",
+          desc:"Bol Antep fıstıklı",
+          price:300,
+          available:true,
+          image:""
+        }
+
+      ]
+    },
+
+    {
+      id:"cat-hot",
+      name:"Sıcak İçecekler",
+      items:[
+
+        {
+          id:"hot-1",
+          name:"Türk Kahvesi",
+          desc:"Geleneksel Türk kahvesi",
+          price:100,
+          available:true,
+          image:""
+        },
+
+        {
+          id:"hot-2",
+          name:"Çay",
+          desc:"Bardak çay",
+          price:40,
+          available:true,
+          image:""
+        }
+
+      ]
+    },
+
+    {
+      id:"cat-cold",
+      name:"Soğuk İçecekler",
+      items:[
+
+        {
+          id:"cold-1",
+          name:"Limonata",
+          desc:"Ev yapımı",
+          price:100,
+          available:true,
+          image:""
+        }
+
+      ]
     }
 
-    return data;
+  ]
+
+};
+
+
+/* =========================================================
+   DEĞİŞKENLER
+========================================================= */
+
+let menuData = null;
+
+let activeCategory = null;
+
+let adminUnlocked = false;
+
+let authenticatedPin = "";
+
+let adminOverlay = null;
+
+let adminTab = "general";
+
+
+/* =========================================================
+   YARDIMCI FONKSİYONLAR
+========================================================= */
+
+function uid(){
+
+  return "id-" +
+    Date.now().toString(36) +
+    "-" +
+    Math.random()
+      .toString(36)
+      .slice(2,8);
+
+}
+
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replace(
+      /[&<>"']/g,
+      function(m){
+
+        return {
+
+          "&":"&amp;",
+          "<":"&lt;",
+          ">":"&gt;",
+          '"':"&quot;",
+          "'":"&#39;"
+
+        }[m];
+
+      }
+    );
+
+}
+
+
+function escapeAttr(value){
+
+  return escapeHtml(value);
+
+}
+
+
+function money(value){
+
+  return Number(value || 0)
+    .toLocaleString("tr-TR") +
+    " ₺";
+
+}
+
+
+function validColor(value){
+
+  return /^#[0-9A-Fa-f]{6}$/.test(
+    String(value || "")
+  );
 
 }
 
 
 /* =========================================================
-   MENU LOAD
-   ========================================================= */
+   VERİ NORMALİZASYON
+========================================================= */
+
+function normalizeData(data){
+
+  if(
+    !data ||
+    typeof data !== "object"
+  ){
+
+    data =
+      JSON.parse(
+        JSON.stringify(DEFAULT_DATA)
+      );
+
+  }
+
+
+  if(!data.cafeName){
+
+    data.cafeName =
+      DEFAULT_DATA.cafeName;
+
+  }
+
+
+  if(!data.subtitle){
+
+    data.subtitle =
+      DEFAULT_DATA.subtitle;
+
+  }
+
+
+  if(!Array.isArray(data.categories)){
+
+    data.categories = [];
+
+  }
+
+
+  data.logo =
+    data.logo || "";
+
+
+  const oldTheme =
+    data.theme || {};
+
+
+  data.theme = {
+
+    background:
+      oldTheme.background ||
+      DEFAULT_THEME.background,
+
+    surface:
+      oldTheme.surface ||
+      DEFAULT_THEME.surface,
+
+    surfaceRaised:
+      oldTheme.surfaceRaised ||
+      DEFAULT_THEME.surfaceRaised,
+
+    heading:
+      oldTheme.heading ||
+      DEFAULT_THEME.heading,
+
+    text:
+      oldTheme.text ||
+      DEFAULT_THEME.text,
+
+    muted:
+      oldTheme.muted ||
+      DEFAULT_THEME.muted,
+
+    accent:
+      oldTheme.accent ||
+      oldTheme.baseColor ||
+      DEFAULT_THEME.accent,
+
+    accentText:
+      oldTheme.accentText ||
+      DEFAULT_THEME.accentText,
+
+    category:
+      oldTheme.category ||
+      DEFAULT_THEME.category,
+
+    categoryText:
+      oldTheme.categoryText ||
+      DEFAULT_THEME.categoryText,
+
+    price:
+      oldTheme.price ||
+      DEFAULT_THEME.price,
+
+    border:
+      oldTheme.border ||
+      DEFAULT_THEME.border,
+
+    danger:
+      oldTheme.danger ||
+      DEFAULT_THEME.danger
+
+  };
+
+
+  data.categories.forEach(
+    category => {
+
+      if(!category.id){
+
+        category.id = uid();
+
+      }
+
+
+      if(!category.name){
+
+        category.name =
+          "Yeni kategori";
+
+      }
+
+
+      if(!Array.isArray(category.items)){
+
+        category.items = [];
+
+      }
+
+
+      category.items.forEach(
+        item => {
+
+          if(!item.id){
+
+            item.id = uid();
+
+          }
+
+          if(item.name === undefined){
+
+            item.name = "Yeni ürün";
+
+          }
+
+          if(item.desc === undefined){
+
+            item.desc = "";
+
+          }
+
+          if(item.price === undefined){
+
+            item.price = 0;
+
+          }
+
+          if(item.available === undefined){
+
+            item.available = true;
+
+          }
+
+          if(item.image === undefined){
+
+            item.image = "";
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  return data;
+
+}
+
+
+/* =========================================================
+   TEMA UYGULA
+========================================================= */
+
+function applyTheme(){
+
+  if(!menuData) return;
+
+
+  const t =
+    menuData.theme;
+
+
+  const root =
+    document.documentElement.style;
+
+
+  root.setProperty(
+    "--bg",
+    t.background
+  );
+
+  root.setProperty(
+    "--surface",
+    t.surface
+  );
+
+  root.setProperty(
+    "--surface2",
+    t.surfaceRaised
+  );
+
+  root.setProperty(
+    "--heading",
+    t.heading
+  );
+
+  root.setProperty(
+    "--text",
+    t.text
+  );
+
+  root.setProperty(
+    "--muted",
+    t.muted
+  );
+
+  root.setProperty(
+    "--accent",
+    t.accent
+  );
+
+  root.setProperty(
+    "--accentText",
+    t.accentText
+  );
+
+  root.setProperty(
+    "--category",
+    t.category
+  );
+
+  root.setProperty(
+    "--categoryText",
+    t.categoryText
+  );
+
+  root.setProperty(
+    "--price",
+    t.price
+  );
+
+  root.setProperty(
+    "--border",
+    t.border
+  );
+
+  root.setProperty(
+    "--danger",
+    t.danger
+  );
+
+}
+
+
+/* =========================================================
+   SUPABASE'DEN MENÜ ÇEK
+========================================================= */
 
 async function loadMenu(){
 
-    showLoading();
+  try{
 
-    try{
+    const result =
+      await supabaseClient
+        .from("menus")
+        .select("id,data")
+        .eq("id",MENU_ID)
+        .maybeSingle();
 
-        const data =
-            await supabaseFetch(
-                "/rest/v1/menus" +
-                "?select=*" +
-                "&id=eq." +
-                encodeURIComponent(MENU_ID) +
-                "&limit=1"
-            );
 
-        if(
-            !Array.isArray(data) ||
-            data.length === 0
-        ){
+    if(result.error){
 
-            throw new Error(
-                "Supabase bağlantısı çalışıyor ancak menus tablosunda bu ID bulunamadı."
-            );
-
-        }
-
-        const row = data[0];
-
-        let menuData =
-            row.data;
-
-        /*
-           data alanı bazen JSON,
-           bazen string gelebilir.
-        */
-
-        if(
-            typeof menuData === "string"
-        ){
-
-            try{
-                menuData =
-                    JSON.parse(menuData);
-            }
-            catch{
-                throw new Error(
-                    "Menü verisi JSON formatında okunamadı."
-                );
-            }
-
-        }
-
-        if(
-            !menuData ||
-            typeof menuData !== "object"
-        ){
-
-            throw new Error(
-                "Menü verisi boş."
-            );
-
-        }
-
-        renderMenu(menuData);
-
-        document.getElementById(
-            "adminConnection"
-        ).textContent =
-            "Supabase bağlantısı başarılı ✓";
+      throw result.error;
 
     }
-    catch(error){
 
-        console.error(
-            "SUPABASE ERROR:",
-            error
+
+    if(
+      result.data &&
+      result.data.data
+    ){
+
+      menuData =
+        normalizeData(
+          result.data.data
         );
 
-        showError(
-            error.message ||
-            "Bilinmeyen hata"
+    }else{
+
+      menuData =
+        normalizeData(
+          JSON.parse(
+            JSON.stringify(DEFAULT_DATA)
+          )
         );
 
     }
+
+
+    activeCategory =
+      menuData.categories.length
+        ? menuData.categories[0].id
+        : null;
+
+
+    applyTheme();
+
+    renderCustomer();
+
+  }catch(error){
+
+    console.error(error);
+
+
+    document.getElementById("app")
+      .innerHTML = `
+
+        <div style="
+          min-height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          padding:25px;
+          text-align:center;
+        ">
+
+          <div>
+
+            <div style="
+              font-family:'Playfair Display',serif;
+              color:#4E282C;
+              font-size:24px;
+              margin-bottom:8px;
+            ">
+              Menü yüklenemedi
+            </div>
+
+            <div style="
+              color:#817366;
+              font-size:12px;
+              line-height:1.5;
+              max-width:330px;
+            ">
+              ${escapeHtml(
+                error.message ||
+                "Supabase bağlantısı kurulamadı."
+              )}
+            </div>
+
+            <button
+              onclick="location.reload()"
+              style="
+                margin-top:15px;
+                border:0;
+                border-radius:9px;
+                padding:11px 20px;
+                background:#7C8957;
+                color:#fff;
+                font-weight:800;
+              "
+            >
+              Tekrar Dene
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+  }
 
 }
 
 
 /* =========================================================
-   NORMALIZE DATA
-   ========================================================= */
+   MÜŞTERİ MENÜSÜ
+========================================================= */
 
-function normalizeMenu(data){
+function renderCustomer(){
 
-    /*
-       Farklı eski veri yapılarına
-       mümkün olduğunca uyum sağlar.
-    */
+  if(!menuData) return;
 
-    const result = {
 
-        logo:
-            data.logo ||
-            data.logoUrl ||
-            data.logo_url ||
-            "",
+  applyTheme();
 
-        name:
-            data.name ||
-            data.title ||
-            data.restaurantName ||
-            "Katmerci Dayı",
 
-        subtitle:
-            data.subtitle ||
-            data.description ||
-            data.slogan ||
-            "Gaziantepten gelen lezzet",
+  const app =
+    document.getElementById("app");
 
-        categories:
-            data.categories ||
-            data.kategoriler ||
-            [],
 
-        sections:
-            data.sections ||
-            data.groups ||
-            data.menu ||
-            data.items ||
-            []
+  const categories =
+    menuData.categories;
+
+
+  if(!categories.length){
+
+    app.innerHTML = `
+
+      <div style="
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:var(--muted);
+      ">
+        Menüde henüz kategori yok.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let active =
+    categories.find(
+      category =>
+        category.id === activeCategory
+    );
+
+
+  if(!active){
+
+    active =
+      categories[0];
+
+    activeCategory =
+      active.id;
+
+  }
+
+
+  const logoHTML =
+    menuData.logo
+
+      ? `
+
+        <img
+          src="${escapeAttr(menuData.logo)}"
+          alt="${escapeAttr(menuData.cafeName)}"
+        >
+
+      `
+
+      : `
+
+        <div class="logo-placeholder">
+          ${escapeHtml(menuData.cafeName)}
+        </div>
+
+      `;
+
+
+  const tabsHTML =
+    categories.map(
+      category => `
+
+        <button
+          class="tab ${
+            category.id === active.id
+              ? "active"
+              : ""
+          }"
+          data-category="${escapeAttr(category.id)}"
+        >
+          ${escapeHtml(category.name)}
+        </button>
+
+      `
+    ).join("");
+
+
+  const productsHTML =
+    active.items.length
+
+      ? active.items.map(
+          item => {
+
+            const sold =
+              item.available === false;
+
+
+            const imageHTML =
+              item.image
+
+                ? `
+
+                  <img
+                    class="product-image"
+                    src="${escapeAttr(item.image)}"
+                    alt=""
+                    loading="lazy"
+                  >
+
+                `
+
+                : `
+
+                  <div class="product-no-image">
+                    ✦
+                  </div>
+
+                `;
+
+
+            return `
+
+              <div class="
+                product-card
+                ${sold ? "sold" : ""}
+              ">
+
+                ${imageHTML}
+
+                <div class="product-info">
+
+                  <div class="product-top">
+
+                    <div class="product-name">
+
+                      ${escapeHtml(item.name)}
+
+                      ${
+                        sold
+                          ? `
+                            <span class="sold-label">
+                              TÜKENDİ
+                            </span>
+                          `
+                          : ""
+                      }
+
+                    </div>
+
+                    <div class="dots"></div>
+
+                    <div class="product-price">
+                      ${money(item.price)}
+                    </div>
+
+                  </div>
+
+
+                  ${
+                    item.desc
+
+                      ? `
+
+                        <div class="product-desc">
+                          ${escapeHtml(item.desc)}
+                        </div>
+
+                      `
+
+                      : ""
+                  }
+
+                </div>
+
+              </div>
+
+            `;
+
+          }
+        ).join("")
+
+      : `
+
+        <div style="
+          text-align:center;
+          color:var(--muted);
+          padding:25px 10px;
+          font-size:12px;
+        ">
+          Bu kategoride henüz ürün yok.
+        </div>
+
+      `;
+
+
+  app.innerHTML = `
+
+    <div class="menu-wrap">
+
+      <header class="hero">
+
+        <div class="logo-box">
+          ${logoHTML}
+        </div>
+
+        <div class="eyebrow">
+          MENÜ
+        </div>
+
+        <h1 class="cafe-title">
+          ${escapeHtml(menuData.cafeName)}
+        </h1>
+
+        <div class="cafe-subtitle">
+          ${escapeHtml(menuData.subtitle)}
+        </div>
+
+      </header>
+
+
+      <div class="tabs-wrap">
+
+        <nav class="tabs">
+          ${tabsHTML}
+        </nav>
+
+      </div>
+
+
+      <main class="category-area">
+
+        <div class="category-heading">
+
+          <span class="category-dot"></span>
+
+          ${escapeHtml(active.name)}
+
+        </div>
+
+
+        <div class="products">
+          ${productsHTML}
+        </div>
+
+      </main>
+
+
+      <footer class="menu-footer">
+
+        <div class="footer-line"></div>
+
+        QR ile açıldı · Afiyet olsun
+
+      </footer>
+
+    </div>
+
+  `;
+
+
+  document
+    .querySelectorAll("[data-category]")
+    .forEach(button => {
+
+      button.onclick = () => {
+
+        activeCategory =
+          button.dataset.category;
+
+        renderCustomer();
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      };
+
+    });
+
+}
+
+
+/* =========================================================
+   AYAR BUTONU
+========================================================= */
+
+document
+  .getElementById("settingsButton")
+  .onclick = () => {
+
+    if(adminUnlocked){
+
+      showAdminPanel();
+
+    }else{
+
+      showPinPanel();
+
+    }
+
+  };
+
+
+/* =========================================================
+   PIN EKRANI
+========================================================= */
+
+function showPinPanel(){
+
+  const overlay =
+    document.createElement("div");
+
+
+  overlay.className =
+    "overlay";
+
+
+  overlay.innerHTML = `
+
+    <div class="pin-panel">
+
+      <div class="admin-head">
+
+        <div></div>
+
+        <button
+          class="close-button"
+          id="pinClose"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <h2 class="pin-title">
+        Yönetim Paneli
+      </h2>
+
+
+      <div class="pin-subtitle">
+        PIN kodunuzu girin
+      </div>
+
+
+      <input
+        id="pinInput"
+        class="form-input pin-input"
+        type="password"
+        inputmode="numeric"
+        maxlength="8"
+        placeholder="••••"
+      >
+
+
+      <div
+        id="pinError"
+        class="error"
+      ></div>
+
+
+      <button
+        id="pinLogin"
+        class="pin-login"
+      >
+        Giriş Yap
+      </button>
+
+    </div>
+
+  `;
+
+
+  document.body.appendChild(
+    overlay
+  );
+
+
+  document
+    .getElementById("pinClose")
+    .onclick = () =>
+      overlay.remove();
+
+
+  const login = async () => {
+
+    const pin =
+      document
+        .getElementById("pinInput")
+        .value
+        .trim();
+
+
+    const error =
+      document.getElementById(
+        "pinError"
+      );
+
+
+    if(pin.length < 4){
+
+      error.textContent =
+        "PIN en az 4 haneli olmalı.";
+
+      return;
+
+    }
+
+
+    error.textContent =
+      "Kontrol ediliyor…";
+
+
+    try{
+
+      const result =
+        await supabaseClient.rpc(
+          "check_menu_pin",
+          {
+            p_menu_id:MENU_ID,
+            p_pin:pin
+          }
+        );
+
+
+      if(result.error){
+
+        console.error(
+          result.error
+        );
+
+        error.textContent =
+          result.error.message ||
+          "PIN kontrolü başarısız.";
+
+        return;
+
+      }
+
+
+      if(result.data === true){
+
+        authenticatedPin =
+          pin;
+
+        adminUnlocked =
+          true;
+
+        overlay.remove();
+
+        adminTab =
+          "general";
+
+        showAdminPanel();
+
+      }else{
+
+        error.textContent =
+          "PIN hatalı.";
+
+      }
+
+    }catch(err){
+
+      console.error(err);
+
+      error.textContent =
+        "Bağlantı hatası.";
+
+    }
+
+  };
+
+
+  document
+    .getElementById("pinLogin")
+    .onclick = login;
+
+
+  document
+    .getElementById("pinInput")
+    .addEventListener(
+      "keydown",
+      event => {
+
+        if(event.key === "Enter"){
+
+          login();
+
+        }
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   YÖNETİM PANELİ
+========================================================= */
+
+function showAdminPanel(){
+
+  if(adminOverlay){
+
+    adminOverlay.remove();
+
+  }
+
+
+  adminOverlay =
+    document.createElement("div");
+
+
+  adminOverlay.className =
+    "overlay";
+
+
+  document.body.appendChild(
+    adminOverlay
+  );
+
+
+  renderAdmin();
+
+}
+
+
+/* =========================================================
+   ADMIN RENDER
+========================================================= */
+
+function renderAdmin(){
+
+  adminOverlay.innerHTML = `
+
+    <div class="admin-panel">
+
+      <div class="admin-head">
+
+        <h2 class="admin-title">
+          Yönetim Paneli
+        </h2>
+
+        <button
+          class="close-button"
+          id="adminClose"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="admin-tabs">
+
+        <button
+          class="admin-tab ${
+            adminTab === "general"
+              ? "active"
+              : ""
+          }"
+          data-admin-tab="general"
+        >
+          GENEL
+        </button>
+
+        <button
+          class="admin-tab ${
+            adminTab === "theme"
+              ? "active"
+              : ""
+          }"
+          data-admin-tab="theme"
+        >
+          RENK
+        </button>
+
+        <button
+          class="admin-tab ${
+            adminTab === "menu"
+              ? "active"
+              : ""
+          }"
+          data-admin-tab="menu"
+        >
+          MENÜ
+        </button>
+
+      </div>
+
+
+      <div id="adminContent"></div>
+
+    </div>
+
+  `;
+
+
+  document
+    .getElementById("adminClose")
+    .onclick = () => {
+
+      adminOverlay.remove();
+
+      adminOverlay = null;
+
+      renderCustomer();
 
     };
 
-    /*
-       Eğer sections object ise
-       array'e çevir.
-    */
 
-    if(
-        !Array.isArray(result.sections) &&
-        typeof result.sections === "object"
-    ){
+  document
+    .querySelectorAll("[data-admin-tab]")
+    .forEach(button => {
 
-        result.sections =
-            Object.entries(
-                result.sections
-            ).map(
-                ([name,items]) => ({
-                    name,
-                    items
-                })
-            );
+      button.onclick = () => {
 
-    }
+        adminTab =
+          button.dataset.adminTab;
 
-    /*
-       Eğer categories boşsa
-       section isimlerinden üret.
-    */
+        renderAdmin();
 
-    if(
-        !result.categories.length &&
-        Array.isArray(result.sections)
-    ){
+      };
 
-        result.categories =
-            result.sections.map(
-                (section,index) => ({
-                    id:
-                        section.id ||
-                        "cat-" + index,
+    });
 
-                    name:
-                        section.name ||
-                        section.title ||
-                        "Menü " + (index+1)
-                })
-            );
 
-    }
+  if(adminTab === "general"){
 
-    return result;
+    renderGeneral();
+
+  }
+
+  else if(adminTab === "theme"){
+
+    renderTheme();
+
+  }
+
+  else{
+
+    renderMenuEditor();
+
+  }
 
 }
 
 
 /* =========================================================
-   RENDER MENU
-   ========================================================= */
+   GENEL
+========================================================= */
 
-function renderMenu(rawData){
+function renderGeneral(){
 
-    const data =
-        normalizeMenu(rawData);
-
-    /* LOGO */
-
-    const logo =
-        document.getElementById(
-            "logo"
-        );
-
-    const fallback =
-        document.getElementById(
-            "logoFallback"
-        );
-
-    if(data.logo){
-
-        logo.src =
-            data.logo;
-
-        logo.style.display =
-            "block";
-
-        fallback.style.display =
-            "none";
-
-        logo.onerror =
-            function(){
-
-                logo.style.display =
-                    "none";
-
-                fallback.style.display =
-                    "block";
-
-            };
-
-    }
-    else{
-
-        logo.style.display =
-            "none";
-
-        fallback.style.display =
-            "block";
-
-    }
-
-
-    /* NAME */
-
+  const content =
     document.getElementById(
-        "restaurantName"
-    ).textContent =
-        data.name;
-
-
-    /* SUBTITLE */
-
-    document.getElementById(
-        "restaurantSubtitle"
-    ).textContent =
-        data.subtitle;
-
-
-    /* CATEGORIES */
-
-    renderCategories(
-        data
+      "adminContent"
     );
 
 
-    /* SECTIONS */
+  content.innerHTML = `
 
-    renderSections(
-        data
-    );
+    <div class="admin-section">
 
+      <h3 class="section-title">
+        Logo
+      </h3>
 
-    /* SHOW */
 
-    document.getElementById(
-        "loading"
-    ).style.display =
-        "none";
+      <div class="logo-admin">
 
-    document.getElementById(
-        "error"
-    ).style.display =
-        "none";
+        <div class="logo-preview">
 
-    document.getElementById(
-        "content"
-    ).style.display =
-        "block";
+          ${
+            menuData.logo
 
-}
+              ? `
 
+                <img
+                  src="${escapeAttr(menuData.logo)}"
+                >
 
-/* =========================================================
-   CATEGORIES
-   ========================================================= */
-
-function renderCategories(data){
-
-    const bar =
-        document.getElementById(
-            "categoryBar"
-        );
-
-    const list =
-        document.getElementById(
-            "categoryList"
-        );
-
-    list.innerHTML = "";
+              `
 
-    if(
-        !Array.isArray(data.categories) ||
-        !data.categories.length
-    ){
-
-        bar.style.display =
-            "none";
+              : `
 
-        return;
+                <span style="
+                  color:#C99A52;
+                  font-family:'Playfair Display',serif;
+                  font-size:12px;
+                ">
+                  LOGO
+                </span>
 
-    }
+              `
+          }
 
-    bar.style.display =
-        "block";
+        </div>
 
 
-    data.categories.forEach(
-        (category,index)=>{
+        <div class="logo-actions">
 
-            const button =
-                document.createElement(
-                    "button"
-                );
+          <label class="file-button">
 
-            button.className =
-                "category-btn" +
-                (index === 0
-                    ? " active"
-                    : "");
+            Logo Seç
 
-            button.textContent =
-                getCategoryName(
-                    category
-                );
+            <input
+              type="file"
+              id="logoFile"
+              accept="image/png,image/jpeg,image/webp"
+            >
 
-            button.dataset.index =
-                index;
+          </label>
 
-            button.addEventListener(
-                "click",
-                function(){
 
-                    document
-                        .querySelectorAll(
-                            ".category-btn"
-                        )
-                        .forEach(
-                            b =>
-                                b.classList
-                                .remove(
-                                    "active"
-                                )
-                        );
-
-                    this.classList.add(
-                        "active"
-                    );
-
-                    const target =
-                        document.getElementById(
-                            "section-" +
-                            index
-                        );
-
-                    if(target){
-
-                        const headerHeight =
-                            document
-                                .querySelector(
-                                    ".header"
-                                )
-                                ?.offsetHeight || 0;
+          <button
+            class="small-button"
+            id="removeLogo"
+          >
+            Logoyu Kaldır
+          </button>
 
-                        const navHeight =
-                            document
-                                .querySelector(
-                                    ".category-bar"
-                                )
-                                ?.offsetHeight || 0;
 
-                        const y =
-                            target
-                                .getBoundingClientRect()
-                                .top +
-                            window.scrollY -
-                            headerHeight -
-                            navHeight -
-                            12;
+          <div class="section-note">
+            Kare PNG / JPG / WEBP logo önerilir.
+          </div>
 
-                        window.scrollTo({
-                            top:y,
-                            behavior:"smooth"
-                        });
+        </div>
 
-                    }
+      </div>
 
-                }
-            );
+    </div>
 
-            list.appendChild(
-                button
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SECTIONS
-   ========================================================= */
-
-function renderSections(data){
-
-    const container =
-        document.getElementById(
-            "menuSections"
-        );
 
-    container.innerHTML = "";
+    <div class="admin-section">
 
-    let sections =
-        Array.isArray(data.sections)
-            ? data.sections
-            : [];
+      <h3 class="section-title">
+        Kafe Bilgileri
+      </h3>
 
-    /*
-       Eğer sections yok ama categories
-       içinde items varsa onları kullan.
-    */
 
-    if(
-        !sections.length &&
-        Array.isArray(data.categories)
-    ){
-
-        sections =
-            data.categories.map(
-                category => ({
-                    name:
-                        getCategoryName(
-                            category
-                        ),
+      <label class="form-label">
+        Kafe adı
+      </label>
 
-                    items:
-                        category.items ||
-                        category.products ||
-                        []
-                })
-            );
+      <input
+        id="cafeName"
+        class="form-input"
+        value="${escapeAttr(menuData.cafeName)}"
+      >
 
-    }
 
+      <label class="form-label">
+        Alt başlık
+      </label>
 
-    if(!sections.length){
+      <textarea
+        id="cafeSubtitle"
+        class="form-textarea"
+      >${escapeHtml(menuData.subtitle)}</textarea>
 
-        container.innerHTML = `
-            <div class="empty">
-                Menüde henüz ürün bulunmuyor.
-            </div>
-        `;
+    </div>
 
-        return;
 
-    }
+    <div class="admin-section">
 
+      <h3 class="section-title">
+        PIN Değiştir
+      </h3>
 
-    sections.forEach(
-        (section,index)=>{
 
-            const sectionEl =
-                document.createElement(
-                    "section"
-                );
+      <label class="form-label">
+        Yeni PIN
+      </label>
 
-            sectionEl.id =
-                "section-" +
-                index;
+      <div class="two-col">
 
-            const title =
-                document.createElement(
-                    "h2"
-                );
+        <input
+          id="newPin"
+          class="form-input"
+          type="password"
+          inputmode="numeric"
+          maxlength="8"
+          placeholder="Yeni PIN"
+        >
 
-            title.className =
-                "section-title";
+        <button
+          id="changePin"
+          class="small-button"
+        >
+          Değiştir
+        </button>
 
-            title.textContent =
-                section.name ||
-                section.title ||
-                "Menü";
+      </div>
 
+    </div>
 
-            const items =
-                Array.isArray(
-                    section.items
-                )
-                    ? section.items
-                    : (
-                        Array.isArray(
-                            section.products
-                        )
-                            ? section.products
-                            : []
-                    );
 
+    <div
+      id="generalStatus"
+      class="status"
+    ></div>
 
-            const itemsEl =
-                document.createElement(
-                    "div"
-                );
 
-            itemsEl.className =
-                "items";
+    <button
+      id="saveGeneral"
+      class="main-save"
+    >
+      ✓ KAYDET
+    </button>
 
+  `;
 
-            if(!items.length){
 
-                itemsEl.innerHTML = `
-                    <div class="empty">
-                        Bu kategoride ürün bulunmuyor.
-                    </div>
-                `;
+  document
+    .getElementById("cafeName")
+    .oninput = event => {
 
-            }
-            else{
+      menuData.cafeName =
+        event.target.value;
 
-                items.forEach(
-                    item => {
+    };
 
-                        itemsEl.appendChild(
-                            createProduct(
-                                item
-                            )
-                        );
 
-                    }
-                );
+  document
+    .getElementById("cafeSubtitle")
+    .oninput = event => {
 
-            }
+      menuData.subtitle =
+        event.target.value;
 
+    };
 
-            sectionEl.appendChild(
-                title
-            );
 
-            sectionEl.appendChild(
-                itemsEl
-            );
+  document
+    .getElementById("logoFile")
+    .onchange = async event => {
 
-            container.appendChild(
-                sectionEl
-            );
+      const file =
+        event.target.files?.[0];
 
-        }
-    );
+      if(!file) return;
 
-}
 
+      try{
 
-/* =========================================================
-   PRODUCT
-   ========================================================= */
+        menuData.logo =
+          await resizeImage(
+            file,
+            512,
+            .84
+          );
 
-function createProduct(item){
 
-    const card =
-        document.createElement(
-            "article"
-        );
+        renderAdmin();
 
-    const image =
-        getItemImage(
-            item
-        );
-
-    const name =
-        item.name ||
-        item.title ||
-        item.productName ||
-        "Ürün";
-
-    const description =
-        item.description ||
-        item.desc ||
-        item.aciklama ||
-        "";
-
-    const price =
-        item.price ??
-        item.fiyat ??
-        "";
-
-
-    card.className =
-        "product" +
-        (
-            image
-                ? ""
-                : " no-image"
-        );
-
-
-    if(image){
-
-        const img =
-            document.createElement(
-                "img"
-            );
-
-        img.className =
-            "product-image";
-
-        img.src =
-            image;
-
-        img.alt =
-            name;
-
-        img.loading =
-            "lazy";
-
-        img.onerror =
-            function(){
-
-                this.remove();
-
-                card.classList.add(
-                    "no-image"
-                );
-
-            };
-
-        card.appendChild(
-            img
-        );
-
-    }
-
-
-    const info =
-        document.createElement(
-            "div"
-        );
-
-    info.className =
-        "product-info";
-
-
-    const top =
-        document.createElement(
-            "div"
-        );
-
-    top.className =
-        "product-top";
-
-
-    const nameEl =
-        document.createElement(
-            "div"
-        );
-
-    nameEl.className =
-        "product-name";
-
-    nameEl.textContent =
-        name;
-
-
-    const line =
-        document.createElement(
-            "div"
-        );
-
-    line.className =
-        "product-line";
-
-
-    const priceEl =
-        document.createElement(
-            "div"
-        );
-
-    priceEl.className =
-        "product-price";
-
-    priceEl.textContent =
-        formatPrice(
-            price
-        );
-
-
-    top.appendChild(
-        nameEl
-    );
-
-    top.appendChild(
-        line
-    );
-
-    top.appendChild(
-        priceEl
-    );
-
-
-    info.appendChild(
-        top
-    );
-
-
-    if(description){
-
-        const desc =
-            document.createElement(
-                "div"
-            );
-
-        desc.className =
-            "product-description";
-
-        desc.textContent =
-            description;
-
-        info.appendChild(
-            desc
-        );
-
-    }
-
-
-    card.appendChild(
-        info
-    );
-
-
-    return card;
-
-}
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
-function getCategoryName(category){
-
-    if(typeof category === "string"){
-        return category;
-    }
-
-    return (
-        category.name ||
-        category.title ||
-        category.label ||
-        "Kategori"
-    );
-
-}
-
-
-function getItemImage(item){
-
-    return (
-        item.image ||
-        item.imageUrl ||
-        item.image_url ||
-        item.photo ||
-        item.photoUrl ||
-        item.gorsel ||
-        item.gorselUrl ||
-        ""
-    );
-
-}
-
-
-function formatPrice(price){
-
-    if(
-        price === null ||
-        price === undefined ||
-        price === ""
-    ){
-
-        return "";
-
-    }
-
-    if(
-        typeof price === "number"
-    ){
-
-        return (
-            new Intl.NumberFormat(
-                "tr-TR"
-            ).format(price)
-            + " ₺"
-        );
-
-    }
-
-    const value =
-        String(price).trim();
-
-    if(
-        value.includes("₺") ||
-        value.includes("TL")
-    ){
-
-        return value;
-
-    }
-
-    return value + " ₺";
-
-}
-
-
-/* =========================================================
-   LOADING / ERROR
-   ========================================================= */
-
-function showLoading(){
-
-    document.getElementById(
-        "loading"
-    ).style.display =
-        "flex";
-
-    document.getElementById(
-        "error"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "content"
-    ).style.display =
-        "none";
-
-}
-
-
-function showError(message){
-
-    document.getElementById(
-        "loading"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "content"
-    ).style.display =
-        "none";
-
-    document.getElementById(
-        "error"
-    ).style.display =
-        "flex";
-
-    document.getElementById(
-        "errorText"
-    ).textContent =
-        message;
-
-}
-
-
-/* =========================================================
-   ADMIN PIN
-   ========================================================= */
-
-const adminButton =
-    document.getElementById(
-        "adminButton"
-    );
-
-const pinModal =
-    document.getElementById(
-        "pinModal"
-    );
-
-const pinInput =
-    document.getElementById(
-        "pinInput"
-    );
-
-const adminPanel =
-    document.getElementById(
-        "adminPanel"
-    );
-
-
-adminButton.addEventListener(
-    "click",
-    function(){
-
-        pinInput.value =
-            "";
-
-        pinModal.classList.add(
-            "show"
-        );
-
-        setTimeout(
-            () => pinInput.focus(),
-            100
-        );
-
-    }
-);
-
-
-function closePinModal(){
-
-    pinModal.classList.remove(
-        "show"
-    );
-
-}
-
-
-async function checkPin(){
-
-    const pin =
-        pinInput.value.trim();
-
-    if(!pin){
+      }catch(error){
 
         alert(
-            "PIN kodunu gir."
+          "Logo yüklenemedi."
         );
+
+      }
+
+    };
+
+
+  document
+    .getElementById("removeLogo")
+    .onclick = () => {
+
+      menuData.logo = "";
+
+      renderAdmin();
+
+    };
+
+
+  document
+    .getElementById("changePin")
+    .onclick = async () => {
+
+      const newPin =
+        document
+          .getElementById("newPin")
+          .value
+          .trim();
+
+
+      const status =
+        document.getElementById(
+          "generalStatus"
+        );
+
+
+      if(newPin.length < 4){
+
+        status.textContent =
+          "PIN en az 4 haneli olmalı.";
 
         return;
 
-    }
+      }
 
-    try{
 
-        /*
-           check_menu_pin fonksiyonunu
-           Supabase RPC üzerinden çağırıyoruz.
+      status.textContent =
+        "PIN değiştiriliyor…";
 
-           Fonksiyon daha önce oluşturduğumuz
-           public.check_menu_pin(uuid,text)
-           fonksiyonudur.
-        */
+
+      try{
 
         const result =
-            await supabaseFetch(
-                "/rest/v1/rpc/check_menu_pin",
-                {
-                    method:"POST",
+          await supabaseClient.rpc(
+            "change_menu_pin",
+            {
+              p_menu_id:MENU_ID,
+              p_old_pin:authenticatedPin,
+              p_new_pin:newPin
+            }
+          );
 
-                    body:
-                        JSON.stringify({
-                            p_menu_id:
-                                MENU_ID,
 
-                            p_pin:
-                                pin
-                        })
-                }
+        if(result.error){
+
+          console.error(
+            result.error
+          );
+
+          status.textContent =
+            "PIN değiştirilemedi.";
+
+          return;
+
+        }
+
+
+        if(result.data === true){
+
+          authenticatedPin =
+            newPin;
+
+          status.textContent =
+            "✓ PIN başarıyla değiştirildi.";
+
+        }else{
+
+          status.textContent =
+            "Eski PIN doğrulanamadı.";
+
+        }
+
+      }catch(error){
+
+        console.error(error);
+
+        status.textContent =
+          "PIN değiştirilemedi.";
+
+      }
+
+    };
+
+
+  document
+    .getElementById("saveGeneral")
+    .onclick = () => {
+
+      saveMenu(
+        document.getElementById(
+          "generalStatus"
+        )
+      );
+
+    };
+
+}
+
+
+/* =========================================================
+   RENK PANELİ
+========================================================= */
+
+function renderTheme(){
+
+  const content =
+    document.getElementById(
+      "adminContent"
+    );
+
+
+  const colors = [
+
+    ["background","Ana arka plan"],
+    ["surface","Kart rengi"],
+    ["surfaceRaised","Açık kart"],
+    ["heading","Başlık yazısı"],
+    ["text","Normal yazı"],
+    ["muted","Açıklama yazısı"],
+    ["accent","Ana tema"],
+    ["category","Kategori rengi"],
+    ["categoryText","Kategori yazısı"],
+    ["price","Fiyat rengi"],
+    ["border","Kenarlık"],
+    ["danger","Tükendi rengi"]
+
+  ];
+
+
+  content.innerHTML = `
+
+    <div class="admin-section">
+
+      <h3 class="section-title">
+        Tema Renkleri
+      </h3>
+
+
+      <div class="color-grid">
+
+        ${
+          colors.map(
+            ([key,label]) => {
+
+              const value =
+                menuData.theme[key];
+
+
+              return `
+
+                <div class="color-control">
+
+                  <div class="color-name">
+                    ${label}
+                  </div>
+
+
+                  <div class="color-row">
+
+                    <input
+                      type="color"
+                      class="color-picker"
+                      data-color-key="${key}"
+                      value="${
+                        validColor(value)
+                          ? value
+                          : "#000000"
+                      }"
+                    >
+
+
+                    <input
+                      type="text"
+                      class="hex-input"
+                      data-hex-key="${key}"
+                      value="${escapeAttr(value)}"
+                      maxlength="7"
+                    >
+
+
+                    <button
+                      class="reset-color"
+                      data-reset-color="${key}"
+                    >
+                      ↺
+                    </button>
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          ).join("")
+        }
+
+      </div>
+
+
+      <div class="section-note">
+        İstersen renk kutusuna basıp renk seç,
+        istersen HEX kodunu direkt yaz.
+        Değişiklikler menüde anında görünür.
+      </div>
+
+
+      <div
+        class="preview-box"
+        style="
+          --preview-bg:${menuData.theme.background};
+          --preview-border:${menuData.theme.border};
+          --preview-accent:${menuData.theme.accent};
+          --preview-heading:${menuData.theme.heading};
+          --preview-muted:${menuData.theme.muted};
+          --preview-price:${menuData.theme.price};
+        "
+      >
+
+        <div class="preview-top">
+
+          <div class="preview-circle"></div>
+
+          <div class="preview-text">
+
+            <div class="preview-title">
+              Katmerci Dayı
+            </div>
+
+            <div class="preview-sub">
+              Gaziantepten gelen lezzet
+            </div>
+
+          </div>
+
+          <div class="preview-price">
+            500 ₺
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="admin-section">
+
+      <h3 class="section-title">
+        Hazır Temalar
+      </h3>
+
+
+      <div class="two-col">
+
+        <button
+          class="small-button"
+          data-preset="green"
+        >
+          🌿 Yeşil
+        </button>
+
+
+        <button
+          class="small-button"
+          data-preset="brown"
+        >
+          ☕ Kahve
+        </button>
+
+      </div>
+
+
+      <div style="
+        height:6px;
+      "></div>
+
+
+      <div class="two-col">
+
+        <button
+          class="small-button"
+          data-preset="terracotta"
+        >
+          🧱 Terracotta
+        </button>
+
+
+        <button
+          class="small-button"
+          data-preset="dark"
+        >
+          ✦ Premium Koyu
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="themeStatus"
+      class="status"
+    ></div>
+
+
+    <button
+      id="saveTheme"
+      class="main-save"
+    >
+      ✓ KAYDET
+    </button>
+
+  `;
+
+
+  bindColors();
+
+
+  document
+    .querySelectorAll("[data-preset]")
+    .forEach(button => {
+
+      button.onclick = () => {
+
+        const preset =
+          button.dataset.preset;
+
+
+        if(preset === "green"){
+
+          menuData.theme = {
+
+            background:"#F4EBDD",
+            surface:"#FFFDF8",
+            surfaceRaised:"#E9DDC9",
+            heading:"#4E282C",
+            text:"#493B32",
+            muted:"#817366",
+            accent:"#7C8957",
+            accentText:"#4D5933",
+            category:"#7C8957",
+            categoryText:"#FFFDF5",
+            price:"#A86143",
+            border:"#D8CBB8",
+            danger:"#B44E48"
+
+          };
+
+        }
+
+
+        if(preset === "brown"){
+
+          menuData.theme = {
+
+            background:"#EFE4D3",
+            surface:"#FFF9F0",
+            surfaceRaised:"#E4D1B7",
+            heading:"#4A2D20",
+            text:"#4D3A2F",
+            muted:"#806D5D",
+            accent:"#8A5B3E",
+            accentText:"#5A3927",
+            category:"#8A5B3E",
+            categoryText:"#FFF8EC",
+            price:"#B06B43",
+            border:"#D6C2AA",
+            danger:"#B24E46"
+
+          };
+
+        }
+
+
+        if(preset === "terracotta"){
+
+          menuData.theme = {
+
+            background:"#F5E4D9",
+            surface:"#FFF9F4",
+            surfaceRaised:"#EBD0C0",
+            heading:"#6D3830",
+            text:"#513B35",
+            muted:"#856E66",
+            accent:"#B9664E",
+            accentText:"#783F34",
+            category:"#B9664E",
+            categoryText:"#FFF8F1",
+            price:"#8E4A39",
+            border:"#DCC2B5",
+            danger:"#A74440"
+
+          };
+
+        }
+
+
+        if(preset === "dark"){
+
+          menuData.theme = {
+
+            background:"#17110D",
+            surface:"#211812",
+            surfaceRaised:"#2A1F17",
+            heading:"#F7EBDD",
+            text:"#EFE3D4",
+            muted:"#B9AA99",
+            accent:"#C99A52",
+            accentText:"#17110D",
+            category:"#7C8957",
+            categoryText:"#FFF8EA",
+            price:"#D7B16B",
+            border:"#57402A",
+            danger:"#B64E48"
+
+          };
+
+        }
+
+
+        applyTheme();
+
+        renderAdmin();
+
+      };
+
+    });
+
+
+}
+
+
+/* =========================================================
+   RENK BAĞLANTILARI
+========================================================= */
+
+function bindColors(){
+
+  document
+    .querySelectorAll("[data-color-key]")
+    .forEach(input => {
+
+      input.oninput = () => {
+
+        const key =
+          input.dataset.colorKey;
+
+
+        menuData.theme[key] =
+          input.value;
+
+
+        const hex =
+          document.querySelector(
+            `[data-hex-key="${key}"]`
+          );
+
+
+        if(hex){
+
+          hex.value =
+            input.value.toUpperCase();
+
+        }
+
+
+        applyTheme();
+
+
+        const preview =
+          document.querySelector(
+            ".preview-box"
+          );
+
+
+        if(preview){
+
+          preview.style.setProperty(
+            "--preview-bg",
+            menuData.theme.background
+          );
+
+          preview.style.setProperty(
+            "--preview-border",
+            menuData.theme.border
+          );
+
+          preview.style.setProperty(
+            "--preview-accent",
+            menuData.theme.accent
+          );
+
+          preview.style.setProperty(
+            "--preview-heading",
+            menuData.theme.heading
+          );
+
+          preview.style.setProperty(
+            "--preview-muted",
+            menuData.theme.muted
+          );
+
+          preview.style.setProperty(
+            "--preview-price",
+            menuData.theme.price
+          );
+
+        }
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-hex-key]")
+    .forEach(input => {
+
+      input.oninput = () => {
+
+        let value =
+          input.value
+            .trim()
+            .toUpperCase();
+
+
+        if(
+          value.length === 6 &&
+          !value.startsWith("#")
+        ){
+
+          value =
+            "#" + value;
+
+        }
+
+
+        if(validColor(value)){
+
+          const key =
+            input.dataset.hexKey;
+
+
+          menuData.theme[key] =
+            value;
+
+
+          const picker =
+            document.querySelector(
+              `[data-color-key="${key}"]`
             );
 
 
-        /*
-           Fonksiyon farklı isimde parametre
-           kullanıyorsa aşağıdaki alternatif
-           çağrı denenir.
-        */
+          if(picker){
+
+            picker.value =
+              value;
+
+          }
+
+
+          applyTheme();
+
+        }
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-reset-color]")
+    .forEach(button => {
+
+      button.onclick = () => {
+
+        const key =
+          button.dataset.resetColor;
+
+
+        menuData.theme[key] =
+          DEFAULT_THEME[key];
+
+
+        applyTheme();
+
+        renderAdmin();
+
+      };
+
+    });
+
+}
+
+
+/* =========================================================
+   MENÜ DÜZENLEME
+========================================================= */
+
+function renderMenuEditor(){
+
+  const content =
+    document.getElementById(
+      "adminContent"
+    );
+
+
+  const categoriesHTML =
+    menuData.categories.map(
+      (category,index) => `
+
+        <div class="category-admin">
+
+          <div class="category-head">
+
+            <input
+              class="form-input"
+              data-category-name="${category.id}"
+              value="${escapeAttr(category.name)}"
+            >
+
+
+            <button
+              class="delete-button"
+              data-delete-category="${category.id}"
+            >
+              Sil
+            </button>
+
+          </div>
+
+
+          ${
+            category.items.map(
+              (item,itemIndex) => `
+
+                <div class="item-admin">
+
+                  <div class="item-admin-top">
+
+                    <span class="item-number">
+                      ÜRÜN ${itemIndex + 1}
+                    </span>
+
+
+                    <button
+                      class="remove-item"
+                      data-delete-item="${item.id}"
+                      data-category-id="${category.id}"
+                    >
+                      Ürünü sil
+                    </button>
+
+                  </div>
+
+
+                  <label class="form-label">
+                    Ürün adı
+                  </label>
+
+                  <input
+                    class="form-input"
+                    data-item-name="${item.id}"
+                    value="${escapeAttr(item.name)}"
+                  >
+
+
+                  <label class="form-label">
+                    Açıklama
+                  </label>
+
+                  <input
+                    class="form-input"
+                    data-item-desc="${item.id}"
+                    value="${escapeAttr(item.desc)}"
+                  >
+
+
+                  <div class="item-grid">
+
+                    <div>
+
+                      <label class="form-label">
+                        Fiyat ₺
+                      </label>
+
+                      <input
+                        type="number"
+                        min="0"
+                        step="1"
+                        class="form-input"
+                        data-item-price="${item.id}"
+                        value="${Number(item.price) || 0}"
+                      >
+
+                    </div>
+
+
+                    <div>
+
+                      <label class="form-label">
+                        Fotoğraf
+                      </label>
+
+                      <label class="file-button">
+
+                        Seç
+
+                        <input
+                          type="file"
+                          accept="image/*"
+                          data-item-file="${item.id}"
+                        >
+
+                      </label>
+
+                    </div>
+
+                  </div>
+
+
+                  ${
+                    item.image
+
+                      ? `
+
+                        <div style="
+                          display:flex;
+                          align-items:center;
+                          gap:7px;
+                          margin-top:7px;
+                        ">
+
+                          <img
+                            src="${escapeAttr(item.image)}"
+                            style="
+                              width:50px;
+                              height:50px;
+                              border-radius:9px;
+                              object-fit:cover;
+                              border:1px solid #DDD2C1;
+                            "
+                          >
+
+                          <button
+                            class="small-button"
+                            data-remove-image="${item.id}"
+                          >
+                            Görseli kaldır
+                          </button>
+
+                        </div>
+
+                      `
+
+                      : ""
+                  }
+
+
+                  <label class="form-label">
+                    veya görsel linki
+                  </label>
+
+                  <input
+                    type="url"
+                    class="form-input"
+                    placeholder="https://..."
+                    data-item-url="${item.id}"
+                    value="${
+                      item.image &&
+                      String(item.image)
+                        .startsWith("http")
+                        ? escapeAttr(item.image)
+                        : ""
+                    }"
+                  >
+
+
+                  <label class="availability">
+
+                    <input
+                      type="checkbox"
+                      data-item-available="${item.id}"
+                      ${
+                        item.available !== false
+                          ? "checked"
+                          : ""
+                      }
+                    >
+
+                    Ürün satışta
+
+                  </label>
+
+                </div>
+
+              `
+            ).join("")
+          }
+
+
+          <button
+            class="add-button"
+            data-add-item="${category.id}"
+          >
+            + Ürün ekle
+          </button>
+
+        </div>
+
+      `
+    ).join("");
+
+
+  content.innerHTML = `
+
+    <div class="admin-section">
+
+      <h3 class="section-title">
+        Kategoriler ve Ürünler
+      </h3>
+
+
+      ${categoriesHTML}
+
+
+      <button
+        id="addCategory"
+        class="add-button"
+      >
+        + Yeni kategori ekle
+      </button>
+
+    </div>
+
+
+    <div
+      id="menuStatus"
+      class="status"
+    ></div>
+
+
+    <button
+      id="saveMenu"
+      class="main-save"
+    >
+      ✓ KAYDET
+    </button>
+
+  `;
+
+
+  bindMenuEditor();
+
+
+  document
+    .getElementById("addCategory")
+    .onclick = () => {
+
+      menuData.categories.push({
+
+        id:uid(),
+
+        name:"Yeni kategori",
+
+        items:[]
+
+      });
+
+
+      renderAdmin();
+
+    };
+
+
+  document
+    .getElementById("saveMenu")
+    .onclick = () => {
+
+      saveMenu(
+        document.getElementById(
+          "menuStatus"
+        )
+      );
+
+    };
+
+}
+
+
+/* =========================================================
+   MENÜ EDİTÖRÜ BAĞLANTILARI
+========================================================= */
+
+function bindMenuEditor(){
+
+  document
+    .querySelectorAll("[data-category-name]")
+    .forEach(input => {
+
+      input.oninput = () => {
+
+        const category =
+          menuData.categories.find(
+            c =>
+              c.id ===
+              input.dataset.categoryName
+          );
+
+
+        if(category){
+
+          category.name =
+            input.value;
+
+        }
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-delete-category]")
+    .forEach(button => {
+
+      button.onclick = () => {
+
+        const id =
+          button.dataset.deleteCategory;
+
+
+        const category =
+          menuData.categories.find(
+            c => c.id === id
+          );
+
+
+        if(!category) return;
+
 
         if(
-            result === true ||
-            result === "true" ||
-            (
-                result &&
-                (
-                    result.ok === true ||
-                    result.valid === true ||
-                    result.success === true
+          !confirm(
+            `"${category.name}" kategorisi silinsin mi?`
+          )
+        ){
+
+          return;
+
+        }
+
+
+        menuData.categories =
+          menuData.categories.filter(
+            c => c.id !== id
+          );
+
+
+        if(activeCategory === id){
+
+          activeCategory =
+            menuData.categories.length
+              ? menuData.categories[0].id
+              : null;
+
+        }
+
+
+        renderAdmin();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-item-name]")
+    .forEach(input => {
+
+      input.oninput = () => {
+
+        updateItem(
+          input.dataset.itemName,
+          "name",
+          input.value
+        );
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-item-desc]")
+    .forEach(input => {
+
+      input.oninput = () => {
+
+        updateItem(
+          input.dataset.itemDesc,
+          "desc",
+          input.value
+        );
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-item-price]")
+    .forEach(input => {
+
+      input.oninput = () => {
+
+        updateItem(
+          input.dataset.itemPrice,
+          "price",
+          Number(input.value)
+        );
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-item-available]")
+    .forEach(input => {
+
+      input.onchange = () => {
+
+        updateItem(
+          input.dataset.itemAvailable,
+          "available",
+          input.checked
+        );
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-delete-item]")
+    .forEach(button => {
+
+      button.onclick = () => {
+
+        const itemId =
+          button.dataset.deleteItem;
+
+
+        const categoryId =
+          button.dataset.categoryId;
+
+
+        const category =
+          menuData.categories.find(
+            c => c.id === categoryId
+          );
+
+
+        if(!category) return;
+
+
+        category.items =
+          category.items.filter(
+            item =>
+              item.id !== itemId
+          );
+
+
+        renderAdmin();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-add-item]")
+    .forEach(button => {
+
+      button.onclick = () => {
+
+        const category =
+          menuData.categories.find(
+            c =>
+              c.id ===
+              button.dataset.addItem
+          );
+
+
+        if(!category) return;
+
+
+        category.items.push({
+
+          id:uid(),
+
+          name:"Yeni ürün",
+
+          desc:"",
+
+          price:0,
+
+          available:true,
+
+          image:""
+
+        });
+
+
+        renderAdmin();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-item-file]")
+    .forEach(input => {
+
+      input.onchange = async () => {
+
+        const file =
+          input.files?.[0];
+
+        if(!file) return;
+
+
+        try{
+
+          const image =
+            await resizeImage(
+              file,
+              480,
+              .78
+            );
+
+
+          updateItem(
+            input.dataset.itemFile,
+            "image",
+            image
+          );
+
+
+          renderAdmin();
+
+        }catch(error){
+
+          alert(
+            "Fotoğraf yüklenemedi."
+          );
+
+        }
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-item-url]")
+    .forEach(input => {
+
+      input.oninput = () => {
+
+        updateItem(
+          input.dataset.itemUrl,
+          "image",
+          input.value.trim()
+        );
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll("[data-remove-image]")
+    .forEach(button => {
+
+      button.onclick = () => {
+
+        updateItem(
+          button.dataset.removeImage,
+          "image",
+          ""
+        );
+
+
+        renderAdmin();
+
+      };
+
+    });
+
+}
+
+
+/* =========================================================
+   ÜRÜN GÜNCELLE
+========================================================= */
+
+function updateItem(
+  id,
+  field,
+  value
+){
+
+  for(
+    const category
+    of menuData.categories
+  ){
+
+    const item =
+      category.items.find(
+        i => i.id === id
+      );
+
+
+    if(item){
+
+      item[field] =
+        value;
+
+      return;
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   KAYDET
+========================================================= */
+
+async function saveMenu(status){
+
+  if(!authenticatedPin){
+
+    status.textContent =
+      "Oturum süresi doldu. Tekrar giriş yapın.";
+
+    return;
+
+  }
+
+
+  status.textContent =
+    "Kaydediliyor…";
+
+
+  menuData =
+    normalizeData(menuData);
+
+
+  try{
+
+    const result =
+      await supabaseClient.rpc(
+        "save_menu",
+        {
+          p_menu_id:MENU_ID,
+          p_pin:authenticatedPin,
+          p_data:menuData
+        }
+      );
+
+
+    if(result.error){
+
+      console.error(
+        result.error
+      );
+
+
+      status.textContent =
+        "Kaydedilemedi: " +
+        (
+          result.error.message ||
+          "Supabase hatası"
+        );
+
+
+      return;
+
+    }
+
+
+    if(result.data !== true){
+
+      status.textContent =
+        "Kaydedilemedi. PIN doğrulanamadı.";
+
+      return;
+
+    }
+
+
+    status.textContent =
+      "✓ Başarıyla kaydedildi.";
+
+
+    applyTheme();
+
+
+    setTimeout(
+      () => {
+
+        if(adminOverlay){
+
+          adminOverlay.remove();
+
+          adminOverlay = null;
+
+        }
+
+
+        renderCustomer();
+
+      },
+      600
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    status.textContent =
+      "Bağlantı hatası.";
+
+  }
+
+}
+
+
+/* =========================================================
+   FOTOĞRAF KÜÇÜLTME
+========================================================= */
+
+function resizeImage(
+  file,
+  maxSize,
+  quality
+){
+
+  return new Promise(
+    (resolve,reject) => {
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        event => {
+
+          const image =
+            new Image();
+
+
+          image.onload =
+            () => {
+
+              let width =
+                image.width;
+
+              let height =
+                image.height;
+
+
+              if(
+                width > maxSize ||
+                height > maxSize
+              ){
+
+                const ratio =
+                  Math.min(
+                    maxSize / width,
+                    maxSize / height
+                  );
+
+
+                width =
+                  Math.round(
+                    width * ratio
+                  );
+
+
+                height =
+                  Math.round(
+                    height * ratio
+                  );
+
+              }
+
+
+              const canvas =
+                document.createElement(
+                  "canvas"
+                );
+
+
+              canvas.width =
+                width;
+
+              canvas.height =
+                height;
+
+
+              const context =
+                canvas.getContext(
+                  "2d"
+                );
+
+
+              context.drawImage(
+                image,
+                0,
+                0,
+                width,
+                height
+              );
+
+
+              resolve(
+                canvas.toDataURL(
+                  "image/jpeg",
+                  quality
                 )
-            )
-        ){
+              );
 
-            closePinModal();
-
-            openAdmin();
-
-            return;
-
-        }
+            };
 
 
-        alert(
-            "PIN kodu yanlış."
-        );
+          image.onerror =
+            reject;
 
-    }
-    catch(error){
 
-        console.error(
-            "PIN ERROR:",
-            error
-        );
+          image.src =
+            event.target.result;
 
-        /*
-           Eğer RPC parametre adı farklıysa
-           kullanıcıya anlaşılır hata göster.
-        */
+        };
 
-        alert(
-            "PIN kontrolü yapılamadı:\n\n" +
-            error.message
-        );
+
+      reader.onerror =
+        reject;
+
+
+      reader.readAsDataURL(file);
 
     }
+  );
 
 }
 
 
 /* =========================================================
-   ADMIN
-   ========================================================= */
-
-function openAdmin(){
-
-    adminPanel.classList.add(
-        "show"
-    );
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeAdmin(){
-
-    adminPanel.classList.remove(
-        "show"
-    );
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-/* =========================================================
-   ENTER KEY PIN
-   ========================================================= */
-
-pinInput.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key === "Enter"
-        ){
-
-            checkPin();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   START
-   ========================================================= */
+   BAŞLAT
+========================================================= */
 
 loadMenu();
 
