@@ -2,26 +2,15 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 
 <title>Katmerci Dayı Menü</title>
 
-<script
-defer
-src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
-rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -46,8 +35,7 @@ box-sizing:border-box;
 -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
 margin:0;
 padding:0;
 min-height:100%;
@@ -60,9 +48,7 @@ font-family:"DM Sans",sans-serif;
 overflow-x:hidden;
 }
 
-button,
-input,
-textarea{
+button,input,textarea{
 font-family:inherit;
 }
 
@@ -74,14 +60,12 @@ cursor:pointer;
 min-height:100vh;
 }
 
-/* =========================
-   MENÜ
-========================= */
+/* ================= MENU ================= */
 
 .menu-wrap{
 width:100%;
 max-width:680px;
-margin:0 auto;
+margin:auto;
 min-height:100vh;
 padding-bottom:80px;
 }
@@ -128,7 +112,7 @@ text-transform:uppercase;
 color:var(--accentText);
 margin-left:.45em;
 margin-bottom:9px;
-font-weight:700;
+font-weight:800;
 }
 
 .cafe-title{
@@ -138,7 +122,7 @@ font-family:"Playfair Display",serif;
 font-size:clamp(38px,10vw,60px);
 line-height:1;
 letter-spacing:-.04em;
-font-weight:700;
+font-weight:800;
 }
 
 .cafe-subtitle{
@@ -149,9 +133,7 @@ font-size:13px;
 line-height:1.5;
 }
 
-/* =========================
-   KATEGORİ
-========================= */
+/* ================= TABS ================= */
 
 .tabs-wrap{
 position:sticky;
@@ -185,9 +167,8 @@ border:1px solid var(--border);
 background:var(--surface);
 color:var(--muted);
 font-size:11px;
-font-weight:700;
+font-weight:800;
 white-space:nowrap;
-transition:.2s ease;
 }
 
 .tab.active{
@@ -197,9 +178,7 @@ color:var(--categoryText);
 box-shadow:0 6px 18px rgba(124,137,87,.20);
 }
 
-/* =========================
-   ÜRÜNLER
-========================= */
+/* ================= PRODUCTS ================= */
 
 .category-area{
 padding:21px 14px 0;
@@ -280,7 +259,7 @@ gap:6px;
 color:var(--heading);
 font-size:13.5px;
 line-height:1.25;
-font-weight:700;
+font-weight:800;
 }
 
 .product-desc{
@@ -302,7 +281,7 @@ color:var(--price);
 white-space:nowrap;
 font-family:"Playfair Display",serif;
 font-size:14.5px;
-font-weight:700;
+font-weight:800;
 }
 
 .product-card.sold{
@@ -334,9 +313,7 @@ background:var(--border);
 margin:0 auto 11px;
 }
 
-/* =========================
-   AYAR
-========================= */
+/* ================= SETTINGS ================= */
 
 .settings-button{
 position:fixed;
@@ -360,9 +337,7 @@ box-shadow:0 8px 25px rgba(0,0,0,.18);
 transform:scale(.94);
 }
 
-/* =========================
-   OVERLAY
-========================= */
+/* ================= OVERLAY ================= */
 
 .overlay{
 position:fixed;
@@ -406,7 +381,6 @@ z-index:5;
 }
 
 @media(min-width:700px){
-
 .overlay{
 align-items:center;
 padding:20px;
@@ -416,12 +390,9 @@ padding:20px;
 height:92vh;
 border-radius:22px;
 }
-
 }
 
-/* =========================
-   ADMIN
-========================= */
+/* ================= ADMIN ================= */
 
 .admin-head{
 display:flex;
@@ -536,9 +507,7 @@ grid-template-columns:1fr 1fr;
 gap:7px;
 }
 
-/* =========================
-   LOGO
-========================= */
+/* ================= LOGO ================= */
 
 .logo-admin{
 display:grid;
@@ -602,9 +571,7 @@ font-size:10px;
 font-weight:800;
 }
 
-/* =========================
-   RENK
-========================= */
+/* ================= COLORS ================= */
 
 .color-grid{
 display:grid;
@@ -636,11 +603,11 @@ gap:5px;
 }
 
 .color-picker{
-width:29px !important;
-height:29px !important;
-padding:0 !important;
-border:0 !important;
-border-radius:7px !important;
+width:29px!important;
+height:29px!important;
+padding:0!important;
+border:0!important;
+border-radius:7px!important;
 flex:0 0 29px;
 cursor:pointer;
 }
@@ -670,9 +637,7 @@ color:#8B7D6C;
 font-size:11px;
 }
 
-/* =========================
-   PREVIEW
-========================= */
+/* ================= PREVIEW ================= */
 
 .preview-box{
 margin-top:10px;
@@ -720,9 +685,7 @@ font-size:12px;
 font-weight:800;
 }
 
-/* =========================
-   KATEGORİ / ÜRÜN
-========================= */
+/* ================= MENU ADMIN ================= */
 
 .category-admin{
 border:1px solid #DED3C3;
@@ -779,19 +742,13 @@ color:#AF5C55;
 font-size:9px;
 }
 
-.item-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:6px;
-}
-
 .availability{
 display:flex;
 align-items:center;
 gap:5px;
 color:#756A5D;
 font-size:9px;
-margin-top:6px;
+margin-top:8px;
 }
 
 .add-button{
@@ -805,9 +762,7 @@ font-size:9px;
 font-weight:800;
 }
 
-/* =========================
-   KAYDET
-========================= */
+/* ================= SAVE ================= */
 
 .status{
 min-height:18px;
@@ -833,9 +788,7 @@ box-shadow:0 8px 20px rgba(124,137,87,.20);
 opacity:.65;
 }
 
-/* =========================
-   PIN
-========================= */
+/* ================= PIN ================= */
 
 .pin-panel{
 width:calc(100% - 24px);
@@ -864,7 +817,7 @@ margin-bottom:13px;
 .pin-input{
 text-align:center;
 letter-spacing:.35em;
-font-size:18px !important;
+font-size:18px!important;
 }
 
 .pin-login{
@@ -918,11 +871,6 @@ padding-left:12px;
 padding-right:12px;
 }
 
-.admin-save-area{
-padding-bottom:
-calc(10px + env(safe-area-inset-bottom));
-}
-
 .main-save{
 min-height:48px;
 }
@@ -943,14 +891,10 @@ align-items:center;
 justify-content:center;
 color:#817366;
 font-size:13px;
-padding:25px;
+padding:20px;
 text-align:center;
 ">
-
-<div>
-Menü yükleniyor...
-</div>
-
+Menü yükleniyor…
 </div>
 
 </div>
@@ -958,16 +902,11 @@ Menü yükleniyor...
 <button
 id="settingsButton"
 class="settings-button"
-aria-label="Yönetim paneli"
->
+aria-label="Yönetim paneli">
 ⚙
 </button>
 
 <script>
-
-document.addEventListener("DOMContentLoaded", function(){
-
-"use strict";
 
 /* =========================================================
    SUPABASE
@@ -983,83 +922,58 @@ const MENU_ID =
 "00000000-0000-0000-0000-000000000001";
 
 
-/* =========================================================
-   SUPABASE KONTROL
-========================================================= */
+let supabaseClient;
 
-if(
-typeof window.supabase === "undefined"
-){
+try{
 
-document.getElementById("app").innerHTML = `
+if(!window.supabase){
 
-<div style="
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:25px;
-text-align:center;
-font-family:Arial,sans-serif;
-">
-
-<div>
-
-<div style="
-font-size:22px;
-font-weight:bold;
-color:#4E282C;
-margin-bottom:10px;
-">
-Bağlantı başlatılamadı
-</div>
-
-<div style="
-font-size:13px;
-color:#817366;
-line-height:1.5;
-">
-Supabase JavaScript kütüphanesi yüklenemedi.
-<br>
-İnternet bağlantınızı kontrol edip sayfayı yenileyin.
-</div>
-
-</div>
-
-</div>
-
-`;
-
-return;
+throw new Error(
+"Supabase kütüphanesi yüklenemedi."
+);
 
 }
 
-
-const supabaseClient =
+supabaseClient =
 window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_ANON_KEY
 );
+
+}catch(error){
+
+showFatalError(
+"Supabase başlatılamadı",
+error.message
+);
+
+}
 
 
 /* =========================================================
    DEFAULT THEME
 ========================================================= */
 
-const DEFAULT_THEME = {
+const DEFAULT_THEME={
 
 background:"#F4EBDD",
 surface:"#FFFDF8",
 surfaceRaised:"#E9DDC9",
+
 heading:"#4E282C",
 text:"#493B32",
 muted:"#817366",
+
 accent:"#7C8957",
 accentText:"#4D5933",
+
 category:"#7C8957",
 categoryText:"#FFFDF5",
+
 price:"#A86143",
+
 border:"#D8CBB8",
+
 danger:"#B44E48"
 
 };
@@ -1069,7 +983,7 @@ danger:"#B44E48"
    DEFAULT DATA
 ========================================================= */
 
-const DEFAULT_DATA = {
+const DEFAULT_DATA={
 
 cafeName:"Katmerci Dayı",
 
@@ -1087,32 +1001,34 @@ categories:[]
 
 
 /* =========================================================
-   DEĞİŞKENLER
+   STATE
 ========================================================= */
 
-let menuData = null;
+let menuData=null;
+let activeCategory=null;
 
-let activeCategory = null;
+let adminUnlocked=false;
+let authenticatedPin="";
 
-let adminUnlocked = false;
-
-let authenticatedPin = "";
-
-let adminOverlay = null;
-
-let adminTab = "general";
+let adminOverlay=null;
+let adminTab="general";
 
 
 /* =========================================================
-   YARDIMCI
+   HELPERS
 ========================================================= */
 
 function uid(){
 
-return "id-" +
-Date.now().toString(36) +
-"-" +
-Math.random().toString(36).slice(2,8);
+return "id-"+
+
+Date.now().toString(36)+
+
+"-"+
+
+Math.random()
+.toString(36)
+.slice(2,9);
 
 }
 
@@ -1122,17 +1038,15 @@ function escapeHtml(value){
 return String(value ?? "")
 .replace(
 /[&<>"']/g,
-function(m){
+m=>({
 
-return {
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
-}[m];
 
-}
+}[m])
 );
 
 }
@@ -1147,9 +1061,10 @@ return escapeHtml(value);
 
 function money(value){
 
-return Number(value || 0)
-.toLocaleString("tr-TR") +
-" ₺";
+const number=
+Number(value||0);
+
+return number.toLocaleString("tr-TR")+" ₺";
 
 }
 
@@ -1157,8 +1072,72 @@ return Number(value || 0)
 function validColor(value){
 
 return /^#[0-9A-Fa-f]{6}$/.test(
-String(value || "")
+String(value||"")
 );
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showFatalError(title,message){
+
+const app=
+document.getElementById("app");
+
+if(!app)return;
+
+app.innerHTML=`
+
+<div style="
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:25px;
+text-align:center;
+">
+
+<div>
+
+<div style="
+font-family:'Playfair Display',serif;
+font-size:25px;
+color:#4E282C;
+margin-bottom:10px;
+">
+${escapeHtml(title)}
+</div>
+
+<div style="
+font-size:12px;
+color:#817366;
+line-height:1.6;
+max-width:360px;
+">
+${escapeHtml(message||"Bilinmeyen hata")}
+</div>
+
+<button
+onclick="location.reload()"
+style="
+margin-top:18px;
+padding:12px 22px;
+border:0;
+border-radius:10px;
+background:#7C8957;
+color:white;
+font-weight:800;
+">
+Tekrar Dene
+</button>
+
+</div>
+
+</div>
+`;
 
 }
 
@@ -1169,93 +1148,84 @@ String(value || "")
 
 function normalizeData(data){
 
-if(
-!data ||
-typeof data !== "object"
-){
+if(!data || typeof data!=="object"){
 
-data =
+data=
 JSON.parse(
 JSON.stringify(DEFAULT_DATA)
 );
 
 }
 
-data.cafeName =
-data.cafeName ||
-"Katmerci Dayı";
+if(!data.cafeName)
+data.cafeName="Katmerci Dayı";
 
-data.subtitle =
-data.subtitle ||
-"Gaziantepten gelen lezzet";
+if(!data.subtitle)
+data.subtitle="Gaziantepten gelen lezzet";
 
-data.logo =
-data.logo || "";
+data.logo=data.logo||"";
 
-if(!Array.isArray(data.categories)){
-
+if(!Array.isArray(data.categories))
 data.categories=[];
 
-}
 
-const oldTheme =
-data.theme || {};
+const old=data.theme||{};
 
 data.theme={
 
 background:
-oldTheme.background ||
+old.background||
 DEFAULT_THEME.background,
 
 surface:
-oldTheme.surface ||
+old.surface||
 DEFAULT_THEME.surface,
 
 surfaceRaised:
-oldTheme.surfaceRaised ||
+old.surfaceRaised||
 DEFAULT_THEME.surfaceRaised,
 
 heading:
-oldTheme.heading ||
+old.heading||
 DEFAULT_THEME.heading,
 
 text:
-oldTheme.text ||
+old.text||
 DEFAULT_THEME.text,
 
 muted:
-oldTheme.muted ||
+old.muted||
 DEFAULT_THEME.muted,
 
 accent:
-oldTheme.accent ||
-oldTheme.baseColor ||
+old.accent||
+old.baseColor||
 DEFAULT_THEME.accent,
 
 accentText:
-oldTheme.accentText ||
+old.accentText||
 DEFAULT_THEME.accentText,
 
 category:
-oldTheme.category ||
-oldTheme.categoryBg ||
+old.category||
+old.categoryBg||
 DEFAULT_THEME.category,
 
 categoryText:
-oldTheme.categoryText ||
+old.categoryText||
 DEFAULT_THEME.categoryText,
 
 price:
-oldTheme.price ||
+old.price||
 DEFAULT_THEME.price,
 
 border:
-oldTheme.border ||
+old.border||
 DEFAULT_THEME.border,
 
 danger:
-oldTheme.danger ||
-oldTheme.sold ||
+old.danger||
+old.sold||
 DEFAULT_THEME.danger
 
 };
@@ -1263,41 +1233,42 @@ DEFAULT_THEME.danger
 
 data.categories.forEach(category=>{
 
-category.id =
-category.id || uid();
+if(!category.id)
+category.id=uid();
 
-category.name =
-category.name || "Yeni kategori";
+if(!category.name)
+category.name="Yeni kategori";
 
-if(!Array.isArray(category.items)){
-
+if(!Array.isArray(category.items))
 category.items=[];
-
-}
 
 category.items.forEach(item=>{
 
-item.id =
-item.id || uid();
+if(!item.id)
+item.id=uid();
 
-item.name =
-item.name ?? "Yeni ürün";
+if(item.name===undefined)
+item.name="Yeni ürün";
 
-item.desc =
-item.desc ?? "";
+if(item.desc===undefined)
+item.desc="";
 
-item.price =
-Number(item.price) || 0;
+if(item.price===undefined)
+item.price=0;
 
-item.available =
-item.available !== false;
+if(item.available===undefined)
+item.available=true;
 
-item.image =
-item.image || "";
+if(item.image===undefined)
+item.image="";
+
+/* Eski veride kalori varsa bile sil */
+delete item.calories;
 
 });
 
 });
+
 
 return data;
 
@@ -1305,17 +1276,16 @@ return data;
 
 
 /* =========================================================
-   TEMA
+   APPLY THEME
 ========================================================= */
 
 function applyTheme(){
 
 if(!menuData)return;
 
-const t =
-menuData.theme;
+const t=menuData.theme;
 
-const root =
+const root=
 document.documentElement.style;
 
 root.setProperty("--bg",t.background);
@@ -1336,38 +1306,54 @@ root.setProperty("--danger",t.danger);
 
 
 /* =========================================================
-   MENÜYÜ YÜKLE
+   LOAD MENU
 ========================================================= */
 
 async function loadMenu(){
 
-const app =
-document.getElementById("app");
+if(!supabaseClient){
+
+showFatalError(
+"Supabase yok",
+"Supabase bağlantısı başlatılamadı."
+);
+
+return;
+
+}
+
 
 try{
 
-app.innerHTML = `
-
-<div style="
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#817366;
-font-size:13px;
-">
-Menü yükleniyor...
-</div>
-
-`;
-
-
-const result =
-await supabaseClient
+const request=
+supabaseClient
 .from("menus")
 .select("id,data")
 .eq("id",MENU_ID)
 .maybeSingle();
+
+
+const timeout=
+new Promise((_,reject)=>{
+
+setTimeout(()=>{
+
+reject(
+new Error(
+"Supabase bağlantısı zaman aşımına uğradı. İnternet bağlantınızı veya Supabase ayarlarını kontrol edin."
+)
+);
+
+},12000);
+
+});
+
+
+const result=
+await Promise.race([
+request,
+timeout
+]);
 
 
 if(result.error){
@@ -1377,38 +1363,34 @@ throw result.error;
 }
 
 
-if(
-result.data &&
-result.data.data
-){
+if(!result.data){
 
-menuData =
-normalizeData(
-result.data.data
-);
-
-}else{
-
-menuData =
-normalizeData(
-JSON.parse(
-JSON.stringify(DEFAULT_DATA)
-)
+throw new Error(
+"MENU_ID ile eşleşen menü bulunamadı."
 );
 
 }
 
 
-if(menuData.categories.length){
+if(!result.data.data){
 
-activeCategory =
-menuData.categories[0].id;
-
-}else{
-
-activeCategory = null;
+throw new Error(
+"Menü kaydı bulundu ancak data alanı boş."
+);
 
 }
+
+
+menuData=
+normalizeData(
+result.data.data
+);
+
+
+activeCategory=
+menuData.categories.length
+?menuData.categories[0].id
+:null;
 
 
 applyTheme();
@@ -1419,65 +1401,14 @@ renderCustomer();
 }catch(error){
 
 console.error(
-"SUPABASE LOAD ERROR:",
+"MENU LOAD ERROR:",
 error
 );
 
-app.innerHTML = `
-
-<div style="
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:25px;
-text-align:center;
-">
-
-<div>
-
-<div style="
-font-family:'Playfair Display',serif;
-color:#4E282C;
-font-size:24px;
-margin-bottom:10px;
-">
-Menü yüklenemedi
-</div>
-
-<div style="
-color:#817366;
-font-size:12px;
-line-height:1.6;
-max-width:360px;
-word-break:break-word;
-">
-${escapeHtml(
-error?.message ||
-"Supabase bağlantısı kurulamadı."
-)}
-</div>
-
-<button
-onclick="location.reload()"
-style="
-margin-top:16px;
-border:0;
-border-radius:9px;
-padding:12px 20px;
-background:#7C8957;
-color:white;
-font-weight:bold;
-"
->
-Tekrar Dene
-</button>
-
-</div>
-
-</div>
-
-`;
+showFatalError(
+"Menü yüklenemedi",
+error.message
+);
 
 }
 
@@ -1485,7 +1416,7 @@ Tekrar Dene
 
 
 /* =========================================================
-   MÜŞTERİ MENÜSÜ
+   CUSTOMER
 ========================================================= */
 
 function renderCustomer(){
@@ -1494,16 +1425,16 @@ if(!menuData)return;
 
 applyTheme();
 
-const app =
+const app=
 document.getElementById("app");
 
-const categories =
-menuData.categories || [];
+const categories=
+menuData.categories||[];
 
 
 if(!categories.length){
 
-app.innerHTML = `
+app.innerHTML=`
 
 <div class="menu-wrap">
 
@@ -1515,20 +1446,16 @@ ${
 menuData.logo
 
 ?`
-
 <img
 src="${escapeAttr(menuData.logo)}"
 alt=""
 >
-
 `
 
 :`
-
 <div class="logo-placeholder">
 ${escapeHtml(menuData.cafeName)}
 </div>
-
 `
 }
 
@@ -1558,7 +1485,6 @@ Henüz kategori eklenmemiş.
 </div>
 
 </div>
-
 `;
 
 return;
@@ -1566,7 +1492,7 @@ return;
 }
 
 
-let active =
+let active=
 categories.find(
 c=>c.id===activeCategory
 );
@@ -1574,63 +1500,54 @@ c=>c.id===activeCategory
 
 if(!active){
 
-active =
-categories[0];
-
-activeCategory =
-active.id;
+active=categories[0];
+activeCategory=active.id;
 
 }
 
 
-const logoHTML =
+const logoHTML=
 menuData.logo
 
 ?`
-
 <img
 src="${escapeAttr(menuData.logo)}"
-alt=""
+alt="${escapeAttr(menuData.cafeName)}"
 >
-
 `
 
 :`
-
 <div class="logo-placeholder">
 ${escapeHtml(menuData.cafeName)}
 </div>
-
 `;
 
 
-const tabsHTML =
+const tabsHTML=
 categories.map(category=>`
 
 <button
-class="tab ${category.id===active.id ? "active" : ""}"
-data-category="${escapeAttr(category.id)}"
->
+class="tab ${category.id===active.id?"active":""}"
+data-category="${escapeAttr(category.id)}">
 ${escapeHtml(category.name)}
 </button>
 
 `).join("");
 
 
-const productsHTML =
+const productsHTML=
 active.items.length
 
-? active.items.map(item=>{
+?active.items.map(item=>{
 
-const sold =
-item.available === false;
+const sold=
+item.available===false;
 
 
-const image =
+const image=
 item.image
 
 ?`
-
 <img
 class="product-image"
 src="${escapeAttr(item.image)}"
@@ -1638,21 +1555,18 @@ alt=""
 loading="lazy"
 onerror="this.style.display='none'"
 >
-
 `
 
 :`
-
 <div class="product-no-image">
 ✦
 </div>
-
 `;
 
 
 return `
 
-<div class="product-card ${sold ? "sold" : ""}">
+<div class="product-card ${sold?"sold":""}">
 
 ${image}
 
@@ -1667,11 +1581,9 @@ ${escapeHtml(item.name)}
 ${
 sold
 ?`
-
 <span class="sold-label">
 TÜKENDİ
 </span>
-
 `
 :""
 }
@@ -1688,12 +1600,11 @@ ${money(item.price)}
 
 ${
 item.desc
-?`
 
+?`
 <div class="product-desc">
 ${escapeHtml(item.desc)}
 </div>
-
 `
 :""
 }
@@ -1720,7 +1631,7 @@ Bu kategoride henüz ürün yok.
 `;
 
 
-app.innerHTML = `
+app.innerHTML=`
 
 <div class="menu-wrap">
 
@@ -1787,7 +1698,7 @@ document
 
 button.onclick=()=>{
 
-activeCategory =
+activeCategory=
 button.dataset.category;
 
 renderCustomer();
@@ -1805,14 +1716,12 @@ behavior:"smooth"
 
 
 /* =========================================================
-   AYAR BUTONU
+   SETTINGS BUTTON
 ========================================================= */
 
 document
 .getElementById("settingsButton")
-.addEventListener(
-"click",
-function(){
+.onclick=()=>{
 
 if(adminUnlocked){
 
@@ -1824,22 +1733,21 @@ showPinPanel();
 
 }
 
-}
-);
+};
 
 
 /* =========================================================
-   PIN
+   PIN PANEL
 ========================================================= */
 
 function showPinPanel(){
 
-const overlay =
+const overlay=
 document.createElement("div");
 
 overlay.className="overlay";
 
-overlay.innerHTML = `
+overlay.innerHTML=`
 
 <div class="pin-panel">
 
@@ -1849,8 +1757,7 @@ overlay.innerHTML = `
 
 <button
 class="close-button"
-id="pinClose"
->
+id="pinClose">
 ×
 </button>
 
@@ -1875,47 +1782,40 @@ placeholder="••••"
 
 <div
 id="pinError"
-class="error"
-></div>
+class="error">
+</div>
 
 <button
 id="pinLogin"
-class="pin-login"
->
+class="pin-login">
 Giriş Yap
 </button>
 
 </div>
-
 `;
 
 document.body.appendChild(overlay);
 
 
-overlay
-.querySelector("#pinClose")
-.onclick=()=>{
-
-overlay.remove();
-
-};
+overlay.querySelector("#pinClose")
+.onclick=()=>overlay.remove();
 
 
 const login=async()=>{
 
-const pin =
+const pin=
 document
 .getElementById("pinInput")
 .value
 .trim();
 
-const error =
+const error=
 document.getElementById("pinError");
 
 
 if(pin.length<4){
 
-error.textContent =
+error.textContent=
 "PIN en az 4 haneli olmalı.";
 
 return;
@@ -1923,13 +1823,13 @@ return;
 }
 
 
-error.textContent =
-"Kontrol ediliyor...";
+error.textContent=
+"Kontrol ediliyor…";
 
 
 try{
 
-const result =
+const result=
 await supabaseClient.rpc(
 "check_menu_pin",
 {
@@ -1946,16 +1846,16 @@ throw result.error;
 }
 
 
-const ok =
-result.data===true ||
-result.data==="true" ||
-result.data?.[0]===true ||
+const ok=
+result.data===true||
+result.data==="true"||
+result.data?.[0]===true||
 result.data?.[0]?.check_menu_pin===true;
 
 
 if(!ok){
 
-error.textContent =
+error.textContent=
 "PIN hatalı.";
 
 return;
@@ -1963,26 +1863,25 @@ return;
 }
 
 
-authenticatedPin =
-pin;
-
-adminUnlocked =
-true;
+authenticatedPin=pin;
+adminUnlocked=true;
 
 overlay.remove();
 
-adminTab =
-"general";
+adminTab="general";
 
 showAdminPanel();
 
 
-}catch(err){
+}catch(error){
 
-console.error(err);
+console.error(
+"PIN ERROR:",
+error
+);
 
-error.textContent =
-err.message ||
+error.textContent=
+error.message||
 "PIN kontrolü başarısız.";
 
 }
@@ -1990,37 +1889,28 @@ err.message ||
 };
 
 
-overlay
-.querySelector("#pinLogin")
+document
+.getElementById("pinLogin")
 .onclick=login;
 
 
-overlay
-.querySelector("#pinInput")
+document
+.getElementById("pinInput")
 .addEventListener(
 "keydown",
-e=>{
+event=>{
 
-if(e.key==="Enter"){
-
+if(event.key==="Enter")
 login();
 
-}
-
-}
-);
+});
 
 
 setTimeout(()=>{
 
-const input =
-document.getElementById("pinInput");
-
-if(input){
-
-input.focus();
-
-}
+document
+.getElementById("pinInput")
+?.focus();
 
 },100);
 
@@ -2033,13 +1923,11 @@ input.focus();
 
 function showAdminPanel(){
 
-if(adminOverlay){
-
+if(adminOverlay)
 adminOverlay.remove();
 
-}
 
-adminOverlay =
+adminOverlay=
 document.createElement("div");
 
 adminOverlay.className="overlay";
@@ -2053,9 +1941,13 @@ renderAdmin();
 }
 
 
+/* =========================================================
+   ADMIN RENDER
+========================================================= */
+
 function renderAdmin(){
 
-adminOverlay.innerHTML = `
+adminOverlay.innerHTML=`
 
 <div class="admin-panel">
 
@@ -2067,8 +1959,7 @@ Yönetim Paneli
 
 <button
 class="close-button"
-id="adminClose"
->
+id="adminClose">
 ×
 </button>
 
@@ -2078,22 +1969,19 @@ id="adminClose"
 
 <button
 class="admin-tab ${adminTab==="general"?"active":""}"
-data-admin-tab="general"
->
+data-admin-tab="general">
 GENEL
 </button>
 
 <button
 class="admin-tab ${adminTab==="theme"?"active":""}"
-data-admin-tab="theme"
->
+data-admin-tab="theme">
 RENK
 </button>
 
 <button
 class="admin-tab ${adminTab==="menu"?"active":""}"
-data-admin-tab="menu"
->
+data-admin-tab="menu">
 MENÜ
 </button>
 
@@ -2101,18 +1989,18 @@ MENÜ
 
 <div
 class="admin-scroll"
->
+id="adminScroll">
+
 <div id="adminContent"></div>
+
 </div>
 
 <div
 class="admin-save-area"
-id="adminSaveArea"
->
+id="adminSaveArea">
 </div>
 
 </div>
-
 `;
 
 
@@ -2121,7 +2009,6 @@ adminOverlay
 .onclick=()=>{
 
 adminOverlay.remove();
-
 adminOverlay=null;
 
 renderCustomer();
@@ -2135,7 +2022,7 @@ adminOverlay
 
 button.onclick=()=>{
 
-adminTab =
+adminTab=
 button.dataset.adminTab;
 
 renderAdmin();
@@ -2145,19 +2032,14 @@ renderAdmin();
 });
 
 
-if(adminTab==="general"){
-
+if(adminTab==="general")
 renderGeneral();
 
-}else if(adminTab==="theme"){
-
+else if(adminTab==="theme")
 renderTheme();
 
-}else{
-
+else
 renderMenuEditor();
-
-}
 
 }
 
@@ -2168,26 +2050,26 @@ renderMenuEditor();
 
 function renderSaveButton(statusId){
 
-const area =
-document.getElementById("adminSaveArea");
+const area=
+document.getElementById(
+"adminSaveArea"
+);
 
 if(!area)return;
 
 
-area.innerHTML = `
+area.innerHTML=`
 
 <div
 id="${statusId}"
-class="status"
-></div>
+class="status">
+</div>
 
 <button
 id="globalSaveButton"
-class="main-save"
->
+class="main-save">
 ✓ KAYDET
 </button>
-
 `;
 
 
@@ -2210,11 +2092,13 @@ document.getElementById(statusId)
 
 function renderGeneral(){
 
-const content =
-document.getElementById("adminContent");
+const content=
+document.getElementById(
+"adminContent"
+);
 
 
-content.innerHTML = `
+content.innerHTML=`
 
 <div class="admin-section">
 
@@ -2230,15 +2114,12 @@ ${
 menuData.logo
 
 ?`
-
 <img
 src="${escapeAttr(menuData.logo)}"
 >
-
 `
 
 :`
-
 <span style="
 color:#8B9966;
 font-family:'Playfair Display',serif;
@@ -2246,7 +2127,6 @@ font-size:12px;
 ">
 LOGO
 </span>
-
 `
 }
 
@@ -2268,8 +2148,7 @@ accept="image/png,image/jpeg,image/webp"
 
 <button
 class="small-button"
-id="removeLogo"
->
+id="removeLogo">
 Logoyu Kaldır
 </button>
 
@@ -2282,6 +2161,7 @@ PNG, JPG veya WEBP kullanabilirsiniz.
 </div>
 
 </div>
+
 
 <div class="admin-section">
 
@@ -2310,6 +2190,7 @@ class="form-textarea"
 
 </div>
 
+
 <div class="admin-section">
 
 <h3 class="section-title">
@@ -2333,15 +2214,13 @@ placeholder="Yeni PIN"
 
 <button
 id="changePin"
-class="small-button"
->
+class="small-button">
 PIN Değiştir
 </button>
 
 </div>
 
 </div>
-
 `;
 
 
@@ -2354,7 +2233,7 @@ document
 .getElementById("cafeName")
 .oninput=e=>{
 
-menuData.cafeName =
+menuData.cafeName=
 e.target.value;
 
 };
@@ -2364,7 +2243,7 @@ document
 .getElementById("cafeSubtitle")
 .oninput=e=>{
 
-menuData.subtitle =
+menuData.subtitle=
 e.target.value;
 
 };
@@ -2374,14 +2253,14 @@ document
 .getElementById("logoFile")
 .onchange=async e=>{
 
-const file =
+const file=
 e.target.files?.[0];
 
 if(!file)return;
 
 try{
 
-menuData.logo =
+menuData.logo=
 await resizeImage(
 file,
 600,
@@ -2416,13 +2295,13 @@ document
 .getElementById("changePin")
 .onclick=async()=>{
 
-const newPin =
+const newPin=
 document
 .getElementById("newPin")
 .value
 .trim();
 
-const status =
+const status=
 document.getElementById(
 "generalStatus"
 );
@@ -2430,7 +2309,7 @@ document.getElementById(
 
 if(newPin.length<4){
 
-status.textContent =
+status.textContent=
 "PIN en az 4 haneli olmalı.";
 
 return;
@@ -2438,13 +2317,13 @@ return;
 }
 
 
-status.textContent =
-"PIN değiştiriliyor...";
+status.textContent=
+"PIN değiştiriliyor…";
 
 
 try{
 
-const result =
+const result=
 await supabaseClient.rpc(
 "change_menu_pin",
 {
@@ -2455,23 +2334,20 @@ p_new_pin:newPin
 );
 
 
-if(result.error){
-
+if(result.error)
 throw result.error;
 
-}
 
-
-const ok =
-result.data===true ||
-result.data==="true" ||
-result.data?.[0]===true ||
+const ok=
+result.data===true||
+result.data==="true"||
+result.data?.[0]===true||
 result.data?.[0]?.change_menu_pin===true;
 
 
 if(!ok){
 
-status.textContent =
+status.textContent=
 "Eski PIN doğrulanamadı.";
 
 return;
@@ -2479,18 +2355,18 @@ return;
 }
 
 
-authenticatedPin =
+authenticatedPin=
 newPin;
 
-status.textContent =
+status.textContent=
 "✓ PIN başarıyla değiştirildi.";
 
 }catch(error){
 
 console.error(error);
 
-status.textContent =
-error.message ||
+status.textContent=
+error.message||
 "PIN değiştirilemedi.";
 
 }
@@ -2506,8 +2382,10 @@ error.message ||
 
 function renderTheme(){
 
-const content =
-document.getElementById("adminContent");
+const content=
+document.getElementById(
+"adminContent"
+);
 
 
 const colors=[
@@ -2529,7 +2407,7 @@ const colors=[
 ];
 
 
-content.innerHTML = `
+content.innerHTML=`
 
 <div class="admin-section">
 
@@ -2540,12 +2418,14 @@ Tema Renkleri
 <div class="color-grid">
 
 ${
-colors.map(([key,label])=>{
+colors.map(
+([key,label])=>{
 
-const value =
+const value=
 validColor(menuData.theme[key])
 ?menuData.theme[key]
 :"#000000";
+
 
 return `
 
@@ -2574,8 +2454,7 @@ maxlength="7"
 
 <button
 class="reset-color"
-data-reset-color="${key}"
->
+data-reset-color="${key}">
 ↺
 </button>
 
@@ -2585,22 +2464,20 @@ data-reset-color="${key}"
 
 `;
 
-}).join("")
+}
+).join("")
 }
 
 </div>
 
 <div class="section-note">
-
-Renk kutusundan seçim yapabilir veya HEX kodunu
-direkt yazabilirsiniz.
-
+Renk kutusundan seçim yapabilir veya HEX kodunu yazabilirsiniz.
+Değişiklikler anında önizlenir.
 </div>
 
 <div
 class="preview-box"
-id="themePreview"
->
+id="themePreview">
 
 <div class="preview-top">
 
@@ -2628,6 +2505,7 @@ Gaziantepten gelen lezzet
 
 </div>
 
+
 <div class="admin-section">
 
 <h3 class="section-title">
@@ -2638,47 +2516,41 @@ Hazır Temalar
 
 <button
 class="small-button"
-data-preset="green"
->
+data-preset="green">
 🌿 Bohem Yeşil
 </button>
 
 <button
 class="small-button"
-data-preset="brown"
->
+data-preset="brown">
 ☕ Kahve
 </button>
 
 </div>
 
-<br>
+<div style="height:6px"></div>
 
 <div class="two-col">
 
 <button
 class="small-button"
-data-preset="terracotta"
->
+data-preset="terracotta">
 🧱 Terracotta
 </button>
 
 <button
 class="small-button"
-data-preset="dark"
->
+data-preset="dark">
 ✦ Premium Koyu
 </button>
 
 </div>
 
 </div>
-
 `;
 
 
 bindColorEvents();
-
 bindPresetEvents();
 
 renderSaveButton(
@@ -2691,7 +2563,7 @@ updateThemePreview();
 
 
 /* =========================================================
-   COLOR
+   COLOR EVENTS
 ========================================================= */
 
 function bindColorEvents(){
@@ -2702,26 +2574,21 @@ document
 
 input.oninput=()=>{
 
-const key =
+const key=
 input.dataset.colorKey;
 
-menuData.theme[key] =
+menuData.theme[key]=
 input.value;
 
-const hex =
+const hex=
 document.querySelector(
 `[data-hex-key="${key}"]`
 );
 
-if(hex){
-
-hex.value =
-input.value.toUpperCase();
-
-}
+if(hex)
+hex.value=input.value.toUpperCase();
 
 applyTheme();
-
 updateThemePreview();
 
 };
@@ -2735,7 +2602,7 @@ document
 
 input.oninput=()=>{
 
-let value =
+let value=
 input.value
 .trim()
 .toUpperCase();
@@ -2753,26 +2620,20 @@ value="#"+value;
 
 if(validColor(value)){
 
-const key =
+const key=
 input.dataset.hexKey;
 
-menuData.theme[key] =
-value;
+menuData.theme[key]=value;
 
-const picker =
+const picker=
 document.querySelector(
 `[data-color-key="${key}"]`
 );
 
-if(picker){
-
-picker.value =
-value;
-
-}
+if(picker)
+picker.value=value;
 
 applyTheme();
-
 updateThemePreview();
 
 }
@@ -2788,10 +2649,10 @@ document
 
 button.onclick=()=>{
 
-const key =
+const key=
 button.dataset.resetColor;
 
-menuData.theme[key] =
+menuData.theme[key]=
 DEFAULT_THEME[key];
 
 renderAdmin();
@@ -2809,12 +2670,13 @@ renderAdmin();
 
 function updateThemePreview(){
 
-const preview =
+const preview=
 document.getElementById(
 "themePreview"
 );
 
 if(!preview)return;
+
 
 preview.style.setProperty(
 "--preview-bg",
@@ -2850,7 +2712,7 @@ menuData.theme.price
 
 
 /* =========================================================
-   PRESET
+   PRESETS
 ========================================================= */
 
 function bindPresetEvents(){
@@ -2861,14 +2723,16 @@ document
 
 button.onclick=()=>{
 
-const preset =
+const preset=
 button.dataset.preset;
 
 
 if(preset==="green"){
 
 menuData.theme={
+
 ...DEFAULT_THEME
+
 };
 
 }
@@ -2944,7 +2808,6 @@ danger:"#B64E48"
 
 
 applyTheme();
-
 renderAdmin();
 
 };
@@ -2955,16 +2818,18 @@ renderAdmin();
 
 
 /* =========================================================
-   MENÜ EDİTÖRÜ
+   MENU EDITOR
 ========================================================= */
 
 function renderMenuEditor(){
 
-const content =
-document.getElementById("adminContent");
+const content=
+document.getElementById(
+"adminContent"
+);
 
 
-const categoriesHTML =
+const categoriesHTML=
 menuData.categories.map(
 (category,index)=>`
 
@@ -2980,12 +2845,12 @@ value="${escapeAttr(category.name)}"
 
 <button
 class="delete-button"
-data-delete-category="${escapeAttr(category.id)}"
->
+data-delete-category="${escapeAttr(category.id)}">
 Sil
 </button>
 
 </div>
+
 
 ${
 category.items.map(
@@ -3002,12 +2867,12 @@ category.items.map(
 <button
 class="remove-item"
 data-delete-item="${escapeAttr(item.id)}"
-data-category-id="${escapeAttr(category.id)}"
->
+data-category-id="${escapeAttr(category.id)}">
 Ürünü sil
 </button>
 
 </div>
+
 
 <label class="form-label">
 Ürün adı
@@ -3019,6 +2884,7 @@ data-item-name="${escapeAttr(item.id)}"
 value="${escapeAttr(item.name)}"
 >
 
+
 <label class="form-label">
 Açıklama
 </label>
@@ -3029,9 +2895,6 @@ data-item-desc="${escapeAttr(item.id)}"
 value="${escapeAttr(item.desc)}"
 >
 
-<div class="item-grid">
-
-<div>
 
 <label class="form-label">
 Fiyat ₺
@@ -3046,9 +2909,6 @@ data-item-price="${escapeAttr(item.id)}"
 value="${Number(item.price)||0}"
 >
 
-</div>
-
-<div>
 
 <label class="form-label">
 Fotoğraf
@@ -3066,12 +2926,10 @@ data-item-file="${escapeAttr(item.id)}"
 
 </label>
 
-</div>
-
-</div>
 
 ${
 item.image
+
 ?`
 
 <div style="
@@ -3094,8 +2952,7 @@ border:1px solid #DDD2C1;
 
 <button
 class="small-button"
-data-remove-image="${escapeAttr(item.id)}"
->
+data-remove-image="${escapeAttr(item.id)}">
 Görseli kaldır
 </button>
 
@@ -3104,6 +2961,7 @@ Görseli kaldır
 `
 :""
 }
+
 
 <label class="form-label">
 veya görsel linki
@@ -3122,12 +2980,13 @@ String(item.image).startsWith("http")
 }"
 >
 
+
 <label class="availability">
 
 <input
 type="checkbox"
 data-item-available="${escapeAttr(item.id)}"
-${item.available!==false ? "checked" : ""}
+${item.available!==false?"checked":""}
 >
 
 Ürün satışta
@@ -3140,10 +2999,10 @@ ${item.available!==false ? "checked" : ""}
 ).join("")
 }
 
+
 <button
 class="add-button"
-data-add-item="${escapeAttr(category.id)}"
->
+data-add-item="${escapeAttr(category.id)}">
 + Ürün ekle
 </button>
 
@@ -3153,7 +3012,7 @@ data-add-item="${escapeAttr(category.id)}"
 ).join("");
 
 
-content.innerHTML = `
+content.innerHTML=`
 
 <div class="admin-section">
 
@@ -3165,13 +3024,11 @@ ${categoriesHTML}
 
 <button
 id="addCategory"
-class="add-button"
->
+class="add-button">
 + Yeni kategori ekle
 </button>
 
 </div>
-
 `;
 
 
@@ -3182,22 +3039,20 @@ document
 .getElementById("addCategory")
 .onclick=()=>{
 
-const newCategory={
+const category={
 
 id:uid(),
-
 name:"Yeni kategori",
-
 items:[]
 
 };
 
 menuData.categories.push(
-newCategory
+category
 );
 
-activeCategory =
-newCategory.id;
+activeCategory=
+category.id;
 
 renderAdmin();
 
@@ -3223,17 +3078,14 @@ document
 
 input.oninput=()=>{
 
-const category =
+const category=
 menuData.categories.find(
-c=>c.id===input.dataset.categoryName
+c=>c.id===
+input.dataset.categoryName
 );
 
-if(category){
-
-category.name =
-input.value;
-
-}
+if(category)
+category.name=input.value;
 
 };
 
@@ -3246,39 +3098,38 @@ document
 
 button.onclick=()=>{
 
-const id =
+const id=
 button.dataset.deleteCategory;
 
-const category =
+const category=
 menuData.categories.find(
 c=>c.id===id
 );
 
 if(!category)return;
 
-if(
-!confirm(
-`"${category.name}" kategorisi silinsin mi?`
-)
-){
 
+if(!confirm(
+`"${category.name}" kategorisi silinsin mi?`
+))
 return;
 
-}
 
-menuData.categories =
+menuData.categories=
 menuData.categories.filter(
 c=>c.id!==id
 );
 
+
 if(activeCategory===id){
 
-activeCategory =
+activeCategory=
 menuData.categories.length
 ?menuData.categories[0].id
 :null;
 
 }
+
 
 renderAdmin();
 
@@ -3327,17 +3178,11 @@ document
 
 input.oninput=()=>{
 
-let value =
+let value=
 Number(input.value);
 
-if(
-!Number.isFinite(value) ||
-value<0
-){
-
+if(!Number.isFinite(value)||value<0)
 value=0;
-
-}
 
 updateItem(
 input.dataset.itemPrice,
@@ -3373,23 +3218,25 @@ document
 
 button.onclick=()=>{
 
-const itemId =
+const itemId=
 button.dataset.deleteItem;
 
-const categoryId =
+const categoryId=
 button.dataset.categoryId;
 
-const category =
+const category=
 menuData.categories.find(
 c=>c.id===categoryId
 );
 
 if(!category)return;
 
-category.items =
+
+category.items=
 category.items.filter(
 item=>item.id!==itemId
 );
+
 
 renderAdmin();
 
@@ -3404,12 +3251,14 @@ document
 
 button.onclick=()=>{
 
-const category =
+const category=
 menuData.categories.find(
-c=>c.id===button.dataset.addItem
+c=>c.id===
+button.dataset.addItem
 );
 
 if(!category)return;
+
 
 category.items.push({
 
@@ -3427,6 +3276,7 @@ image:""
 
 });
 
+
 renderAdmin();
 
 };
@@ -3440,25 +3290,28 @@ document
 
 input.onchange=async()=>{
 
-const file =
+const file=
 input.files?.[0];
 
 if(!file)return;
 
+
 try{
 
-const image =
+const image=
 await resizeImage(
 file,
 480,
 .78
 );
 
+
 updateItem(
 input.dataset.itemFile,
 "image",
 image
 );
+
 
 renderAdmin();
 
@@ -3522,11 +3375,10 @@ renderAdmin();
 function updateItem(id,field,value){
 
 for(
-const category
-of menuData.categories
+const category of menuData.categories
 ){
 
-const item =
+const item=
 category.items.find(
 i=>i.id===id
 );
@@ -3545,22 +3397,22 @@ return;
 
 
 /* =========================================================
-   SAVE
+   SAVE MENU
 ========================================================= */
 
 async function saveMenu(status){
 
 if(!authenticatedPin){
 
-status.textContent =
-"Oturum bulunamadı.";
+status.textContent=
+"Oturum bulunamadı. Tekrar giriş yapın.";
 
 return;
 
 }
 
 
-const buttons =
+const buttons=
 document.querySelectorAll(
 ".main-save"
 );
@@ -3569,24 +3421,23 @@ document.querySelectorAll(
 buttons.forEach(button=>{
 
 button.disabled=true;
-
-button.textContent =
+button.textContent=
 "KAYDEDİLİYOR...";
 
 });
 
 
-status.textContent =
-"Supabase'e kaydediliyor...";
+status.textContent=
+"Supabase'e kaydediliyor…";
 
 
 try{
 
-menuData =
+menuData=
 normalizeData(menuData);
 
 
-const result =
+const result=
 await supabaseClient.rpc(
 "save_menu",
 {
@@ -3604,24 +3455,26 @@ throw result.error;
 }
 
 
-const ok =
-result.data===true ||
-result.data==="true" ||
-result.data?.[0]===true ||
-result.data?.[0]?.save_menu===true ||
+const ok=
+result.data===true||
+result.data==="true"||
+result.data?.[0]===true||
+result.data?.[0]?.save_menu===true||
 result.data?.result===true;
 
 
 if(!ok){
 
 throw new Error(
-"Menü kaydedilmedi. save_menu fonksiyonunu kontrol edin."
+"Menü kaydedilmedi. PIN veya save_menu yetkisini kontrol edin."
 );
 
 }
 
 
-const check =
+/* Tekrar oku */
+
+const check=
 await supabaseClient
 .from("menus")
 .select("id,data")
@@ -3629,34 +3482,29 @@ await supabaseClient
 .maybeSingle();
 
 
-if(check.error){
-
+if(check.error)
 throw check.error;
 
-}
 
-
-if(
-!check.data ||
-!check.data.data
-){
+if(!check.data||!check.data.data){
 
 throw new Error(
-"Kaydetme sonrası veri okunamadı."
+"Kaydetme sonrası menü doğrulanamadı."
 );
 
 }
 
 
-menuData =
+menuData=
 normalizeData(
 check.data.data
 );
 
+
 applyTheme();
 
 
-status.textContent =
+status.textContent=
 "✓ Başarıyla kaydedildi.";
 
 
@@ -3665,14 +3513,13 @@ setTimeout(()=>{
 if(adminOverlay){
 
 adminOverlay.remove();
-
 adminOverlay=null;
 
 }
 
 renderCustomer();
 
-},650);
+},700);
 
 
 }catch(error){
@@ -3682,10 +3529,11 @@ console.error(
 error
 );
 
-status.textContent =
+
+status.textContent=
 "Hata: "+
 (
-error.message ||
+error.message||
 "Menü kaydedilemedi."
 );
 
@@ -3693,8 +3541,7 @@ error.message ||
 buttons.forEach(button=>{
 
 button.disabled=false;
-
-button.textContent =
+button.textContent=
 "✓ KAYDET";
 
 });
@@ -3717,55 +3564,55 @@ quality
 return new Promise(
 (resolve,reject)=>{
 
-const reader =
+const reader=
 new FileReader();
 
-reader.onload =
-event=>{
 
-const image =
+reader.onload=event=>{
+
+const image=
 new Image();
+
 
 image.onload=()=>{
 
-let width =
+let width=
 image.width;
 
-let height =
+let height=
 image.height;
 
 
 if(
-width>maxSize ||
+width>maxSize||
 height>maxSize
 ){
 
-const ratio =
+const ratio=
 Math.min(
 maxSize/width,
 maxSize/height
 );
 
-width =
+width=
 Math.round(width*ratio);
 
-height =
+height=
 Math.round(height*ratio);
 
 }
 
 
-const canvas =
-document.createElement("canvas");
+const canvas=
+document.createElement(
+"canvas"
+);
 
-canvas.width =
-width;
-
-canvas.height =
-height;
+canvas.width=width;
+canvas.height=height;
 
 
-const ctx =
+const ctx=
 canvas.getContext("2d");
 
 
@@ -3788,32 +3635,28 @@ quality
 };
 
 
-image.onerror =
-reject;
+image.onerror=reject;
 
-image.src =
+image.src=
 event.target.result;
 
 };
 
 
-reader.onerror =
-reject;
+reader.onerror=reject;
 
 reader.readAsDataURL(file);
 
-}
+});
 
 }
 
 
 /* =========================================================
-   BAŞLAT
+   START
 ========================================================= */
 
 loadMenu();
-
-});
 
 </script>
 
