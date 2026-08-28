@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
 <meta charset="UTF-8">
 
 <meta
@@ -12,7 +10,10 @@ content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=
 
 <title>Katmerci Dayı Menü</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script
+defer
+src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,1671 +25,935 @@ rel="stylesheet"
 
 <style>
 
-/* =========================================================
-   TEMEL
-========================================================= */
-
 :root{
-
 --bg:#F4EBDD;
 --surface:#FFFDF8;
 --surface2:#E9DDC9;
-
 --heading:#4E282C;
 --text:#493B32;
 --muted:#817366;
-
 --accent:#7C8957;
 --accentText:#4D5933;
-
 --category:#7C8957;
 --categoryText:#FFFDF5;
-
 --price:#A86143;
-
 --border:#D8CBB8;
-
 --danger:#B44E48;
-
 }
 
 *{
-
 box-sizing:border-box;
-
 -webkit-tap-highlight-color:transparent;
-
 }
 
 html,
 body{
-
 margin:0;
 padding:0;
-
 min-height:100%;
-
 }
 
 body{
-
 background:var(--bg);
-
 color:var(--text);
-
 font-family:"DM Sans",sans-serif;
-
 overflow-x:hidden;
-
 }
 
 button,
 input,
 textarea{
-
 font-family:inherit;
-
 }
 
 button{
-
 cursor:pointer;
-
 }
 
 #app{
-
 min-height:100vh;
-
 }
 
-
-/* =========================================================
-   YÜKLENİYOR
-========================================================= */
-
-.loading-screen{
-
-min-height:100vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-color:#817366;
-
-font-size:13px;
-
-text-align:center;
-
-padding:20px;
-
-}
-
-.load-error{
-
-min-height:100vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-padding:25px;
-
-text-align:center;
-
-}
-
-.load-error-box{
-
-max-width:360px;
-
-}
-
-.load-error-title{
-
-font-family:"Playfair Display",serif;
-
-color:#4E282C;
-
-font-size:25px;
-
-margin-bottom:10px;
-
-}
-
-.load-error-message{
-
-color:#817366;
-
-font-size:12px;
-
-line-height:1.6;
-
-word-break:break-word;
-
-}
-
-.reload-button{
-
-margin-top:15px;
-
-border:0;
-
-border-radius:10px;
-
-padding:12px 22px;
-
-background:#7C8957;
-
-color:white;
-
-font-weight:800;
-
-}
-
-
-/* =========================================================
+/* =========================
    MENÜ
-========================================================= */
+========================= */
 
 .menu-wrap{
-
 width:100%;
-
 max-width:680px;
-
 margin:0 auto;
-
 min-height:100vh;
-
 padding-bottom:80px;
-
 }
 
 .hero{
-
 text-align:center;
-
 padding:28px 18px 24px;
-
 }
 
 .logo-box{
-
 width:104px;
-
 height:104px;
-
 border-radius:50%;
-
 margin:0 auto 16px;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 overflow:hidden;
-
 background:var(--surface);
-
 border:2px solid var(--accent);
-
 box-shadow:
-
 0 0 0 6px rgba(124,137,87,.10),
-
 0 12px 30px rgba(0,0,0,.10);
-
 }
 
 .logo-box img{
-
 width:100%;
-
 height:100%;
-
 object-fit:contain;
-
 }
 
 .logo-placeholder{
-
 padding:10px;
-
 color:var(--accent);
-
 font-family:"Playfair Display",serif;
-
 font-size:13px;
-
 font-weight:700;
-
 }
 
 .eyebrow{
-
 font-size:10px;
-
 letter-spacing:.45em;
-
 text-transform:uppercase;
-
 color:var(--accentText);
-
 margin-left:.45em;
-
 margin-bottom:9px;
-
 font-weight:700;
-
 }
 
 .cafe-title{
-
 margin:0;
-
 color:var(--heading);
-
 font-family:"Playfair Display",serif;
-
 font-size:clamp(38px,10vw,60px);
-
 line-height:1;
-
 letter-spacing:-.04em;
-
 font-weight:700;
-
 }
 
 .cafe-subtitle{
-
 max-width:470px;
-
 margin:11px auto 0;
-
 color:var(--muted);
-
 font-size:13px;
-
 line-height:1.5;
-
 }
 
-
-/* =========================================================
-   KATEGORİLER
-========================================================= */
+/* =========================
+   KATEGORİ
+========================= */
 
 .tabs-wrap{
-
 position:sticky;
-
 top:0;
-
 z-index:20;
-
 background:rgba(244,235,221,.94);
-
 backdrop-filter:blur(13px);
-
 -webkit-backdrop-filter:blur(13px);
-
 border-bottom:1px solid var(--border);
-
 }
 
 .tabs{
-
 display:flex;
-
 gap:7px;
-
 overflow-x:auto;
-
 padding:9px 13px;
-
 scrollbar-width:none;
-
 }
 
 .tabs::-webkit-scrollbar{
-
 display:none;
-
 }
 
 .tab{
-
 flex:0 0 auto;
-
 min-width:82px;
-
 height:38px;
-
 padding:0 14px;
-
 border-radius:999px;
-
 border:1px solid var(--border);
-
 background:var(--surface);
-
 color:var(--muted);
-
 font-size:11px;
-
 font-weight:700;
-
 white-space:nowrap;
-
 transition:.2s ease;
-
 }
 
 .tab.active{
-
 background:var(--accent);
-
 border-color:var(--accent);
-
 color:var(--categoryText);
-
 box-shadow:0 6px 18px rgba(124,137,87,.20);
-
 }
 
-
-/* =========================================================
+/* =========================
    ÜRÜNLER
-========================================================= */
+========================= */
 
 .category-area{
-
 padding:21px 14px 0;
-
 }
 
 .category-heading{
-
 display:inline-flex;
-
 align-items:center;
-
 gap:8px;
-
 padding:9px 16px;
-
 border-radius:14px;
-
 background:var(--category);
-
 color:var(--categoryText);
-
 font-family:"Playfair Display",serif;
-
 font-size:18px;
-
 font-weight:700;
-
 box-shadow:0 8px 20px rgba(0,0,0,.08);
-
 margin-bottom:13px;
-
 }
 
 .category-dot{
-
 width:7px;
-
 height:7px;
-
 border-radius:50%;
-
 background:var(--price);
-
 }
 
 .products{
-
 display:flex;
-
 flex-direction:column;
-
 gap:8px;
-
 }
 
 .product-card{
-
 display:flex;
-
 align-items:center;
-
 gap:10px;
-
 min-height:72px;
-
 padding:8px 9px;
-
 background:var(--surface);
-
 border:1px solid var(--border);
-
 border-radius:15px;
-
 box-shadow:0 5px 18px rgba(63,42,29,.08);
-
 }
 
 .product-image,
 .product-no-image{
-
 width:55px;
-
 height:55px;
-
 flex:0 0 55px;
-
 border-radius:11px;
-
 object-fit:cover;
-
 border:1px solid var(--border);
-
 background:var(--surface2);
-
 }
 
 .product-no-image{
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 color:var(--accent);
-
 font-family:"Playfair Display",serif;
-
 font-size:19px;
-
 }
 
 .product-info{
-
 flex:1;
-
 min-width:0;
-
 }
 
 .product-top{
-
 display:flex;
-
 align-items:baseline;
-
 gap:6px;
-
-width:100%;
-
 }
 
 .product-name{
-
 color:var(--heading);
-
 font-size:13.5px;
-
 line-height:1.25;
-
 font-weight:700;
-
 }
 
 .product-desc{
-
 margin-top:3px;
-
 color:var(--muted);
-
 font-size:10.5px;
-
 line-height:1.35;
-
 }
 
 .dots{
-
 flex:1;
-
 min-width:10px;
-
 border-bottom:1px dotted var(--border);
-
 margin-bottom:4px;
-
 }
 
 .product-price{
-
 color:var(--price);
-
 white-space:nowrap;
-
 font-family:"Playfair Display",serif;
-
 font-size:14.5px;
-
 font-weight:700;
-
 }
 
 .product-card.sold{
-
 opacity:.52;
-
 }
 
 .product-card.sold .product-name{
-
 text-decoration:line-through;
-
 }
 
 .sold-label{
-
 color:var(--danger);
-
 font-size:8px;
-
 margin-left:5px;
-
 letter-spacing:.06em;
-
 }
 
 .menu-footer{
-
 text-align:center;
-
 padding:30px 20px 8px;
-
 color:var(--muted);
-
 font-size:10px;
-
 }
 
 .footer-line{
-
 width:50px;
-
 height:1px;
-
 background:var(--border);
-
 margin:0 auto 11px;
-
 }
 
-
-/* =========================================================
-   AYAR BUTONU
-========================================================= */
+/* =========================
+   AYAR
+========================= */
 
 .settings-button{
-
 position:fixed;
-
 right:15px;
-
 bottom:15px;
-
 z-index:30;
-
 width:44px;
-
 height:44px;
-
 border-radius:50%;
-
 border:1px solid var(--accent);
-
 background:var(--accent);
-
 color:#fff;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 font-size:18px;
-
 box-shadow:0 8px 25px rgba(0,0,0,.18);
-
 }
 
 .settings-button:active{
-
 transform:scale(.94);
-
 }
 
-
-/* =========================================================
+/* =========================
    OVERLAY
-========================================================= */
+========================= */
 
 .overlay{
-
 position:fixed;
-
 inset:0;
-
 z-index:100;
-
 background:rgba(35,25,18,.58);
-
 backdrop-filter:blur(7px);
-
 -webkit-backdrop-filter:blur(7px);
-
 display:flex;
-
 align-items:flex-end;
-
 justify-content:center;
-
 }
 
 .admin-panel{
-
 width:100%;
-
 max-width:680px;
-
 height:94vh;
-
 display:flex;
-
 flex-direction:column;
-
 background:#F8F2E7;
-
 color:#352D26;
-
 border-radius:22px 22px 0 0;
-
 padding:15px 14px 0;
-
 box-shadow:0 -15px 50px rgba(0,0,0,.30);
-
 overflow:hidden;
-
 }
 
 .admin-scroll{
-
 flex:1;
-
 overflow-y:auto;
-
 padding-bottom:20px;
-
 -webkit-overflow-scrolling:touch;
-
 }
 
 .admin-save-area{
-
 flex:0 0 auto;
-
 background:#F8F2E7;
-
 border-top:1px solid #D8CCBB;
-
 padding:9px 0 calc(9px + env(safe-area-inset-bottom));
-
 z-index:5;
-
 }
 
 @media(min-width:700px){
 
 .overlay{
-
 align-items:center;
-
 padding:20px;
-
 }
 
 .admin-panel{
-
 height:92vh;
-
 border-radius:22px;
-
 }
 
 }
 
-
-/* =========================================================
+/* =========================
    ADMIN
-========================================================= */
+========================= */
 
 .admin-head{
-
 display:flex;
-
 align-items:center;
-
 justify-content:space-between;
-
 margin-bottom:12px;
-
 flex:0 0 auto;
-
 }
 
 .admin-title{
-
 margin:0;
-
 font-family:"Playfair Display",serif;
-
 font-size:23px;
-
 color:#352D26;
-
 }
 
 .close-button{
-
 width:35px;
-
 height:35px;
-
 border-radius:50%;
-
 border:1px solid #D7CCBB;
-
 background:#FFFDF8;
-
 color:#706557;
-
 font-size:18px;
-
 }
 
 .admin-tabs{
-
 display:flex;
-
 gap:5px;
-
 padding:4px;
-
 background:#EDE3D4;
-
 border-radius:11px;
-
 margin-bottom:12px;
-
 flex:0 0 auto;
-
 }
 
 .admin-tab{
-
 flex:1;
-
 height:35px;
-
 border:0;
-
 border-radius:8px;
-
 background:transparent;
-
 color:#776C60;
-
 font-size:10.5px;
-
 font-weight:800;
-
 }
 
 .admin-tab.active{
-
 background:#FFFDF8;
-
 color:#352D26;
-
 box-shadow:0 2px 8px rgba(0,0,0,.06);
-
 }
 
 .admin-section{
-
 background:#FFFDF8;
-
 border:1px solid #DDD2C1;
-
 border-radius:15px;
-
 padding:12px;
-
 margin-bottom:10px;
-
 }
 
 .section-title{
-
 margin:0 0 10px;
-
 color:#40372E;
-
 font-size:13px;
-
 font-weight:800;
-
 }
 
 .section-note{
-
 color:#8B7F70;
-
 font-size:9.5px;
-
 line-height:1.45;
-
 margin-top:6px;
-
 }
 
 .form-label{
-
 display:block;
-
 margin:9px 0 4px;
-
 color:#776B5C;
-
 font-size:9px;
-
 font-weight:800;
-
 letter-spacing:.07em;
-
 text-transform:uppercase;
-
 }
 
 .form-input,
 .form-textarea{
-
 width:100%;
-
 border:1px solid #D8CCBB;
-
 border-radius:9px;
-
 background:#FBF7EF;
-
 color:#352D26;
-
 padding:9px 10px;
-
 font-size:12px;
-
 outline:none;
-
 }
 
 .form-input:focus,
 .form-textarea:focus{
-
 border-color:#8B9966;
-
 box-shadow:0 0 0 3px rgba(124,137,87,.10);
-
 }
 
 .form-textarea{
-
 min-height:60px;
-
 resize:vertical;
-
 }
 
 .two-col{
-
 display:grid;
-
 grid-template-columns:1fr 1fr;
-
 gap:7px;
-
 }
 
-
-/* =========================================================
+/* =========================
    LOGO
-========================================================= */
+========================= */
 
 .logo-admin{
-
 display:grid;
-
 grid-template-columns:80px 1fr;
-
 gap:11px;
-
 align-items:center;
-
 }
 
 .logo-preview{
-
 width:80px;
-
 height:80px;
-
 border-radius:15px;
-
 background:#F8F2E7;
-
 border:1px solid #D8CCBB;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 overflow:hidden;
-
 }
 
 .logo-preview img{
-
 width:100%;
-
 height:100%;
-
 object-fit:contain;
-
 }
 
 .logo-actions{
-
 display:flex;
-
 flex-direction:column;
-
 gap:6px;
-
 }
 
 .file-button{
-
 position:relative;
-
 overflow:hidden;
-
 min-height:34px;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 border-radius:8px;
-
 background:#7C8957;
-
 color:#fff;
-
 font-size:10px;
-
 font-weight:800;
-
 }
 
 .file-button input{
-
 position:absolute;
-
 inset:0;
-
 opacity:0;
-
 cursor:pointer;
-
 }
 
 .small-button{
-
 min-height:34px;
-
 border-radius:8px;
-
 border:1px solid #D7CCBB;
-
 background:#FFFDF8;
-
 color:#62584D;
-
 font-size:10px;
-
 font-weight:800;
-
 }
 
-
-/* =========================================================
+/* =========================
    RENK
-========================================================= */
+========================= */
 
 .color-grid{
-
 display:grid;
-
 grid-template-columns:1fr 1fr;
-
 gap:6px;
-
 }
 
 .color-control{
-
 border:1px solid #DED3C3;
-
 background:#FAF6EE;
-
 border-radius:10px;
-
 padding:7px;
-
 }
 
 .color-name{
-
 color:#716657;
-
 font-size:8.5px;
-
 font-weight:800;
-
 margin-bottom:5px;
-
 white-space:nowrap;
-
 overflow:hidden;
-
 text-overflow:ellipsis;
-
 }
 
 .color-row{
-
 display:flex;
-
 align-items:center;
-
 gap:5px;
-
 }
 
 .color-picker{
-
 width:29px !important;
-
 height:29px !important;
-
 padding:0 !important;
-
 border:0 !important;
-
 border-radius:7px !important;
-
 flex:0 0 29px;
-
 cursor:pointer;
-
 }
 
 .hex-input{
-
 min-width:0;
-
 flex:1;
-
 height:29px;
-
 border:1px solid #D8CCBB;
-
 border-radius:7px;
-
 background:#FFFDF8;
-
 color:#4A4037;
-
 padding:0 6px;
-
 font-family:monospace;
-
 font-size:9px;
-
 text-transform:uppercase;
-
 }
 
 .reset-color{
-
 width:27px;
-
 height:27px;
-
 flex:0 0 27px;
-
 border-radius:50%;
-
 border:1px solid #D8CCBB;
-
 background:#FFFDF8;
-
 color:#8B7D6C;
-
 font-size:11px;
-
 }
 
-
-/* =========================================================
-   ÖNİZLEME
-========================================================= */
+/* =========================
+   PREVIEW
+========================= */
 
 .preview-box{
-
 margin-top:10px;
-
 padding:10px;
-
 border-radius:11px;
-
 background:var(--preview-bg);
-
 border:1px solid var(--preview-border);
-
 }
 
 .preview-top{
-
 display:flex;
-
 align-items:center;
-
 gap:8px;
-
 }
 
 .preview-circle{
-
 width:34px;
-
 height:34px;
-
 flex:0 0 34px;
-
 border-radius:50%;
-
 background:var(--preview-accent);
-
 }
 
 .preview-text{
-
 flex:1;
-
 }
 
 .preview-title{
-
 color:var(--preview-heading);
-
 font-family:"Playfair Display",serif;
-
 font-size:13px;
-
 font-weight:700;
-
 }
 
 .preview-sub{
-
 color:var(--preview-muted);
-
 font-size:9px;
-
 margin-top:2px;
-
 }
 
 .preview-price{
-
 color:var(--preview-price);
-
 font-family:"Playfair Display",serif;
-
 font-size:12px;
-
 font-weight:800;
-
 }
 
-
-/* =========================================================
-   KATEGORİ / ÜRÜN ADMİN
-========================================================= */
+/* =========================
+   KATEGORİ / ÜRÜN
+========================= */
 
 .category-admin{
-
 border:1px solid #DED3C3;
-
 background:#FAF6EE;
-
 border-radius:11px;
-
 padding:8px;
-
 margin-bottom:7px;
-
 }
 
 .category-head{
-
 display:flex;
-
 gap:6px;
-
 }
 
 .category-head input{
-
 flex:1;
-
 }
 
 .delete-button{
-
 min-height:33px;
-
 padding:0 9px;
-
 border-radius:7px;
-
 border:1px solid #CF8A83;
-
 background:#FFF7F5;
-
 color:#A94741;
-
 font-size:9px;
-
 font-weight:800;
-
 }
 
 .item-admin{
-
 margin-top:7px;
-
 padding:8px;
-
 background:#FFFDF8;
-
 border:1px solid #E3D9C9;
-
 border-radius:9px;
-
 }
 
 .item-admin-top{
-
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
-
 }
 
 .item-number{
-
 color:#978875;
-
 font-size:8px;
-
 font-weight:800;
-
 }
 
 .remove-item{
-
 border:0;
-
 background:none;
-
 color:#AF5C55;
-
 font-size:9px;
-
 }
 
 .item-grid{
-
 display:grid;
-
-grid-template-columns:1fr;
-
+grid-template-columns:1fr 1fr;
 gap:6px;
-
 }
 
 .availability{
-
 display:flex;
-
 align-items:center;
-
 gap:5px;
-
 color:#756A5D;
-
 font-size:9px;
-
 margin-top:6px;
-
 }
 
 .add-button{
-
 width:100%;
-
 min-height:35px;
-
 border-radius:8px;
-
 border:1px dashed #BBAF9C;
-
 background:#FFFDF8;
-
 color:#6E6255;
-
 font-size:9px;
-
 font-weight:800;
-
 }
 
-
-/* =========================================================
+/* =========================
    KAYDET
-========================================================= */
+========================= */
 
 .status{
-
 min-height:18px;
-
 text-align:center;
-
 color:#6E6255;
-
 font-size:9.5px;
-
 margin:4px 0;
-
 }
 
 .main-save{
-
 width:100%;
-
 min-height:46px;
-
 border:0;
-
 border-radius:11px;
-
 background:#7C8957;
-
 color:#fff;
-
 font-size:12px;
-
 font-weight:800;
-
 box-shadow:0 8px 20px rgba(124,137,87,.20);
-
-transition:.18s ease;
-
-}
-
-.main-save:active{
-
-transform:scale(.985);
-
 }
 
 .main-save:disabled{
-
 opacity:.65;
-
 }
 
-
-/* =========================================================
+/* =========================
    PIN
-========================================================= */
+========================= */
 
 .pin-panel{
-
 width:calc(100% - 24px);
-
 max-width:370px;
-
 background:#FFFDF8;
-
 color:#352D26;
-
 border-radius:18px;
-
 padding:18px;
-
 margin:auto;
-
 }
 
 .pin-title{
-
 text-align:center;
-
 font-family:"Playfair Display",serif;
-
 font-size:23px;
-
 margin:0 0 3px;
-
 }
 
 .pin-subtitle{
-
 text-align:center;
-
 color:#897D6E;
-
 font-size:10px;
-
 margin-bottom:13px;
-
 }
 
 .pin-input{
-
 text-align:center;
-
 letter-spacing:.35em;
-
 font-size:18px !important;
-
 }
 
 .pin-login{
-
 width:100%;
-
 margin-top:9px;
-
 min-height:42px;
-
 border:0;
-
 border-radius:9px;
-
 background:#7C8957;
-
 color:#fff;
-
 font-weight:800;
-
 }
 
 .error{
-
 text-align:center;
-
 color:#B14C46;
-
 font-size:10px;
-
 margin-top:7px;
-
 }
-
-
-/* =========================================================
-   MOBİL
-========================================================= */
 
 @media(max-width:480px){
 
 .hero{
-
 padding-top:24px;
-
 }
 
 .logo-box{
-
 width:94px;
-
 height:94px;
-
 }
 
 .cafe-title{
-
 font-size:39px;
-
 }
 
 .category-area{
-
 padding-left:12px;
-
 padding-right:12px;
-
 }
 
 .product-image,
 .product-no-image{
-
 width:53px;
-
 height:53px;
-
 flex-basis:53px;
-
-}
-
-.item-grid{
-
-grid-template-columns:1fr;
-
 }
 
 .admin-panel{
-
 height:96vh;
-
 padding-left:12px;
-
 padding-right:12px;
-
 }
 
 .admin-save-area{
-
 padding-bottom:
 calc(10px + env(safe-area-inset-bottom));
-
 }
 
 .main-save{
-
 min-height:48px;
-
-font-size:12px;
-
 }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
 <div id="app">
 
-<div class="loading-screen">
+<div style="
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#817366;
+font-size:13px;
+padding:25px;
+text-align:center;
+">
 
-Menü yükleniyor…
-
+<div>
+Menü yükleniyor...
 </div>
 
 </div>
 
+</div>
 
 <button
 id="settingsButton"
@@ -1698,8 +963,11 @@ aria-label="Yönetim paneli"
 ⚙
 </button>
 
-
 <script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+"use strict";
 
 /* =========================================================
    SUPABASE
@@ -1708,66 +976,90 @@ aria-label="Yönetim paneli"
 const SUPABASE_URL =
 "https://cwofalezjvuxppmwipmc.supabase.co";
 
-
 const SUPABASE_ANON_KEY =
 "sb_publishable_n9xGFNXF-wl4C-BFLBGmeg_hsKy9GtU";
-
 
 const MENU_ID =
 "00000000-0000-0000-0000-000000000001";
 
 
-let supabaseClient;
+/* =========================================================
+   SUPABASE KONTROL
+========================================================= */
+
+if(
+typeof window.supabase === "undefined"
+){
+
+document.getElementById("app").innerHTML = `
+
+<div style="
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:25px;
+text-align:center;
+font-family:Arial,sans-serif;
+">
+
+<div>
+
+<div style="
+font-size:22px;
+font-weight:bold;
+color:#4E282C;
+margin-bottom:10px;
+">
+Bağlantı başlatılamadı
+</div>
+
+<div style="
+font-size:13px;
+color:#817366;
+line-height:1.5;
+">
+Supabase JavaScript kütüphanesi yüklenemedi.
+<br>
+İnternet bağlantınızı kontrol edip sayfayı yenileyin.
+</div>
+
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
 
 
-try{
-
-supabaseClient =
+const supabaseClient =
 window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_ANON_KEY
 );
 
-}catch(error){
-
-console.error(
-"SUPABASE INIT ERROR:",
-error
-);
-
-}
-
 
 /* =========================================================
-   DEFAULT TEMA
+   DEFAULT THEME
 ========================================================= */
 
 const DEFAULT_THEME = {
 
 background:"#F4EBDD",
-
 surface:"#FFFDF8",
-
 surfaceRaised:"#E9DDC9",
-
 heading:"#4E282C",
-
 text:"#493B32",
-
 muted:"#817366",
-
 accent:"#7C8957",
-
 accentText:"#4D5933",
-
 category:"#7C8957",
-
 categoryText:"#FFFDF5",
-
 price:"#A86143",
-
 border:"#D8CBB8",
-
 danger:"#B44E48"
 
 };
@@ -1798,17 +1090,17 @@ categories:[]
    DEĞİŞKENLER
 ========================================================= */
 
-let menuData=null;
+let menuData = null;
 
-let activeCategory=null;
+let activeCategory = null;
 
-let adminUnlocked=false;
+let adminUnlocked = false;
 
-let authenticatedPin="";
+let authenticatedPin = "";
 
-let adminOverlay=null;
+let adminOverlay = null;
 
-let adminTab="general";
+let adminTab = "general";
 
 
 /* =========================================================
@@ -1820,9 +1112,7 @@ function uid(){
 return "id-" +
 Date.now().toString(36) +
 "-" +
-Math.random()
-.toString(36)
-.slice(2,8);
+Math.random().toString(36).slice(2,8);
 
 }
 
@@ -1835,17 +1125,11 @@ return String(value ?? "")
 function(m){
 
 return {
-
 "&":"&amp;",
-
 "<":"&lt;",
-
 ">":"&gt;",
-
 '"':"&quot;",
-
 "'":"&#039;"
-
 }[m];
 
 }
@@ -1863,8 +1147,8 @@ return escapeHtml(value);
 
 function money(value){
 
-return Number(value||0)
-.toLocaleString("tr-TR")+
+return Number(value || 0)
+.toLocaleString("tr-TR") +
 " ₺";
 
 }
@@ -1873,14 +1157,14 @@ return Number(value||0)
 function validColor(value){
 
 return /^#[0-9A-Fa-f]{6}$/.test(
-String(value||"")
+String(value || "")
 );
 
 }
 
 
 /* =========================================================
-   VERİYİ DÜZENLE
+   NORMALIZE
 ========================================================= */
 
 function normalizeData(data){
@@ -1897,26 +1181,16 @@ JSON.stringify(DEFAULT_DATA)
 
 }
 
-
-if(!data.cafeName){
-
 data.cafeName =
+data.cafeName ||
 "Katmerci Dayı";
 
-}
-
-
-if(!data.subtitle){
-
 data.subtitle =
+data.subtitle ||
 "Gaziantepten gelen lezzet";
-
-}
-
 
 data.logo =
 data.logo || "";
-
 
 if(!Array.isArray(data.categories)){
 
@@ -1924,85 +1198,76 @@ data.categories=[];
 
 }
 
-
-const old =
+const oldTheme =
 data.theme || {};
-
 
 data.theme={
 
 background:
-old.background ||
+oldTheme.background ||
 DEFAULT_THEME.background,
 
 surface:
-old.surface ||
+oldTheme.surface ||
 DEFAULT_THEME.surface,
 
 surfaceRaised:
-old.surfaceRaised ||
+oldTheme.surfaceRaised ||
 DEFAULT_THEME.surfaceRaised,
 
 heading:
-old.heading ||
+oldTheme.heading ||
 DEFAULT_THEME.heading,
 
 text:
-old.text ||
+oldTheme.text ||
 DEFAULT_THEME.text,
 
 muted:
-old.muted ||
+oldTheme.muted ||
 DEFAULT_THEME.muted,
 
 accent:
-old.accent ||
-old.baseColor ||
+oldTheme.accent ||
+oldTheme.baseColor ||
 DEFAULT_THEME.accent,
 
 accentText:
-old.accentText ||
+oldTheme.accentText ||
 DEFAULT_THEME.accentText,
 
 category:
-old.category ||
-old.categoryBg ||
+oldTheme.category ||
+oldTheme.categoryBg ||
 DEFAULT_THEME.category,
 
 categoryText:
-old.categoryText ||
+oldTheme.categoryText ||
 DEFAULT_THEME.categoryText,
 
 price:
-old.price ||
+oldTheme.price ||
 DEFAULT_THEME.price,
 
 border:
-old.border ||
+oldTheme.border ||
 DEFAULT_THEME.border,
 
 danger:
-old.danger ||
-old.sold ||
+oldTheme.danger ||
+oldTheme.sold ||
 DEFAULT_THEME.danger
 
 };
 
 
-data.categories.forEach(
-category=>{
+data.categories.forEach(category=>{
 
-if(!category.id){
+category.id =
+category.id || uid();
 
-category.id=uid();
-
-}
-
-if(!category.name){
-
-category.name="Yeni kategori";
-
-}
+category.name =
+category.name || "Yeni kategori";
 
 if(!Array.isArray(category.items)){
 
@@ -2010,62 +1275,29 @@ category.items=[];
 
 }
 
-category.items.forEach(
-item=>{
+category.items.forEach(item=>{
 
-if(!item.id){
+item.id =
+item.id || uid();
 
-item.id=uid();
+item.name =
+item.name ?? "Yeni ürün";
 
-}
+item.desc =
+item.desc ?? "";
 
-if(item.name===undefined){
+item.price =
+Number(item.price) || 0;
 
-item.name="Yeni ürün";
+item.available =
+item.available !== false;
 
-}
+item.image =
+item.image || "";
 
-if(item.desc===undefined){
+});
 
-item.desc="";
-
-}
-
-if(item.price===undefined){
-
-item.price=0;
-
-}
-
-if(item.available===undefined){
-
-item.available=true;
-
-}
-
-if(item.image===undefined){
-
-item.image="";
-
-}
-
-/*
-Eski veride calories varsa
-dokunmuyoruz.
-
-Böylece eski Supabase verisi
-bozulmaz.
-
-Ama artık arayüzde
-kalori kullanılmaz.
-*/
-
-}
-);
-
-}
-);
-
+});
 
 return data;
 
@@ -2073,7 +1305,7 @@ return data;
 
 
 /* =========================================================
-   TEMA UYGULA
+   TEMA
 ========================================================= */
 
 function applyTheme(){
@@ -2086,115 +1318,19 @@ menuData.theme;
 const root =
 document.documentElement.style;
 
-root.setProperty(
-"--bg",
-t.background
-);
-
-root.setProperty(
-"--surface",
-t.surface
-);
-
-root.setProperty(
-"--surface2",
-t.surfaceRaised
-);
-
-root.setProperty(
-"--heading",
-t.heading
-);
-
-root.setProperty(
-"--text",
-t.text
-);
-
-root.setProperty(
-"--muted",
-t.muted
-);
-
-root.setProperty(
-"--accent",
-t.accent
-);
-
-root.setProperty(
-"--accentText",
-t.accentText
-);
-
-root.setProperty(
-"--category",
-t.category
-);
-
-root.setProperty(
-"--categoryText",
-t.categoryText
-);
-
-root.setProperty(
-"--price",
-t.price
-);
-
-root.setProperty(
-"--border",
-t.border
-);
-
-root.setProperty(
-"--danger",
-t.danger
-);
-
-}
-
-
-/* =========================================================
-   HATA EKRANI
-========================================================= */
-
-function showLoadError(message){
-
-const app =
-document.getElementById("app");
-
-app.innerHTML=`
-
-<div class="load-error">
-
-<div class="load-error-box">
-
-<div class="load-error-title">
-
-Menü yüklenemedi
-
-</div>
-
-<div class="load-error-message">
-
-${escapeHtml(message)}
-
-</div>
-
-<button
-class="reload-button"
-onclick="location.reload()"
->
-
-Tekrar Dene
-
-</button>
-
-</div>
-
-</div>
-
-`;
+root.setProperty("--bg",t.background);
+root.setProperty("--surface",t.surface);
+root.setProperty("--surface2",t.surfaceRaised);
+root.setProperty("--heading",t.heading);
+root.setProperty("--text",t.text);
+root.setProperty("--muted",t.muted);
+root.setProperty("--accent",t.accent);
+root.setProperty("--accentText",t.accentText);
+root.setProperty("--category",t.category);
+root.setProperty("--categoryText",t.categoryText);
+root.setProperty("--price",t.price);
+root.setProperty("--border",t.border);
+root.setProperty("--danger",t.danger);
 
 }
 
@@ -2208,69 +1344,30 @@ async function loadMenu(){
 const app =
 document.getElementById("app");
 
+try{
 
-app.innerHTML=`
+app.innerHTML = `
 
-<div class="loading-screen">
-
-Menü yükleniyor…
-
+<div style="
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#817366;
+font-size:13px;
+">
+Menü yükleniyor...
 </div>
 
 `;
 
 
-try{
-
-if(!supabaseClient){
-
-throw new Error(
-"Supabase bağlantısı başlatılamadı."
-);
-
-}
-
-
-/*
-10 saniyelik güvenlik süresi.
-Supabase cevap vermezse sonsuza kadar
-yükleniyor ekranında kalmaz.
-*/
-
-const timeout =
-new Promise(
-(_,reject)=>{
-
-setTimeout(
-()=>{
-
-reject(
-new Error(
-"Supabase bağlantısı zaman aşımına uğradı."
-)
-);
-
-},
-10000
-);
-
-}
-);
-
-
-const request =
-supabaseClient
+const result =
+await supabaseClient
 .from("menus")
 .select("id,data")
 .eq("id",MENU_ID)
 .maybeSingle();
-
-
-const result =
-await Promise.race([
-request,
-timeout
-]);
 
 
 if(result.error){
@@ -2309,7 +1406,7 @@ menuData.categories[0].id;
 
 }else{
 
-activeCategory=null;
+activeCategory = null;
 
 }
 
@@ -2322,14 +1419,65 @@ renderCustomer();
 }catch(error){
 
 console.error(
-"MENU LOAD ERROR:",
+"SUPABASE LOAD ERROR:",
 error
 );
 
-showLoadError(
-error.message ||
-"Menü yüklenemedi."
-);
+app.innerHTML = `
+
+<div style="
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:25px;
+text-align:center;
+">
+
+<div>
+
+<div style="
+font-family:'Playfair Display',serif;
+color:#4E282C;
+font-size:24px;
+margin-bottom:10px;
+">
+Menü yüklenemedi
+</div>
+
+<div style="
+color:#817366;
+font-size:12px;
+line-height:1.6;
+max-width:360px;
+word-break:break-word;
+">
+${escapeHtml(
+error?.message ||
+"Supabase bağlantısı kurulamadı."
+)}
+</div>
+
+<button
+onclick="location.reload()"
+style="
+margin-top:16px;
+border:0;
+border-radius:9px;
+padding:12px 20px;
+background:#7C8957;
+color:white;
+font-weight:bold;
+"
+>
+Tekrar Dene
+</button>
+
+</div>
+
+</div>
+
+`;
 
 }
 
@@ -2346,10 +1494,8 @@ if(!menuData)return;
 
 applyTheme();
 
-
 const app =
 document.getElementById("app");
-
 
 const categories =
 menuData.categories || [];
@@ -2357,7 +1503,7 @@ menuData.categories || [];
 
 if(!categories.length){
 
-app.innerHTML=`
+app.innerHTML = `
 
 <div class="menu-wrap">
 
@@ -2380,11 +1526,7 @@ alt=""
 :`
 
 <div class="logo-placeholder">
-
-${escapeHtml(
-menuData.cafeName
-)}
-
+${escapeHtml(menuData.cafeName)}
 </div>
 
 `
@@ -2392,33 +1534,19 @@ menuData.cafeName
 
 </div>
 
-
 <div class="eyebrow">
-
 MENÜ
-
 </div>
 
-
 <h1 class="cafe-title">
-
-${escapeHtml(
-menuData.cafeName
-)}
-
+${escapeHtml(menuData.cafeName)}
 </h1>
 
-
 <div class="cafe-subtitle">
-
-${escapeHtml(
-menuData.subtitle
-)}
-
+${escapeHtml(menuData.subtitle)}
 </div>
 
 </header>
-
 
 <div style="
 text-align:center;
@@ -2426,9 +1554,7 @@ color:var(--muted);
 padding:30px;
 font-size:12px;
 ">
-
 Henüz kategori eklenmemiş.
-
 </div>
 
 </div>
@@ -2464,7 +1590,7 @@ menuData.logo
 
 <img
 src="${escapeAttr(menuData.logo)}"
-alt="${escapeAttr(menuData.cafeName)}"
+alt=""
 >
 
 `
@@ -2472,48 +1598,32 @@ alt="${escapeAttr(menuData.cafeName)}"
 :`
 
 <div class="logo-placeholder">
-
-${escapeHtml(
-menuData.cafeName
-)}
-
+${escapeHtml(menuData.cafeName)}
 </div>
 
 `;
 
 
 const tabsHTML =
-categories.map(
-category=>`
+categories.map(category=>`
 
 <button
-class="tab ${
-category.id===active.id
-?"active":""
-}"
+class="tab ${category.id===active.id ? "active" : ""}"
 data-category="${escapeAttr(category.id)}"
 >
-
-${escapeHtml(
-category.name
-)}
-
+${escapeHtml(category.name)}
 </button>
 
-`
-).join("");
+`).join("");
 
 
 const productsHTML =
 active.items.length
 
-?
-
-active.items.map(
-item=>{
+? active.items.map(item=>{
 
 const sold =
-item.available===false;
+item.available === false;
 
 
 const image =
@@ -2534,9 +1644,7 @@ onerror="this.style.display='none'"
 :`
 
 <div class="product-no-image">
-
 ✦
-
 </div>
 
 `;
@@ -2544,13 +1652,9 @@ onerror="this.style.display='none'"
 
 return `
 
-<div class="
-product-card
-${sold?"sold":""}
-">
+<div class="product-card ${sold ? "sold" : ""}">
 
 ${image}
-
 
 <div class="product-info">
 
@@ -2562,48 +1666,35 @@ ${escapeHtml(item.name)}
 
 ${
 sold
-
 ?`
 
 <span class="sold-label">
-
 TÜKENDİ
-
 </span>
 
 `
-
 :""
 }
 
 </div>
 
-
 <div class="dots"></div>
 
-
 <div class="product-price">
-
 ${money(item.price)}
-
 </div>
 
 </div>
-
 
 ${
 item.desc
-
 ?`
 
 <div class="product-desc">
-
 ${escapeHtml(item.desc)}
-
 </div>
 
 `
-
 :""
 }
 
@@ -2613,12 +1704,9 @@ ${escapeHtml(item.desc)}
 
 `;
 
-}
-).join("")
+}).join("")
 
-:
-
-`
+:`
 
 <div style="
 text-align:center;
@@ -2626,93 +1714,59 @@ color:var(--muted);
 padding:25px;
 font-size:12px;
 ">
-
 Bu kategoride henüz ürün yok.
-
 </div>
 
 `;
 
 
-app.innerHTML=`
+app.innerHTML = `
 
 <div class="menu-wrap">
 
-
 <header class="hero">
 
-
 <div class="logo-box">
-
 ${logoHTML}
-
 </div>
-
 
 <div class="eyebrow">
-
 MENÜ
-
 </div>
-
 
 <h1 class="cafe-title">
-
-${escapeHtml(
-menuData.cafeName
-)}
-
+${escapeHtml(menuData.cafeName)}
 </h1>
 
-
 <div class="cafe-subtitle">
-
-${escapeHtml(
-menuData.subtitle
-)}
-
+${escapeHtml(menuData.subtitle)}
 </div>
-
 
 </header>
 
-
 <div class="tabs-wrap">
 
-
 <nav class="tabs">
-
 ${tabsHTML}
-
 </nav>
-
 
 </div>
 
-
 <main class="category-area">
-
 
 <div class="category-heading">
 
 <span class="category-dot"></span>
 
-${escapeHtml(
-active.name
-)}
+${escapeHtml(active.name)}
 
 </div>
-
 
 <div class="products">
-
 ${productsHTML}
-
 </div>
 
-
 </main>
-
 
 <footer class="menu-footer">
 
@@ -2721,7 +1775,6 @@ ${productsHTML}
 QR ile açıldı · Afiyet olsun
 
 </footer>
-
 
 </div>
 
@@ -2757,7 +1810,9 @@ behavior:"smooth"
 
 document
 .getElementById("settingsButton")
-.onclick=()=>{
+.addEventListener(
+"click",
+function(){
 
 if(adminUnlocked){
 
@@ -2769,11 +1824,12 @@ showPinPanel();
 
 }
 
-};
+}
+);
 
 
 /* =========================================================
-   PIN PANELİ
+   PIN
 ========================================================= */
 
 function showPinPanel(){
@@ -2781,47 +1837,32 @@ function showPinPanel(){
 const overlay =
 document.createElement("div");
 
-
 overlay.className="overlay";
 
-
-overlay.innerHTML=`
+overlay.innerHTML = `
 
 <div class="pin-panel">
 
-
 <div class="admin-head">
 
-
 <div></div>
-
 
 <button
 class="close-button"
 id="pinClose"
 >
-
 ×
-
 </button>
 
-
 </div>
-
 
 <h2 class="pin-title">
-
 Yönetim Paneli
-
 </h2>
 
-
 <div class="pin-subtitle">
-
 PIN kodunuzu girin
-
 </div>
-
 
 <input
 id="pinInput"
@@ -2832,31 +1873,23 @@ maxlength="20"
 placeholder="••••"
 >
 
-
 <div
 id="pinError"
 class="error"
 ></div>
 
-
 <button
 id="pinLogin"
 class="pin-login"
 >
-
 Giriş Yap
-
 </button>
-
 
 </div>
 
 `;
 
-
-document.body.appendChild(
-overlay
-);
+document.body.appendChild(overlay);
 
 
 overlay
@@ -2876,11 +1909,8 @@ document
 .value
 .trim();
 
-
 const error =
-document.getElementById(
-"pinError"
-);
+document.getElementById("pinError");
 
 
 if(pin.length<4){
@@ -2894,7 +1924,7 @@ return;
 
 
 error.textContent =
-"Kontrol ediliyor…";
+"Kontrol ediliyor...";
 
 
 try{
@@ -2911,15 +1941,7 @@ p_pin:pin
 
 if(result.error){
 
-console.error(
-result.error
-);
-
-error.textContent =
-result.error.message ||
-"PIN kontrolü başarısız.";
-
-return;
+throw result.error;
 
 }
 
@@ -2947,12 +1969,10 @@ pin;
 adminUnlocked =
 true;
 
-
 overlay.remove();
 
-
-adminTab="general";
-
+adminTab =
+"general";
 
 showAdminPanel();
 
@@ -2963,25 +1983,25 @@ console.error(err);
 
 error.textContent =
 err.message ||
-"Bağlantı hatası.";
+"PIN kontrolü başarısız.";
 
 }
 
 };
 
 
-document
-.getElementById("pinLogin")
+overlay
+.querySelector("#pinLogin")
 .onclick=login;
 
 
-document
-.getElementById("pinInput")
+overlay
+.querySelector("#pinInput")
 .addEventListener(
 "keydown",
-event=>{
+e=>{
 
-if(event.key==="Enter"){
+if(e.key==="Enter"){
 
 login();
 
@@ -2991,13 +2011,10 @@ login();
 );
 
 
-setTimeout(
-()=>{
+setTimeout(()=>{
 
 const input =
-document.getElementById(
-"pinInput"
-);
+document.getElementById("pinInput");
 
 if(input){
 
@@ -3005,15 +2022,13 @@ input.focus();
 
 }
 
-},
-100
-);
+},100);
 
 }
 
 
 /* =========================================================
-   ADMIN PANEL
+   ADMIN
 ========================================================= */
 
 function showAdminPanel(){
@@ -3024,120 +2039,77 @@ adminOverlay.remove();
 
 }
 
-
 adminOverlay =
 document.createElement("div");
 
-
 adminOverlay.className="overlay";
-
 
 document.body.appendChild(
 adminOverlay
 );
-
 
 renderAdmin();
 
 }
 
 
-/* =========================================================
-   ADMIN RENDER
-========================================================= */
-
 function renderAdmin(){
 
-adminOverlay.innerHTML=`
+adminOverlay.innerHTML = `
 
 <div class="admin-panel">
 
-
 <div class="admin-head">
 
-
 <h2 class="admin-title">
-
 Yönetim Paneli
-
 </h2>
-
 
 <button
 class="close-button"
 id="adminClose"
 >
-
 ×
-
 </button>
 
-
 </div>
-
 
 <div class="admin-tabs">
 
-
 <button
-class="admin-tab ${
-adminTab==="general"
-?"active":""
-}"
+class="admin-tab ${adminTab==="general"?"active":""}"
 data-admin-tab="general"
 >
-
 GENEL
-
 </button>
 
-
 <button
-class="admin-tab ${
-adminTab==="theme"
-?"active":""
-}"
+class="admin-tab ${adminTab==="theme"?"active":""}"
 data-admin-tab="theme"
 >
-
 RENK
-
 </button>
-
 
 <button
-class="admin-tab ${
-adminTab==="menu"
-?"active":""
-}"
+class="admin-tab ${adminTab==="menu"?"active":""}"
 data-admin-tab="menu"
 >
-
 MENÜ
-
 </button>
 
-
 </div>
-
 
 <div
 class="admin-scroll"
-id="adminScroll"
 >
-
 <div id="adminContent"></div>
-
 </div>
-
 
 <div
 class="admin-save-area"
 id="adminSaveArea"
 >
-
 </div>
-
 
 </div>
 
@@ -3177,15 +2149,11 @@ if(adminTab==="general"){
 
 renderGeneral();
 
-}
-
-else if(adminTab==="theme"){
+}else if(adminTab==="theme"){
 
 renderTheme();
 
-}
-
-else{
+}else{
 
 renderMenuEditor();
 
@@ -3195,35 +2163,29 @@ renderMenuEditor();
 
 
 /* =========================================================
-   KAYDET BUTONU
+   SAVE BUTTON
 ========================================================= */
 
 function renderSaveButton(statusId){
 
 const area =
-document.getElementById(
-"adminSaveArea"
-);
-
+document.getElementById("adminSaveArea");
 
 if(!area)return;
 
 
-area.innerHTML=`
+area.innerHTML = `
 
 <div
 id="${statusId}"
 class="status"
 ></div>
 
-
 <button
 id="globalSaveButton"
 class="main-save"
 >
-
 ✓ KAYDET
-
 </button>
 
 `;
@@ -3234,9 +2196,7 @@ document
 .onclick=()=>{
 
 saveMenu(
-document.getElementById(
-statusId
-)
+document.getElementById(statusId)
 );
 
 };
@@ -3245,34 +2205,26 @@ statusId
 
 
 /* =========================================================
-   GENEL
+   GENERAL
 ========================================================= */
 
 function renderGeneral(){
 
 const content =
-document.getElementById(
-"adminContent"
-);
+document.getElementById("adminContent");
 
 
-content.innerHTML=`
+content.innerHTML = `
 
 <div class="admin-section">
 
-
 <h3 class="section-title">
-
 Logo
-
 </h3>
-
 
 <div class="logo-admin">
 
-
 <div class="logo-preview">
-
 
 ${
 menuData.logo
@@ -3292,25 +2244,19 @@ color:#8B9966;
 font-family:'Playfair Display',serif;
 font-size:12px;
 ">
-
 LOGO
-
 </span>
 
 `
 }
 
-
 </div>
 
-
 <div class="logo-actions">
-
 
 <label class="file-button">
 
 Logo Seç
-
 
 <input
 type="file"
@@ -3318,52 +2264,34 @@ id="logoFile"
 accept="image/png,image/jpeg,image/webp"
 >
 
-
 </label>
-
 
 <button
 class="small-button"
 id="removeLogo"
 >
-
 Logoyu Kaldır
-
 </button>
 
-
 <div class="section-note">
-
 PNG, JPG veya WEBP kullanabilirsiniz.
+</div>
 
 </div>
 
-
 </div>
 
-
 </div>
-
-
-</div>
-
 
 <div class="admin-section">
 
-
 <h3 class="section-title">
-
 Kafe Bilgileri
-
 </h3>
 
-
 <label class="form-label">
-
 Kafe adı
-
 </label>
-
 
 <input
 id="cafeName"
@@ -3371,42 +2299,28 @@ class="form-input"
 value="${escapeAttr(menuData.cafeName)}"
 >
 
-
 <label class="form-label">
-
 Alt başlık
-
 </label>
-
 
 <textarea
 id="cafeSubtitle"
 class="form-textarea"
 >${escapeHtml(menuData.subtitle)}</textarea>
 
-
 </div>
-
 
 <div class="admin-section">
 
-
 <h3 class="section-title">
-
 Güvenlik
-
 </h3>
 
-
 <label class="form-label">
-
 Yeni PIN
-
 </label>
 
-
 <div class="two-col">
-
 
 <input
 id="newPin"
@@ -3417,19 +2331,14 @@ maxlength="20"
 placeholder="Yeni PIN"
 >
 
-
 <button
 id="changePin"
 class="small-button"
 >
-
 PIN Değiştir
-
 </button>
 
-
 </div>
-
 
 </div>
 
@@ -3470,7 +2379,6 @@ e.target.files?.[0];
 
 if(!file)return;
 
-
 try{
 
 menuData.logo =
@@ -3483,8 +2391,6 @@ file,
 renderAdmin();
 
 }catch(error){
-
-console.error(error);
 
 alert(
 "Logo yüklenemedi."
@@ -3516,7 +2422,6 @@ document
 .value
 .trim();
 
-
 const status =
 document.getElementById(
 "generalStatus"
@@ -3534,7 +2439,7 @@ return;
 
 
 status.textContent =
-"PIN değiştiriliyor…";
+"PIN değiştiriliyor...";
 
 
 try{
@@ -3552,15 +2457,7 @@ p_new_pin:newPin
 
 if(result.error){
 
-console.error(
-result.error
-);
-
-status.textContent =
-result.error.message ||
-"PIN değiştirilemedi.";
-
-return;
+throw result.error;
 
 }
 
@@ -3585,16 +2482,15 @@ return;
 authenticatedPin =
 newPin;
 
-
 status.textContent =
 "✓ PIN başarıyla değiştirildi.";
-
 
 }catch(error){
 
 console.error(error);
 
 status.textContent =
+error.message ||
 "PIN değiştirilemedi.";
 
 }
@@ -3605,91 +2501,61 @@ status.textContent =
 
 
 /* =========================================================
-   RENK PANELİ
+   THEME
 ========================================================= */
 
 function renderTheme(){
 
 const content =
-document.getElementById(
-"adminContent"
-);
+document.getElementById("adminContent");
 
 
 const colors=[
 
 ["background","Ana arka plan"],
-
 ["surface","Kart rengi"],
-
 ["surfaceRaised","Açık kart"],
-
 ["heading","Başlık yazısı"],
-
 ["text","Normal yazı"],
-
 ["muted","Açıklama yazısı"],
-
 ["accent","Ana tema"],
-
 ["accentText","Ana tema yazısı"],
-
 ["category","Kategori rengi"],
-
 ["categoryText","Kategori yazısı"],
-
 ["price","Fiyat rengi"],
-
 ["border","Kenarlık"],
-
 ["danger","Tükendi rengi"]
 
 ];
 
 
-content.innerHTML=`
+content.innerHTML = `
 
 <div class="admin-section">
 
-
 <h3 class="section-title">
-
 Tema Renkleri
-
 </h3>
-
 
 <div class="color-grid">
 
-
 ${
-colors.map(
-([key,label])=>{
+colors.map(([key,label])=>{
 
 const value =
-validColor(
-menuData.theme[key]
-)
-
+validColor(menuData.theme[key])
 ?menuData.theme[key]
-
 :"#000000";
-
 
 return `
 
 <div class="color-control">
 
-
 <div class="color-name">
-
 ${label}
-
 </div>
 
-
 <div class="color-row">
-
 
 <input
 type="color"
@@ -3697,7 +2563,6 @@ class="color-picker"
 data-color-key="${key}"
 value="${value}"
 >
-
 
 <input
 type="text"
@@ -3707,152 +2572,105 @@ value="${escapeAttr(menuData.theme[key])}"
 maxlength="7"
 >
 
-
 <button
 class="reset-color"
 data-reset-color="${key}"
 >
-
 ↺
-
 </button>
 
-
 </div>
-
 
 </div>
 
 `;
 
+}).join("")
 }
-).join("")
-}
-
 
 </div>
-
 
 <div class="section-note">
 
-Renk kutusundan seçim yapabilir veya HEX kodunu direkt yazabilirsiniz.
-Değişiklikler önizlemeye anında uygulanır.
+Renk kutusundan seçim yapabilir veya HEX kodunu
+direkt yazabilirsiniz.
 
 </div>
-
 
 <div
 class="preview-box"
 id="themePreview"
 >
 
-
 <div class="preview-top">
-
 
 <div class="preview-circle"></div>
 
-
 <div class="preview-text">
 
-
 <div class="preview-title">
-
 Katmerci Dayı
-
 </div>
-
 
 <div class="preview-sub">
-
 Gaziantepten gelen lezzet
-
 </div>
 
-
 </div>
-
 
 <div class="preview-price">
-
 500 ₺
+</div>
 
 </div>
 
-
 </div>
 
-
 </div>
-
-
-</div>
-
 
 <div class="admin-section">
 
-
 <h3 class="section-title">
-
 Hazır Temalar
-
 </h3>
 
-
 <div class="two-col">
-
 
 <button
 class="small-button"
 data-preset="green"
 >
-
 🌿 Bohem Yeşil
-
 </button>
-
 
 <button
 class="small-button"
 data-preset="brown"
 >
-
 ☕ Kahve
-
 </button>
-
 
 </div>
 
-
-<div style="height:6px"></div>
-
+<br>
 
 <div class="two-col">
-
 
 <button
 class="small-button"
 data-preset="terracotta"
 >
-
 🧱 Terracotta
-
 </button>
-
 
 <button
 class="small-button"
 data-preset="dark"
 >
-
 ✦ Premium Koyu
-
 </button>
 
-
 </div>
-
 
 </div>
 
@@ -3873,7 +2691,7 @@ updateThemePreview();
 
 
 /* =========================================================
-   RENK EVENT
+   COLOR
 ========================================================= */
 
 function bindColorEvents(){
@@ -3887,16 +2705,13 @@ input.oninput=()=>{
 const key =
 input.dataset.colorKey;
 
-
 menuData.theme[key] =
 input.value;
-
 
 const hex =
 document.querySelector(
 `[data-hex-key="${key}"]`
 );
-
 
 if(hex){
 
@@ -3904,7 +2719,6 @@ hex.value =
 input.value.toUpperCase();
 
 }
-
 
 applyTheme();
 
@@ -3942,16 +2756,13 @@ if(validColor(value)){
 const key =
 input.dataset.hexKey;
 
-
 menuData.theme[key] =
 value;
-
 
 const picker =
 document.querySelector(
 `[data-color-key="${key}"]`
 );
-
 
 if(picker){
 
@@ -3959,7 +2770,6 @@ picker.value =
 value;
 
 }
-
 
 applyTheme();
 
@@ -3981,10 +2791,8 @@ button.onclick=()=>{
 const key =
 button.dataset.resetColor;
 
-
 menuData.theme[key] =
 DEFAULT_THEME[key];
-
 
 renderAdmin();
 
@@ -3996,7 +2804,7 @@ renderAdmin();
 
 
 /* =========================================================
-   RENK ÖNİZLEME
+   PREVIEW
 ========================================================= */
 
 function updateThemePreview(){
@@ -4006,39 +2814,32 @@ document.getElementById(
 "themePreview"
 );
 
-
 if(!preview)return;
-
 
 preview.style.setProperty(
 "--preview-bg",
 menuData.theme.background
 );
 
-
 preview.style.setProperty(
 "--preview-border",
 menuData.theme.border
 );
-
 
 preview.style.setProperty(
 "--preview-accent",
 menuData.theme.accent
 );
 
-
 preview.style.setProperty(
 "--preview-heading",
 menuData.theme.heading
 );
 
-
 preview.style.setProperty(
 "--preview-muted",
 menuData.theme.muted
 );
-
 
 preview.style.setProperty(
 "--preview-price",
@@ -4049,7 +2850,7 @@ menuData.theme.price
 
 
 /* =========================================================
-   HAZIR TEMALAR
+   PRESET
 ========================================================= */
 
 function bindPresetEvents(){
@@ -4067,33 +2868,7 @@ button.dataset.preset;
 if(preset==="green"){
 
 menuData.theme={
-
-background:"#F4EBDD",
-
-surface:"#FFFDF8",
-
-surfaceRaised:"#E9DDC9",
-
-heading:"#4E282C",
-
-text:"#493B32",
-
-muted:"#817366",
-
-accent:"#7C8957",
-
-accentText:"#4D5933",
-
-category:"#7C8957",
-
-categoryText:"#FFFDF5",
-
-price:"#A86143",
-
-border:"#D8CBB8",
-
-danger:"#B44E48"
-
+...DEFAULT_THEME
 };
 
 }
@@ -4104,29 +2879,17 @@ if(preset==="brown"){
 menuData.theme={
 
 background:"#EFE4D3",
-
 surface:"#FFF9F0",
-
 surfaceRaised:"#E4D1B7",
-
 heading:"#4A2D20",
-
 text:"#4D3A2F",
-
 muted:"#806D5D",
-
 accent:"#8A5B3E",
-
 accentText:"#5A3927",
-
 category:"#8A5B3E",
-
 categoryText:"#FFF8EC",
-
 price:"#B06B43",
-
 border:"#D6C2AA",
-
 danger:"#B24E48"
 
 };
@@ -4139,29 +2902,17 @@ if(preset==="terracotta"){
 menuData.theme={
 
 background:"#F5E4D9",
-
 surface:"#FFF9F4",
-
 surfaceRaised:"#EBD0C0",
-
 heading:"#6D3830",
-
 text:"#513B35",
-
 muted:"#856E66",
-
 accent:"#B9664E",
-
 accentText:"#783F34",
-
 category:"#B9664E",
-
 categoryText:"#FFF8F1",
-
 price:"#8E4A39",
-
 border:"#DCC2B5",
-
 danger:"#A74440"
 
 };
@@ -4174,29 +2925,17 @@ if(preset==="dark"){
 menuData.theme={
 
 background:"#17110D",
-
 surface:"#211812",
-
 surfaceRaised:"#2A1F17",
-
 heading:"#F7EBDD",
-
 text:"#EFE3D4",
-
 muted:"#B9AA99",
-
 accent:"#C99A52",
-
 accentText:"#17110D",
-
 category:"#7C8957",
-
 categoryText:"#FFF8EA",
-
 price:"#D7B16B",
-
 border:"#57402A",
-
 danger:"#B64E48"
 
 };
@@ -4222,9 +2961,7 @@ renderAdmin();
 function renderMenuEditor(){
 
 const content =
-document.getElementById(
-"adminContent"
-);
+document.getElementById("adminContent");
 
 
 const categoriesHTML =
@@ -4233,9 +2970,7 @@ menuData.categories.map(
 
 <div class="category-admin">
 
-
 <div class="category-head">
-
 
 <input
 class="form-input"
@@ -4243,19 +2978,14 @@ data-category-name="${escapeAttr(category.id)}"
 value="${escapeAttr(category.name)}"
 >
 
-
 <button
 class="delete-button"
 data-delete-category="${escapeAttr(category.id)}"
 >
-
 Sil
-
 </button>
 
-
 </div>
-
 
 ${
 category.items.map(
@@ -4263,37 +2993,25 @@ category.items.map(
 
 <div class="item-admin">
 
-
 <div class="item-admin-top">
 
-
 <span class="item-number">
-
 ÜRÜN ${itemIndex+1}
-
 </span>
-
 
 <button
 class="remove-item"
 data-delete-item="${escapeAttr(item.id)}"
 data-category-id="${escapeAttr(category.id)}"
 >
-
 Ürünü sil
-
 </button>
-
 
 </div>
 
-
 <label class="form-label">
-
 Ürün adı
-
 </label>
-
 
 <input
 class="form-input"
@@ -4301,13 +3019,9 @@ data-item-name="${escapeAttr(item.id)}"
 value="${escapeAttr(item.name)}"
 >
 
-
 <label class="form-label">
-
 Açıklama
-
 </label>
-
 
 <input
 class="form-input"
@@ -4315,13 +3029,13 @@ data-item-desc="${escapeAttr(item.id)}"
 value="${escapeAttr(item.desc)}"
 >
 
+<div class="item-grid">
+
+<div>
 
 <label class="form-label">
-
 Fiyat ₺
-
 </label>
-
 
 <input
 type="number"
@@ -4332,23 +3046,17 @@ data-item-price="${escapeAttr(item.id)}"
 value="${Number(item.price)||0}"
 >
 
+</div>
 
-<div style="
-margin-top:7px;
-">
-
+<div>
 
 <label class="form-label">
-
 Fotoğraf
-
 </label>
-
 
 <label class="file-button">
 
 Fotoğraf Seç
-
 
 <input
 type="file"
@@ -4356,16 +3064,14 @@ accept="image/*"
 data-item-file="${escapeAttr(item.id)}"
 >
 
-
 </label>
-
 
 </div>
 
+</div>
 
 ${
 item.image
-
 ?`
 
 <div style="
@@ -4374,7 +3080,6 @@ align-items:center;
 gap:7px;
 margin-top:7px;
 ">
-
 
 <img
 src="${escapeAttr(item.image)}"
@@ -4387,31 +3092,22 @@ border:1px solid #DDD2C1;
 "
 >
 
-
 <button
 class="small-button"
 data-remove-image="${escapeAttr(item.id)}"
 >
-
 Görseli kaldır
-
 </button>
-
 
 </div>
 
 `
-
 :""
 }
 
-
 <label class="form-label">
-
 veya görsel linki
-
 </label>
-
 
 <input
 type="url"
@@ -4426,26 +3122,17 @@ String(item.image).startsWith("http")
 }"
 >
 
-
 <label class="availability">
-
 
 <input
 type="checkbox"
 data-item-available="${escapeAttr(item.id)}"
-${
-item.available!==false
-?"checked"
-:""
-}
+${item.available!==false ? "checked" : ""}
 >
-
 
 Ürün satışta
 
-
 </label>
-
 
 </div>
 
@@ -4453,16 +3140,12 @@ item.available!==false
 ).join("")
 }
 
-
 <button
 class="add-button"
 data-add-item="${escapeAttr(category.id)}"
 >
-
 + Ürün ekle
-
 </button>
-
 
 </div>
 
@@ -4470,30 +3153,22 @@ data-add-item="${escapeAttr(category.id)}"
 ).join("");
 
 
-content.innerHTML=`
+content.innerHTML = `
 
 <div class="admin-section">
 
-
 <h3 class="section-title">
-
 Kategoriler ve Ürünler
-
 </h3>
 
-
 ${categoriesHTML}
-
 
 <button
 id="addCategory"
 class="add-button"
 >
-
 + Yeni kategori ekle
-
 </button>
-
 
 </div>
 
@@ -4517,15 +3192,12 @@ items:[]
 
 };
 
-
 menuData.categories.push(
 newCategory
 );
 
-
 activeCategory =
 newCategory.id;
-
 
 renderAdmin();
 
@@ -4540,12 +3212,10 @@ renderSaveButton(
 
 
 /* =========================================================
-   MENÜ EVENTLERİ
+   MENU EVENTS
 ========================================================= */
 
 function bindMenuEvents(){
-
-/* KATEGORİ ADI */
 
 document
 .querySelectorAll("[data-category-name]")
@@ -4555,11 +3225,8 @@ input.oninput=()=>{
 
 const category =
 menuData.categories.find(
-c =>
-c.id ===
-input.dataset.categoryName
+c=>c.id===input.dataset.categoryName
 );
-
 
 if(category){
 
@@ -4573,8 +3240,6 @@ input.value;
 });
 
 
-/* KATEGORİ SİL */
-
 document
 .querySelectorAll("[data-delete-category]")
 .forEach(button=>{
@@ -4584,15 +3249,12 @@ button.onclick=()=>{
 const id =
 button.dataset.deleteCategory;
 
-
 const category =
 menuData.categories.find(
 c=>c.id===id
 );
 
-
 if(!category)return;
-
 
 if(
 !confirm(
@@ -4604,12 +3266,10 @@ return;
 
 }
 
-
 menuData.categories =
 menuData.categories.filter(
 c=>c.id!==id
 );
-
 
 if(activeCategory===id){
 
@@ -4620,15 +3280,12 @@ menuData.categories.length
 
 }
 
-
 renderAdmin();
 
 };
 
 });
 
-
-/* ÜRÜN ADI */
 
 document
 .querySelectorAll("[data-item-name]")
@@ -4647,8 +3304,6 @@ input.value
 });
 
 
-/* AÇIKLAMA */
-
 document
 .querySelectorAll("[data-item-desc]")
 .forEach(input=>{
@@ -4666,8 +3321,6 @@ input.value
 });
 
 
-/* FİYAT */
-
 document
 .querySelectorAll("[data-item-price]")
 .forEach(input=>{
@@ -4677,7 +3330,6 @@ input.oninput=()=>{
 let value =
 Number(input.value);
 
-
 if(
 !Number.isFinite(value) ||
 value<0
@@ -4686,7 +3338,6 @@ value<0
 value=0;
 
 }
-
 
 updateItem(
 input.dataset.itemPrice,
@@ -4698,8 +3349,6 @@ value
 
 });
 
-
-/* SATIŞ DURUMU */
 
 document
 .querySelectorAll("[data-item-available]")
@@ -4718,8 +3367,6 @@ input.checked
 });
 
 
-/* ÜRÜN SİL */
-
 document
 .querySelectorAll("[data-delete-item]")
 .forEach(button=>{
@@ -4729,25 +3376,20 @@ button.onclick=()=>{
 const itemId =
 button.dataset.deleteItem;
 
-
 const categoryId =
 button.dataset.categoryId;
-
 
 const category =
 menuData.categories.find(
 c=>c.id===categoryId
 );
 
-
 if(!category)return;
-
 
 category.items =
 category.items.filter(
 item=>item.id!==itemId
 );
-
 
 renderAdmin();
 
@@ -4755,8 +3397,6 @@ renderAdmin();
 
 });
 
-
-/* ÜRÜN EKLE */
 
 document
 .querySelectorAll("[data-add-item]")
@@ -4766,14 +3406,10 @@ button.onclick=()=>{
 
 const category =
 menuData.categories.find(
-c =>
-c.id ===
-button.dataset.addItem
+c=>c.id===button.dataset.addItem
 );
 
-
 if(!category)return;
-
 
 category.items.push({
 
@@ -4791,15 +3427,12 @@ image:""
 
 });
 
-
 renderAdmin();
 
 };
 
 });
 
-
-/* FOTOĞRAF */
 
 document
 .querySelectorAll("[data-item-file]")
@@ -4810,9 +3443,7 @@ input.onchange=async()=>{
 const file =
 input.files?.[0];
 
-
 if(!file)return;
-
 
 try{
 
@@ -4823,16 +3454,13 @@ file,
 .78
 );
 
-
 updateItem(
 input.dataset.itemFile,
 "image",
 image
 );
 
-
 renderAdmin();
-
 
 }catch(error){
 
@@ -4848,8 +3476,6 @@ alert(
 
 });
 
-
-/* URL */
 
 document
 .querySelectorAll("[data-item-url]")
@@ -4868,8 +3494,6 @@ input.value.trim()
 });
 
 
-/* GÖRSEL SİL */
-
 document
 .querySelectorAll("[data-remove-image]")
 .forEach(button=>{
@@ -4882,7 +3506,6 @@ button.dataset.removeImage,
 ""
 );
 
-
 renderAdmin();
 
 };
@@ -4893,14 +3516,10 @@ renderAdmin();
 
 
 /* =========================================================
-   ÜRÜN GÜNCELLE
+   UPDATE ITEM
 ========================================================= */
 
-function updateItem(
-id,
-field,
-value
-){
+function updateItem(id,field,value){
 
 for(
 const category
@@ -4911,7 +3530,6 @@ const item =
 category.items.find(
 i=>i.id===id
 );
-
 
 if(item){
 
@@ -4927,7 +3545,7 @@ return;
 
 
 /* =========================================================
-   KAYDET
+   SAVE
 ========================================================= */
 
 async function saveMenu(status){
@@ -4935,7 +3553,7 @@ async function saveMenu(status){
 if(!authenticatedPin){
 
 status.textContent =
-"Oturum bulunamadı. Tekrar giriş yapın.";
+"Oturum bulunamadı.";
 
 return;
 
@@ -4948,20 +3566,18 @@ document.querySelectorAll(
 );
 
 
-buttons.forEach(
-button=>{
+buttons.forEach(button=>{
 
 button.disabled=true;
 
 button.textContent =
 "KAYDEDİLİYOR...";
 
-}
-);
+});
 
 
 status.textContent =
-"Supabase'e kaydediliyor…";
+"Supabase'e kaydediliyor...";
 
 
 try{
@@ -4975,27 +3591,15 @@ await supabaseClient.rpc(
 "save_menu",
 {
 p_menu_id:MENU_ID,
-
 p_pin:authenticatedPin,
-
 p_data:menuData
-
 }
 );
 
 
 if(result.error){
 
-console.error(
-"SAVE ERROR:",
-result.error
-);
-
-
-throw new Error(
-result.error.message ||
-"Supabase kayıt hatası."
-);
+throw result.error;
 
 }
 
@@ -5011,13 +3615,11 @@ result.data?.result===true;
 if(!ok){
 
 throw new Error(
-"Menü kaydedilmedi. PIN veya save_menu yetkisini kontrol edin."
+"Menü kaydedilmedi. save_menu fonksiyonunu kontrol edin."
 );
 
 }
 
-
-/* VERİYİ TEKRAR OKU */
 
 const check =
 await supabaseClient
@@ -5040,7 +3642,7 @@ if(
 ){
 
 throw new Error(
-"Kaydetme sonrası menü doğrulanamadı."
+"Kaydetme sonrası veri okunamadı."
 );
 
 }
@@ -5051,7 +3653,6 @@ normalizeData(
 check.data.data
 );
 
-
 applyTheme();
 
 
@@ -5059,8 +3660,7 @@ status.textContent =
 "✓ Başarıyla kaydedildi.";
 
 
-setTimeout(
-()=>{
+setTimeout(()=>{
 
 if(adminOverlay){
 
@@ -5070,21 +3670,17 @@ adminOverlay=null;
 
 }
 
-
 renderCustomer();
 
-},
-650
-);
+},650);
 
 
 }catch(error){
 
 console.error(
-"MENU SAVE ERROR:",
+"SAVE ERROR:",
 error
 );
-
 
 status.textContent =
 "Hata: "+
@@ -5094,16 +3690,14 @@ error.message ||
 );
 
 
-buttons.forEach(
-button=>{
+buttons.forEach(button=>{
 
 button.disabled=false;
 
 button.textContent =
 "✓ KAYDET";
 
-}
-);
+});
 
 }
 
@@ -5111,7 +3705,7 @@ button.textContent =
 
 
 /* =========================================================
-   FOTOĞRAF BOYUTLANDIR
+   IMAGE RESIZE
 ========================================================= */
 
 function resizeImage(
@@ -5126,20 +3720,16 @@ return new Promise(
 const reader =
 new FileReader();
 
-
 reader.onload =
 event=>{
 
 const image =
 new Image();
 
-
-image.onload =
-()=>{
+image.onload=()=>{
 
 let width =
 image.width;
-
 
 let height =
 image.height;
@@ -5156,30 +3746,20 @@ maxSize/width,
 maxSize/height
 );
 
-
 width =
-Math.round(
-width*ratio
-);
-
+Math.round(width*ratio);
 
 height =
-Math.round(
-height*ratio
-);
+Math.round(height*ratio);
 
 }
 
 
 const canvas =
-document.createElement(
-"canvas"
-);
-
+document.createElement("canvas");
 
 canvas.width =
 width;
-
 
 canvas.height =
 height;
@@ -5211,7 +3791,6 @@ quality
 image.onerror =
 reject;
 
-
 image.src =
 event.target.result;
 
@@ -5221,11 +3800,11 @@ event.target.result;
 reader.onerror =
 reject;
 
-
 reader.readAsDataURL(file);
 
 }
-);
+
+}
 
 
 /* =========================================================
@@ -5234,8 +3813,9 @@ reader.readAsDataURL(file);
 
 loadMenu();
 
+});
+
 </script>
 
 </body>
-
 </html>
