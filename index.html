@@ -10,9 +10,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
 --bg:#F4EBDD;
 --surface:#FFFDF8;
@@ -61,6 +63,7 @@ cursor:pointer;
 #app{
 min-height:100vh;
 }
+
 
 /* =========================
    MENÜ
@@ -137,8 +140,9 @@ font-size:13px;
 line-height:1.5;
 }
 
+
 /* =========================
-   KATEGORİ SEKME
+   KATEGORİ
 ========================= */
 
 .tabs-wrap{
@@ -184,6 +188,7 @@ border-color:var(--accent);
 color:var(--categoryText);
 box-shadow:0 6px 18px rgba(124,137,87,.20);
 }
+
 
 /* =========================
    ÜRÜNLER
@@ -293,6 +298,15 @@ font-size:14.5px;
 font-weight:700;
 }
 
+.product-calorie{
+margin-top:3px;
+color:var(--accentText);
+font-size:9px;
+font-weight:700;
+white-space:nowrap;
+text-align:right;
+}
+
 .product-card.sold{
 opacity:.52;
 }
@@ -322,8 +336,9 @@ background:var(--border);
 margin:0 auto 11px;
 }
 
+
 /* =========================
-   AYAR BUTONU
+   AYAR
 ========================= */
 
 .settings-button{
@@ -348,6 +363,7 @@ box-shadow:0 8px 25px rgba(0,0,0,.18);
 transform:scale(.94);
 }
 
+
 /* =========================
    OVERLAY
 ========================= */
@@ -367,13 +383,30 @@ justify-content:center;
 .admin-panel{
 width:100%;
 max-width:680px;
-max-height:94vh;
-overflow-y:auto;
+height:94vh;
+display:flex;
+flex-direction:column;
 background:#F8F2E7;
 color:#352D26;
 border-radius:22px 22px 0 0;
-padding:15px 14px 25px;
+padding:15px 14px 0;
 box-shadow:0 -15px 50px rgba(0,0,0,.30);
+overflow:hidden;
+}
+
+.admin-scroll{
+flex:1;
+overflow-y:auto;
+padding-bottom:20px;
+-webkit-overflow-scrolling:touch;
+}
+
+.admin-save-area{
+flex:0 0 auto;
+background:#F8F2E7;
+border-top:1px solid #D8CCBB;
+padding:9px 0 calc(9px + env(safe-area-inset-bottom));
+z-index:5;
 }
 
 @media(min-width:700px){
@@ -384,11 +417,12 @@ padding:20px;
 }
 
 .admin-panel{
-max-height:92vh;
+height:92vh;
 border-radius:22px;
 }
 
 }
+
 
 /* =========================
    ADMIN
@@ -399,6 +433,7 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 margin-bottom:12px;
+flex:0 0 auto;
 }
 
 .admin-title{
@@ -425,6 +460,7 @@ padding:4px;
 background:#EDE3D4;
 border-radius:11px;
 margin-bottom:12px;
+flex:0 0 auto;
 }
 
 .admin-tab{
@@ -505,6 +541,7 @@ grid-template-columns:1fr 1fr;
 gap:7px;
 }
 
+
 /* =========================
    LOGO
 ========================= */
@@ -571,8 +608,9 @@ font-size:10px;
 font-weight:800;
 }
 
+
 /* =========================
-   RENKLER
+   RENK
 ========================= */
 
 .color-grid{
@@ -639,8 +677,9 @@ color:#8B7D6C;
 font-size:11px;
 }
 
+
 /* =========================
-   TEMA ÖNİZLEME
+   PREVIEW
 ========================= */
 
 .preview-box{
@@ -689,8 +728,9 @@ font-size:12px;
 font-weight:800;
 }
 
+
 /* =========================
-   KATEGORİ / ÜRÜN
+   KATEGORİ / ÜRÜN ADMİN
 ========================= */
 
 .category-admin{
@@ -750,8 +790,24 @@ font-size:9px;
 
 .item-grid{
 display:grid;
-grid-template-columns:1fr 85px;
+grid-template-columns:1fr 1fr;
 gap:6px;
+}
+
+.calorie-box{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.calorie-box .form-input{
+flex:1;
+}
+
+.calorie-unit{
+font-size:10px;
+font-weight:800;
+color:#817366;
 }
 
 .availability{
@@ -774,6 +830,7 @@ font-size:9px;
 font-weight:800;
 }
 
+
 /* =========================
    KAYDET
 ========================= */
@@ -783,12 +840,12 @@ min-height:18px;
 text-align:center;
 color:#6E6255;
 font-size:9.5px;
-margin:7px 0;
+margin:4px 0;
 }
 
 .main-save{
 width:100%;
-min-height:45px;
+min-height:46px;
 border:0;
 border-radius:11px;
 background:#7C8957;
@@ -796,11 +853,17 @@ color:#fff;
 font-size:12px;
 font-weight:800;
 box-shadow:0 8px 20px rgba(124,137,87,.20);
+transition:.18s ease;
+}
+
+.main-save:active{
+transform:scale(.985);
 }
 
 .main-save:disabled{
 opacity:.65;
 }
+
 
 /* =========================
    PIN
@@ -854,6 +917,7 @@ font-size:10px;
 margin-top:7px;
 }
 
+
 @media(max-width:480px){
 
 .hero{
@@ -881,13 +945,44 @@ height:53px;
 flex-basis:53px;
 }
 
+.item-grid{
+grid-template-columns:1fr 1fr;
 }
+
+}
+
+
+/* =========================================================
+   MOBİL KAYDET ALANI
+========================================================= */
+
+@media(max-width:480px){
+
+.admin-panel{
+height:96vh;
+padding-left:12px;
+padding-right:12px;
+}
+
+.admin-save-area{
+padding-bottom:
+calc(10px + env(safe-area-inset-bottom));
+}
+
+.main-save{
+min-height:48px;
+font-size:12px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <div id="app">
+
 <div style="
 min-height:100vh;
 display:flex;
@@ -896,9 +991,13 @@ justify-content:center;
 color:#817366;
 font-size:13px;
 ">
+
 Menü yükleniyor…
+
 </div>
+
 </div>
+
 
 <button
 id="settingsButton"
@@ -907,6 +1006,7 @@ aria-label="Yönetim paneli"
 >
 ⚙
 </button>
+
 
 <script>
 
@@ -929,8 +1029,9 @@ SUPABASE_URL,
 SUPABASE_ANON_KEY
 );
 
+
 /* =========================================================
-   VARSAYILAN TEMA
+   DEFAULT THEME
 ========================================================= */
 
 const DEFAULT_THEME = {
@@ -957,8 +1058,9 @@ danger:"#B44E48"
 
 };
 
+
 /* =========================================================
-   VARSAYILAN MENÜ
+   DEFAULT DATA
 ========================================================= */
 
 const DEFAULT_DATA = {
@@ -977,6 +1079,7 @@ categories:[]
 
 };
 
+
 /* =========================================================
    DEĞİŞKENLER
 ========================================================= */
@@ -993,6 +1096,7 @@ let adminOverlay=null;
 
 let adminTab="general";
 
+
 /* =========================================================
    YARDIMCI
 ========================================================= */
@@ -1007,6 +1111,7 @@ Math.random()
 .slice(2,8);
 
 }
+
 
 function escapeHtml(value){
 
@@ -1028,11 +1133,13 @@ return {
 
 }
 
+
 function escapeAttr(value){
 
 return escapeHtml(value);
 
 }
+
 
 function money(value){
 
@@ -1042,6 +1149,7 @@ return Number(value||0)
 
 }
 
+
 function validColor(value){
 
 return /^#[0-9A-Fa-f]{6}$/.test(
@@ -1050,8 +1158,9 @@ String(value||"")
 
 }
 
+
 /* =========================================================
-   VERİ NORMALİZASYONU
+   DATA NORMALIZE
 ========================================================= */
 
 function normalizeData(data){
@@ -1068,12 +1177,14 @@ JSON.stringify(DEFAULT_DATA)
 
 }
 
+
 if(!data.cafeName){
 
 data.cafeName =
 "Katmerci Dayı";
 
 }
+
 
 if(!data.subtitle){
 
@@ -1082,8 +1193,10 @@ data.subtitle =
 
 }
 
+
 data.logo =
 data.logo || "";
+
 
 if(!Array.isArray(data.categories)){
 
@@ -1091,8 +1204,10 @@ data.categories=[];
 
 }
 
+
 const old =
 data.theme || {};
+
 
 data.theme={
 
@@ -1153,6 +1268,7 @@ DEFAULT_THEME.danger
 
 };
 
+
 data.categories.forEach(
 category=>{
 
@@ -1201,6 +1317,17 @@ item.price=0;
 
 }
 
+if(item.calories===undefined){
+
+/*
+Eski ürünlerde kalori yoksa
+0 olarak oluştur.
+*/
+
+item.calories=0;
+
+}
+
 if(item.available===undefined){
 
 item.available=true;
@@ -1219,12 +1346,14 @@ item.image="";
 }
 );
 
+
 return data;
 
 }
 
+
 /* =========================================================
-   TEMA UYGULA
+   TEMA
 ========================================================= */
 
 function applyTheme(){
@@ -1237,75 +1366,25 @@ menuData.theme;
 const root =
 document.documentElement.style;
 
-root.setProperty(
-"--bg",
-t.background
-);
-
-root.setProperty(
-"--surface",
-t.surface
-);
-
-root.setProperty(
-"--surface2",
-t.surfaceRaised
-);
-
-root.setProperty(
-"--heading",
-t.heading
-);
-
-root.setProperty(
-"--text",
-t.text
-);
-
-root.setProperty(
-"--muted",
-t.muted
-);
-
-root.setProperty(
-"--accent",
-t.accent
-);
-
-root.setProperty(
-"--accentText",
-t.accentText
-);
-
-root.setProperty(
-"--category",
-t.category
-);
-
-root.setProperty(
-"--categoryText",
-t.categoryText
-);
-
-root.setProperty(
-"--price",
-t.price
-);
-
-root.setProperty(
-"--border",
-t.border
-);
-
-root.setProperty(
-"--danger",
-t.danger
-);
+root.setProperty("--bg",t.background);
+root.setProperty("--surface",t.surface);
+root.setProperty("--surface2",t.surfaceRaised);
+root.setProperty("--heading",t.heading);
+root.setProperty("--text",t.text);
+root.setProperty("--muted",t.muted);
+root.setProperty("--accent",t.accent);
+root.setProperty("--accentText",t.accentText);
+root.setProperty("--category",t.category);
+root.setProperty("--categoryText",t.categoryText);
+root.setProperty("--price",t.price);
+root.setProperty("--border",t.border);
+root.setProperty("--danger",t.danger);
 
 }
 
+
 /* =========================================================
-   MENÜYÜ SUPABASE'DEN AL
+   LOAD MENU
 ========================================================= */
 
 async function loadMenu(){
@@ -1428,8 +1507,9 @@ Tekrar Dene
 
 }
 
+
 /* =========================================================
-   MÜŞTERİ MENÜSÜ
+   CUSTOMER MENU
 ========================================================= */
 
 function renderCustomer(){
@@ -1463,6 +1543,7 @@ menuData.logo
 src="${escapeAttr(menuData.logo)}"
 alt=""
 >
+
 `
 
 :`
@@ -1522,6 +1603,7 @@ active.id;
 
 }
 
+
 const logoHTML =
 menuData.logo
 
@@ -1542,6 +1624,7 @@ ${escapeHtml(menuData.cafeName)}
 
 `;
 
+
 const tabsHTML =
 categories.map(
 category=>`
@@ -1558,6 +1641,7 @@ ${escapeHtml(category.name)}
 
 `
 ).join("");
+
 
 const productsHTML =
 active.items.length
@@ -1590,6 +1674,21 @@ onerror="this.style.display='none'"
 </div>
 
 `;
+
+
+const calorieHTML =
+Number(item.calories)>0
+
+?`
+
+<div class="product-calorie">
+🔥 ${Number(item.calories).toLocaleString("tr-TR")} kcal
+</div>
+
+`
+
+:"";
+
 
 return `
 
@@ -1626,11 +1725,18 @@ TÜKENDİ
 
 <div class="dots"></div>
 
+<div>
+
 <div class="product-price">
 ${money(item.price)}
 </div>
 
+${calorieHTML}
+
 </div>
+
+</div>
+
 
 ${
 item.desc
@@ -1668,6 +1774,7 @@ Bu kategoride henüz ürün yok.
 
 `;
 
+
 app.innerHTML=`
 
 <div class="menu-wrap">
@@ -1692,6 +1799,7 @@ ${escapeHtml(menuData.subtitle)}
 
 </header>
 
+
 <div class="tabs-wrap">
 
 <nav class="tabs">
@@ -1699,6 +1807,7 @@ ${tabsHTML}
 </nav>
 
 </div>
+
 
 <main class="category-area">
 
@@ -1716,6 +1825,7 @@ ${productsHTML}
 
 </main>
 
+
 <footer class="menu-footer">
 
 <div class="footer-line"></div>
@@ -1727,6 +1837,7 @@ QR ile açıldı · Afiyet olsun
 </div>
 
 `;
+
 
 document
 .querySelectorAll("[data-category]")
@@ -1750,8 +1861,9 @@ behavior:"smooth"
 
 }
 
+
 /* =========================================================
-   AYAR BUTONU
+   SETTINGS
 ========================================================= */
 
 document
@@ -1769,6 +1881,7 @@ showPinPanel();
 }
 
 };
+
 
 /* =========================================================
    PIN
@@ -1797,6 +1910,7 @@ id="pinClose"
 </button>
 
 </div>
+
 
 <h2 class="pin-title">
 Yönetim Paneli
@@ -1835,6 +1949,7 @@ document.body.appendChild(
 overlay
 );
 
+
 overlay.querySelector(
 "#pinClose"
 ).onclick=()=>{
@@ -1842,6 +1957,7 @@ overlay.querySelector(
 overlay.remove();
 
 };
+
 
 const login=async()=>{
 
@@ -1867,6 +1983,7 @@ return;
 
 error.textContent =
 "Kontrol ediliyor…";
+
 
 try{
 
@@ -1896,6 +2013,7 @@ result.data===true ||
 result.data==="true" ||
 result.data?.[0]===true ||
 result.data?.[0]?.check_menu_pin===true;
+
 
 if(!ok){
 
@@ -1930,9 +2048,11 @@ err.message ||
 
 };
 
+
 document
 .getElementById("pinLogin")
 .onclick=login;
+
 
 document
 .getElementById("pinInput")
@@ -1949,19 +2069,30 @@ login();
 }
 );
 
+
 setTimeout(
 ()=>{
-document
-.getElementById("pinInput")
-.focus();
+
+const input =
+document.getElementById(
+"pinInput"
+);
+
+if(input){
+
+input.focus();
+
+}
+
 },
 100
 );
 
 }
 
+
 /* =========================================================
-   ADMIN
+   ADMIN PANEL
 ========================================================= */
 
 function showAdminPanel(){
@@ -1984,6 +2115,7 @@ adminOverlay
 renderAdmin();
 
 }
+
 
 /* =========================================================
    ADMIN RENDER
@@ -2009,6 +2141,7 @@ id="adminClose"
 </button>
 
 </div>
+
 
 <div class="admin-tabs">
 
@@ -2044,11 +2177,28 @@ MENÜ
 
 </div>
 
+
+<div
+class="admin-scroll"
+id="adminScroll"
+>
+
 <div id="adminContent"></div>
 
 </div>
 
+
+<div
+class="admin-save-area"
+id="adminSaveArea"
+>
+</div>
+
+
+</div>
+
 `;
+
 
 adminOverlay
 .querySelector("#adminClose")
@@ -2061,6 +2211,7 @@ adminOverlay=null;
 renderCustomer();
 
 };
+
 
 adminOverlay
 .querySelectorAll("[data-admin-tab]")
@@ -2076,6 +2227,7 @@ renderAdmin();
 };
 
 });
+
 
 if(adminTab==="general"){
 
@@ -2097,8 +2249,55 @@ renderMenuEditor();
 
 }
 
+
 /* =========================================================
-   GENEL
+   SAVE BUTTON OLUŞTUR
+========================================================= */
+
+function renderSaveButton(
+statusId
+){
+
+const area =
+document.getElementById(
+"adminSaveArea"
+);
+
+if(!area)return;
+
+area.innerHTML=`
+
+<div
+id="${statusId}"
+class="status"
+></div>
+
+<button
+id="globalSaveButton"
+class="main-save"
+>
+✓ KAYDET
+</button>
+
+`;
+
+document
+.getElementById("globalSaveButton")
+.onclick=()=>{
+
+saveMenu(
+document.getElementById(
+statusId
+)
+);
+
+};
+
+}
+
+
+/* =========================================================
+   GENERAL
 ========================================================= */
 
 function renderGeneral(){
@@ -2115,6 +2314,7 @@ content.innerHTML=`
 <h3 class="section-title">
 Logo
 </h3>
+
 
 <div class="logo-admin">
 
@@ -2146,6 +2346,7 @@ LOGO
 
 </div>
 
+
 <div class="logo-actions">
 
 <label class="file-button">
@@ -2159,6 +2360,7 @@ accept="image/png,image/jpeg,image/webp"
 >
 
 </label>
+
 
 <button
 class="small-button"
@@ -2177,11 +2379,13 @@ PNG, JPG veya WEBP kullanabilirsiniz.
 
 </div>
 
+
 <div class="admin-section">
 
 <h3 class="section-title">
 Kafe Bilgileri
 </h3>
+
 
 <label class="form-label">
 Kafe adı
@@ -2193,6 +2397,7 @@ class="form-input"
 value="${escapeAttr(menuData.cafeName)}"
 >
 
+
 <label class="form-label">
 Alt başlık
 </label>
@@ -2203,6 +2408,7 @@ class="form-textarea"
 >${escapeHtml(menuData.subtitle)}</textarea>
 
 </div>
+
 
 <div class="admin-section">
 
@@ -2236,19 +2442,12 @@ PIN Değiştir
 
 </div>
 
-<div
-id="generalStatus"
-class="status"
-></div>
-
-<button
-id="saveGeneral"
-class="main-save"
->
-✓ KAYDET
-</button>
-
 `;
+
+renderSaveButton(
+"generalStatus"
+);
+
 
 document
 .getElementById("cafeName")
@@ -2259,6 +2458,7 @@ e.target.value;
 
 };
 
+
 document
 .getElementById("cafeSubtitle")
 .oninput=e=>{
@@ -2267,6 +2467,7 @@ menuData.subtitle =
 e.target.value;
 
 };
+
 
 document
 .getElementById("logoFile")
@@ -2298,6 +2499,7 @@ alert(
 
 };
 
+
 document
 .getElementById("removeLogo")
 .onclick=()=>{
@@ -2307,6 +2509,7 @@ menuData.logo="";
 renderAdmin();
 
 };
+
 
 document
 .getElementById("changePin")
@@ -2391,22 +2594,11 @@ status.textContent =
 
 };
 
-document
-.getElementById("saveGeneral")
-.onclick=()=>{
-
-saveMenu(
-document.getElementById(
-"generalStatus"
-)
-);
-
-};
-
 }
 
+
 /* =========================================================
-   RENK PANELİ
+   THEME
 ========================================================= */
 
 function renderTheme(){
@@ -2425,6 +2617,7 @@ const colors=[
 ["text","Normal yazı"],
 ["muted","Açıklama yazısı"],
 ["accent","Ana tema"],
+["accentText","Ana tema yazısı"],
 ["category","Kategori rengi"],
 ["categoryText","Kategori yazısı"],
 ["price","Fiyat rengi"],
@@ -2432,6 +2625,7 @@ const colors=[
 ["danger","Tükendi rengi"]
 
 ];
+
 
 content.innerHTML=`
 
@@ -2496,11 +2690,12 @@ data-reset-color="${key}"
 
 </div>
 
+
 <div class="section-note">
-Renk kutusundan seçim yapabilir veya HEX kodunu
-direkt yazabilirsiniz. Değişiklikler anında
-önizlemeye uygulanır.
+Renk kutusundan seçim yapabilir veya HEX kodunu direkt yazabilirsiniz.
+Değişiklikler önizlemeye anında uygulanır.
 </div>
+
 
 <div
 class="preview-box"
@@ -2533,11 +2728,13 @@ Gaziantepten gelen lezzet
 
 </div>
 
+
 <div class="admin-section">
 
 <h3 class="section-title">
 Hazır Temalar
 </h3>
+
 
 <div class="two-col">
 
@@ -2557,7 +2754,9 @@ data-preset="brown"
 
 </div>
 
+
 <div style="height:6px"></div>
+
 
 <div class="two-col">
 
@@ -2579,55 +2778,23 @@ data-preset="dark"
 
 </div>
 
-<div
-id="themeStatus"
-class="status"
-></div>
-
-<button
-id="saveTheme"
-class="main-save"
->
-✓ KAYDET
-</button>
-
 `;
 
 bindColorEvents();
 
 bindPresetEvents();
 
-/*
-  ÖNEMLİ:
-  RENK KAYDET BUTONU ARTIK DOĞRUDAN
-  saveMenu() FONKSİYONUNA BAĞLI.
-*/
-
-const saveButton =
-document.getElementById(
-"saveTheme"
-);
-
-if(saveButton){
-
-saveButton.onclick=()=>{
-
-saveMenu(
-document.getElementById(
+renderSaveButton(
 "themeStatus"
-)
 );
-
-};
-
-}
 
 updateThemePreview();
 
 }
 
+
 /* =========================================================
-   RENK EVENTLERİ
+   COLOR EVENTS
 ========================================================= */
 
 function bindColorEvents(){
@@ -2663,6 +2830,7 @@ updateThemePreview();
 };
 
 });
+
 
 document
 .querySelectorAll("[data-hex-key]")
@@ -2714,6 +2882,7 @@ updateThemePreview();
 
 });
 
+
 document
 .querySelectorAll("[data-reset-color]")
 .forEach(button=>{
@@ -2734,8 +2903,9 @@ renderAdmin();
 
 }
 
+
 /* =========================================================
-   TEMA ÖNİZLEME
+   PREVIEW
 ========================================================= */
 
 function updateThemePreview(){
@@ -2779,8 +2949,9 @@ menuData.theme.price
 
 }
 
+
 /* =========================================================
-   HAZIR TEMALAR
+   PRESETS
 ========================================================= */
 
 function bindPresetEvents(){
@@ -2793,6 +2964,7 @@ button.onclick=()=>{
 
 const preset =
 button.dataset.preset;
+
 
 if(preset==="green"){
 
@@ -2816,6 +2988,7 @@ danger:"#B44E48"
 
 }
 
+
 if(preset==="brown"){
 
 menuData.theme={
@@ -2838,6 +3011,7 @@ danger:"#B24E48"
 
 }
 
+
 if(preset==="terracotta"){
 
 menuData.theme={
@@ -2859,6 +3033,7 @@ danger:"#A74440"
 };
 
 }
+
 
 if(preset==="dark"){
 
@@ -2892,8 +3067,9 @@ renderAdmin();
 
 }
 
+
 /* =========================================================
-   MENÜ EDİTÖRÜ
+   MENU EDITOR
 ========================================================= */
 
 function renderMenuEditor(){
@@ -2902,6 +3078,7 @@ const content =
 document.getElementById(
 "adminContent"
 );
+
 
 const categoriesHTML =
 menuData.categories.map(
@@ -2913,18 +3090,19 @@ menuData.categories.map(
 
 <input
 class="form-input"
-data-category-name="${category.id}"
+data-category-name="${escapeAttr(category.id)}"
 value="${escapeAttr(category.name)}"
 >
 
 <button
 class="delete-button"
-data-delete-category="${category.id}"
+data-delete-category="${escapeAttr(category.id)}"
 >
 Sil
 </button>
 
 </div>
+
 
 ${
 category.items.map(
@@ -2940,13 +3118,14 @@ category.items.map(
 
 <button
 class="remove-item"
-data-delete-item="${item.id}"
-data-category-id="${category.id}"
+data-delete-item="${escapeAttr(item.id)}"
+data-category-id="${escapeAttr(category.id)}"
 >
 Ürünü sil
 </button>
 
 </div>
+
 
 <label class="form-label">
 Ürün adı
@@ -2954,9 +3133,10 @@ data-category-id="${category.id}"
 
 <input
 class="form-input"
-data-item-name="${item.id}"
+data-item-name="${escapeAttr(item.id)}"
 value="${escapeAttr(item.name)}"
 >
+
 
 <label class="form-label">
 Açıklama
@@ -2964,9 +3144,10 @@ Açıklama
 
 <input
 class="form-input"
-data-item-desc="${item.id}"
+data-item-desc="${escapeAttr(item.id)}"
 value="${escapeAttr(item.desc)}"
 >
+
 
 <div class="item-grid">
 
@@ -2981,13 +3162,45 @@ type="number"
 min="0"
 step="1"
 class="form-input"
-data-item-price="${item.id}"
+data-item-price="${escapeAttr(item.id)}"
 value="${Number(item.price)||0}"
 >
 
 </div>
 
+
 <div>
+
+<label class="form-label">
+Kalori
+</label>
+
+<div class="calorie-box">
+
+<input
+type="number"
+min="0"
+step="1"
+class="form-input"
+data-item-calories="${escapeAttr(item.id)}"
+value="${Number(item.calories)||0}"
+placeholder="Örn. 650"
+>
+
+<span class="calorie-unit">
+kcal
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div style="
+margin-top:7px;
+">
 
 <label class="form-label">
 Fotoğraf
@@ -2995,19 +3208,18 @@ Fotoğraf
 
 <label class="file-button">
 
-Seç
+Fotoğraf Seç
 
 <input
 type="file"
 accept="image/*"
-data-item-file="${item.id}"
+data-item-file="${escapeAttr(item.id)}"
 >
 
 </label>
 
 </div>
 
-</div>
 
 ${
 item.image
@@ -3034,7 +3246,7 @@ border:1px solid #DDD2C1;
 
 <button
 class="small-button"
-data-remove-image="${item.id}"
+data-remove-image="${escapeAttr(item.id)}"
 >
 Görseli kaldır
 </button>
@@ -3046,6 +3258,7 @@ Görseli kaldır
 :""
 }
 
+
 <label class="form-label">
 veya görsel linki
 </label>
@@ -3054,7 +3267,7 @@ veya görsel linki
 type="url"
 class="form-input"
 placeholder="https://..."
-data-item-url="${item.id}"
+data-item-url="${escapeAttr(item.id)}"
 value="${
 item.image &&
 String(item.image).startsWith("http")
@@ -3063,11 +3276,12 @@ String(item.image).startsWith("http")
 }"
 >
 
+
 <label class="availability">
 
 <input
 type="checkbox"
-data-item-available="${item.id}"
+data-item-available="${escapeAttr(item.id)}"
 ${
 item.available!==false
 ?"checked"
@@ -3085,9 +3299,10 @@ item.available!==false
 ).join("")
 }
 
+
 <button
 class="add-button"
-data-add-item="${category.id}"
+data-add-item="${escapeAttr(category.id)}"
 >
 + Ürün ekle
 </button>
@@ -3097,6 +3312,7 @@ data-add-item="${category.id}"
 `
 ).join("");
 
+
 content.innerHTML=`
 
 <div class="admin-section">
@@ -3105,7 +3321,9 @@ content.innerHTML=`
 Kategoriler ve Ürünler
 </h3>
 
+
 ${categoriesHTML}
+
 
 <button
 id="addCategory"
@@ -3116,27 +3334,17 @@ class="add-button"
 
 </div>
 
-<div
-id="menuStatus"
-class="status"
-></div>
-
-<button
-id="saveMenu"
-class="main-save"
->
-✓ KAYDET
-</button>
-
 `;
 
+
 bindMenuEvents();
+
 
 document
 .getElementById("addCategory")
 .onclick=()=>{
 
-menuData.categories.push({
+const newCategory={
 
 id:uid(),
 
@@ -3144,19 +3352,33 @@ name:"Yeni kategori",
 
 items:[]
 
-});
+};
+
+menuData.categories.push(
+newCategory
+);
+
+activeCategory =
+newCategory.id;
 
 renderAdmin();
 
 };
 
+renderSaveButton(
+"menuStatus"
+);
+
 }
 
+
 /* =========================================================
-   MENÜ EVENTLERİ
+   MENU EVENTS
 ========================================================= */
 
 function bindMenuEvents(){
+
+/* KATEGORİ ADI */
 
 document
 .querySelectorAll("[data-category-name]")
@@ -3181,6 +3403,9 @@ input.value;
 };
 
 });
+
+
+/* KATEGORİ SİL */
 
 document
 .querySelectorAll("[data-delete-category]")
@@ -3228,6 +3453,9 @@ renderAdmin();
 
 });
 
+
+/* ÜRÜN ADI */
+
 document
 .querySelectorAll("[data-item-name]")
 .forEach(input=>{
@@ -3243,6 +3471,9 @@ input.value
 };
 
 });
+
+
+/* AÇIKLAMA */
 
 document
 .querySelectorAll("[data-item-desc]")
@@ -3260,21 +3491,69 @@ input.value
 
 });
 
+
+/* FİYAT */
+
 document
 .querySelectorAll("[data-item-price]")
 .forEach(input=>{
 
 input.oninput=()=>{
 
+let value =
+Number(input.value);
+
+if(!Number.isFinite(value) || value<0){
+
+value=0;
+
+}
+
 updateItem(
 input.dataset.itemPrice,
 "price",
-Number(input.value)||0
+value
 );
 
 };
 
 });
+
+
+/* =========================================================
+   KALORİ
+========================================================= */
+
+document
+.querySelectorAll("[data-item-calories]")
+.forEach(input=>{
+
+input.oninput=()=>{
+
+let value =
+Number(input.value);
+
+if(!Number.isFinite(value) || value<0){
+
+value=0;
+
+}
+
+value =
+Math.round(value);
+
+updateItem(
+input.dataset.itemCalories,
+"calories",
+value
+);
+
+};
+
+});
+
+
+/* SATIŞ DURUMU */
 
 document
 .querySelectorAll("[data-item-available]")
@@ -3291,6 +3570,9 @@ input.checked
 };
 
 });
+
+
+/* ÜRÜN SİL */
 
 document
 .querySelectorAll("[data-delete-item]")
@@ -3322,6 +3604,11 @@ renderAdmin();
 
 });
 
+
+/* =========================================================
+   ÜRÜN EKLE
+========================================================= */
+
 document
 .querySelectorAll("[data-add-item]")
 .forEach(button=>{
@@ -3331,7 +3618,7 @@ button.onclick=()=>{
 const category =
 menuData.categories.find(
 c =>
-c.id===
+c.id ===
 button.dataset.addItem
 );
 
@@ -3347,6 +3634,8 @@ desc:"",
 
 price:0,
 
+calories:0,
+
 available:true,
 
 image:""
@@ -3358,6 +3647,9 @@ renderAdmin();
 };
 
 });
+
+
+/* FOTOĞRAF */
 
 document
 .querySelectorAll("[data-item-file]")
@@ -3389,6 +3681,8 @@ renderAdmin();
 
 }catch(error){
 
+console.error(error);
+
 alert(
 "Fotoğraf yüklenemedi."
 );
@@ -3398,6 +3692,9 @@ alert(
 };
 
 });
+
+
+/* URL */
 
 document
 .querySelectorAll("[data-item-url]")
@@ -3414,6 +3711,9 @@ input.value.trim()
 };
 
 });
+
+
+/* GÖRSEL SİL */
 
 document
 .querySelectorAll("[data-remove-image]")
@@ -3435,8 +3735,9 @@ renderAdmin();
 
 }
 
+
 /* =========================================================
-   ÜRÜN GÜNCELLE
+   UPDATE ITEM
 ========================================================= */
 
 function updateItem(
@@ -3467,10 +3768,9 @@ return;
 
 }
 
+
 /* =========================================================
-   TEK SAVE FONKSİYONU
-   GENEL + RENK + MENÜ
-   HEPSİ BURADAN KAYDOLUR
+   SAVE
 ========================================================= */
 
 async function saveMenu(status){
@@ -3484,6 +3784,7 @@ return;
 
 }
 
+
 const buttons =
 document.querySelectorAll(
 ".main-save"
@@ -3491,23 +3792,25 @@ document.querySelectorAll(
 
 buttons.forEach(
 button=>{
+
 button.disabled=true;
-button.textContent=
+
+button.textContent =
 "KAYDEDİLİYOR...";
+
 }
 );
 
+
 status.textContent =
 "Supabase'e kaydediliyor…";
+
 
 try{
 
 menuData =
 normalizeData(menuData);
 
-/*
-  save_menu RPC
-*/
 
 const result =
 await supabaseClient.rpc(
@@ -3518,6 +3821,7 @@ p_pin:authenticatedPin,
 p_data:menuData
 }
 );
+
 
 if(result.error){
 
@@ -3533,9 +3837,6 @@ result.error.message ||
 
 }
 
-/*
-  RPC'nin true döndürmesini kontrol ediyoruz.
-*/
 
 const ok =
 result.data===true ||
@@ -3543,6 +3844,7 @@ result.data==="true" ||
 result.data?.[0]===true ||
 result.data?.[0]?.save_menu===true ||
 result.data?.result===true;
+
 
 if(!ok){
 
@@ -3552,10 +3854,10 @@ throw new Error(
 
 }
 
-/*
-  GERÇEKTEN VERİTABANINA YAZILDI MI?
-  Tekrar okuyup kontrol ediyoruz.
-*/
+
+/* =========================================================
+   VERİTABANINDAN TEKRAR OKU
+========================================================= */
 
 const check =
 await supabaseClient
@@ -3564,11 +3866,13 @@ await supabaseClient
 .eq("id",MENU_ID)
 .maybeSingle();
 
+
 if(check.error){
 
 throw check.error;
 
 }
+
 
 if(
 !check.data ||
@@ -3581,9 +3885,6 @@ throw new Error(
 
 }
 
-/*
-  Supabase'deki gerçek veriyi kullan.
-*/
 
 menuData =
 normalizeData(
@@ -3592,12 +3893,14 @@ check.data.data
 
 applyTheme();
 
+
 status.textContent =
 "✓ Başarıyla kaydedildi.";
 
-/*
-  Paneli kapat
-*/
+
+/* =========================================================
+   PANELİ KAPAT
+========================================================= */
 
 setTimeout(
 ()=>{
@@ -3616,6 +3919,7 @@ renderCustomer();
 650
 );
 
+
 }catch(error){
 
 console.error(
@@ -3629,6 +3933,7 @@ status.textContent =
 error.message ||
 "Menü kaydedilemedi."
 );
+
 
 buttons.forEach(
 button=>{
@@ -3645,8 +3950,9 @@ button.textContent =
 
 }
 
+
 /* =========================================================
-   FOTOĞRAF KÜÇÜLTME
+   RESIZE IMAGE
 ========================================================= */
 
 function resizeImage(
@@ -3661,11 +3967,13 @@ return new Promise(
 const reader =
 new FileReader();
 
+
 reader.onload =
 event=>{
 
 const image =
 new Image();
+
 
 image.onload =
 ()=>{
@@ -3675,6 +3983,7 @@ image.width;
 
 let height =
 image.height;
+
 
 if(
 width>maxSize ||
@@ -3699,6 +4008,7 @@ height*ratio
 
 }
 
+
 const canvas =
 document.createElement(
 "canvas"
@@ -3710,8 +4020,10 @@ width;
 canvas.height =
 height;
 
+
 const ctx =
 canvas.getContext("2d");
+
 
 ctx.drawImage(
 image,
@@ -3720,6 +4032,7 @@ image,
 width,
 height
 );
+
 
 resolve(
 canvas.toDataURL(
@@ -3730,23 +4043,26 @@ quality
 
 };
 
+
 image.onerror =
 reject;
+
 
 image.src =
 event.target.result;
 
 };
 
+
 reader.onerror =
 reject;
+
 
 reader.readAsDataURL(file);
 
 }
 );
 
-}
 
 /* =========================================================
    BAŞLAT
