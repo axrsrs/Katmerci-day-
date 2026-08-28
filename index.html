@@ -65,9 +65,9 @@ min-height:100vh;
 }
 
 
-/* =========================
+/* =========================================================
    MENÜ
-========================= */
+========================================================= */
 
 .menu-wrap{
 width:100%;
@@ -141,9 +141,9 @@ line-height:1.5;
 }
 
 
-/* =========================
-   KATEGORİ
-========================= */
+/* =========================================================
+   KATEGORİLER
+========================================================= */
 
 .tabs-wrap{
 position:sticky;
@@ -190,9 +190,9 @@ box-shadow:0 6px 18px rgba(124,137,87,.20);
 }
 
 
-/* =========================
+/* =========================================================
    ÜRÜNLER
-========================= */
+========================================================= */
 
 .category-area{
 padding:21px 14px 0;
@@ -298,15 +298,6 @@ font-size:14.5px;
 font-weight:700;
 }
 
-.product-calorie{
-margin-top:3px;
-color:var(--accentText);
-font-size:9px;
-font-weight:700;
-white-space:nowrap;
-text-align:right;
-}
-
 .product-card.sold{
 opacity:.52;
 }
@@ -337,9 +328,9 @@ margin:0 auto 11px;
 }
 
 
-/* =========================
-   AYAR
-========================= */
+/* =========================================================
+   AYAR BUTONU
+========================================================= */
 
 .settings-button{
 position:fixed;
@@ -357,6 +348,7 @@ align-items:center;
 justify-content:center;
 font-size:18px;
 box-shadow:0 8px 25px rgba(0,0,0,.18);
+transition:.18s ease;
 }
 
 .settings-button:active{
@@ -364,9 +356,9 @@ transform:scale(.94);
 }
 
 
-/* =========================
+/* =========================================================
    OVERLAY
-========================= */
+========================================================= */
 
 .overlay{
 position:fixed;
@@ -406,7 +398,7 @@ flex:0 0 auto;
 background:#F8F2E7;
 border-top:1px solid #D8CCBB;
 padding:9px 0 calc(9px + env(safe-area-inset-bottom));
-z-index:5;
+z-index:10;
 }
 
 @media(min-width:700px){
@@ -424,9 +416,9 @@ border-radius:22px;
 }
 
 
-/* =========================
+/* =========================================================
    ADMIN
-========================= */
+========================================================= */
 
 .admin-head{
 display:flex;
@@ -542,9 +534,9 @@ gap:7px;
 }
 
 
-/* =========================
+/* =========================================================
    LOGO
-========================= */
+========================================================= */
 
 .logo-admin{
 display:grid;
@@ -609,9 +601,9 @@ font-weight:800;
 }
 
 
-/* =========================
+/* =========================================================
    RENK
-========================= */
+========================================================= */
 
 .color-grid{
 display:grid;
@@ -678,9 +670,9 @@ font-size:11px;
 }
 
 
-/* =========================
+/* =========================================================
    PREVIEW
-========================= */
+========================================================= */
 
 .preview-box{
 margin-top:10px;
@@ -729,9 +721,9 @@ font-weight:800;
 }
 
 
-/* =========================
+/* =========================================================
    KATEGORİ / ÜRÜN ADMİN
-========================= */
+========================================================= */
 
 .category-admin{
 border:1px solid #DED3C3;
@@ -788,35 +780,13 @@ color:#AF5C55;
 font-size:9px;
 }
 
-.item-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:6px;
-}
-
-.calorie-box{
-display:flex;
-align-items:center;
-gap:6px;
-}
-
-.calorie-box .form-input{
-flex:1;
-}
-
-.calorie-unit{
-font-size:10px;
-font-weight:800;
-color:#817366;
-}
-
 .availability{
 display:flex;
 align-items:center;
 gap:5px;
 color:#756A5D;
 font-size:9px;
-margin-top:6px;
+margin-top:8px;
 }
 
 .add-button{
@@ -831,9 +801,9 @@ font-weight:800;
 }
 
 
-/* =========================
+/* =========================================================
    KAYDET
-========================= */
+========================================================= */
 
 .status{
 min-height:18px;
@@ -845,7 +815,7 @@ margin:4px 0;
 
 .main-save{
 width:100%;
-min-height:46px;
+min-height:48px;
 border:0;
 border-radius:11px;
 background:#7C8957;
@@ -865,9 +835,9 @@ opacity:.65;
 }
 
 
-/* =========================
+/* =========================================================
    PIN
-========================= */
+========================================================= */
 
 .pin-panel{
 width:calc(100% - 24px);
@@ -918,6 +888,10 @@ margin-top:7px;
 }
 
 
+/* =========================================================
+   MOBİL
+========================================================= */
+
 @media(max-width:480px){
 
 .hero{
@@ -945,19 +919,6 @@ height:53px;
 flex-basis:53px;
 }
 
-.item-grid{
-grid-template-columns:1fr 1fr;
-}
-
-}
-
-
-/* =========================================================
-   MOBİL KAYDET ALANI
-========================================================= */
-
-@media(max-width:480px){
-
 .admin-panel{
 height:96vh;
 padding-left:12px;
@@ -974,6 +935,38 @@ min-height:48px;
 font-size:12px;
 }
 
+}
+
+
+/* =========================================================
+   KAYDET BUTONU SABİT / HAREKETLİ
+========================================================= */
+
+.admin-save-area{
+position:relative;
+}
+
+.main-save{
+animation:savePulse 2.2s ease-in-out infinite;
+}
+
+@keyframes savePulse{
+
+0%,100%{
+transform:translateY(0);
+box-shadow:0 8px 20px rgba(124,137,87,.20);
+}
+
+50%{
+transform:translateY(-2px);
+box-shadow:0 11px 26px rgba(124,137,87,.30);
+}
+
+}
+
+.main-save:active{
+animation:none;
+transform:scale(.985);
 }
 
 </style>
@@ -1317,17 +1310,6 @@ item.price=0;
 
 }
 
-if(item.calories===undefined){
-
-/*
-Eski ürünlerde kalori yoksa
-0 olarak oluştur.
-*/
-
-item.calories=0;
-
-}
-
 if(item.available===undefined){
 
 item.available=true;
@@ -1339,6 +1321,11 @@ if(item.image===undefined){
 item.image="";
 
 }
+
+/*
+Eski Supabase verisinde calories varsa
+burada kullanılmıyor.
+*/
 
 }
 );
@@ -1588,6 +1575,7 @@ return;
 
 }
 
+
 let active =
 categories.find(
 c=>c.id===activeCategory
@@ -1676,20 +1664,6 @@ onerror="this.style.display='none'"
 `;
 
 
-const calorieHTML =
-Number(item.calories)>0
-
-?`
-
-<div class="product-calorie">
-🔥 ${Number(item.calories).toLocaleString("tr-TR")} kcal
-</div>
-
-`
-
-:"";
-
-
 return `
 
 <div class="
@@ -1725,14 +1699,8 @@ TÜKENDİ
 
 <div class="dots"></div>
 
-<div>
-
 <div class="product-price">
 ${money(item.price)}
-</div>
-
-${calorieHTML}
-
 </div>
 
 </div>
@@ -2251,7 +2219,7 @@ renderMenuEditor();
 
 
 /* =========================================================
-   SAVE BUTTON OLUŞTUR
+   SAVE BUTTON
 ========================================================= */
 
 function renderSaveButton(
@@ -2490,6 +2458,8 @@ file,
 renderAdmin();
 
 }catch(error){
+
+console.error(error);
 
 alert(
 "Logo yüklenemedi."
@@ -3149,10 +3119,6 @@ value="${escapeAttr(item.desc)}"
 >
 
 
-<div class="item-grid">
-
-<div>
-
 <label class="form-label">
 Fiyat ₺
 </label>
@@ -3165,37 +3131,6 @@ class="form-input"
 data-item-price="${escapeAttr(item.id)}"
 value="${Number(item.price)||0}"
 >
-
-</div>
-
-
-<div>
-
-<label class="form-label">
-Kalori
-</label>
-
-<div class="calorie-box">
-
-<input
-type="number"
-min="0"
-step="1"
-class="form-input"
-data-item-calories="${escapeAttr(item.id)}"
-value="${Number(item.calories)||0}"
-placeholder="Örn. 650"
->
-
-<span class="calorie-unit">
-kcal
-</span>
-
-</div>
-
-</div>
-
-</div>
 
 
 <div style="
@@ -3520,39 +3455,6 @@ value
 });
 
 
-/* =========================================================
-   KALORİ
-========================================================= */
-
-document
-.querySelectorAll("[data-item-calories]")
-.forEach(input=>{
-
-input.oninput=()=>{
-
-let value =
-Number(input.value);
-
-if(!Number.isFinite(value) || value<0){
-
-value=0;
-
-}
-
-value =
-Math.round(value);
-
-updateItem(
-input.dataset.itemCalories,
-"calories",
-value
-);
-
-};
-
-});
-
-
 /* SATIŞ DURUMU */
 
 document
@@ -3633,8 +3535,6 @@ name:"Yeni ürün",
 desc:"",
 
 price:0,
-
-calories:0,
 
 available:true,
 
