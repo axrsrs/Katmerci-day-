@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+>
 
 <title>Katmerci Dayı Menü</title>
 
@@ -11,133 +16,228 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+rel="stylesheet"
+>
 
 <style>
 
+/* =========================================================
+   ANA TEMA
+========================================================= */
+
 :root{
+
 --bg:#F4EBDD;
 --surface:#FFFDF8;
 --surface2:#E9DDC9;
+
 --heading:#4E282C;
 --text:#493B32;
 --muted:#817366;
+
 --accent:#7C8957;
 --accentText:#4D5933;
+
 --category:#7C8957;
 --categoryText:#FFFDF5;
+
 --price:#A86143;
+
 --border:#D8CBB8;
+
 --danger:#B44E48;
+
 }
 
+
+/* =========================================================
+   GENEL
+========================================================= */
+
 *{
+
 box-sizing:border-box;
+
 -webkit-tap-highlight-color:transparent;
+
 }
 
 html,
 body{
+
 margin:0;
 padding:0;
 min-height:100%;
+
 }
 
 body{
+
 background:var(--bg);
+
 color:var(--text);
+
 font-family:"DM Sans",sans-serif;
+
 overflow-x:hidden;
+
 }
 
 button,
 input,
 textarea{
+
 font-family:inherit;
+
 }
 
 button{
+
 cursor:pointer;
+
 }
 
 #app{
+
 min-height:100vh;
+
 }
 
 
 /* =========================================================
-   MENÜ
+   MÜŞTERİ MENÜSÜ
 ========================================================= */
 
 .menu-wrap{
+
 width:100%;
 max-width:680px;
+
 margin:0 auto;
+
 min-height:100vh;
+
 padding-bottom:80px;
+
 }
+
 
 .hero{
+
 text-align:center;
+
 padding:28px 18px 24px;
+
 }
+
 
 .logo-box{
+
 width:104px;
 height:104px;
+
 border-radius:50%;
+
 margin:0 auto 16px;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 overflow:hidden;
+
 background:var(--surface);
+
 border:2px solid var(--accent);
+
 box-shadow:
+
 0 0 0 6px rgba(124,137,87,.10),
+
 0 12px 30px rgba(0,0,0,.10);
+
 }
+
 
 .logo-box img{
+
 width:100%;
 height:100%;
+
 object-fit:contain;
+
 }
+
 
 .logo-placeholder{
+
 padding:10px;
+
 color:var(--accent);
+
 font-family:"Playfair Display",serif;
+
 font-size:13px;
+
 font-weight:700;
+
 }
+
 
 .eyebrow{
+
 font-size:10px;
+
 letter-spacing:.45em;
+
 text-transform:uppercase;
+
 color:var(--accentText);
+
 margin-left:.45em;
+
 margin-bottom:9px;
+
 font-weight:700;
+
 }
+
 
 .cafe-title{
+
 margin:0;
+
 color:var(--heading);
+
 font-family:"Playfair Display",serif;
+
 font-size:clamp(38px,10vw,60px);
+
 line-height:1;
+
 letter-spacing:-.04em;
+
 font-weight:700;
+
 }
 
+
 .cafe-subtitle{
+
 max-width:470px;
+
 margin:11px auto 0;
+
 color:var(--muted);
+
 font-size:13px;
+
 line-height:1.5;
+
 }
 
 
@@ -146,47 +246,87 @@ line-height:1.5;
 ========================================================= */
 
 .tabs-wrap{
+
 position:sticky;
+
 top:0;
+
 z-index:20;
+
 background:rgba(244,235,221,.94);
+
 backdrop-filter:blur(13px);
+
 -webkit-backdrop-filter:blur(13px);
+
 border-bottom:1px solid var(--border);
+
 }
+
 
 .tabs{
+
 display:flex;
+
 gap:7px;
+
 overflow-x:auto;
+
 padding:9px 13px;
+
 scrollbar-width:none;
+
 }
+
 
 .tabs::-webkit-scrollbar{
+
 display:none;
+
 }
+
 
 .tab{
+
 flex:0 0 auto;
+
 min-width:82px;
+
 height:38px;
+
 padding:0 14px;
+
 border-radius:999px;
+
 border:1px solid var(--border);
+
 background:var(--surface);
+
 color:var(--muted);
+
 font-size:11px;
+
 font-weight:700;
+
 white-space:nowrap;
+
 transition:.2s ease;
+
 }
 
+
 .tab.active{
+
 background:var(--accent);
+
 border-color:var(--accent);
+
 color:var(--categoryText);
-box-shadow:0 6px 18px rgba(124,137,87,.20);
+
+box-shadow:
+
+0 6px 18px rgba(124,137,87,.20);
+
 }
 
 
@@ -195,136 +335,251 @@ box-shadow:0 6px 18px rgba(124,137,87,.20);
 ========================================================= */
 
 .category-area{
+
 padding:21px 14px 0;
+
 }
+
 
 .category-heading{
+
 display:inline-flex;
+
 align-items:center;
+
 gap:8px;
+
 padding:9px 16px;
+
 border-radius:14px;
+
 background:var(--category);
+
 color:var(--categoryText);
+
 font-family:"Playfair Display",serif;
+
 font-size:18px;
+
 font-weight:700;
+
 box-shadow:0 8px 20px rgba(0,0,0,.08);
+
 margin-bottom:13px;
+
 }
+
 
 .category-dot{
+
 width:7px;
+
 height:7px;
+
 border-radius:50%;
+
 background:var(--price);
+
 }
+
 
 .products{
+
 display:flex;
+
 flex-direction:column;
+
 gap:8px;
+
 }
 
+
 .product-card{
+
 display:flex;
+
 align-items:center;
+
 gap:10px;
+
 min-height:72px;
+
 padding:8px 9px;
+
 background:var(--surface);
+
 border:1px solid var(--border);
+
 border-radius:15px;
-box-shadow:0 5px 18px rgba(63,42,29,.08);
+
+box-shadow:
+
+0 5px 18px rgba(63,42,29,.08);
+
 }
+
 
 .product-image,
 .product-no-image{
+
 width:55px;
+
 height:55px;
+
 flex:0 0 55px;
+
 border-radius:11px;
+
 object-fit:cover;
+
 border:1px solid var(--border);
+
 background:var(--surface2);
+
 }
+
 
 .product-no-image{
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 color:var(--accent);
+
 font-family:"Playfair Display",serif;
+
 font-size:19px;
+
 }
+
 
 .product-info{
+
 flex:1;
+
 min-width:0;
+
 }
+
 
 .product-top{
+
 display:flex;
+
 align-items:baseline;
+
 gap:6px;
+
 }
+
 
 .product-name{
+
 color:var(--heading);
+
 font-size:13.5px;
+
 line-height:1.25;
+
 font-weight:700;
+
 }
+
 
 .product-desc{
+
 margin-top:3px;
+
 color:var(--muted);
+
 font-size:10.5px;
+
 line-height:1.35;
+
 }
+
 
 .dots{
+
 flex:1;
+
 min-width:10px;
+
 border-bottom:1px dotted var(--border);
+
 margin-bottom:4px;
+
 }
+
 
 .product-price{
+
 color:var(--price);
+
 white-space:nowrap;
+
 font-family:"Playfair Display",serif;
+
 font-size:14.5px;
+
 font-weight:700;
+
 }
+
 
 .product-card.sold{
+
 opacity:.52;
+
 }
+
 
 .product-card.sold .product-name{
+
 text-decoration:line-through;
+
 }
+
 
 .sold-label{
+
 color:var(--danger);
+
 font-size:8px;
+
 margin-left:5px;
+
 letter-spacing:.06em;
+
 }
+
 
 .menu-footer{
+
 text-align:center;
+
 padding:30px 20px 8px;
+
 color:var(--muted);
+
 font-size:10px;
+
 }
 
+
 .footer-line{
+
 width:50px;
+
 height:1px;
+
 background:var(--border);
+
 margin:0 auto 11px;
+
 }
 
 
@@ -333,26 +588,46 @@ margin:0 auto 11px;
 ========================================================= */
 
 .settings-button{
+
 position:fixed;
+
 right:15px;
+
 bottom:15px;
+
 z-index:30;
+
 width:44px;
+
 height:44px;
+
 border-radius:50%;
+
 border:1px solid var(--accent);
+
 background:var(--accent);
+
 color:#fff;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 font-size:18px;
-box-shadow:0 8px 25px rgba(0,0,0,.18);
-transition:.18s ease;
+
+box-shadow:
+
+0 8px 25px rgba(0,0,0,.18);
+
 }
 
+
 .settings-button:active{
+
 transform:scale(.94);
+
 }
 
 
@@ -361,243 +636,450 @@ transform:scale(.94);
 ========================================================= */
 
 .overlay{
+
 position:fixed;
+
 inset:0;
+
 z-index:100;
+
 background:rgba(35,25,18,.58);
+
 backdrop-filter:blur(7px);
+
 -webkit-backdrop-filter:blur(7px);
+
 display:flex;
+
 align-items:flex-end;
+
 justify-content:center;
+
 }
+
 
 .admin-panel{
+
 width:100%;
+
 max-width:680px;
+
 height:94vh;
+
 display:flex;
+
 flex-direction:column;
+
 background:#F8F2E7;
+
 color:#352D26;
+
 border-radius:22px 22px 0 0;
+
 padding:15px 14px 0;
-box-shadow:0 -15px 50px rgba(0,0,0,.30);
+
+box-shadow:
+
+0 -15px 50px rgba(0,0,0,.30);
+
 overflow:hidden;
+
 }
+
 
 .admin-scroll{
+
 flex:1;
+
 overflow-y:auto;
+
 padding-bottom:20px;
+
 -webkit-overflow-scrolling:touch;
+
 }
 
+
 .admin-save-area{
+
 flex:0 0 auto;
+
 background:#F8F2E7;
+
 border-top:1px solid #D8CCBB;
+
 padding:9px 0 calc(9px + env(safe-area-inset-bottom));
-z-index:10;
+
+z-index:5;
+
 }
+
 
 @media(min-width:700px){
 
 .overlay{
+
 align-items:center;
+
 padding:20px;
+
 }
 
 .admin-panel{
+
 height:92vh;
+
 border-radius:22px;
+
 }
 
 }
 
 
 /* =========================================================
-   ADMIN
+   ADMIN BAŞLIK
 ========================================================= */
 
 .admin-head{
+
 display:flex;
+
 align-items:center;
+
 justify-content:space-between;
+
 margin-bottom:12px;
+
 flex:0 0 auto;
+
 }
+
 
 .admin-title{
+
 margin:0;
+
 font-family:"Playfair Display",serif;
+
 font-size:23px;
+
 color:#352D26;
+
 }
+
 
 .close-button{
+
 width:35px;
+
 height:35px;
+
 border-radius:50%;
+
 border:1px solid #D7CCBB;
+
 background:#FFFDF8;
+
 color:#706557;
+
 font-size:18px;
-}
 
-.admin-tabs{
-display:flex;
-gap:5px;
-padding:4px;
-background:#EDE3D4;
-border-radius:11px;
-margin-bottom:12px;
-flex:0 0 auto;
-}
-
-.admin-tab{
-flex:1;
-height:35px;
-border:0;
-border-radius:8px;
-background:transparent;
-color:#776C60;
-font-size:10.5px;
-font-weight:800;
-}
-
-.admin-tab.active{
-background:#FFFDF8;
-color:#352D26;
-box-shadow:0 2px 8px rgba(0,0,0,.06);
-}
-
-.admin-section{
-background:#FFFDF8;
-border:1px solid #DDD2C1;
-border-radius:15px;
-padding:12px;
-margin-bottom:10px;
-}
-
-.section-title{
-margin:0 0 10px;
-color:#40372E;
-font-size:13px;
-font-weight:800;
-}
-
-.section-note{
-color:#8B7F70;
-font-size:9.5px;
-line-height:1.45;
-margin-top:6px;
-}
-
-.form-label{
-display:block;
-margin:9px 0 4px;
-color:#776B5C;
-font-size:9px;
-font-weight:800;
-letter-spacing:.07em;
-text-transform:uppercase;
-}
-
-.form-input,
-.form-textarea{
-width:100%;
-border:1px solid #D8CCBB;
-border-radius:9px;
-background:#FBF7EF;
-color:#352D26;
-padding:9px 10px;
-font-size:12px;
-outline:none;
-}
-
-.form-input:focus,
-.form-textarea:focus{
-border-color:#8B9966;
-box-shadow:0 0 0 3px rgba(124,137,87,.10);
-}
-
-.form-textarea{
-min-height:60px;
-resize:vertical;
-}
-
-.two-col{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:7px;
 }
 
 
 /* =========================================================
-   LOGO
+   ADMIN SEKME
+========================================================= */
+
+.admin-tabs{
+
+display:flex;
+
+gap:5px;
+
+padding:4px;
+
+background:#EDE3D4;
+
+border-radius:11px;
+
+margin-bottom:12px;
+
+flex:0 0 auto;
+
+}
+
+
+.admin-tab{
+
+flex:1;
+
+height:35px;
+
+border:0;
+
+border-radius:8px;
+
+background:transparent;
+
+color:#776C60;
+
+font-size:10.5px;
+
+font-weight:800;
+
+}
+
+
+.admin-tab.active{
+
+background:#FFFDF8;
+
+color:#352D26;
+
+box-shadow:
+
+0 2px 8px rgba(0,0,0,.06);
+
+}
+
+
+/* =========================================================
+   ADMIN BÖLÜMLER
+========================================================= */
+
+.admin-section{
+
+background:#FFFDF8;
+
+border:1px solid #DDD2C1;
+
+border-radius:15px;
+
+padding:12px;
+
+margin-bottom:10px;
+
+}
+
+
+.section-title{
+
+margin:0 0 10px;
+
+color:#40372E;
+
+font-size:13px;
+
+font-weight:800;
+
+}
+
+
+.section-note{
+
+color:#8B7F70;
+
+font-size:9.5px;
+
+line-height:1.45;
+
+margin-top:6px;
+
+}
+
+
+.form-label{
+
+display:block;
+
+margin:9px 0 4px;
+
+color:#776B5C;
+
+font-size:9px;
+
+font-weight:800;
+
+letter-spacing:.07em;
+
+text-transform:uppercase;
+
+}
+
+
+.form-input,
+.form-textarea{
+
+width:100%;
+
+border:1px solid #D8CCBB;
+
+border-radius:9px;
+
+background:#FBF7EF;
+
+color:#352D26;
+
+padding:9px 10px;
+
+font-size:12px;
+
+outline:none;
+
+}
+
+
+.form-input:focus,
+.form-textarea:focus{
+
+border-color:#8B9966;
+
+box-shadow:
+
+0 0 0 3px rgba(124,137,87,.10);
+
+}
+
+
+.form-textarea{
+
+min-height:60px;
+
+resize:vertical;
+
+}
+
+
+.two-col{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:7px;
+
+}
+
+
+/* =========================================================
+   LOGO ADMIN
 ========================================================= */
 
 .logo-admin{
+
 display:grid;
+
 grid-template-columns:80px 1fr;
+
 gap:11px;
+
 align-items:center;
+
 }
+
 
 .logo-preview{
+
 width:80px;
+
 height:80px;
+
 border-radius:15px;
+
 background:#F8F2E7;
+
 border:1px solid #D8CCBB;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 overflow:hidden;
+
 }
+
 
 .logo-preview img{
+
 width:100%;
+
 height:100%;
+
 object-fit:contain;
+
 }
+
 
 .logo-actions{
+
 display:flex;
+
 flex-direction:column;
+
 gap:6px;
+
 }
+
 
 .file-button{
+
 position:relative;
+
 overflow:hidden;
+
 min-height:34px;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 border-radius:8px;
+
 background:#7C8957;
+
 color:#fff;
+
 font-size:10px;
+
 font-weight:800;
+
 }
+
 
 .file-button input{
+
 position:absolute;
+
 inset:0;
+
 opacity:0;
+
 cursor:pointer;
+
 }
 
+
 .small-button{
+
 min-height:34px;
+
 border-radius:8px;
+
 border:1px solid #D7CCBB;
+
 background:#FFFDF8;
+
 color:#62584D;
+
 font-size:10px;
+
 font-weight:800;
+
 }
 
 
@@ -606,198 +1088,356 @@ font-weight:800;
 ========================================================= */
 
 .color-grid{
+
 display:grid;
+
 grid-template-columns:1fr 1fr;
+
 gap:6px;
+
 }
+
 
 .color-control{
+
 border:1px solid #DED3C3;
+
 background:#FAF6EE;
+
 border-radius:10px;
+
 padding:7px;
+
 }
+
 
 .color-name{
+
 color:#716657;
+
 font-size:8.5px;
+
 font-weight:800;
+
 margin-bottom:5px;
+
 white-space:nowrap;
+
 overflow:hidden;
+
 text-overflow:ellipsis;
+
 }
+
 
 .color-row{
+
 display:flex;
+
 align-items:center;
+
 gap:5px;
+
 }
+
 
 .color-picker{
+
 width:29px !important;
+
 height:29px !important;
+
 padding:0 !important;
+
 border:0 !important;
+
 border-radius:7px !important;
+
 flex:0 0 29px;
+
 cursor:pointer;
+
 }
+
 
 .hex-input{
+
 min-width:0;
+
 flex:1;
+
 height:29px;
+
 border:1px solid #D8CCBB;
+
 border-radius:7px;
+
 background:#FFFDF8;
+
 color:#4A4037;
+
 padding:0 6px;
+
 font-family:monospace;
+
 font-size:9px;
+
 text-transform:uppercase;
+
 }
 
+
 .reset-color{
+
 width:27px;
+
 height:27px;
+
 flex:0 0 27px;
+
 border-radius:50%;
+
 border:1px solid #D8CCBB;
+
 background:#FFFDF8;
+
 color:#8B7D6C;
+
 font-size:11px;
+
 }
 
 
 /* =========================================================
-   PREVIEW
+   RENK ÖNİZLEME
 ========================================================= */
 
 .preview-box{
+
 margin-top:10px;
+
 padding:10px;
+
 border-radius:11px;
+
 background:var(--preview-bg);
+
 border:1px solid var(--preview-border);
+
 }
+
 
 .preview-top{
+
 display:flex;
+
 align-items:center;
+
 gap:8px;
+
 }
+
 
 .preview-circle{
+
 width:34px;
+
 height:34px;
+
 flex:0 0 34px;
+
 border-radius:50%;
+
 background:var(--preview-accent);
+
 }
+
 
 .preview-text{
+
 flex:1;
+
 }
+
 
 .preview-title{
+
 color:var(--preview-heading);
+
 font-family:"Playfair Display",serif;
+
 font-size:13px;
+
 font-weight:700;
+
 }
+
 
 .preview-sub{
+
 color:var(--preview-muted);
+
 font-size:9px;
+
 margin-top:2px;
+
 }
 
+
 .preview-price{
+
 color:var(--preview-price);
+
 font-family:"Playfair Display",serif;
+
 font-size:12px;
+
 font-weight:800;
+
 }
 
 
 /* =========================================================
-   KATEGORİ / ÜRÜN ADMİN
+   KATEGORİ / ÜRÜN ADMIN
 ========================================================= */
 
 .category-admin{
+
 border:1px solid #DED3C3;
+
 background:#FAF6EE;
+
 border-radius:11px;
+
 padding:8px;
+
 margin-bottom:7px;
+
 }
+
 
 .category-head{
+
 display:flex;
+
 gap:6px;
+
 }
+
 
 .category-head input{
+
 flex:1;
+
 }
+
 
 .delete-button{
+
 min-height:33px;
+
 padding:0 9px;
+
 border-radius:7px;
+
 border:1px solid #CF8A83;
+
 background:#FFF7F5;
+
 color:#A94741;
+
 font-size:9px;
+
 font-weight:800;
+
 }
+
 
 .item-admin{
+
 margin-top:7px;
+
 padding:8px;
+
 background:#FFFDF8;
+
 border:1px solid #E3D9C9;
+
 border-radius:9px;
+
 }
+
 
 .item-admin-top{
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 }
+
 
 .item-number{
+
 color:#978875;
+
 font-size:8px;
+
 font-weight:800;
+
 }
+
 
 .remove-item{
+
 border:0;
+
 background:none;
+
 color:#AF5C55;
+
 font-size:9px;
+
 }
+
 
 .availability{
+
 display:flex;
+
 align-items:center;
+
 gap:5px;
+
 color:#756A5D;
+
 font-size:9px;
+
 margin-top:8px;
+
 }
 
+
 .add-button{
+
 width:100%;
+
 min-height:35px;
+
 border-radius:8px;
+
 border:1px dashed #BBAF9C;
+
 background:#FFFDF8;
+
 color:#6E6255;
+
 font-size:9px;
+
 font-weight:800;
+
 }
 
 
@@ -806,32 +1446,58 @@ font-weight:800;
 ========================================================= */
 
 .status{
+
 min-height:18px;
+
 text-align:center;
+
 color:#6E6255;
+
 font-size:9.5px;
+
 margin:4px 0;
+
 }
+
 
 .main-save{
+
 width:100%;
-min-height:48px;
+
+min-height:46px;
+
 border:0;
+
 border-radius:11px;
+
 background:#7C8957;
+
 color:#fff;
+
 font-size:12px;
+
 font-weight:800;
-box-shadow:0 8px 20px rgba(124,137,87,.20);
+
+box-shadow:
+
+0 8px 20px rgba(124,137,87,.20);
+
 transition:.18s ease;
+
 }
+
 
 .main-save:active{
+
 transform:scale(.985);
+
 }
 
+
 .main-save:disabled{
+
 opacity:.65;
+
 }
 
 
@@ -840,51 +1506,92 @@ opacity:.65;
 ========================================================= */
 
 .pin-panel{
+
 width:calc(100% - 24px);
+
 max-width:370px;
+
 background:#FFFDF8;
+
 color:#352D26;
+
 border-radius:18px;
+
 padding:18px;
+
 margin:auto;
+
 }
+
 
 .pin-title{
+
 text-align:center;
+
 font-family:"Playfair Display",serif;
+
 font-size:23px;
+
 margin:0 0 3px;
+
 }
+
 
 .pin-subtitle{
+
 text-align:center;
+
 color:#897D6E;
+
 font-size:10px;
+
 margin-bottom:13px;
+
 }
+
 
 .pin-input{
+
 text-align:center;
+
 letter-spacing:.35em;
+
 font-size:18px !important;
+
 }
+
 
 .pin-login{
+
 width:100%;
+
 margin-top:9px;
+
 min-height:42px;
+
 border:0;
+
 border-radius:9px;
+
 background:#7C8957;
+
 color:#fff;
+
 font-weight:800;
+
 }
 
+
 .error{
+
 text-align:center;
+
 color:#B14C46;
+
 font-size:10px;
+
 margin-top:7px;
+
 }
 
 
@@ -895,95 +1602,187 @@ margin-top:7px;
 @media(max-width:480px){
 
 .hero{
+
 padding-top:24px;
+
 }
 
 .logo-box{
+
 width:94px;
+
 height:94px;
+
 }
 
 .cafe-title{
+
 font-size:39px;
+
 }
 
 .category-area{
+
 padding-left:12px;
+
 padding-right:12px;
+
 }
 
 .product-image,
 .product-no-image{
+
 width:53px;
+
 height:53px;
+
 flex-basis:53px;
+
 }
 
 .admin-panel{
+
 height:96vh;
+
 padding-left:12px;
+
 padding-right:12px;
+
 }
 
 .admin-save-area{
+
 padding-bottom:
+
 calc(10px + env(safe-area-inset-bottom));
+
 }
 
 .main-save{
+
 min-height:48px;
+
 font-size:12px;
+
+}
+
+.item-admin{
+
+padding:9px;
+
 }
 
 }
 
 
 /* =========================================================
-   KAYDET BUTONU SABİT / HAREKETLİ
+   YÜKLENİYOR
 ========================================================= */
 
-.admin-save-area{
-position:relative;
-}
+.loading-screen{
 
-.main-save{
-animation:savePulse 2.2s ease-in-out infinite;
-}
+min-height:100vh;
 
-@keyframes savePulse{
+display:flex;
 
-0%,100%{
-transform:translateY(0);
-box-shadow:0 8px 20px rgba(124,137,87,.20);
-}
+align-items:center;
 
-50%{
-transform:translateY(-2px);
-box-shadow:0 11px 26px rgba(124,137,87,.30);
-}
+justify-content:center;
+
+background:var(--bg);
+
+color:var(--muted);
+
+font-size:13px;
+
+text-align:center;
 
 }
 
-.main-save:active{
-animation:none;
-transform:scale(.985);
+
+/* =========================================================
+   HATA
+========================================================= */
+
+.load-error{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:25px;
+
+text-align:center;
+
+background:var(--bg);
+
+}
+
+
+.load-error-box{
+
+max-width:350px;
+
+}
+
+
+.load-error-title{
+
+font-family:"Playfair Display",serif;
+
+color:#4E282C;
+
+font-size:24px;
+
+margin-bottom:9px;
+
+}
+
+
+.load-error-message{
+
+color:#817366;
+
+font-size:12px;
+
+line-height:1.6;
+
+}
+
+
+.reload-button{
+
+margin-top:15px;
+
+border:0;
+
+border-radius:9px;
+
+padding:11px 20px;
+
+background:#7C8957;
+
+color:#fff;
+
+font-weight:800;
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <div id="app">
 
-<div style="
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#817366;
-font-size:13px;
-">
+<div class="loading-screen">
 
 Menü yükleniyor…
 
@@ -1004,43 +1803,99 @@ aria-label="Yönetim paneli"
 <script>
 
 /* =========================================================
-   SUPABASE
+   SUPABASE AYARLARI
 ========================================================= */
 
 const SUPABASE_URL =
 "https://cwofalezjvuxppmwipmc.supabase.co";
 
+
 const SUPABASE_ANON_KEY =
 "sb_publishable_n9xGFNXF-wl4C-BFLBGmeg_hsKy9GtU";
+
 
 const MENU_ID =
 "00000000-0000-0000-0000-000000000001";
 
-const supabaseClient =
+
+let supabaseClient=null;
+
+
+/* =========================================================
+   SUPABASE BAŞLAT
+========================================================= */
+
+function initSupabase(){
+
+try{
+
+if(
+!window.supabase ||
+typeof window.supabase.createClient!=="function"
+){
+
+throw new Error(
+"Supabase JavaScript kütüphanesi yüklenemedi."
+);
+
+}
+
+
+supabaseClient =
 window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_ANON_KEY
 );
 
 
+return true;
+
+
+}catch(error){
+
+console.error(
+"SUPABASE INIT ERROR:",
+error
+);
+
+
+showLoadError(
+error.message ||
+"Supabase bağlantısı başlatılamadı."
+);
+
+
+return false;
+
+}
+
+}
+
+
 /* =========================================================
-   DEFAULT THEME
+   DEFAULT TEMA
 ========================================================= */
 
-const DEFAULT_THEME = {
+const DEFAULT_THEME={
 
 background:"#F4EBDD",
+
 surface:"#FFFDF8",
+
 surfaceRaised:"#E9DDC9",
 
 heading:"#4E282C",
+
 text:"#493B32",
+
 muted:"#817366",
 
 accent:"#7C8957",
+
 accentText:"#4D5933",
 
 category:"#7C8957",
+
 categoryText:"#FFFDF5",
 
 price:"#A86143",
@@ -1056,7 +1911,7 @@ danger:"#B44E48"
    DEFAULT DATA
 ========================================================= */
 
-const DEFAULT_DATA = {
+const DEFAULT_DATA={
 
 cafeName:"Katmerci Dayı",
 
@@ -1096,9 +1951,12 @@ let adminTab="general";
 
 function uid(){
 
-return "id-" +
-Date.now().toString(36) +
-"-" +
+return "id-"+
+
+Date.now().toString(36)+
+
+"-"+
+
 Math.random()
 .toString(36)
 .slice(2,8);
@@ -1108,17 +1966,23 @@ Math.random()
 
 function escapeHtml(value){
 
-return String(value ?? "")
+return String(value??"")
 .replace(
 /[&<>"']/g,
 function(m){
 
 return {
+
 "&":"&amp;",
+
 "<":"&lt;",
+
 ">":"&gt;",
+
 '"':"&quot;",
+
 "'":"&#039;"
+
 }[m];
 
 }
@@ -1153,6 +2017,46 @@ String(value||"")
 
 
 /* =========================================================
+   HATA GÖSTER
+========================================================= */
+
+function showLoadError(message){
+
+const app=
+document.getElementById("app");
+
+
+app.innerHTML=`
+
+<div class="load-error">
+
+<div class="load-error-box">
+
+<div class="load-error-title">
+Menü yüklenemedi
+</div>
+
+<div class="load-error-message">
+${escapeHtml(message)}
+</div>
+
+<button
+class="reload-button"
+onclick="location.reload()"
+>
+Tekrar Dene
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
    DATA NORMALIZE
 ========================================================= */
 
@@ -1160,10 +2064,10 @@ function normalizeData(data){
 
 if(
 !data ||
-typeof data !== "object"
+typeof data!=="object"
 ){
 
-data =
+data=
 JSON.parse(
 JSON.stringify(DEFAULT_DATA)
 );
@@ -1173,7 +2077,7 @@ JSON.stringify(DEFAULT_DATA)
 
 if(!data.cafeName){
 
-data.cafeName =
+data.cafeName=
 "Katmerci Dayı";
 
 }
@@ -1181,14 +2085,14 @@ data.cafeName =
 
 if(!data.subtitle){
 
-data.subtitle =
+data.subtitle=
 "Gaziantepten gelen lezzet";
 
 }
 
 
-data.logo =
-data.logo || "";
+data.logo=
+data.logo||"";
 
 
 if(!Array.isArray(data.categories)){
@@ -1198,65 +2102,65 @@ data.categories=[];
 }
 
 
-const old =
-data.theme || {};
+const old=
+data.theme||{};
 
 
 data.theme={
 
 background:
-old.background ||
+old.background||
 DEFAULT_THEME.background,
 
 surface:
-old.surface ||
+old.surface||
 DEFAULT_THEME.surface,
 
 surfaceRaised:
-old.surfaceRaised ||
+old.surfaceRaised||
 DEFAULT_THEME.surfaceRaised,
 
 heading:
-old.heading ||
+old.heading||
 DEFAULT_THEME.heading,
 
 text:
-old.text ||
+old.text||
 DEFAULT_THEME.text,
 
 muted:
-old.muted ||
+old.muted||
 DEFAULT_THEME.muted,
 
 accent:
-old.accent ||
-old.baseColor ||
+old.accent||
+old.baseColor||
 DEFAULT_THEME.accent,
 
 accentText:
-old.accentText ||
+old.accentText||
 DEFAULT_THEME.accentText,
 
 category:
-old.category ||
-old.categoryBg ||
+old.category||
+old.categoryBg||
 DEFAULT_THEME.category,
 
 categoryText:
-old.categoryText ||
+old.categoryText||
 DEFAULT_THEME.categoryText,
 
 price:
-old.price ||
+old.price||
 DEFAULT_THEME.price,
 
 border:
-old.border ||
+old.border||
 DEFAULT_THEME.border,
 
 danger:
-old.danger ||
-old.sold ||
+old.danger||
+old.sold||
 DEFAULT_THEME.danger
 
 };
@@ -1271,17 +2175,21 @@ category.id=uid();
 
 }
 
+
 if(!category.name){
 
-category.name="Yeni kategori";
+category.name=
+"Yeni kategori";
 
 }
+
 
 if(!Array.isArray(category.items)){
 
 category.items=[];
 
 }
+
 
 category.items.forEach(
 item=>{
@@ -1292,11 +2200,14 @@ item.id=uid();
 
 }
 
+
 if(item.name===undefined){
 
-item.name="Yeni ürün";
+item.name=
+"Yeni ürün";
 
 }
+
 
 if(item.desc===undefined){
 
@@ -1304,11 +2215,13 @@ item.desc="";
 
 }
 
+
 if(item.price===undefined){
 
 item.price=0;
 
 }
+
 
 if(item.available===undefined){
 
@@ -1316,16 +2229,24 @@ item.available=true;
 
 }
 
+
 if(item.image===undefined){
 
 item.image="";
 
 }
 
+
 /*
-Eski Supabase verisinde calories varsa
-burada kullanılmıyor.
+Eski verilerde calories varsa
+artık kullanılmıyor.
 */
+
+if("calories" in item){
+
+delete item.calories;
+
+}
 
 }
 );
@@ -1340,50 +2261,114 @@ return data;
 
 
 /* =========================================================
-   TEMA
+   TEMA UYGULA
 ========================================================= */
 
 function applyTheme(){
 
 if(!menuData)return;
 
-const t =
+
+const t=
 menuData.theme;
 
-const root =
+
+const root=
 document.documentElement.style;
 
-root.setProperty("--bg",t.background);
-root.setProperty("--surface",t.surface);
-root.setProperty("--surface2",t.surfaceRaised);
-root.setProperty("--heading",t.heading);
-root.setProperty("--text",t.text);
-root.setProperty("--muted",t.muted);
-root.setProperty("--accent",t.accent);
-root.setProperty("--accentText",t.accentText);
-root.setProperty("--category",t.category);
-root.setProperty("--categoryText",t.categoryText);
-root.setProperty("--price",t.price);
-root.setProperty("--border",t.border);
-root.setProperty("--danger",t.danger);
+
+root.setProperty(
+"--bg",
+t.background
+);
+
+root.setProperty(
+"--surface",
+t.surface
+);
+
+root.setProperty(
+"--surface2",
+t.surfaceRaised
+);
+
+root.setProperty(
+"--heading",
+t.heading
+);
+
+root.setProperty(
+"--text",
+t.text
+);
+
+root.setProperty(
+"--muted",
+t.muted
+);
+
+root.setProperty(
+"--accent",
+t.accent
+);
+
+root.setProperty(
+"--accentText",
+t.accentText
+);
+
+root.setProperty(
+"--category",
+t.category
+);
+
+root.setProperty(
+"--categoryText",
+t.categoryText
+);
+
+root.setProperty(
+"--price",
+t.price
+);
+
+root.setProperty(
+"--border",
+t.border
+);
+
+root.setProperty(
+"--danger",
+t.danger
+);
 
 }
 
 
 /* =========================================================
-   LOAD MENU
+   MENÜYÜ SUPABASE'DEN ÇEK
 ========================================================= */
 
 async function loadMenu(){
 
 try{
 
-const result =
+if(!supabaseClient){
+
+throw new Error(
+"Supabase bağlantısı başlatılmadı."
+);
+
+}
+
+
+const result=
 await supabaseClient
 .from("menus")
 .select("id,data")
 .eq("id",MENU_ID)
 .maybeSingle();
+
 
 if(result.error){
 
@@ -1391,19 +2376,20 @@ throw result.error;
 
 }
 
+
 if(
 result.data &&
 result.data.data
 ){
 
-menuData =
+menuData=
 normalizeData(
 result.data.data
 );
 
 }else{
 
-menuData =
+menuData=
 normalizeData(
 JSON.parse(
 JSON.stringify(DEFAULT_DATA)
@@ -1412,9 +2398,10 @@ JSON.stringify(DEFAULT_DATA)
 
 }
 
+
 if(menuData.categories.length){
 
-activeCategory =
+activeCategory=
 menuData.categories[0].id;
 
 }else{
@@ -1423,9 +2410,11 @@ activeCategory=null;
 
 }
 
+
 applyTheme();
 
 renderCustomer();
+
 
 }catch(error){
 
@@ -1434,61 +2423,11 @@ console.error(
 error
 );
 
-document.getElementById("app")
-.innerHTML=`
 
-<div style="
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:25px;
-text-align:center;
-">
-
-<div>
-
-<div style="
-font-family:'Playfair Display',serif;
-color:#4E282C;
-font-size:24px;
-margin-bottom:8px;
-">
-Menü yüklenemedi
-</div>
-
-<div style="
-color:#817366;
-font-size:12px;
-line-height:1.5;
-max-width:340px;
-">
-${escapeHtml(
-error.message ||
+showLoadError(
+error.message||
 "Supabase bağlantısı kurulamadı."
-)}
-</div>
-
-<button
-onclick="location.reload()"
-style="
-margin-top:15px;
-border:0;
-border-radius:9px;
-padding:11px 20px;
-background:#7C8957;
-color:#fff;
-font-weight:800;
-"
->
-Tekrar Dene
-</button>
-
-</div>
-
-</div>
-
-`;
+);
 
 }
 
@@ -1496,20 +2435,24 @@ Tekrar Dene
 
 
 /* =========================================================
-   CUSTOMER MENU
+   MÜŞTERİ MENÜSÜ
 ========================================================= */
 
 function renderCustomer(){
 
 if(!menuData)return;
 
+
 applyTheme();
 
-const app =
+
+const app=
 document.getElementById("app");
 
-const categories =
-menuData.categories || [];
+
+const categories=
+menuData.categories||[];
+
 
 if(!categories.length){
 
@@ -1524,7 +2467,9 @@ app.innerHTML=`
 ${
 menuData.logo
 
-?`
+?
+
+`
 
 <img
 src="${escapeAttr(menuData.logo)}"
@@ -1533,24 +2478,30 @@ alt=""
 
 `
 
-:`
+:
+
+`
 
 <div class="logo-placeholder">
 ${escapeHtml(menuData.cafeName)}
 </div>
 
 `
+
 }
 
 </div>
+
 
 <div class="eyebrow">
 MENÜ
 </div>
 
+
 <h1 class="cafe-title">
 ${escapeHtml(menuData.cafeName)}
 </h1>
+
 
 <div class="cafe-subtitle">
 ${escapeHtml(menuData.subtitle)}
@@ -1558,13 +2509,16 @@ ${escapeHtml(menuData.subtitle)}
 
 </header>
 
+
 <div style="
 text-align:center;
 color:var(--muted);
 padding:30px;
 font-size:12px;
 ">
+
 Henüz kategori eklenmemiş.
+
 </div>
 
 </div>
@@ -1576,26 +2530,29 @@ return;
 }
 
 
-let active =
+let active=
 categories.find(
 c=>c.id===activeCategory
 );
 
+
 if(!active){
 
-active =
+active=
 categories[0];
 
-activeCategory =
+activeCategory=
 active.id;
 
 }
 
 
-const logoHTML =
+const logoHTML=
 menuData.logo
 
-?`
+?
+
+`
 
 <img
 src="${escapeAttr(menuData.logo)}"
@@ -1604,7 +2561,9 @@ alt="${escapeAttr(menuData.cafeName)}"
 
 `
 
-:`
+:
+
+`
 
 <div class="logo-placeholder">
 ${escapeHtml(menuData.cafeName)}
@@ -1613,7 +2572,7 @@ ${escapeHtml(menuData.cafeName)}
 `;
 
 
-const tabsHTML =
+const tabsHTML=
 categories.map(
 category=>`
 
@@ -1631,19 +2590,24 @@ ${escapeHtml(category.name)}
 ).join("");
 
 
-const productsHTML =
+const productsHTML=
 active.items.length
 
-?active.items.map(
+?
+
+active.items.map(
 item=>{
 
-const sold =
+const sold=
 item.available===false;
 
-const image =
+
+const image=
 item.image
 
-?`
+?
+
+`
 
 <img
 class="product-image"
@@ -1655,7 +2619,9 @@ onerror="this.style.display='none'"
 
 `
 
-:`
+:
+
+`
 
 <div class="product-no-image">
 ✦
@@ -1673,6 +2639,7 @@ ${sold?"sold":""}
 
 ${image}
 
+
 <div class="product-info">
 
 <div class="product-top">
@@ -1684,7 +2651,9 @@ ${escapeHtml(item.name)}
 ${
 sold
 
-?`
+?
+
+`
 
 <span class="sold-label">
 TÜKENDİ
@@ -1692,12 +2661,16 @@ TÜKENDİ
 
 `
 
-:""
+:
+
+""
 }
 
 </div>
 
+
 <div class="dots"></div>
+
 
 <div class="product-price">
 ${money(item.price)}
@@ -1709,7 +2682,9 @@ ${money(item.price)}
 ${
 item.desc
 
-?`
+?
+
+`
 
 <div class="product-desc">
 ${escapeHtml(item.desc)}
@@ -1717,7 +2692,9 @@ ${escapeHtml(item.desc)}
 
 `
 
-:""
+:
+
+""
 }
 
 </div>
@@ -1729,7 +2706,9 @@ ${escapeHtml(item.desc)}
 }
 ).join("")
 
-:`
+:
+
+`
 
 <div style="
 text-align:center;
@@ -1737,7 +2716,9 @@ color:var(--muted);
 padding:25px;
 font-size:12px;
 ">
+
 Bu kategoride henüz ürün yok.
+
 </div>
 
 `;
@@ -1747,19 +2728,23 @@ app.innerHTML=`
 
 <div class="menu-wrap">
 
+
 <header class="hero">
 
 <div class="logo-box">
 ${logoHTML}
 </div>
 
+
 <div class="eyebrow">
 MENÜ
 </div>
 
+
 <h1 class="cafe-title">
 ${escapeHtml(menuData.cafeName)}
 </h1>
+
 
 <div class="cafe-subtitle">
 ${escapeHtml(menuData.subtitle)}
@@ -1787,6 +2772,7 @@ ${escapeHtml(active.name)}
 
 </div>
 
+
 <div class="products">
 ${productsHTML}
 </div>
@@ -1802,6 +2788,7 @@ QR ile açıldı · Afiyet olsun
 
 </footer>
 
+
 </div>
 
 `;
@@ -1813,14 +2800,17 @@ document
 
 button.onclick=()=>{
 
-activeCategory =
+activeCategory=
 button.dataset.category;
 
 renderCustomer();
 
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 };
@@ -1831,7 +2821,7 @@ behavior:"smooth"
 
 
 /* =========================================================
-   SETTINGS
+   AYAR BUTONU
 ========================================================= */
 
 document
@@ -1852,23 +2842,27 @@ showPinPanel();
 
 
 /* =========================================================
-   PIN
+   PIN PANELİ
 ========================================================= */
 
 function showPinPanel(){
 
-const overlay =
+const overlay=
 document.createElement("div");
 
+
 overlay.className="overlay";
+
 
 overlay.innerHTML=`
 
 <div class="pin-panel">
 
+
 <div class="admin-head">
 
 <div></div>
+
 
 <button
 class="close-button"
@@ -1884,9 +2878,11 @@ id="pinClose"
 Yönetim Paneli
 </h2>
 
+
 <div class="pin-subtitle">
 PIN kodunuzu girin
 </div>
+
 
 <input
 id="pinInput"
@@ -1897,10 +2893,12 @@ maxlength="20"
 placeholder="••••"
 >
 
+
 <div
 id="pinError"
 class="error"
 ></div>
+
 
 <button
 id="pinLogin"
@@ -1909,9 +2907,11 @@ class="pin-login"
 Giriş Yap
 </button>
 
+
 </div>
 
 `;
+
 
 document.body.appendChild(
 overlay
@@ -1929,33 +2929,36 @@ overlay.remove();
 
 const login=async()=>{
 
-const pin =
+const pin=
 document
 .getElementById("pinInput")
 .value
 .trim();
 
-const error =
+
+const error=
 document.getElementById(
 "pinError"
 );
 
+
 if(pin.length<4){
 
-error.textContent =
+error.textContent=
 "PIN en az 4 haneli olmalı.";
 
 return;
 
 }
 
-error.textContent =
+
+error.textContent=
 "Kontrol ediliyor…";
 
 
 try{
 
-const result =
+const result=
 await supabaseClient.rpc(
 "check_menu_pin",
 {
@@ -1964,52 +2967,63 @@ p_pin:pin
 }
 );
 
+
 if(result.error){
 
 console.error(result.error);
 
-error.textContent =
-result.error.message ||
+error.textContent=
+result.error.message||
 "PIN kontrolü başarısız.";
 
 return;
 
 }
 
-const ok =
-result.data===true ||
-result.data==="true" ||
-result.data?.[0]===true ||
+
+const ok=
+result.data===true||
+
+result.data==="true"||
+
+result.data?.[0]===true||
+
 result.data?.[0]?.check_menu_pin===true;
 
 
 if(!ok){
 
-error.textContent =
+error.textContent=
 "PIN hatalı.";
 
 return;
 
 }
 
-authenticatedPin =
+
+authenticatedPin=
 pin;
 
-adminUnlocked =
+adminUnlocked=
 true;
+
 
 overlay.remove();
 
-adminTab="general";
+
+adminTab=
+"general";
+
 
 showAdminPanel();
+
 
 }catch(err){
 
 console.error(err);
 
-error.textContent =
-err.message ||
+error.textContent=
+err.message||
 "Bağlantı hatası.";
 
 }
@@ -2041,7 +3055,7 @@ login();
 setTimeout(
 ()=>{
 
-const input =
+const input=
 document.getElementById(
 "pinInput"
 );
@@ -2060,7 +3074,7 @@ input.focus();
 
 
 /* =========================================================
-   ADMIN PANEL
+   ADMIN PANELİ
 ========================================================= */
 
 function showAdminPanel(){
@@ -2071,14 +3085,19 @@ adminOverlay.remove();
 
 }
 
-adminOverlay =
+
+adminOverlay=
 document.createElement("div");
 
-adminOverlay.className="overlay";
+
+adminOverlay.className=
+"overlay";
+
 
 document.body.appendChild(
 adminOverlay
 );
+
 
 renderAdmin();
 
@@ -2095,11 +3114,13 @@ adminOverlay.innerHTML=`
 
 <div class="admin-panel">
 
+
 <div class="admin-head">
 
 <h2 class="admin-title">
 Yönetim Paneli
 </h2>
+
 
 <button
 class="close-button"
@@ -2113,6 +3134,7 @@ id="adminClose"
 
 <div class="admin-tabs">
 
+
 <button
 class="admin-tab ${
 adminTab==="general"
@@ -2122,6 +3144,7 @@ data-admin-tab="general"
 >
 GENEL
 </button>
+
 
 <button
 class="admin-tab ${
@@ -2133,6 +3156,7 @@ data-admin-tab="theme"
 RENK
 </button>
 
+
 <button
 class="admin-tab ${
 adminTab==="menu"
@@ -2142,6 +3166,7 @@ data-admin-tab="menu"
 >
 MENÜ
 </button>
+
 
 </div>
 
@@ -2187,7 +3212,7 @@ adminOverlay
 
 button.onclick=()=>{
 
-adminTab =
+adminTab=
 button.dataset.adminTab;
 
 renderAdmin();
@@ -2219,19 +3244,19 @@ renderMenuEditor();
 
 
 /* =========================================================
-   SAVE BUTTON
+   KAYDET BUTONU
 ========================================================= */
 
-function renderSaveButton(
-statusId
-){
+function renderSaveButton(statusId){
 
-const area =
+const area=
 document.getElementById(
 "adminSaveArea"
 );
 
+
 if(!area)return;
+
 
 area.innerHTML=`
 
@@ -2239,6 +3264,7 @@ area.innerHTML=`
 id="${statusId}"
 class="status"
 ></div>
+
 
 <button
 id="globalSaveButton"
@@ -2248,6 +3274,7 @@ class="main-save"
 </button>
 
 `;
+
 
 document
 .getElementById("globalSaveButton")
@@ -2265,19 +3292,21 @@ statusId
 
 
 /* =========================================================
-   GENERAL
+   GENEL
 ========================================================= */
 
 function renderGeneral(){
 
-const content =
+const content=
 document.getElementById(
 "adminContent"
 );
 
+
 content.innerHTML=`
 
 <div class="admin-section">
+
 
 <h3 class="section-title">
 Logo
@@ -2286,12 +3315,15 @@ Logo
 
 <div class="logo-admin">
 
+
 <div class="logo-preview">
 
 ${
 menuData.logo
 
-?`
+?
+
+`
 
 <img
 src="${escapeAttr(menuData.logo)}"
@@ -2299,7 +3331,9 @@ src="${escapeAttr(menuData.logo)}"
 
 `
 
-:`
+:
+
+`
 
 <span style="
 color:#8B9966;
@@ -2310,12 +3344,14 @@ LOGO
 </span>
 
 `
+
 }
 
 </div>
 
 
 <div class="logo-actions">
+
 
 <label class="file-button">
 
@@ -2337,9 +3373,11 @@ id="removeLogo"
 Logoyu Kaldır
 </button>
 
+
 <div class="section-note">
 PNG, JPG veya WEBP kullanabilirsiniz.
 </div>
+
 
 </div>
 
@@ -2350,6 +3388,7 @@ PNG, JPG veya WEBP kullanabilirsiniz.
 
 <div class="admin-section">
 
+
 <h3 class="section-title">
 Kafe Bilgileri
 </h3>
@@ -2358,6 +3397,7 @@ Kafe Bilgileri
 <label class="form-label">
 Kafe adı
 </label>
+
 
 <input
 id="cafeName"
@@ -2370,25 +3410,31 @@ value="${escapeAttr(menuData.cafeName)}"
 Alt başlık
 </label>
 
+
 <textarea
 id="cafeSubtitle"
 class="form-textarea"
 >${escapeHtml(menuData.subtitle)}</textarea>
+
 
 </div>
 
 
 <div class="admin-section">
 
+
 <h3 class="section-title">
 Güvenlik
 </h3>
+
 
 <label class="form-label">
 Yeni PIN
 </label>
 
+
 <div class="two-col">
+
 
 <input
 id="newPin"
@@ -2399,6 +3445,7 @@ maxlength="20"
 placeholder="Yeni PIN"
 >
 
+
 <button
 id="changePin"
 class="small-button"
@@ -2406,11 +3453,21 @@ class="small-button"
 PIN Değiştir
 </button>
 
+
 </div>
+
+
+<div class="section-note">
+
+PIN'i değiştirmek istemiyorsanız bu alanı boş bırakın.
+
+</div>
+
 
 </div>
 
 `;
+
 
 renderSaveButton(
 "generalStatus"
@@ -2421,7 +3478,7 @@ document
 .getElementById("cafeName")
 .oninput=e=>{
 
-menuData.cafeName =
+menuData.cafeName=
 e.target.value;
 
 };
@@ -2431,7 +3488,7 @@ document
 .getElementById("cafeSubtitle")
 .oninput=e=>{
 
-menuData.subtitle =
+menuData.subtitle=
 e.target.value;
 
 };
@@ -2441,21 +3498,25 @@ document
 .getElementById("logoFile")
 .onchange=async e=>{
 
-const file =
+const file=
 e.target.files?.[0];
+
 
 if(!file)return;
 
+
 try{
 
-menuData.logo =
+menuData.logo=
 await resizeImage(
 file,
 600,
 .85
 );
 
+
 renderAdmin();
+
 
 }catch(error){
 
@@ -2485,32 +3546,36 @@ document
 .getElementById("changePin")
 .onclick=async()=>{
 
-const newPin =
+const newPin=
 document
 .getElementById("newPin")
 .value
 .trim();
 
-const status =
+
+const status=
 document.getElementById(
 "generalStatus"
 );
 
+
 if(newPin.length<4){
 
-status.textContent =
+status.textContent=
 "PIN en az 4 haneli olmalı.";
 
 return;
 
 }
 
-status.textContent =
+
+status.textContent=
 "PIN değiştiriliyor…";
+
 
 try{
 
-const result =
+const result=
 await supabaseClient.rpc(
 "change_menu_pin",
 {
@@ -2520,44 +3585,58 @@ p_new_pin:newPin
 }
 );
 
+
 if(result.error){
 
 console.error(result.error);
 
-status.textContent =
-result.error.message ||
+status.textContent=
+result.error.message||
 "PIN değiştirilemedi.";
 
 return;
 
 }
 
-const ok =
-result.data===true ||
-result.data==="true" ||
-result.data?.[0]===true ||
+
+const ok=
+result.data===true||
+
+result.data==="true"||
+
+result.data?.[0]===true||
+
 result.data?.[0]?.change_menu_pin===true;
+
 
 if(!ok){
 
-status.textContent =
+status.textContent=
 "Eski PIN doğrulanamadı.";
 
 return;
 
 }
 
-authenticatedPin =
+
+authenticatedPin=
 newPin;
 
-status.textContent =
+
+status.textContent=
 "✓ PIN başarıyla değiştirildi.";
+
+
+document
+.getElementById("newPin")
+.value="";
+
 
 }catch(error){
 
 console.error(error);
 
-status.textContent =
+status.textContent=
 "PIN değiştirilemedi.";
 
 }
@@ -2568,30 +3647,43 @@ status.textContent =
 
 
 /* =========================================================
-   THEME
+   TEMA PANELİ
 ========================================================= */
 
 function renderTheme(){
 
-const content =
+const content=
 document.getElementById(
 "adminContent"
 );
 
+
 const colors=[
 
 ["background","Ana arka plan"],
+
 ["surface","Kart rengi"],
+
 ["surfaceRaised","Açık kart"],
+
 ["heading","Başlık yazısı"],
+
 ["text","Normal yazı"],
+
 ["muted","Açıklama yazısı"],
+
 ["accent","Ana tema"],
+
 ["accentText","Ana tema yazısı"],
+
 ["category","Kategori rengi"],
+
 ["categoryText","Kategori yazısı"],
+
 ["price","Fiyat rengi"],
+
 ["border","Kenarlık"],
+
 ["danger","Tükendi rengi"]
 
 ];
@@ -2601,30 +3693,39 @@ content.innerHTML=`
 
 <div class="admin-section">
 
+
 <h3 class="section-title">
 Tema Renkleri
 </h3>
 
+
 <div class="color-grid">
+
 
 ${
 colors.map(
 ([key,label])=>{
 
-const value =
+const value=
 validColor(menuData.theme[key])
-?menuData.theme[key]
-:"#000000";
+?
+menuData.theme[key]
+:
+"#000000";
+
 
 return `
 
 <div class="color-control">
 
+
 <div class="color-name">
 ${label}
 </div>
 
+
 <div class="color-row">
+
 
 <input
 type="color"
@@ -2632,6 +3733,7 @@ class="color-picker"
 data-color-key="${key}"
 value="${value}"
 >
+
 
 <input
 type="text"
@@ -2641,12 +3743,14 @@ value="${escapeAttr(menuData.theme[key])}"
 maxlength="7"
 >
 
+
 <button
 class="reset-color"
 data-reset-color="${key}"
 >
 ↺
 </button>
+
 
 </div>
 
@@ -2658,12 +3762,16 @@ data-reset-color="${key}"
 ).join("")
 }
 
+
 </div>
 
 
 <div class="section-note">
+
 Renk kutusundan seçim yapabilir veya HEX kodunu direkt yazabilirsiniz.
+
 Değişiklikler önizlemeye anında uygulanır.
+
 </div>
 
 
@@ -2672,25 +3780,33 @@ class="preview-box"
 id="themePreview"
 >
 
+
 <div class="preview-top">
+
 
 <div class="preview-circle"></div>
 
+
 <div class="preview-text">
+
 
 <div class="preview-title">
 Katmerci Dayı
 </div>
 
+
 <div class="preview-sub">
 Gaziantepten gelen lezzet
 </div>
 
+
 </div>
+
 
 <div class="preview-price">
 500 ₺
 </div>
+
 
 </div>
 
@@ -2701,12 +3817,14 @@ Gaziantepten gelen lezzet
 
 <div class="admin-section">
 
+
 <h3 class="section-title">
 Hazır Temalar
 </h3>
 
 
 <div class="two-col">
+
 
 <button
 class="small-button"
@@ -2715,12 +3833,14 @@ data-preset="green"
 🌿 Bohem Yeşil
 </button>
 
+
 <button
 class="small-button"
 data-preset="brown"
 >
 ☕ Kahve
 </button>
+
 
 </div>
 
@@ -2730,12 +3850,14 @@ data-preset="brown"
 
 <div class="two-col">
 
+
 <button
 class="small-button"
 data-preset="terracotta"
 >
 🧱 Terracotta
 </button>
+
 
 <button
 class="small-button"
@@ -2744,11 +3866,14 @@ data-preset="dark"
 ✦ Premium Koyu
 </button>
 
+
 </div>
+
 
 </div>
 
 `;
+
 
 bindColorEvents();
 
@@ -2764,7 +3889,7 @@ updateThemePreview();
 
 
 /* =========================================================
-   COLOR EVENTS
+   RENK EVENTLERİ
 ========================================================= */
 
 function bindColorEvents(){
@@ -2775,23 +3900,27 @@ document
 
 input.oninput=()=>{
 
-const key =
+const key=
 input.dataset.colorKey;
 
-menuData.theme[key] =
+
+menuData.theme[key]=
 input.value;
 
-const hex =
+
+const hex=
 document.querySelector(
 `[data-hex-key="${key}"]`
 );
 
+
 if(hex){
 
-hex.value =
+hex.value=
 input.value.toUpperCase();
 
 }
+
 
 applyTheme();
 
@@ -2808,10 +3937,11 @@ document
 
 input.oninput=()=>{
 
-let value =
+let value=
 input.value
 .trim()
 .toUpperCase();
+
 
 if(
 value.length===6 &&
@@ -2822,25 +3952,30 @@ value="#"+value;
 
 }
 
+
 if(validColor(value)){
 
-const key =
+const key=
 input.dataset.hexKey;
 
-menuData.theme[key] =
+
+menuData.theme[key]=
 value;
 
-const picker =
+
+const picker=
 document.querySelector(
 `[data-color-key="${key}"]`
 );
 
+
 if(picker){
 
-picker.value =
+picker.value=
 value;
 
 }
+
 
 applyTheme();
 
@@ -2859,11 +3994,13 @@ document
 
 button.onclick=()=>{
 
-const key =
+const key=
 button.dataset.resetColor;
 
-menuData.theme[key] =
+
+menuData.theme[key]=
 DEFAULT_THEME[key];
+
 
 renderAdmin();
 
@@ -2875,42 +4012,49 @@ renderAdmin();
 
 
 /* =========================================================
-   PREVIEW
+   RENK ÖNİZLEME
 ========================================================= */
 
 function updateThemePreview(){
 
-const preview =
+const preview=
 document.getElementById(
 "themePreview"
 );
 
+
 if(!preview)return;
+
 
 preview.style.setProperty(
 "--preview-bg",
 menuData.theme.background
 );
 
+
 preview.style.setProperty(
 "--preview-border",
 menuData.theme.border
 );
+
 
 preview.style.setProperty(
 "--preview-accent",
 menuData.theme.accent
 );
 
+
 preview.style.setProperty(
 "--preview-heading",
 menuData.theme.heading
 );
 
+
 preview.style.setProperty(
 "--preview-muted",
 menuData.theme.muted
 );
+
 
 preview.style.setProperty(
 "--preview-price",
@@ -2921,7 +4065,7 @@ menuData.theme.price
 
 
 /* =========================================================
-   PRESETS
+   HAZIR TEMALAR
 ========================================================= */
 
 function bindPresetEvents(){
@@ -2932,7 +4076,7 @@ document
 
 button.onclick=()=>{
 
-const preset =
+const preset=
 button.dataset.preset;
 
 
@@ -2941,17 +4085,29 @@ if(preset==="green"){
 menuData.theme={
 
 background:"#F4EBDD",
+
 surface:"#FFFDF8",
+
 surfaceRaised:"#E9DDC9",
+
 heading:"#4E282C",
+
 text:"#493B32",
+
 muted:"#817366",
+
 accent:"#7C8957",
+
 accentText:"#4D5933",
+
 category:"#7C8957",
+
 categoryText:"#FFFDF5",
+
 price:"#A86143",
+
 border:"#D8CBB8",
+
 danger:"#B44E48"
 
 };
@@ -2964,17 +4120,29 @@ if(preset==="brown"){
 menuData.theme={
 
 background:"#EFE4D3",
+
 surface:"#FFF9F0",
+
 surfaceRaised:"#E4D1B7",
+
 heading:"#4A2D20",
+
 text:"#4D3A2F",
+
 muted:"#806D5D",
+
 accent:"#8A5B3E",
+
 accentText:"#5A3927",
+
 category:"#8A5B3E",
+
 categoryText:"#FFF8EC",
+
 price:"#B06B43",
+
 border:"#D6C2AA",
+
 danger:"#B24E48"
 
 };
@@ -2987,17 +4155,29 @@ if(preset==="terracotta"){
 menuData.theme={
 
 background:"#F5E4D9",
+
 surface:"#FFF9F4",
+
 surfaceRaised:"#EBD0C0",
+
 heading:"#6D3830",
+
 text:"#513B35",
+
 muted:"#856E66",
+
 accent:"#B9664E",
+
 accentText:"#783F34",
+
 category:"#B9664E",
+
 categoryText:"#FFF8F1",
+
 price:"#8E4A39",
+
 border:"#DCC2B5",
+
 danger:"#A74440"
 
 };
@@ -3010,22 +4190,35 @@ if(preset==="dark"){
 menuData.theme={
 
 background:"#17110D",
+
 surface:"#211812",
+
 surfaceRaised:"#2A1F17",
+
 heading:"#F7EBDD",
+
 text:"#EFE3D4",
+
 muted:"#B9AA99",
+
 accent:"#C99A52",
+
 accentText:"#17110D",
+
 category:"#7C8957",
+
 categoryText:"#FFF8EA",
+
 price:"#D7B16B",
+
 border:"#57402A",
+
 danger:"#B64E48"
 
 };
 
 }
+
 
 applyTheme();
 
@@ -3039,24 +4232,26 @@ renderAdmin();
 
 
 /* =========================================================
-   MENU EDITOR
+   MENÜ EDİTÖRÜ
 ========================================================= */
 
 function renderMenuEditor(){
 
-const content =
+const content=
 document.getElementById(
 "adminContent"
 );
 
 
-const categoriesHTML =
+const categoriesHTML=
 menuData.categories.map(
 (category,index)=>`
 
 <div class="category-admin">
 
+
 <div class="category-head">
+
 
 <input
 class="form-input"
@@ -3064,12 +4259,14 @@ data-category-name="${escapeAttr(category.id)}"
 value="${escapeAttr(category.name)}"
 >
 
+
 <button
 class="delete-button"
 data-delete-category="${escapeAttr(category.id)}"
 >
 Sil
 </button>
+
 
 </div>
 
@@ -3080,11 +4277,14 @@ category.items.map(
 
 <div class="item-admin">
 
+
 <div class="item-admin-top">
+
 
 <span class="item-number">
 ÜRÜN ${itemIndex+1}
 </span>
+
 
 <button
 class="remove-item"
@@ -3094,12 +4294,14 @@ data-category-id="${escapeAttr(category.id)}"
 Ürünü sil
 </button>
 
+
 </div>
 
 
 <label class="form-label">
 Ürün adı
 </label>
+
 
 <input
 class="form-input"
@@ -3112,6 +4314,7 @@ value="${escapeAttr(item.name)}"
 Açıklama
 </label>
 
+
 <input
 class="form-input"
 data-item-desc="${escapeAttr(item.id)}"
@@ -3123,6 +4326,7 @@ value="${escapeAttr(item.desc)}"
 Fiyat ₺
 </label>
 
+
 <input
 type="number"
 min="0"
@@ -3133,13 +4337,12 @@ value="${Number(item.price)||0}"
 >
 
 
-<div style="
-margin-top:7px;
-">
+<div style="margin-top:8px;">
 
 <label class="form-label">
 Fotoğraf
 </label>
+
 
 <label class="file-button">
 
@@ -3159,7 +4362,9 @@ data-item-file="${escapeAttr(item.id)}"
 ${
 item.image
 
-?`
+?
+
+`
 
 <div style="
 display:flex;
@@ -3179,6 +4384,7 @@ border:1px solid #DDD2C1;
 "
 >
 
+
 <button
 class="small-button"
 data-remove-image="${escapeAttr(item.id)}"
@@ -3186,17 +4392,22 @@ data-remove-image="${escapeAttr(item.id)}"
 Görseli kaldır
 </button>
 
+
 </div>
 
 `
 
-:""
+:
+
+""
+
 }
 
 
 <label class="form-label">
 veya görsel linki
 </label>
+
 
 <input
 type="url"
@@ -3206,27 +4417,35 @@ data-item-url="${escapeAttr(item.id)}"
 value="${
 item.image &&
 String(item.image).startsWith("http")
-?escapeAttr(item.image)
-:""
+?
+escapeAttr(item.image)
+:
+""
 }"
 >
 
 
 <label class="availability">
 
+
 <input
 type="checkbox"
 data-item-available="${escapeAttr(item.id)}"
 ${
 item.available!==false
-?"checked"
-:""
+?
+"checked"
+:
+""
 }
 >
 
+
 Ürün satışta
 
+
 </label>
+
 
 </div>
 
@@ -3242,6 +4461,7 @@ data-add-item="${escapeAttr(category.id)}"
 + Ürün ekle
 </button>
 
+
 </div>
 
 `
@@ -3251,6 +4471,7 @@ data-add-item="${escapeAttr(category.id)}"
 content.innerHTML=`
 
 <div class="admin-section">
+
 
 <h3 class="section-title">
 Kategoriler ve Ürünler
@@ -3266,6 +4487,7 @@ class="add-button"
 >
 + Yeni kategori ekle
 </button>
+
 
 </div>
 
@@ -3289,16 +4511,20 @@ items:[]
 
 };
 
+
 menuData.categories.push(
 newCategory
 );
 
-activeCategory =
+
+activeCategory=
 newCategory.id;
+
 
 renderAdmin();
 
 };
+
 
 renderSaveButton(
 "menuStatus"
@@ -3308,7 +4534,7 @@ renderSaveButton(
 
 
 /* =========================================================
-   MENU EVENTS
+   MENÜ EVENTLERİ
 ========================================================= */
 
 function bindMenuEvents(){
@@ -3321,16 +4547,17 @@ document
 
 input.oninput=()=>{
 
-const category =
+const category=
 menuData.categories.find(
-c =>
-c.id ===
+c=>
+c.id===
 input.dataset.categoryName
 );
 
+
 if(category){
 
-category.name =
+category.name=
 input.value;
 
 }
@@ -3348,15 +4575,18 @@ document
 
 button.onclick=()=>{
 
-const id =
+const id=
 button.dataset.deleteCategory;
 
-const category =
+
+const category=
 menuData.categories.find(
 c=>c.id===id
 );
 
+
 if(!category)return;
+
 
 if(
 !confirm(
@@ -3368,19 +4598,24 @@ return;
 
 }
 
-menuData.categories =
+
+menuData.categories=
 menuData.categories.filter(
 c=>c.id!==id
 );
 
+
 if(activeCategory===id){
 
-activeCategory =
+activeCategory=
 menuData.categories.length
-?menuData.categories[0].id
-:null;
+?
+menuData.categories[0].id
+:
+null;
 
 }
+
 
 renderAdmin();
 
@@ -3408,7 +4643,7 @@ input.value
 });
 
 
-/* AÇIKLAMA */
+/* ÜRÜN AÇIKLAMA */
 
 document
 .querySelectorAll("[data-item-desc]")
@@ -3435,14 +4670,19 @@ document
 
 input.oninput=()=>{
 
-let value =
+let value=
 Number(input.value);
 
-if(!Number.isFinite(value) || value<0){
+
+if(
+!Number.isFinite(value) ||
+value<0
+){
 
 value=0;
 
 }
+
 
 updateItem(
 input.dataset.itemPrice,
@@ -3482,23 +4722,28 @@ document
 
 button.onclick=()=>{
 
-const itemId =
+const itemId=
 button.dataset.deleteItem;
 
-const categoryId =
+
+const categoryId=
 button.dataset.categoryId;
 
-const category =
+
+const category=
 menuData.categories.find(
 c=>c.id===categoryId
 );
 
+
 if(!category)return;
 
-category.items =
+
+category.items=
 category.items.filter(
 item=>item.id!==itemId
 );
+
 
 renderAdmin();
 
@@ -3507,9 +4752,7 @@ renderAdmin();
 });
 
 
-/* =========================================================
-   ÜRÜN EKLE
-========================================================= */
+/* ÜRÜN EKLE */
 
 document
 .querySelectorAll("[data-add-item]")
@@ -3517,14 +4760,16 @@ document
 
 button.onclick=()=>{
 
-const category =
+const category=
 menuData.categories.find(
-c =>
-c.id ===
+c=>
+c.id===
 button.dataset.addItem
 );
 
+
 if(!category)return;
+
 
 category.items.push({
 
@@ -3542,6 +4787,7 @@ image:""
 
 });
 
+
 renderAdmin();
 
 };
@@ -3557,19 +4803,22 @@ document
 
 input.onchange=async()=>{
 
-const file =
+const file=
 input.files?.[0];
+
 
 if(!file)return;
 
+
 try{
 
-const image =
+const image=
 await resizeImage(
 file,
 480,
 .78
 );
+
 
 updateItem(
 input.dataset.itemFile,
@@ -3577,7 +4826,9 @@ input.dataset.itemFile,
 image
 );
 
+
 renderAdmin();
+
 
 }catch(error){
 
@@ -3594,7 +4845,7 @@ alert(
 });
 
 
-/* URL */
+/* GÖRSEL URL */
 
 document
 .querySelectorAll("[data-item-url]")
@@ -3627,6 +4878,7 @@ button.dataset.removeImage,
 ""
 );
 
+
 renderAdmin();
 
 };
@@ -3637,7 +4889,7 @@ renderAdmin();
 
 
 /* =========================================================
-   UPDATE ITEM
+   ÜRÜN GÜNCELLE
 ========================================================= */
 
 function updateItem(
@@ -3651,10 +4903,11 @@ const category
 of menuData.categories
 ){
 
-const item =
+const item=
 category.items.find(
 i=>i.id===id
 );
+
 
 if(item){
 
@@ -3670,14 +4923,14 @@ return;
 
 
 /* =========================================================
-   SAVE
+   MENÜ KAYDET
 ========================================================= */
 
 async function saveMenu(status){
 
 if(!authenticatedPin){
 
-status.textContent =
+status.textContent=
 "Oturum bulunamadı. Tekrar giriş yapın.";
 
 return;
@@ -3685,39 +4938,42 @@ return;
 }
 
 
-const buttons =
+const buttons=
 document.querySelectorAll(
 ".main-save"
 );
+
 
 buttons.forEach(
 button=>{
 
 button.disabled=true;
 
-button.textContent =
+button.textContent=
 "KAYDEDİLİYOR...";
 
 }
 );
 
 
-status.textContent =
+status.textContent=
 "Supabase'e kaydediliyor…";
 
 
 try{
 
-menuData =
+menuData=
 normalizeData(menuData);
 
 
-const result =
+const result=
 await supabaseClient.rpc(
 "save_menu",
 {
 p_menu_id:MENU_ID,
+
 p_pin:authenticatedPin,
+
 p_data:menuData
 }
 );
@@ -3730,19 +4986,24 @@ console.error(
 result.error
 );
 
+
 throw new Error(
-result.error.message ||
+result.error.message||
 "Supabase kayıt hatası."
 );
 
 }
 
 
-const ok =
-result.data===true ||
-result.data==="true" ||
-result.data?.[0]===true ||
-result.data?.[0]?.save_menu===true ||
+const ok=
+result.data===true||
+
+result.data==="true"||
+
+result.data?.[0]===true||
+
+result.data?.[0]?.save_menu===true||
+
 result.data?.result===true;
 
 
@@ -3755,11 +5016,9 @@ throw new Error(
 }
 
 
-/* =========================================================
-   VERİTABANINDAN TEKRAR OKU
-========================================================= */
+/* VERİTABANINDAN TEKRAR OKU */
 
-const check =
+const check=
 await supabaseClient
 .from("menus")
 .select("id,data")
@@ -3786,21 +5045,20 @@ throw new Error(
 }
 
 
-menuData =
+menuData=
 normalizeData(
 check.data.data
 );
 
+
 applyTheme();
 
 
-status.textContent =
+status.textContent=
 "✓ Başarıyla kaydedildi.";
 
 
-/* =========================================================
-   PANELİ KAPAT
-========================================================= */
+/* PANELİ KAPAT */
 
 setTimeout(
 ()=>{
@@ -3812,6 +5070,7 @@ adminOverlay.remove();
 adminOverlay=null;
 
 }
+
 
 renderCustomer();
 
@@ -3827,10 +5086,11 @@ console.error(
 error
 );
 
-status.textContent =
+
+status.textContent=
 "Hata: "+
 (
-error.message ||
+error.message||
 "Menü kaydedilemedi."
 );
 
@@ -3840,7 +5100,7 @@ button=>{
 
 button.disabled=false;
 
-button.textContent =
+button.textContent=
 "✓ KAYDET";
 
 }
@@ -3852,7 +5112,7 @@ button.textContent =
 
 
 /* =========================================================
-   RESIZE IMAGE
+   FOTOĞRAF BOYUTLANDIR
 ========================================================= */
 
 function resizeImage(
@@ -3864,24 +5124,24 @@ quality
 return new Promise(
 (resolve,reject)=>{
 
-const reader =
+const reader=
 new FileReader();
 
 
-reader.onload =
+reader.onload=
 event=>{
 
-const image =
+const image=
 new Image();
 
 
-image.onload =
+image.onload=
 ()=>{
 
-let width =
+let width=
 image.width;
 
-let height =
+let height=
 image.height;
 
 
@@ -3890,18 +5150,20 @@ width>maxSize ||
 height>maxSize
 ){
 
-const ratio =
+const ratio=
 Math.min(
 maxSize/width,
 maxSize/height
 );
 
-width =
+
+width=
 Math.round(
 width*ratio
 );
 
-height =
+
+height=
 Math.round(
 height*ratio
 );
@@ -3909,20 +5171,24 @@ height*ratio
 }
 
 
-const canvas =
+const canvas=
 document.createElement(
 "canvas"
 );
 
-canvas.width =
+
+canvas.width=
 width;
 
-canvas.height =
+
+canvas.height=
 height;
 
 
-const ctx =
-canvas.getContext("2d");
+const ctx=
+canvas.getContext(
+"2d"
+);
 
 
 ctx.drawImage(
@@ -3944,31 +5210,36 @@ quality
 };
 
 
-image.onerror =
+image.onerror=
 reject;
 
 
-image.src =
+image.src=
 event.target.result;
 
 };
 
 
-reader.onerror =
+reader.onerror=
 reject;
 
 
 reader.readAsDataURL(file);
 
 }
-);
+
+}
 
 
 /* =========================================================
    BAŞLAT
 ========================================================= */
 
+if(initSupabase()){
+
 loadMenu();
+
+}
 
 </script>
 
